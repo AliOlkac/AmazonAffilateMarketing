@@ -13,19 +13,29 @@ Amazon Affiliate üzerinden gelir elde etmek amacıyla, **fotoğrafçılara** y�
 
 ## **3. Kullanılacak Teknolojiler**
 **Frontend:**
-- **Next.js** (React tabanlı, SEO dostu)
+- **Next.js 15** (App Router, React Server Components)
 - **TailwindCSS** (Hızlı ve modern stilizasyon)
-- **GSAP (GreenSock Animation Platform)** (Animasyonlar için)
-- **ShadCN/UI** (UI bileşenleri için)
+- **ShadCN UI** (Modern ve özelleştirilebilir UI bileşenleri)
+- **Lucide Icons** (Modern ikonlar)
+- **Next.js Metadata API** (SEO optimizasyonu)
+- **Next.js Image Optimization** (Görsel optimizasyonu)
+- **React Suspense & Streaming** (Yükleme durumları)
 
-**Backend:**
-- **Firebase Firestore** veya **JSON dosyaları** (İlk aşamada verileri yönetmek için)
-- **MongoDB veya Prisma (Opsiyonel, genişleme için)**
+**Backend & Veri:**
+- **JSON dosyaları** (Başlangıç aşaması için)
+- **Vercel KV** (Hızlı veri depolama ve önbellek)
+- **Amazon Product Advertising API** (Ürün verileri)
 
-**Diğer:**
-- **Vercel** (Deployment için)
-- **Amazon Product Advertising API veya Scraper API** (Ürün verileri için)
-- **Google Analytics & Search Console** (SEO ve analiz)
+**Performans & SEO:**
+- **Next.js Route Groups** (Sayfa organizasyonu)
+- **Dynamic OG Images** (Sosyal medya önizlemeleri)
+- **Schema.org Markup** (Zengin sonuçlar)
+- **Core Web Vitals** optimizasyonları
+
+**Deployment & Analiz:**
+- **Vercel Analytics** (Performans analizi)
+- **Google Analytics 4** (Kullanıcı davranışları)
+- **Search Console** (SEO takibi)
 
 ## **4. Renk Paleti ve Stil Rehberi**
 
@@ -42,72 +52,131 @@ Amazon Affiliate üzerinden gelir elde etmek amacıyla, **fotoğrafçılara** y�
 
 ## **5. Klasör Yapısı**
 ```
-📂 amazon-affiliate-camera
-│── 📂 public             # Statik dosyalar (favicon, görseller vb.)
-│── 📂 src
-│   │── 📂 components     # UI bileşenleri (Navbar, Footer, Card vb.)
-│   │── 📂 layouts        # Sayfa şablonları
-│   │── 📂 pages          # Next.js sayfaları
-│   │   │── index.tsx     # Ana sayfa
-│   │   │── categories    # Kategoriler sayfası
-│   │   │── products      # Ürün detay sayfası
-│   │   │── blog          # Blog ve içerik sayfası
-│   │   │── search.tsx    # Arama sayfası
-│   │── 📂 utils          # Yardımcı fonksiyonlar (SEO, formatlama vb.)
-│   │── 📂 hooks          # API çağrıları için özel Hook'lar
-│   │── 📂 lib            # Veritabanı veya API bağlantıları
-│   │── 📂 styles         # Tailwind ve özel CSS dosyaları
-│── 📂 data               # JSON veri deposu (Geçici ürün bilgileri)
-│── .env.local            # API anahtarları
-│── next.config.js        # Next.js yapılandırması
-│── tailwind.config.js    # Tailwind yapılandırması
-│── tsconfig.json         # TypeScript yapılandırması
-│── package.json          # Bağımlılıklar ve script'ler
-│── README.md             # Proje dokümantasyonu
+📂 src
+│── 📂 app
+│   │── 📂 (auth)
+│   │   └── [...nextauth]
+│   │── 📂 (marketing)
+│   │   ├── page.tsx
+│   │   └── layout.tsx
+│   │── 📂 products
+│   │   ├── [slug]
+│   │   │   ├── page.tsx
+│   │   │   ├── loading.tsx
+│   │   │   └── error.tsx
+│   │   └── layout.tsx
+│   └── 📂 blog
+│── 📂 components
+│   │── 📂 ui (shadcn)
+│   │── 📂 custom
+│   └── 📂 sections
+│── 📂 lib
+│   │── 📂 utils
+│   └── 📂 config
+└── 📂 types
 ```
 
 ## **6. Sayfa Yapısı ve İçerik Planı**
 
-### **Ana Sayfa (`/index.tsx`)**
-- Hero bölümü (Büyük ve etkileyici bir fotoğraf, "En iyi kameraları keşfet" CTA butonu)
-- Öne çıkan ürünler (Amazon Affiliate linkleri)
-- En çok okunan blog yazıları
-- Kategoriler (DSLR, Mirrorless, Aksiyon Kameraları, Lensler vb.)
+### **Ana Sayfa (`app/page.tsx`)**
+```typescript
+// Metadata tanımı
+export const metadata = {
+  title: 'LensReviewHub - Kamera İncelemeleri',
+  description: 'Profesyonel kamera incelemeleri ve karşılaştırmaları',
+  openGraph: {
+    // ... OpenGraph meta verileri
+  }
+}
 
-### **Kategori Sayfaları (`/categories/[category].tsx`)**
-- Belirli bir kamera türüne özel listeleme
-- Filtreleme (Fiyat, Marka, Özellikler)
-- SEO odaklı uzun içerikler
+// Sayfa bileşenleri
+- HeroSection (@/components/sections/hero)
+- FeaturedProducts (@/components/sections/featured)
+- BlogPreview (@/components/sections/blog-preview)
+- CategoryGrid (@/components/sections/categories)
+```
 
-### **Ürün Detay Sayfaları (`/products/[slug].tsx`)**
-- Ürün özellikleri (Teknik detaylar, avantajlar/dezavantajlar)
-- Kullanıcı yorumları (Amazon’dan veya manuel olarak eklenen yorumlar)
-- YouTube incelemeleri embed
-- Satın alma CTA (Amazon Affiliate Link)
+### **Ürün Sayfaları (`app/products/[slug]/page.tsx`)**
+```typescript
+// Dinamik metadata
+export async function generateMetadata({ params }) {
+  // Ürün bilgilerine göre dinamik meta veriler
+}
 
-### **Blog ve İçerik Sayfaları (`/blog/[slug].tsx`)**
-- SEO odaklı yazılar
-- "En iyi 10 kamera", "Fotoğrafçılık ipuçları" gibi konular
-- Uzun kuyruklu (long-tail) anahtar kelimeler ile trafik çekme
+// Sayfa bileşenleri
+- ProductDetails
+- PriceComparison
+- RelatedProducts
+- CustomerReviewSection (@/components/sections/customer-reviews)
+```
 
-### **Arama Sayfası (`/search.tsx`)**
-- Kullanıcıların doğrudan istedikleri kameraları arayabilmesi
-- Otomatik tamamlama özelliği
+### **Müşteri Yorumları ve Fotoğraf Galerisi**
+```typescript
+// Müşteri Yorumları Bileşeni
+interface CustomerReview {
+  rating: number;
+  comment: string;
+  photos?: {
+    url: string;
+    caption: string;
+  }[];
+  verifiedPurchase: boolean;
+  helpful: number;
+  date: string;
+}
 
-## **7. Kullanıcı Deneyimi ve Animasyonlar (GSAP ile)**
-- Sayfa geçişlerinde **yumuşak fade-in efektleri**
-- Ürün listelerinde **scroll reveal animasyonları**
-- CTA butonlarına **hover efektleri (scale-up, shadow)**
-- Hero bölümünde **parallax veya hareketli arka plan animasyonu**
+// Galeri Grid Bileşeni
+- Masonry layout ile fotoğraf galerisi
+- Lightbox özelliği
+- EXIF bilgileri gösterimi (varsa)
+- Fotoğrafçı bilgileri ve sosyal medya linkleri
+```
+
+#### **Müşteri İçeriği Kullanımı**
+- Amazon'dan seçilmiş en iyi müşteri yorumları
+- Öne çıkan müşteri fotoğrafları galerisi
+- Her fotoğraf için teknik detaylar:
+  - Kullanılan lens bilgisi
+  - Çekim ayarları (ISO, Enstantane, Diyafram)
+  - Çekim koşulları (gün ışığı, stüdyo vb.)
+- Başarılı fotoğrafların çekim hikayeleri
+
+#### **İçerik Organizasyonu**
+1. **Profesyonel İnceleme**
+   - Teknik özellikler
+   - Uzman görüşü
+   - Test sonuçları
+
+2. **Kullanıcı Deneyimleri**
+   - Seçilmiş müşteri yorumları
+   - Örnek fotoğraflar galerisi
+   - Kullanım ipuçları
+
+3. **Fotoğraf Galerisi**
+   - Kategorilere ayrılmış müşteri fotoğrafları
+   - Her fotoğraf için detaylı bilgi kartı
+   - Fotoğrafçı profili ve iletişim bilgileri
+
+#### **Yasal Uyarılar**
+- Amazon müşteri yorumlarının kullanım izinleri
+- Fotoğraf hakları ve kullanım şartları
+- Telif hakkı bildirimleri
+
+## **7. Kullanıcı Deneyimi ve Performans**
+- **React Suspense** ile yükleme durumları
+- **Streaming** ile sayfa parçalı yükleme
+- **Route Groups** ile optimize edilmiş navigasyon
+- **Image Optimization** ile otomatik görsel optimizasyonu
+- **Dynamic OG Images** ile sosyal medya önizlemeleri
 
 ## **8. Trafik Çekme Stratejisi (SEO + Sosyal Medya)**
 ✅ **SEO Odaklı İçerik Üretimi**
-- Google’da üst sıralara çıkmak için **detaylı ürün incelemeleri** ve **karşılaştırmalar** yazılacak.
+- Google'da üst sıralara çıkmak için **detaylı ürün incelemeleri** ve **karşılaştırmalar** yazılacak.
 - **Schema Markup** (Zengin snippet desteği)
 
 ✅ **YouTube ve Pinterest Entegrasyonu**
-- YouTube’da video incelemeler paylaşılacak, siteye gömülecek.
-- Pinterest’te fotoğrafçılıkla ilgili içerikler paylaşılacak.
+- YouTube'da video incelemeler paylaşılacak, siteye gömülecek.
+- Pinterest'te fotoğrafçılıkla ilgili içerikler paylaşılacak.
 
 ✅ **Google Ads ve Sosyal Medya Reklamları**
 - Ücretli Google Ads ve Facebook Ads kullanılarak ilk trafik çekilecek.
@@ -129,4 +198,34 @@ Amazon Affiliate üzerinden gelir elde etmek amacıyla, **fotoğrafçılara** y�
 🚀 **5. Aşama – Sosyal Medya & YouTube Entegrasyonlarını Ekle** 🔜
 
 Bu proje **hızlı, SEO odaklı ve gelir getirebilecek** şekilde optimize edilmiştir. 🎯
+
+## Yeni Yol Haritası
+
+### Hafta 1: Temel Yapı
+- Next.js 15 projesi kurulumu
+- ShadCN UI entegrasyonu ve tema
+- Temel sayfa şablonları
+- Responsive tasarım
+- TypeScript tip tanımlamaları
+
+### Hafta 2: Veri ve İçerik
+- JSON veri yapısı oluşturma
+- İlk 5 ürün detaylı içeriği
+- SEO optimizasyonları
+- Şema işaretlemeleri
+- Metadata API implementasyonu
+
+### Hafta 3: Özellikler
+- Ürün karşılaştırma sistemi
+- Gelişmiş arama fonksiyonu
+- Filtreleme sistemi
+- Performans optimizasyonları
+- Error boundary'ler
+
+### Hafta 4: Entegrasyonlar
+- Amazon API entegrasyonu
+- Vercel Analytics kurulumu
+- Sosyal medya paylaşım sistemi
+- A/B test senaryoları
+- Son performans optimizasyonları
 
