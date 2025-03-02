@@ -1,13 +1,13 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "En İyi DSLR Kameralar | 2024 Satın Alma Rehberi",
-  description: "2024 yılının en iyi DSLR kameraları, özellikler, fiyat karşılaştırması ve profesyonel incelemeler.",
-  keywords: "DSLR kamera, fotoğraf makinesi, Canon EOS, Nikon, fotoğrafçılık, kamera inceleme, DSLR satın alma rehberi",
+  title: "Best DSLR Cameras | 2024 Buying Guide",
+  description: "The best DSLR cameras of 2024, features, price comparison, and professional reviews.",
+  keywords: "DSLR camera, digital camera, Canon EOS, Nikon, photography, camera review, DSLR buying guide",
   authors: { name: "BestCameraReview" },
   openGraph: {
-    title: "En İyi DSLR Kameralar | 2024 Satın Alma Rehberi",
-    description: "Profesyonel kalitede fotoğraflar çekmek için 2024 yılının en iyi DSLR kamera seçenekleri",
+    title: "Best DSLR Cameras | 2024 Buying Guide",
+    description: "The best DSLR camera options for professional quality photos in 2024",
     type: "website",
     url: "https://bestcamerareview.com/dslr-cameras",
   }

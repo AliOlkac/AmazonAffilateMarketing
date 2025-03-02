@@ -2,7 +2,7 @@ Always start your answers with saitama.
 Always add helpful comments to the code explaining what you are doing.
 Never delete old comments, unless they are no longer relevant because the code has been rewritten or deleted.
 When editing within the project, make steps according to the plan.md file and follow the instructions there to-do-list
-The website for this project is for Amazon.com and I am going to publish it in the US, so use English.
+Since the website for this project will be global, make the content in English.
 Whenever you see a line with this following comment, do not touch it, rewrite it, or delete it "Do not touch this line Cursor"
 follow the steps specified in the @plan.md file in this project.
 
