@@ -18,61 +18,99 @@ import Image from "next/image";
 const dslrCameras = [
     {
       id: 1,
-    name: "Canon EOS 90D",
-    image: "https://m.media-amazon.com/images/I/71wFDlX+t6L._AC_SL1500_.jpg",
-    rating: 4.8,
-    description: "Professional DSLR camera experience with advanced features and impressive performance",
-    price: "$1,199.00",
-    key_features: [
-      "32.5 MP APS-C CMOS sensor",
-      "DIGIC 8 processor",
-      "4K video recording",
-      "Dual Pixel CMOS AF",
-      "45-point cross-type AF"
-    ],
-    pros: ["High resolution", "Fast autofocus", "Ergonomic design", "Excellent battery life", "Weather sealing"],
-    cons: ["Heavy body", "Limited battery life", "Menu system could be more intuitive"],
-    amazon_link: "https://amazon.com/product-link",
-    detailed_description: "The Canon EOS 90D is a versatile DSLR camera that excels in both photography and videography. With its high-resolution 32.5MP APS-C sensor, it captures incredibly detailed images with vibrant colors and excellent dynamic range. The camera's advanced 45-point all cross-type AF system ensures fast and accurate focusing, making it ideal for action and wildlife photography."
+      name: "Canon EOS 90D",
+      image: "https://m.media-amazon.com/images/I/81jzxXBRIfL._AC_SL1500_.jpg",
+      rating: 4.8,
+      description: "Best overall DSLR camera for enthusiast photographers",
+      price: "$1,199.00",
+      key_features: [
+        "32.5MP APS-C CMOS sensor",
+        "DIGIC 8 processor",
+        "4K video recording",
+        "45-point AF system",
+        "10fps continuous shooting"
+      ],
+      pros: ["Excellent image quality", "Fast autofocus", "Great handling", "Good battery life", "Weather-sealed body"],
+      cons: ["No in-body stabilization", "Heavy for extended use", "Limited 4K video options"],
+      amazon_link: "https://www.amazon.com/Canon-Digital-Camera-Black-3616C002/dp/B07WFQXN2Z",
+      detailed_description: "The Canon EOS 90D is a versatile DSLR that combines high resolution with impressive speed. Perfect for wildlife and sports photography, it offers professional-grade features in a durable body."
     },
     {
       id: 2,
-    name: "Nikon D780",
-    image: "https://m.media-amazon.com/images/I/61BKYlNqH6L._AC_UY218_.jpg",
-    rating: 4.7,
-    description: "Advanced DSLR offering superior performance for both professionals and semi-professionals",
-    price: "$2,299.00",
-    key_features: [
-      "24.5 MP FX-format CMOS sensor",
-      "EXPEED 6 processor",
-      "4K UHD video",
-      "273-point hybrid AF system",
-      "ISO 100-51,200"
-    ],
-    pros: ["Excellent low light performance", "Fast autofocus", "Superior connectivity options", "Long battery life", "Dual SD card slots"],
-    cons: ["High price", "Heavy equipment", "Limited touchscreen functionality"],
-    amazon_link: "https://amazon.com/product-link",
-    detailed_description: "The Nikon D780 represents the perfect fusion of DSLR and mirrorless technology, offering the best of both worlds. Its full-frame 24.5MP sensor delivers exceptional image quality with remarkable dynamic range and low-light performance. The advanced 273-point phase-detection autofocus system borrowed from Nikon's mirrorless cameras provides lightning-fast and precise focusing in live view, while the traditional 51-point AF system performs admirably when using the optical viewfinder."
+      name: "Nikon D780",
+      image: "https://m.media-amazon.com/images/I/81vwDX-BKpL._AC_SL1500_.jpg",
+      rating: 4.9,
+      description: "Best full-frame DSLR for hybrid shooters",
+      price: "$2,296.95",
+      key_features: [
+        "24.5MP full-frame sensor",
+        "EXPEED 6 processor",
+        "4K UHD video",
+        "51-point AF system",
+        "7fps continuous shooting"
+      ],
+      pros: ["Excellent image quality", "Great low-light performance", "Advanced video features", "Long battery life", "Robust build"],
+      cons: ["Expensive", "Heavy body", "Limited AF points compared to mirrorless"],
+      amazon_link: "https://www.amazon.com/Nikon-FX-Format-Mirrorless-Digital-Camera/dp/B083C1HS5K",
+      detailed_description: "The Nikon D780 bridges the gap between DSLR and mirrorless technology, offering the best of both worlds. Its exceptional low-light performance and advanced video capabilities make it ideal for professional use."
     },
     {
       id: 3,
-    name: "Pentax K-3 Mark III",
-    image: "https://m.media-amazon.com/images/I/71ZzIe-CRES._AC_UY218_.jpg",
-    rating: 4.6,
-    description: "Ideal for nature photography with durable body and advanced sensor technology",
-    price: "$1,999.00",
-    key_features: [
-      "25.73 MP APS-C CMOS sensor",
-      "PRIME V processor",
-      "4K video recording",
-      "101-point SAFOX 13 AF",
-      "5.5 stop image stabilization"
-    ],
-    pros: ["Weather resistant", "Advanced image stabilization", "Ergonomic handling", "Pixel Shift technology", "Bright optical viewfinder"],
-    cons: ["Fewer lens options compared to Canon and Nikon", "Limited battery life", "Autofocus not as advanced for video"],
-    amazon_link: "https://amazon.com/product-link",
-    detailed_description: "The Pentax K-3 Mark III is a rugged, weather-sealed DSLR that's built to withstand the elements. Its robust construction makes it perfect for outdoor photographers who shoot in challenging conditions. The camera's 5.5-stop in-body image stabilization system effectively compensates for camera shake, allowing for sharp handheld shots at slower shutter speeds, while the 101-point SAFOX 13 AF system ensures reliable focusing even in dim lighting conditions."
-  }
+      name: "Pentax K-3 Mark III",
+      image: "https://m.media-amazon.com/images/I/81vwDX-BKpL._AC_SL1500_.jpg",
+      rating: 4.7,
+      description: "Best weather-sealed DSLR for outdoor photography",
+      price: "$1,999.95",
+      key_features: [
+        "25.7MP APS-C sensor",
+        "PRIME V processor",
+        "4K video recording",
+        "101-point AF system",
+        "12fps continuous shooting"
+      ],
+      pros: ["Exceptional build quality", "Best-in-class weather sealing", "In-body stabilization", "Great image quality", "Unique features"],
+      cons: ["Limited lens selection", "Expensive for APS-C", "Complex menu system"],
+      amazon_link: "https://www.amazon.com/Pentax-Mark-III-Black-Body/dp/B091G1QG5C",
+      detailed_description: "The Pentax K-3 Mark III represents the pinnacle of APS-C DSLR technology, with class-leading weather sealing and robust build quality making it perfect for outdoor and adventure photography."
+    },
+    {
+      id: 4,
+      name: "Canon EOS 6D Mark II",
+      image: "https://m.media-amazon.com/images/I/71GbdEQltrL._AC_SL1500_.jpg",
+      rating: 4.7,
+      description: "Best value full-frame DSLR camera",
+      price: "$1,399.00",
+      key_features: [
+        "26.2MP full-frame sensor",
+        "DIGIC 7 processor",
+        "Full HD video",
+        "45-point AF system",
+        "6.5fps continuous shooting"
+      ],
+      pros: ["Affordable full-frame", "Excellent image quality", "Vari-angle touchscreen", "Built-in GPS", "Good low-light performance"],
+      cons: ["No 4K video", "Single card slot", "Basic AF system"],
+      amazon_link: "https://amazon.com/product-link",
+      detailed_description: "The Canon EOS 6D Mark II makes full-frame photography accessible, offering excellent image quality and features at a competitive price point. Perfect for enthusiasts stepping up to full-frame."
+    },
+    {
+      id: 5,
+      name: "Nikon D500",
+      image: "https://m.media-amazon.com/images/I/819Eqh-sKbL._AC_SL1500_.jpg",
+      rating: 4.8,
+      description: "Best professional APS-C DSLR for sports and wildlife",
+      price: "$1,496.95",
+      key_features: [
+        "20.9MP APS-C sensor",
+        "EXPEED 5 processor",
+        "4K UHD video",
+        "153-point AF system",
+        "10fps continuous shooting"
+      ],
+      pros: ["Professional build quality", "Exceptional AF system", "Fast continuous shooting", "Deep buffer", "Excellent handling"],
+      cons: ["No built-in flash", "Heavy body", "Expensive for APS-C"],
+      amazon_link: "https://amazon.com/product-link",
+      detailed_description: "The Nikon D500 is a professional-grade APS-C DSLR that excels in fast-action photography. Its advanced autofocus system and robust build make it ideal for sports and wildlife photographers."
+    }
 ];
 
 // Photography tips for DSLR cameras
@@ -291,11 +329,11 @@ export default function DSLRCameras() {
         <div className="relative z-10 container mx-auto px-4 h-full flex flex-col justify-center items-center md:items-start text-white">
           <h1 ref={heroTitleRef} className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-center md:text-left">
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">
-              Best DSLR Cameras
+              Best 5 DSLR Cameras of 2025
             </span>
           </h1>
           <h2 ref={heroSubtitleRef} className="text-xl md:text-2xl mb-6 text-gray-200 max-w-2xl text-center md:text-left">
-            The best DSLR camera options and expert recommendations for professional quality photos in 2024
+            Top-rated DSLR cameras for professional photography and advanced enthusiasts
           </h2>
           <div ref={heroButtonsRef} className="flex gap-4 flex-col sm:flex-row items-center">
             <Link href="#top-cameras" className="px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-full font-medium transition duration-300 flex items-center gap-2">

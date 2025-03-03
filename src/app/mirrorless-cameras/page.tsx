@@ -15,7 +15,7 @@ const mirrorlessCameras = [
       name: "Sony A7 IV",
       image: "https://m.media-amazon.com/images/I/81HwzslV3VL._AC_SL1500_.jpg",
       rating: 4.9,
-      description: "Professional full-frame mirrorless camera with exceptional image quality and advanced features",
+      description: "Best overall mirrorless camera for professional photography and videography",
       price: "$2,499.00",
       key_features: [
         "33MP Full-frame Exmor R CMOS sensor",
@@ -34,7 +34,7 @@ const mirrorlessCameras = [
       name: "Canon EOS R6 Mark II",
       image: "https://m.media-amazon.com/images/I/71Nyj-TThIL._AC_SL1500_.jpg",
       rating: 4.8,
-      description: "Versatile mirrorless camera offering exceptional speed and low-light performance",
+      description: "Best mirrorless camera for action and sports photography",
       price: "$2,499.00",
       key_features: [
         "24.2MP Full-frame CMOS sensor",
@@ -46,14 +46,14 @@ const mirrorlessCameras = [
       pros: ["Fast continuous shooting", "Excellent AF performance", "Great low-light capability", "Dual card slots", "Advanced video features"],
       cons: ["No 8K video", "Battery life could be better", "Rolling shutter in electronic mode"],
       amazon_link: "https://amazon.com/product-link",
-      detailed_description: "The Canon EOS R6 Mark II is designed for photographers who demand speed and versatility. With its impressive 40fps continuous shooting and advanced Dual Pixel AF II system, it excels in both still photography and video. The camera's excellent low-light performance and robust image stabilization make it perfect for various shooting conditions."
+      detailed_description: "The Canon EOS R6 Mark II is designed for photographers who demand speed and versatility. With its impressive 40fps continuous shooting and advanced Dual Pixel AF II system, it excels in both still photography and video."
     },
     {
       id: 3,
       name: "Fujifilm X-T5",
       image: "https://m.media-amazon.com/images/I/81cEKnH692L._AC_SL1500_.jpg",
       rating: 4.7,
-      description: "Classic design meets modern technology in this powerful APS-C mirrorless camera",
+      description: "Best APS-C mirrorless camera for enthusiast photographers",
       price: "$1,699.00",
       key_features: [
         "40.2MP X-Trans CMOS 5 sensor",
@@ -65,7 +65,45 @@ const mirrorlessCameras = [
       pros: ["Excellent image quality", "Retro design with modern features", "Compact size", "Great color reproduction", "Strong battery life"],
       cons: ["Smaller sensor than full-frame", "AF not as advanced as competitors", "Limited buffer depth"],
       amazon_link: "https://amazon.com/product-link",
-      detailed_description: "The Fujifilm X-T5 combines classic styling with cutting-edge technology. Its 40.2MP sensor delivers stunning image quality with Fujifilm's renowned color science. The camera's compact size and intuitive controls make it perfect for street and travel photography, while its advanced features satisfy professional needs."
+      detailed_description: "The Fujifilm X-T5 combines classic styling with cutting-edge technology. Its 40.2MP sensor delivers stunning image quality with Fujifilm&apos;s renowned color science."
+    },
+    {
+      id: 4,
+      name: "Nikon Z6 II",
+      image: "https://m.media-amazon.com/images/I/71E7DL-cZtL._AC_SL1500_.jpg",
+      rating: 4.8,
+      description: "Best value full-frame mirrorless camera",
+      price: "$1,996.95",
+      key_features: [
+        "24.5MP BSI CMOS sensor",
+        "Dual EXPEED 6 processors",
+        "4K 60p video",
+        "273-point AF system",
+        "14fps continuous shooting"
+      ],
+      pros: ["Excellent value for money", "Great low-light performance", "Dual card slots", "Professional build quality", "Improved autofocus"],
+      cons: ["Limited third-party lens options", "Menu system could be better", "Average EVF resolution"],
+      amazon_link: "https://amazon.com/product-link",
+      detailed_description: "The Nikon Z6 II offers exceptional value for photographers seeking a professional-grade full-frame mirrorless camera. Its versatile feature set makes it ideal for both stills and video."
+    },
+    {
+      id: 5,
+      name: "Sony A7C II",
+      image: "https://m.media-amazon.com/images/I/81p5VZoiXLL._AC_SL1500_.jpg",
+      rating: 4.7,
+      description: "Best compact full-frame mirrorless camera",
+      price: "$2,198.00",
+      key_features: [
+        "33MP Full-frame sensor",
+        "AI-powered AF",
+        "4K 60p 10-bit video",
+        "759-point AF system",
+        "Compact body design"
+      ],
+      pros: ["Extremely compact", "Great image quality", "Advanced AF features", "Excellent video capabilities", "Built-in stabilization"],
+      cons: ["Small EVF", "Limited physical controls", "Single card slot"],
+      amazon_link: "https://amazon.com/product-link",
+      detailed_description: "The Sony A7C II packs full-frame performance into an incredibly compact body, making it perfect for travel and street photography while maintaining professional image quality."
     }
 ];
 
@@ -116,7 +154,6 @@ export default function MirrorlessCameras() {
   const introTitleRef = useRef(null);
   const introTextRef = useRef(null);
   const camerasWrapperRef = useRef(null);
-  const cameraCardsRefs = useRef<(HTMLDivElement | null)[]>([]);
   const ctaSectionRef = useRef(null);
   const tipsRef = useRef(null);
   const categoriesRef = useRef(null);
@@ -175,11 +212,11 @@ export default function MirrorlessCameras() {
         <div className="relative z-10 container mx-auto px-4 h-full flex flex-col justify-center items-center md:items-start text-white">
           <h1 ref={heroTitleRef} className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-center md:text-left">
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-300">
-              Best Mirrorless Cameras
+              Best 5 Mirrorless Cameras of 2024
             </span>
           </h1>
           <h2 ref={heroSubtitleRef} className="text-xl md:text-2xl mb-6 text-gray-200 max-w-2xl text-center md:text-left">
-            Discover the latest mirrorless cameras combining compact design with professional performance
+            Top-rated mirrorless cameras for every budget and shooting style
           </h2>
           <div ref={heroButtonsRef} className="flex gap-4 flex-col sm:flex-row items-center">
             <Link href="#top-cameras" className="px-8 py-3 bg-purple-600 hover:bg-purple-700 text-white rounded-full font-medium transition duration-300 flex items-center gap-2">
@@ -216,26 +253,30 @@ export default function MirrorlessCameras() {
       <section id="top-cameras" className="py-16 px-4 bg-white dark:bg-gray-800 rounded-t-[40px] shadow-lg">
         <div className="container mx-auto">
           <h2 className="text-3xl font-bold mb-2 text-center text-gray-800 dark:text-white">
-            Top Mirrorless Cameras of 2024
+            Best 5 Mirrorless Cameras for Every Need
           </h2>
           <p className="text-lg text-center mb-12 text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            The most advanced mirrorless cameras offering exceptional image quality and innovative features
+            From professional photography to travel, find the perfect mirrorless camera for your specific needs
           </p>
 
           {/* Camera Cards */}
           <div ref={camerasWrapperRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {mirrorlessCameras.map((camera, index) => (
               <div 
-                key={camera.id} 
-                ref={el => {
-                  cameraCardsRefs.current[index] = el;
-                }}
+                key={camera.id}
+                onMouseEnter={() => handleCardHover(index)}
+                onMouseLeave={() => handleCardHover(null)}
                 className={`bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg transition-all duration-500 transform ${
                   hoveredCard === index ? 'scale-[1.02] shadow-2xl' : 'hover:shadow-xl hover:-translate-y-2'
                 }`}
-                onMouseEnter={() => handleCardHover(index)}
-                onMouseLeave={() => handleCardHover(null)}
               >
+                <div className="absolute top-2 left-2 bg-purple-600 text-white py-1 px-3 rounded-full text-sm font-medium z-10">
+                  {index === 0 && "Best Overall"}
+                  {index === 1 && "Best for Action"}
+                  {index === 2 && "Best for Enthusiasts"}
+                  {index === 3 && "Best Value"}
+                  {index === 4 && "Best Compact"}
+                </div>
                 {/* Camera Image */}
                 <div className="h-72 md:h-80 lg:h-96 overflow-hidden relative bg-gray-100 dark:bg-gray-700">
                   <Image 
