@@ -2,11 +2,20 @@
 
 import Link from "next/link";
 import { FaCamera, FaFacebook, FaTwitter, FaInstagram, FaYoutube, FaEnvelope } from "react-icons/fa";
+import { useState, useEffect } from "react";
 
 // Modern footer component for the camera review website
 export default function Footer() {
   // Current year for copyright text
   const currentYear = new Date().getFullYear();
+  
+  // State for newsletter form rendering
+  const [isMounted, setIsMounted] = useState(false);
+
+  // Only render form after component has mounted on client
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   // Quick links for the footer
   const quickLinks = [
@@ -97,26 +106,30 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Newsletter signup */}
+          {/* Newsletter signup - Client-side only */}
           <div className="col-span-1">
             <h3 className="text-lg font-semibold mb-4 text-blue-400">Stay Updated</h3>
             <p className="text-gray-400 mb-4">
               Subscribe to our newsletter for the latest camera reviews and deals.
             </p>
-            <form className="flex">
-              <input
-                type="email"
-                placeholder="Your email"
-                className="bg-gray-800 text-white px-4 py-2 rounded-l-md focus:outline-none w-full"
-              />
-              <button
-                type="submit"
-                className="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-r-md transition duration-300"
-                aria-label="Subscribe"
-              >
-                <FaEnvelope />
-              </button>
-            </form>
+            {isMounted ? (
+              <form className="flex">
+                <input
+                  type="email"
+                  placeholder="Your email"
+                  className="bg-gray-800 text-white px-4 py-2 rounded-l-md focus:outline-none w-full"
+                />
+                <button
+                  type="submit"
+                  className="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-r-md transition duration-300"
+                  aria-label="Subscribe"
+                >
+                  <FaEnvelope />
+                </button>
+              </form>
+            ) : (
+              <div className="h-10 bg-gray-800 rounded-md animate-pulse"></div>
+            )}
           </div>
         </div>
 

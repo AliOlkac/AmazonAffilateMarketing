@@ -1,7 +1,11 @@
-import type { NextConfig } from "next";
+import { type NextConfig } from "next";
 
+// Harici görsel kaynaklarına izin veriyoruz
+// Amazon görsellerini kullanabilmek için Images konfigürasyonu eklendi
 const nextConfig: NextConfig = {
-  /* config options here */
+  images: {
+    domains: ['m.media-amazon.com'], // Amazon görsellerine izin ver
+  },
 };
 
 export default nextConfig;

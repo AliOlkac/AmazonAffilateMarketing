@@ -6,6 +6,7 @@ import { MdCompare, MdPhotoCamera, MdCameraAlt, MdVideocam, MdSettings, MdOutlin
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Image from "next/image";
 
 // Metadata for DSLR Cameras page - Metadata doesn't work in client components in Next.js, so we removed it
 // export const metadata = {
@@ -15,10 +16,10 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 // Sample DSLR camera data
 const dslrCameras = [
-  {
-    id: 1,
+    {
+      id: 1,
     name: "Canon EOS 90D",
-    image: "/images/cameras/canon-90d.jpg", // Camera image to be added
+    image: "https://m.media-amazon.com/images/I/71wFDlX+t6L._AC_SL1500_.jpg",
     rating: 4.8,
     description: "Professional DSLR camera experience with advanced features and impressive performance",
     price: "$1,199.00",
@@ -33,11 +34,11 @@ const dslrCameras = [
     cons: ["Heavy body", "Limited battery life", "Menu system could be more intuitive"],
     amazon_link: "https://amazon.com/product-link",
     detailed_description: "The Canon EOS 90D is a versatile DSLR camera that excels in both photography and videography. With its high-resolution 32.5MP APS-C sensor, it captures incredibly detailed images with vibrant colors and excellent dynamic range. The camera's advanced 45-point all cross-type AF system ensures fast and accurate focusing, making it ideal for action and wildlife photography."
-  },
-  {
-    id: 2,
+    },
+    {
+      id: 2,
     name: "Nikon D780",
-    image: "/images/cameras/nikon-d780.jpg", // Camera image to be added
+    image: "https://m.media-amazon.com/images/I/61BKYlNqH6L._AC_UY218_.jpg",
     rating: 4.7,
     description: "Advanced DSLR offering superior performance for both professionals and semi-professionals",
     price: "$2,299.00",
@@ -52,11 +53,11 @@ const dslrCameras = [
     cons: ["High price", "Heavy equipment", "Limited touchscreen functionality"],
     amazon_link: "https://amazon.com/product-link",
     detailed_description: "The Nikon D780 represents the perfect fusion of DSLR and mirrorless technology, offering the best of both worlds. Its full-frame 24.5MP sensor delivers exceptional image quality with remarkable dynamic range and low-light performance. The advanced 273-point phase-detection autofocus system borrowed from Nikon's mirrorless cameras provides lightning-fast and precise focusing in live view, while the traditional 51-point AF system performs admirably when using the optical viewfinder."
-  },
-  {
-    id: 3,
+    },
+    {
+      id: 3,
     name: "Pentax K-3 Mark III",
-    image: "/images/cameras/canon-90d.jpg", // Camera image to be added
+    image: "https://m.media-amazon.com/images/I/71ZzIe-CRES._AC_UY218_.jpg",
     rating: 4.6,
     description: "Ideal for nature photography with durable body and advanced sensor technology",
     price: "$1,999.00",
@@ -346,31 +347,26 @@ export default function DSLRCameras() {
                 ref={el => {
                   cameraCardsRefs.current[index] = el;
                 }}
-                className={`bg-gray-50 dark:bg-gray-700 rounded-2xl overflow-hidden shadow-lg transition-all duration-500 transform ${
+                className={`bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg transition-all duration-500 transform ${
                   hoveredCard === index ? 'scale-[1.02] shadow-2xl' : 'hover:shadow-xl hover:-translate-y-2'
                 }`}
                 onMouseEnter={() => handleCardHover(index)}
                 onMouseLeave={() => handleCardHover(null)}
               >
-                {/* Camera Image Placeholder - Real images will be added */}
-                <div className="relative h-60 bg-gray-200 dark:bg-gray-600 overflow-hidden">
+                {/* Camera Image */}
+                <div className="h-72 md:h-80 lg:h-96 overflow-hidden relative bg-gray-100 dark:bg-gray-700">
+                  <Image 
+                    src={camera.image} 
+                    alt={camera.name}
+                    fill
+                    quality={100}
+                    priority={index === 0}
+                    className="object-contain p-4 transition-transform duration-300 hover:scale-110"
+                    sizes="(max-width: 768px) 90vw, (max-width: 1200px) 45vw, 30vw"
+                  />
+                  {/* Rating badge overlay */}
                   <div className="absolute top-2 right-2 bg-yellow-400 text-gray-900 py-1 px-3 rounded-full flex items-center gap-1 font-medium z-10">
                     <FaStar className={`${hoveredCard === index ? 'animate-pulse' : ''}`} /> {camera.rating}
-                  </div>
-                  {/* Camera image will be added - Adding a zoom effect on hover */}
-                  <div className={`w-full h-full flex items-center justify-center text-gray-400 transition-transform duration-700 ${
-                    hoveredCard === index ? 'scale-110' : ''
-                  }`}>
-                    <FaCamera size={60} className={`${hoveredCard === index ? 'animate-pulse text-gray-500' : ''}`} />
-                  </div>
-                  
-                  {/* Overlay that appears on hover */}
-                  <div className={`absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 transition-opacity duration-300 flex items-end justify-center pb-4 ${
-                    hoveredCard === index ? 'opacity-100' : ''
-                  }`}>
-                    <span className="text-white font-medium px-3 py-1 rounded bg-black/30 backdrop-blur-sm">
-                      View Details
-                    </span>
                   </div>
                 </div>
 
@@ -398,7 +394,7 @@ export default function DSLRCameras() {
                         </li>
                       ))}
                     </ul>
-                  </div>
+        </div>
 
                   {/* Detailed description that shows on hover */}
                   <div className={`mb-4 overflow-hidden transition-all duration-300 ${
@@ -422,7 +418,7 @@ export default function DSLRCameras() {
                       <FaAmazon className={hoveredCard === index ? 'animate-bounce' : ''} /> View on Amazon
                     </a>
                   </div>
-                </div>
+              </div>
               </div>
             ))}
           </div>
@@ -449,10 +445,10 @@ export default function DSLRCameras() {
                     <p className="text-gray-600 dark:text-gray-300">{tip.content}</p>
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
-        </div>
+                    </div>
+                        ))}
+                      </div>
+                    </div>
       </section>
 
       {/* DSLR Categories Section - New section for SEO */}
@@ -471,19 +467,19 @@ export default function DSLRCameras() {
                     <div className="bg-indigo-100 dark:bg-indigo-900 p-4 rounded-full">
                       <MdCameraAlt className="text-indigo-500 dark:text-indigo-300 text-3xl" />
                     </div>
-                  </div>
-                  <div>
+                      </div>
+                      <div>
                     <h3 className="text-xl font-bold mb-2 text-gray-800 dark:text-white">{category.title}</h3>
                     <p className="text-gray-600 dark:text-gray-300 mb-3">{category.description}</p>
                     <div className="bg-gray-100 dark:bg-gray-600 p-3 rounded-lg">
                       <span className="block text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">Popular Models:</span>
                       <span className="text-gray-700 dark:text-gray-300">{category.examples}</span>
                     </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
         </div>
       </section>
 
@@ -507,8 +503,8 @@ export default function DSLRCameras() {
             </p>
             <p className="text-lg">
               While mirrorless cameras have gained popularity in recent years, DSLR cameras continue to evolve with models like the Nikon D850 and Canon 5D Mark IV offering unmatched reliability, battery life, and an extensive ecosystem of lenses and accessories. For many photographers, the optical viewfinder experience and tactile handling of DSLRs remain irreplaceable aspects of their creative process.
-            </p>
-          </div>
+                </p>
+              </div>
         </div>
       </section>
 
@@ -557,7 +553,7 @@ export default function DSLRCameras() {
                     <h3 className="text-xl font-bold mb-3 text-gray-800 dark:text-white">{section.title}</h3>
                     <p className="text-gray-600 dark:text-gray-300">{section.content}</p>
                   </div>
-                </div>
+              </div>
               </div>
             ))}
           </div>
@@ -571,8 +567,8 @@ export default function DSLRCameras() {
           <div className="absolute top-0 left-0 w-64 h-64 bg-blue-500 rounded-full filter blur-3xl"></div>
           <div className="absolute bottom-0 right-0 w-80 h-80 bg-purple-500 rounded-full filter blur-3xl"></div>
           <div className="absolute top-1/2 left-1/3 w-40 h-40 bg-cyan-400 rounded-full filter blur-2xl"></div>
-        </div>
-        
+      </div>
+
         <div className="container mx-auto text-center relative z-10">
           <div className="max-w-3xl mx-auto bg-white/5 backdrop-blur-lg p-10 rounded-3xl border border-white/10 shadow-lg">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Capture Perfect Moments?</h2>
