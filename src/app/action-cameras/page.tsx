@@ -240,7 +240,7 @@ export default function ActionCameras() {
               Modern action cameras offer incredible versatility, from underwater photography to immersive POV footage. Their small size and mounting options allow for unique perspectives that would be impossible with traditional cameras.
             </p>
             <p className="text-lg text-gray-600 dark:text-gray-300">
-              With features like 5K resolution, advanced stabilization, and waterproof construction, today's action cameras are more capable than ever, making them essential tools for adventurers, content creators, and sports enthusiasts.
+              With features like 5K resolution, advanced stabilization, and waterproof construction, today&apos;s action cameras are more capable than ever, making them essential tools for adventurers, content creators, and sports enthusiasts.
             </p>
           </div>
         </div>
@@ -418,13 +418,13 @@ export default function ActionCameras() {
           
           <div className="space-y-6 text-gray-600 dark:text-gray-300">
             <p className="text-lg">
-              The action camera revolution began in 2004 when GoPro founder Nick Woodman introduced the first GoPro camera. This innovation created an entirely new category of cameras designed specifically for capturing action sports and adventures.
+              Whether you&apos;re a YouTube creator, adventure sports enthusiast, or travel vlogger, action cameras have become essential tools for capturing dynamic moments in stunning quality.
             </p>
             <p className="text-lg">
-              The introduction of HD video capabilities and advanced stabilization technologies in the early 2010s marked a significant turning point. These advancements made action cameras essential tools for both professional athletes and everyday adventurers.
+              The evolution of action cameras has been remarkable, from basic waterproof cameras to today&apos;s sophisticated devices with advanced stabilization, 4K resolution, and AI-powered features. These innovations have transformed how we capture life&apos;s most exciting moments.
             </p>
             <p className="text-lg">
-              Today, action cameras push the boundaries of what's possible with features like 5K resolution, 360-degree capture, and AI-powered stabilization. They've become versatile tools used not just for extreme sports, but also for vlogging, professional filmmaking, and everyday content creation.
+              Today&apos;s action cameras continue to push boundaries with features like 5K resolution, 360-degree capture, and AI-powered stabilization, making them more versatile than ever before.
             </p>
           </div>
         </div>
