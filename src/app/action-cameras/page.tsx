@@ -111,7 +111,7 @@ const actionCameras = [
 const photographyTips = [
   {
     title: "Mastering Stabilization",
-    content: "Learn to use your action camera's stabilization modes effectively. Different activities may require different stabilization settings - experiment to find what works best for your specific scenario."
+    content: "Learn to use your action camera&apos;s stabilization modes effectively. Different activities may require different stabilization settings - experiment to find what works best for your specific scenario."
   },
   {
     title: "Optimal Mounting Techniques",
