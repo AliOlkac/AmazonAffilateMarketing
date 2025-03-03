@@ -405,8 +405,8 @@ export default function DSLRCameras() {
                   {/* Rating badge overlay */}
                   <div className="absolute top-2 right-2 bg-yellow-400 text-gray-900 py-1 px-3 rounded-full flex items-center gap-1 font-medium z-10">
                     <FaStar className={`${hoveredCard === index ? 'animate-pulse' : ''}`} /> {camera.rating}
-                  </div>
-                </div>
+        </div>
+      </div>
 
                 {/* Camera Info */}
                 <div className="p-6">
@@ -518,7 +518,7 @@ export default function DSLRCameras() {
                 </div>
               ))}
             </div>
-        </div>
+          </div>
       </section>
 
       {/* History of DSLR Cameras Section - New section for SEO */}
