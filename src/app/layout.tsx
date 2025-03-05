@@ -17,6 +17,38 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Best Camera Reviews - Expert Camera Buying Guide 2024",
   description: "Expert camera reviews, buying guides, and comparisons for DSLR, mirrorless, action, vlog, and compact cameras. Find the best cameras for your needs.",
+  icons: {
+    icon: [
+      {
+        url: '/images/logo.png',
+        href: '/images/logo.png',
+      },
+    ],
+    shortcut: '/images/logo.png',
+    apple: '/images/logo.png',
+  },
+  openGraph: {
+    title: 'Best Camera Reviews - Expert Camera Buying Guide 2025',
+    description: 'Expert camera reviews, buying guides, and comparisons for DSLR, mirrorless, action, vlog, and compact cameras. Find the best cameras for your needs.',
+    url: 'https://bestcamerareview.com',
+    siteName: 'Best Camera Review',
+    images: [
+      {
+        url: '/images/logo.png',
+        width: 800,
+        height: 600,
+        alt: 'Best Camera Review Logo',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Best Camera Reviews - Expert Camera Buying Guide 2024',
+    description: 'Expert camera reviews, buying guides, and comparisons for DSLR, mirrorless, action, vlog, and compact cameras.',
+    images: ['/images/logo.png'],
+  },
 };
 
 export default function RootLayout({
