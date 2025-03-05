@@ -12,11 +12,11 @@ import Image from "next/image";
 const mirrorlessCameras = [
     {
       id: 1,
-      name: "Sony A7 IV",
-      image: "https://m.media-amazon.com/images/I/81HwzslV3VL._AC_SL1500_.jpg",
+      name: "Sony Alpha a7 IV",
+      image: "/images/cameras/hero-bg.webp",
       rating: 4.9,
-      description: "Best overall mirrorless camera for professional photography and videography",
-      price: "$2,499.00",
+      description: "Best Overall Mirrorless: Full-frame camera with exceptional image quality, advanced autofocus, and professional 4K video capabilities.",
+      price: "$2,499.99",
       key_features: [
         "33MP Full-frame Exmor R CMOS sensor",
         "BIONZ XR processor",
@@ -32,9 +32,9 @@ const mirrorlessCameras = [
     {
       id: 2,
       name: "Canon EOS R6 Mark II",
-      image: "https://m.media-amazon.com/images/I/71Nyj-TThIL._AC_SL1500_.jpg",
+      image: "/images/cameras/hero-bg.webp",
       rating: 4.8,
-      description: "Best mirrorless camera for action and sports photography",
+      description: "Best for Hybrid Shooters: Versatile full-frame camera with exceptional autofocus, high-speed shooting, and excellent video capabilities.",
       price: "$2,499.00",
       key_features: [
         "24.2MP Full-frame CMOS sensor",
@@ -51,9 +51,9 @@ const mirrorlessCameras = [
     {
       id: 3,
       name: "Fujifilm X-T5",
-      image: "https://m.media-amazon.com/images/I/81cEKnH692L._AC_SL1500_.jpg",
-      rating: 4.7,
-      description: "Best APS-C mirrorless camera for enthusiast photographers",
+      image: "/images/cameras/hero-bg.webp",
+      rating: 4.8,
+      description: "Best APS-C Mirrorless: Feature-rich camera with excellent color science, film simulations, and impressive image quality in a compact body.",
       price: "$1,699.00",
       key_features: [
         "40.2MP X-Trans CMOS 5 sensor",
@@ -70,9 +70,9 @@ const mirrorlessCameras = [
     {
       id: 4,
       name: "Nikon Z6 II",
-      image: "https://m.media-amazon.com/images/I/71E7DL-cZtL._AC_SL1500_.jpg",
-      rating: 4.8,
-      description: "Best value full-frame mirrorless camera",
+      image: "/images/cameras/hero-bg.webp",
+      rating: 4.7,
+      description: "Best Value Full-Frame: Well-rounded mirrorless camera with excellent low-light performance, dual card slots, and improved autofocus system.",
       price: "$1,996.95",
       key_features: [
         "24.5MP BSI CMOS sensor",
@@ -88,11 +88,11 @@ const mirrorlessCameras = [
     },
     {
       id: 5,
-      name: "Sony A7C II",
-      image: "https://m.media-amazon.com/images/I/81p5VZoiXLL._AC_SL1500_.jpg",
+      name: "OM System OM-1",
+      image: "/images/cameras/hero-bg.webp",
       rating: 4.7,
-      description: "Best compact full-frame mirrorless camera",
-      price: "$2,198.00",
+      description: "Best Micro Four Thirds: Weather-sealed camera with computational photography features, excellent stabilization, and impressive speed.",
+      price: "$2,199.99",
       key_features: [
         "33MP Full-frame sensor",
         "AI-powered AF",
@@ -284,7 +284,7 @@ export default function MirrorlessCameras() {
       <section className="relative h-[60vh] overflow-hidden">
         {/* Hero Image */}
         <div className="absolute inset-0 bg-black/70">
-          <div className="w-full h-full bg-[url('/images/cameras/mirrorless-hero.webp')] bg-cover bg-center opacity-30 mix-blend-plus-darker"></div>
+          <div className="w-full h-full bg-[url('/images/cameras/hero-bg.webp')] bg-cover bg-center opacity-30 mix-blend-plus-darker"></div>
         </div>
         
         {/* Hero Content */}

@@ -13,7 +13,7 @@ const cameraCategories = [
     id: "dslr",
     title: "DSLR Cameras",
     description: "Professional cameras with interchangeable lenses for the highest image quality",
-    image: "/images/cameras/nikon-d780.jpg",
+    image: "/images/cameras/hero-bg.webp",
     color: "#00FFFF", // Neon mavi
     link: "/dslr-cameras",
   },
@@ -37,7 +37,7 @@ const cameraCategories = [
     id: "vlog",
     title: "Vlog Cameras",
     description: "Perfect cameras for content creators and vloggers with advanced video features",
-    image: "/images/cameras/canon-90d.jpg",
+    image: "/images/cameras/hero-bg.webp",
     color: "#FF5500", // Neon turuncu
     link: "/vlog-cameras",
   },
@@ -45,7 +45,7 @@ const cameraCategories = [
     id: "compact",
     title: "Compact Cameras",
     description: "Portable, easy-to-use cameras for everyday photography",
-    image: "/images/cameras/nikon-d780.jpg",
+    image: "/images/cameras/hero-bg.webp",
     color: "#FFFF00", // Neon sarı
     link: "/compact-cameras",
   },
@@ -66,7 +66,7 @@ const featuredCameras = [
     id: "canon-r6",
     title: "Canon EOS R6",
     category: "Mirrorless",
-    image: "/images/cameras/canon-90d.jpg",
+    image: "/images/cameras/hero-bg.webp",
     price: "$2,299",
     rating: 4.8,
     link: "/mirrorless-cameras",
@@ -75,7 +75,7 @@ const featuredCameras = [
     id: "gopro-hero11",
     title: "GoPro Hero 11",
     category: "Action",
-    image: "/images/cameras/nikon-d780.jpg",
+    image: "/images/cameras/hero-bg.webp",
     price: "$399",
     rating: 4.7,
     link: "/action-cameras",
@@ -439,7 +439,7 @@ export default function Home() {
           
           <div className="text-center mt-12">
             <Link 
-              href="/all-cameras" 
+              href="/" 
               className="inline-flex items-center gap-2 bg-gradient-to-r from-[#00FFFF] to-[#00FF00] hover:from-[#00FF00] hover:to-[#00FFFF] text-black font-bold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-[0_0_25px_rgba(0,255,255,0.7)]"
             >
               View All Cameras <FaArrowRight />

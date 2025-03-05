@@ -18,10 +18,49 @@ import Image from "next/image";
 const dslrCameras = [
     {
       id: 1,
-      name: "Canon EOS 90D",
-      image: "https://m.media-amazon.com/images/I/81jzxXBRIfL._AC_SL1500_.jpg",
+      name: "Nikon D850",
+      image: "/images/cameras/hero-bg.webp",
+      rating: 4.9,
+      description: "Best Overall DSLR: Professional-grade full-frame camera with exceptional resolution and versatility.",
+      price: "$2,996.95",
+      key_features: [
+        "45.7MP FX-Format BSI CMOS Sensor",
+        "EXPEED 5 Image Processor",
+        "3.2\" 2.36m-Dot Tilting Touchscreen LCD",
+        "4K UHD Video Recording at 30 fps",
+        "Multi-CAM 20K 153-Point AF System",
+        "Native ISO: 64-25600"
+      ],
+      pros: ["Excellent image quality", "Fast autofocus", "Great handling", "Good battery life", "Weather-sealed body"],
+      cons: ["No in-body stabilization", "Heavy for extended use", "Limited 4K video options"],
+      amazon_link: "https://www.amazon.com/Nikon-D850-Digital-Camera-20-9MP/dp/B077D7WZBX",
+      detailed_description: "The Nikon D850 is a professional-grade full-frame DSLR that combines high resolution with impressive speed. Perfect for wildlife and sports photography, it offers professional-grade features in a durable body."
+    },
+    {
+      id: 2,
+      name: "Canon EOS 5D Mark IV",
+      image: "/images/cameras/hero-bg.webp",
       rating: 4.8,
-      description: "Best overall DSLR camera for enthusiast photographers",
+      description: "Best for Professional Photography: Versatile full-frame DSLR with excellent image quality and reliable performance.",
+      price: "$2,699.00",
+      key_features: [
+        "30.4MP full-frame sensor",
+        "DIGIC 6+ processor",
+        "4K UHD video",
+        "61-point AF system",
+        "7fps continuous shooting"
+      ],
+      pros: ["Excellent image quality", "Great low-light performance", "Advanced video features", "Long battery life", "Robust build"],
+      cons: ["Expensive", "Heavy body", "Limited AF points compared to mirrorless"],
+      amazon_link: "https://www.amazon.com/Canon-EOS-5D-Mark-IV-Body/dp/B075F5N7WZ",
+      detailed_description: "The Canon EOS 5D Mark IV is a versatile DSLR that combines high resolution with impressive speed. Perfect for wildlife and sports photography, it offers professional-grade features in a durable body."
+    },
+    {
+      id: 3,
+      name: "Canon EOS 90D",
+      image: "/images/cameras/hero-bg.webp",
+      rating: 4.7,
+      description: "Best APS-C DSLR: High-resolution crop sensor camera with fast performance and excellent ergonomics.",
       price: "$1,199.00",
       key_features: [
         "32.5MP APS-C CMOS sensor",
@@ -36,69 +75,12 @@ const dslrCameras = [
       detailed_description: "The Canon EOS 90D is a versatile DSLR that combines high resolution with impressive speed. Perfect for wildlife and sports photography, it offers professional-grade features in a durable body."
     },
     {
-      id: 2,
-      name: "Nikon D780",
-      image: "https://m.media-amazon.com/images/I/81vwDX-BKpL._AC_SL1500_.jpg",
-      rating: 4.9,
-      description: "Best full-frame DSLR for hybrid shooters",
-      price: "$2,296.95",
-      key_features: [
-        "24.5MP full-frame sensor",
-        "EXPEED 6 processor",
-        "4K UHD video",
-        "51-point AF system",
-        "7fps continuous shooting"
-      ],
-      pros: ["Excellent image quality", "Great low-light performance", "Advanced video features", "Long battery life", "Robust build"],
-      cons: ["Expensive", "Heavy body", "Limited AF points compared to mirrorless"],
-      amazon_link: "https://www.amazon.com/Nikon-FX-Format-Mirrorless-Digital-Camera/dp/B083C1HS5K",
-      detailed_description: "The Nikon D780 bridges the gap between DSLR and mirrorless technology, offering the best of both worlds. Its exceptional low-light performance and advanced video capabilities make it ideal for professional use."
-    },
-    {
-      id: 3,
-      name: "Pentax K-3 Mark III",
-      image: "https://m.media-amazon.com/images/I/81vwDX-BKpL._AC_SL1500_.jpg",
-      rating: 4.7,
-      description: "Best weather-sealed DSLR for outdoor photography",
-      price: "$1,999.95",
-      key_features: [
-        "25.7MP APS-C sensor",
-        "PRIME V processor",
-        "4K video recording",
-        "101-point AF system",
-        "12fps continuous shooting"
-      ],
-      pros: ["Exceptional build quality", "Best-in-class weather sealing", "In-body stabilization", "Great image quality", "Unique features"],
-      cons: ["Limited lens selection", "Expensive for APS-C", "Complex menu system"],
-      amazon_link: "https://www.amazon.com/Pentax-Mark-III-Black-Body/dp/B091G1QG5C",
-      detailed_description: "The Pentax K-3 Mark III represents the pinnacle of APS-C DSLR technology, with class-leading weather sealing and robust build quality making it perfect for outdoor and adventure photography."
-    },
-    {
       id: 4,
-      name: "Canon EOS 6D Mark II",
-      image: "https://m.media-amazon.com/images/I/71GbdEQltrL._AC_SL1500_.jpg",
+      name: "Nikon D7500",
+      image: "/images/cameras/hero-bg.webp",
       rating: 4.7,
-      description: "Best value full-frame DSLR camera",
-      price: "$1,399.00",
-      key_features: [
-        "26.2MP full-frame sensor",
-        "DIGIC 7 processor",
-        "Full HD video",
-        "45-point AF system",
-        "6.5fps continuous shooting"
-      ],
-      pros: ["Affordable full-frame", "Excellent image quality", "Vari-angle touchscreen", "Built-in GPS", "Good low-light performance"],
-      cons: ["No 4K video", "Single card slot", "Basic AF system"],
-      amazon_link: "https://amazon.com/product-link",
-      detailed_description: "The Canon EOS 6D Mark II makes full-frame photography accessible, offering excellent image quality and features at a competitive price point. Perfect for enthusiasts stepping up to full-frame."
-    },
-    {
-      id: 5,
-      name: "Nikon D500",
-      image: "https://m.media-amazon.com/images/I/819Eqh-sKbL._AC_SL1500_.jpg",
-      rating: 4.8,
-      description: "Best professional APS-C DSLR for sports and wildlife",
-      price: "$1,496.95",
+      description: "Best Mid-Range DSLR: Excellent balance of performance, features, and price for enthusiast photographers.",
+      price: "$996.95",
       key_features: [
         "20.9MP APS-C sensor",
         "EXPEED 5 processor",
@@ -108,8 +90,27 @@ const dslrCameras = [
       ],
       pros: ["Professional build quality", "Exceptional AF system", "Fast continuous shooting", "Deep buffer", "Excellent handling"],
       cons: ["No built-in flash", "Heavy body", "Expensive for APS-C"],
-      amazon_link: "https://amazon.com/product-link",
-      detailed_description: "The Nikon D500 is a professional-grade APS-C DSLR that excels in fast-action photography. Its advanced autofocus system and robust build make it ideal for sports and wildlife photographers."
+      amazon_link: "https://www.amazon.com/Nikon-D7500-Digital-Camera-Body/dp/B07FZ5XWZS",
+      detailed_description: "The Nikon D7500 is a professional-grade APS-C DSLR that excels in fast-action photography. Its advanced autofocus system and robust build make it ideal for sports and wildlife photographers."
+    },
+    {
+      id: 5,
+      name: "Canon EOS Rebel T8i / 850D",
+      image: "/images/cameras/hero-bg.webp",
+      rating: 4.6,
+      description: "Best Entry-Level DSLR: User-friendly camera with guided interface and solid image quality for beginners.",
+      price: "$749.00",
+      key_features: [
+        "24.2MP APS-C sensor",
+        "DIGIC 8 processor",
+        "4K UHD video",
+        "45-point AF system",
+        "5fps continuous shooting"
+      ],
+      pros: ["Affordable full-frame", "Excellent image quality", "Vari-angle touchscreen", "Built-in GPS", "Good low-light performance"],
+      cons: ["No 4K video", "Single card slot", "Basic AF system"],
+      amazon_link: "https://www.amazon.com/Canon-EOS-Rebel-T8i-Digital-Camera/dp/B07FZ5XWZS",
+      detailed_description: "The Canon EOS Rebel T8i is a user-friendly DSLR camera designed for beginners. It offers solid image quality, a vari-angle touchscreen, and guided shooting modes for easy photography."
     }
 ];
 

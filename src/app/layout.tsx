@@ -15,6 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://bestcamerareview.com'),
   title: "Best Camera Reviews - Expert Camera Buying Guide 2024",
   description: "Expert camera reviews, buying guides, and comparisons for DSLR, mirrorless, action, vlog, and compact cameras. Find the best cameras for your needs.",
   icons: {

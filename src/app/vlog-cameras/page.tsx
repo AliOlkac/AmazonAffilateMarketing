@@ -13,10 +13,10 @@ const vlogCameras = [
     {
       id: 1,
       name: "Sony ZV-1 II",
-      image: "https://m.media-amazon.com/images/I/71nDX2vAk7L._AC_SL1500_.jpg",
+      image: "/images/cameras/hero-bg.webp",
       rating: 4.8,
-      description: "Best overall vlog camera with exceptional autofocus and image quality",
-      price: "$799.00",
+      description: "Best Overall: Compact vlogging camera with excellent autofocus, built-in ND filter, and high-quality 4K video specifically designed for content creators.",
+      price: "$899.99",
       key_features: [
         "18-50mm equivalent zoom lens",
         "4K 60p video recording",
@@ -32,9 +32,9 @@ const vlogCameras = [
     {
       id: 2,
       name: "Canon PowerShot G7 X Mark III",
-      image: "https://m.media-amazon.com/images/I/61X-V3qibiL._AC_SL1000_.jpg",
+      image: "/images/cameras/hero-bg.webp",
       rating: 4.7,
-      description: "Best compact vlog camera for YouTube creators",
+      description: "Best Compact Vlog Camera: Pocket-sized camera with 4K video, vertical video support, and live streaming capabilities.",
       price: "$749.00",
       key_features: [
         "20.1MP 1-inch sensor",
@@ -50,11 +50,11 @@ const vlogCameras = [
     },
     {
       id: 3,
-      name: "Panasonic LUMIX G100",
-      image: "https://m.media-amazon.com/images/I/81TcB2yqQWL._AC_SL1500_.jpg",
-      rating: 4.6,
-      description: "Best vlog camera for audio quality",
-      price: "$597.99",
+      name: "Panasonic LUMIX GH6",
+      image: "/images/cameras/hero-bg.webp",
+      rating: 4.9,
+      description: "Best Professional Vlog Camera: High-end Micro Four Thirds camera with exceptional video features, including 5.7K recording and professional codecs.",
+      price: "$1,997.99",
       key_features: [
         "20.3MP MFT sensor",
         "4K 30p video",
@@ -69,11 +69,11 @@ const vlogCameras = [
     },
     {
       id: 4,
-      name: "Fujifilm X-S10",
-      image: "https://m.media-amazon.com/images/I/81XR4rNqhXL._AC_SL1500_.jpg",
+      name: "Sony Alpha ZV-E10",
+      image: "/images/cameras/hero-bg.webp",
       rating: 4.7,
-      description: "Best hybrid vlog camera for photos and videos",
-      price: "$999.00",
+      description: "Best Interchangeable Lens Vlog Camera: Compact APS-C camera with excellent autofocus, interchangeable lenses, and creator-focused features.",
+      price: "$699.99",
       key_features: [
         "26.1MP X-Trans CMOS 4",
         "4K 30p video",
@@ -89,9 +89,9 @@ const vlogCameras = [
     {
       id: 5,
       name: "DJI Pocket 3",
-      image: "https://m.media-amazon.com/images/I/61J7qhqPxKL._AC_SL1500_.jpg",
+      image: "/images/cameras/hero-bg.webp",
       rating: 4.6,
-      description: "Best stabilized vlog camera",
+      description: "Best Stabilized Vlog Camera: Innovative camera with built-in 3-axis gimbal, 4K video, and intelligent tracking features.",
       price: "$519.00",
       key_features: [
         "1-inch sensor",

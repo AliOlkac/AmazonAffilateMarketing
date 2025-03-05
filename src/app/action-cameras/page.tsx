@@ -14,10 +14,10 @@ const actionCameras = [
     {
       id: 1,
       name: "GoPro HERO11 Black",
-      image: "https://m.media-amazon.com/images/I/61PNB5hVKyL._AC_SL1500_.jpg",
+      image: "/images/cameras/hero-bg.webp",
       rating: 4.8,
-      description: "Best overall action camera with exceptional stabilization and video quality",
-      price: "$399.00",
+      description: "Best Overall: Industry-leading action camera with incredible image stabilization, 5.3K video, and waterproof design for adventure enthusiasts and content creators.",
+      price: "$399.99",
       key_features: [
         "5.3K60 video recording",
         "27MP photos",
@@ -32,11 +32,11 @@ const actionCameras = [
     },
     {
       id: 2,
-      name: "DJI Action 3",
-      image: "https://m.media-amazon.com/images/I/61vJoq0KJQL._AC_SL1500_.jpg",
+      name: "DJI Osmo Action 4",
+      image: "/images/cameras/hero-bg.webp",
       rating: 4.7,
-      description: "Best action camera for vlogging and content creation",
-      price: "$329.00",
+      description: "Best for Low Light: Premium action camera with exceptional low-light performance, 4K/120fps video, and innovative magnetic mounting system.",
+      price: "$379.00",
       key_features: [
         "4K120 video recording",
         "155° super-wide FOV",
@@ -47,14 +47,14 @@ const actionCameras = [
       pros: ["Dual screens", "Excellent stabilization", "Great audio quality", "Magnetic mounting", "Fast charging"],
       cons: ["Limited third-party accessories", "No built-in GPS", "Slightly larger form factor"],
       amazon_link: "https://amazon.com/product-link",
-      detailed_description: "The DJI Action 3 combines innovative features with excellent image quality, making it perfect for vloggers and content creators who need reliability and versatility."
+      detailed_description: "The DJI Osmo Action 4 combines innovative features with excellent image quality, making it perfect for vloggers and content creators who need reliability and versatility."
     },
     {
       id: 3,
       name: "Insta360 X3",
-      image: "https://m.media-amazon.com/images/I/61hMwd+4IQL._AC_SL1500_.jpg",
+      image: "/images/cameras/hero-bg.webp",
       rating: 4.6,
-      description: "Best 360-degree action camera for immersive content",
+      description: "Best 360° Camera: Versatile action camera that captures immersive 360° footage and can be converted to traditional action camera mode.",
       price: "$449.99",
       key_features: [
         "5.7K 360° capture",
@@ -70,11 +70,30 @@ const actionCameras = [
     },
     {
       id: 4,
+      name: "GoPro HERO10 Black",
+      image: "/images/cameras/hero-bg.webp",
+      rating: 4.7,
+      description: "Best Value: Previous generation GoPro with excellent performance at a more affordable price point.",
+      price: "$299.99",
+      key_features: [
+        "4K30 video recording",
+        "20MP photos",
+        "IPX8 waterproof",
+        "Dual screens",
+        "6-axis stabilization"
+      ],
+      pros: ["Affordable price", "Good image quality", "Dual screens", "Included accessories", "User-friendly"],
+      cons: ["Lower frame rates", "Basic stabilization", "Average low-light performance"],
+      amazon_link: "https://amazon.com/product-link",
+      detailed_description: "The GoPro HERO10 Black offers impressive value with features typically found in premium action cameras, making it perfect for beginners and budget-conscious adventurers."
+    },
+    {
+      id: 5,
       name: "AKASO Brave 7 LE",
-      image: "https://m.media-amazon.com/images/I/71KN4+tI4xL._AC_SL1500_.jpg",
+      image: "/images/cameras/hero-bg.webp",
       rating: 4.5,
-      description: "Best budget action camera with premium features",
-      price: "$149.99",
+      description: "Best Budget Option: Affordable action camera with dual screens, 4K recording, and IPX7 waterproof rating.",
+      price: "$139.99",
       key_features: [
         "4K30 video recording",
         "20MP photos",
@@ -86,25 +105,6 @@ const actionCameras = [
       cons: ["Lower frame rates", "Basic stabilization", "Average low-light performance"],
       amazon_link: "https://amazon.com/product-link",
       detailed_description: "The AKASO Brave 7 LE offers impressive value with features typically found in premium action cameras, making it perfect for beginners and budget-conscious adventurers."
-    },
-    {
-      id: 5,
-      name: "Sony RX0 II",
-      image: "https://m.media-amazon.com/images/I/71TO1gS7DGL._AC_SL1500_.jpg",
-      rating: 4.6,
-      description: "Best professional-grade compact action camera",
-      price: "$698.00",
-      key_features: [
-        "1-inch sensor",
-        "4K30 internal recording",
-        "15.3MP photos",
-        "Zeiss 24mm f/4 lens",
-        "Waterproof to 33ft"
-      ],
-      pros: ["Premium image quality", "Professional features", "Compact size", "Excellent build quality", "Good low-light performance"],
-      cons: ["Expensive", "Limited stabilization", "Short battery life"],
-      amazon_link: "https://amazon.com/product-link",
-      detailed_description: "The Sony RX0 II combines professional image quality with action camera durability, perfect for professionals who need superior image quality in challenging conditions."
     }
 ];
 
@@ -133,12 +133,12 @@ const cameraCategories = [
   {
     title: "Adventure Sports",
     description: "Perfect for capturing high-speed action and extreme sports. These cameras offer superior stabilization and durability for challenging conditions.",
-    examples: "GoPro HERO11 Black, DJI Action 3, Insta360 ONE RS"
+    examples: "GoPro HERO11 Black, DJI Osmo Action 4, Insta360 ONE RS"
   },
   {
     title: "Vlogging and Content Creation",
     description: "Ideal for creators who need compact, versatile cameras with good audio and front-facing screens.",
-    examples: "DJI Action 3, GoPro HERO11 Black, Sony RX0 II"
+    examples: "DJI Osmo Action 4, GoPro HERO11 Black, Sony RX0 II"
   },
   {
     title: "Underwater and Elements",
@@ -285,7 +285,7 @@ export default function ActionCameras() {
       <section className="relative h-[60vh] overflow-hidden">
         {/* Hero Image */}
         <div className="absolute inset-0 bg-black/70">
-          <div className="w-full h-full bg-[url('/images/cameras/action-hero.webp')] bg-cover bg-center opacity-30 mix-blend-plus-darker"></div>
+          <div className="w-full h-full bg-[url('/images/cameras/hero-bg.webp')] bg-cover bg-center opacity-30 mix-blend-plus-darker"></div>
         </div>
         
         {/* Hero Content */}

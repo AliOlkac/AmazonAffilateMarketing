@@ -13,10 +13,10 @@ const compactCameras = [
     {
       id: 1,
       name: "Sony RX100 VII",
-      image: "https://m.media-amazon.com/images/I/71YWxwDZK7L._AC_SL1500_.jpg",
+      image: "/images/cameras/hero-bg.webp",
       rating: 4.8,
-      description: "Best overall compact camera with professional features",
-      price: "$1,298.00",
+      description: "Best Premium Compact: Advanced 1-inch sensor compact camera with incredible autofocus, 4K video, and high-speed shooting capabilities.",
+      price: "$1,299.99",
       key_features: [
         "20.1MP 1-inch sensor",
         "24-200mm f/2.8-4.5 lens",
@@ -32,9 +32,9 @@ const compactCameras = [
     {
       id: 2,
       name: "Fujifilm X100V",
-      image: "https://m.media-amazon.com/images/I/71KOhL5x3wL._AC_SL1500_.jpg",
+      image: "/images/cameras/hero-bg.webp",
       rating: 4.9,
-      description: "Best fixed-lens compact camera for street photography",
+      description: "Best Fixed Lens Compact: Premium compact with APS-C sensor, hybrid viewfinder, and exceptional image quality in a stylish, weather-resistant body.",
       price: "$1,399.00",
       key_features: [
         "26.1MP X-Trans CMOS 4",
@@ -50,11 +50,11 @@ const compactCameras = [
     },
     {
       id: 3,
-      name: "Ricoh GR IIIx",
-      image: "https://m.media-amazon.com/images/I/71nk6C8-SDL._AC_SL1500_.jpg",
+      name: "Ricoh GR III",
+      image: "/images/cameras/hero-bg.webp",
       rating: 4.7,
-      description: "Best compact camera for street photography",
-      price: "$996.95",
+      description: "Best Pocket Camera: Ultra-compact camera with APS-C sensor, sharp 28mm equivalent lens, and excellent street photography capabilities.",
+      price: "$899.95",
       key_features: [
         "24.2MP APS-C sensor",
         "40mm equivalent lens",
@@ -70,9 +70,9 @@ const compactCameras = [
     {
       id: 4,
       name: "Canon PowerShot G5 X Mark II",
-      image: "https://m.media-amazon.com/images/I/61IwTzUzU9L._AC_SL1000_.jpg",
+      image: "/images/cameras/hero-bg.webp",
       rating: 4.6,
-      description: "Best compact camera for enthusiast photographers",
+      description: "Best All-Around Compact: Versatile compact camera with 1-inch sensor, pop-up EVF, and excellent zoom range for everyday photography.",
       price: "$899.00",
       key_features: [
         "20.1MP 1-inch sensor",
@@ -88,10 +88,10 @@ const compactCameras = [
     },
     {
       id: 5,
-      name: "Panasonic Lumix LX100 II",
-      image: "https://m.media-amazon.com/images/I/81quLZcjdvL._AC_SL1500_.jpg",
+      name: "Panasonic LUMIX LX100 II",
+      image: "/images/cameras/hero-bg.webp",
       rating: 4.7,
-      description: "Best compact camera for manual control enthusiasts",
+      description: "Best for Manual Control: Premium compact with Four Thirds sensor, Leica lens, and extensive physical controls for enthusiast photographers.",
       price: "$797.99",
       key_features: [
         "17MP Four Thirds sensor",
@@ -284,7 +284,7 @@ export default function CompactCameras() {
       <section className="relative h-[60vh] overflow-hidden">
         {/* Hero Image */}
         <div className="absolute inset-0 bg-black/70">
-          <div className="w-full h-full bg-[url('/images/cameras/compact-hero.webp')] bg-cover bg-center opacity-30 mix-blend-plus-darker"></div>
+          <div className="w-full h-full bg-[url('/images/cameras/hero-bg.webp')] bg-cover bg-center opacity-30 mix-blend-plus-darker"></div>
         </div>
         
         {/* Hero Content */}
