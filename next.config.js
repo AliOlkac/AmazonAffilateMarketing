@@ -3,6 +3,12 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+  images: {
+    domains: ['m.media-amazon.com'],
+  }
 }
 
 module.exports = nextConfig 

@@ -189,6 +189,88 @@ export default function CompactCameras() {
       ease: "power3.out"
     }, "-=0.2");
 
+    // Intro section animation
+    gsap.from(introTitleRef.current, {
+      scrollTrigger: {
+        trigger: introTitleRef.current,
+        start: "top 80%"
+      },
+      opacity: 0,
+      y: 30,
+      duration: 0.6
+    });
+
+    gsap.from(introTextRef.current, {
+      scrollTrigger: {
+        trigger: introTextRef.current,
+        start: "top 80%"
+      },
+      opacity: 0,
+      y: 30,
+      duration: 0.6,
+      delay: 0.2
+    });
+
+    // Camera cards animation
+    gsap.from(camerasWrapperRef.current, {
+      scrollTrigger: {
+        trigger: camerasWrapperRef.current,
+        start: "top 80%"
+      },
+      opacity: 0,
+      y: 40,
+      duration: 0.5
+    });
+
+    // Animation for tips section
+    gsap.from(tipsRef.current, {
+      scrollTrigger: {
+        trigger: tipsRef.current,
+        start: "top 80%"
+      },
+      opacity: 0,
+      y: 30,
+      duration: 0.6
+    });
+
+    // Animation for categories section
+    gsap.from(categoriesRef.current, {
+      scrollTrigger: {
+        trigger: categoriesRef.current,
+        start: "top 80%"
+      },
+      opacity: 0,
+      y: 30,
+      duration: 0.6
+    });
+
+    // Animation for history section
+    gsap.from(historyRef.current, {
+      scrollTrigger: {
+        trigger: historyRef.current,
+        start: "top 80%"
+      },
+      opacity: 0,
+      y: 30,
+      duration: 0.6
+    });
+
+    // CTA section animation
+    gsap.from(ctaSectionRef.current, {
+      scrollTrigger: {
+        trigger: ctaSectionRef.current,
+        start: "top 80%"
+      },
+      opacity: 0,
+      y: 30,
+      duration: 0.8,
+      ease: "power2.out"
+    });
+
+    // Cleanup function
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
   }, []);
 
   // Function to handle card hover animations
