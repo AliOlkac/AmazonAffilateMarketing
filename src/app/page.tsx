@@ -13,7 +13,7 @@ const cameraCategories = [
     id: "dslr",
     title: "DSLR Cameras",
     description: "Professional cameras with interchangeable lenses for the highest image quality",
-    image: "/images/cameras/hero-bg.webp",
+    image: "/images/cameras/categories/dslr.webp",
     color: "#00FFFF", // Neon mavi
     link: "/dslr-cameras",
   },
@@ -21,7 +21,7 @@ const cameraCategories = [
     id: "mirrorless",
     title: "Mirrorless Cameras",
     description: "Compact professional cameras with advanced features and excellent image quality",
-    image: "/images/cameras/hero-bg.webp",
+    image: "/images/cameras/categories/mirrorless.webp",
     color: "#FF00FF", // Neon pembe
     link: "/mirrorless-cameras",
   },
@@ -29,7 +29,7 @@ const cameraCategories = [
     id: "action",
     title: "Action Cameras",
     description: "Durable cameras for capturing your adventures in extreme conditions",
-    image: "/images/cameras/hero-bg.webp",
+    image: "/images/cameras/categories/action.webp",
     color: "#00FF00", // Neon yeşil
     link: "/action-cameras",
   },
@@ -37,7 +37,7 @@ const cameraCategories = [
     id: "vlog",
     title: "Vlog Cameras",
     description: "Perfect cameras for content creators and vloggers with advanced video features",
-    image: "/images/cameras/hero-bg.webp",
+    image: "/images/cameras/categories/vlog.webp",
     color: "#FF5500", // Neon turuncu
     link: "/vlog-cameras",
   },
@@ -45,7 +45,7 @@ const cameraCategories = [
     id: "compact",
     title: "Compact Cameras",
     description: "Portable, easy-to-use cameras for everyday photography",
-    image: "/images/cameras/hero-bg.webp",
+    image: "/images/cameras/categories/compact.webp",
     color: "#FFFF00", // Neon sarı
     link: "/compact-cameras",
   },
