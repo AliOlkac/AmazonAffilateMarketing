@@ -165,7 +165,8 @@ export default function Navbar() {
                   src="/images/logo_beyaz.png" 
                   alt="BestCameraReview Logo" 
                   width={40} 
-                  height={40} 
+                  height={40}
+                  style={{ width: 'auto', height: 'auto' }}
                   className="object-contain"
                 />
               </div>

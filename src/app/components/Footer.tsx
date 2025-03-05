@@ -197,7 +197,8 @@ export default function Footer() {
                   src="/images/logo_beyaz.png" 
                   alt="BestCameraReview Logo" 
                   width={32} 
-                  height={32} 
+                  height={32}
+                  style={{ width: 'auto', height: 'auto' }}
                   className="object-contain"
                 />
               </div>
