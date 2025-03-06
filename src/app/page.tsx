@@ -493,131 +493,120 @@ export default function Home() {
       </section>
       
       {/* Öne Çıkan Kamera Modelleri */}
-      <section ref={categoriesRef} className="py-24 relative">
-        {/* Arka plan efekti */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0f111a] via-[#131626] to-[#0f111a] opacity-80"></div>
-        
-        {/* Arka plan parıltı efekti - biraz daha belirgin */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-1/4 right-1/3 w-96 h-96 rounded-full bg-[#00FFFF] opacity-20 blur-[150px]"></div>
-          <div className="absolute bottom-1/3 left-1/4 w-96 h-96 rounded-full bg-[#FF00FF] opacity-20 blur-[150px]"></div>
-          <div className="absolute top-2/3 right-1/4 w-96 h-96 rounded-full bg-[#00FF00] opacity-15 blur-[150px]"></div>
-        </div>
-        
-        <div className="container mx-auto px-4 relative z-10">
-          {/* Başlık bölümü */}
-          <div className="text-center mb-16">
-            <h2 className="text-5xl font-bold mb-6 leading-tight">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFFF00] via-[#00FF00] to-[#00FFFF]">
-                Featured Camera Models
-              </span>
-            </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Discover our handpicked selection of top-rated cameras that deliver exceptional performance for every photography need
-            </p>
-          </div>
-          
-          {/* Kamera kartları */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+      <section ref={categoriesRef} className="py-16 px-4 bg-gradient-to-b from-gray-900 to-gray-800 rounded-t-[40px] shadow-lg">
+        <div className="container mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold mb-2 text-center">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFFF00] via-[#00FF00] to-[#00FFFF]">
+              Featured Camera Models
+            </span>
+          </h2>
+          <p className="text-lg text-center mb-12 text-gray-300 max-w-3xl mx-auto">
+            Discover our handpicked selection of top-rated cameras that deliver exceptional performance for every photography need
+          </p>
+
+          {/* Kamera Kartları - DSLR sayfasındaki tasarıma göre yenilendi */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {featuredCameras.map((camera) => (
               <div 
                 key={camera.id}
-                className={`featured-camera group relative bg-gray-900/40 backdrop-blur-sm rounded-2xl overflow-hidden transition-all duration-500 transform hover:scale-[1.02] border border-white/5 hover:border-white/10 card-shadow-${camera.category.toLowerCase()}`}
+                className="bg-gray-800/60 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-500 border border-gray-700/50"
               >
-                {/* Görsel konteyneri */}
-                <div className="h-48 md:h-56 relative overflow-hidden">
-                  {/* Kategori etiketi */}
-                  <div 
-                    className={`absolute top-4 left-4 z-10 px-4 py-1 rounded-full text-sm font-semibold backdrop-blur-md category-tag-${camera.category.toLowerCase()}`}
-                  >
+                {/* Kamera Görseli */}
+                <div className="h-64 overflow-hidden relative bg-gray-900">
+                  {/* Rating badge overlay */}
+                  <div className="absolute top-3 right-3 bg-yellow-400 text-gray-900 py-1 px-3 rounded-full flex items-center gap-1 font-medium z-10">
+                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                    </svg>
+                    <span>{camera.rating}</span>
+                  </div>
+
+                  {/* Category badge */}
+                  <div className="absolute top-3 left-3 bg-black/50 backdrop-blur-sm text-white py-1 px-3 rounded-full text-sm font-medium z-10">
                     {camera.category}
                   </div>
-                  
-                  {/* Fiyat etiketi */}
-                  <div className="absolute top-4 right-4 z-10 bg-black/50 backdrop-blur-md px-4 py-1 rounded-full text-white font-bold">
+
+                  {/* Price badge */}
+                  <div className="absolute bottom-3 right-3 bg-black/50 backdrop-blur-sm text-white py-1 px-3 rounded-full text-sm font-bold z-10">
                     {camera.price}
                   </div>
-                  
-                  {/* Kamera görseli */}
-                  <div className="absolute inset-0 group-hover:scale-110 transition-transform duration-700">
-                    <div 
-                      className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/10 opacity-60 group-hover:opacity-40 transition-opacity duration-500"
-                    ></div>
-                    <div
-                      className="w-full h-full bg-cover bg-center"
-                      style={{ backgroundImage: `url(${camera.image})` }}
-                    ></div>
+
+                  {/* Background image */}
+                  <div 
+                    className="w-full h-full bg-cover bg-center transition-transform duration-700 hover:scale-110 p-4 flex items-center justify-center"
+                    style={{ backgroundImage: `linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.6)), url(${camera.image})` }}
+                  >
+                    {/* Additional image - can be empty for now */}
                   </div>
                 </div>
-                
-                {/* İçerik bölümü */}
-                <div className="p-5 md:p-6 relative">
-                  {/* Derecelendirme yıldızları */}
-                  <div className="flex items-center gap-1 mb-3">
-                    {[...Array(5)].map((_, i) => (
-                      <svg 
-                        key={i} 
-                        xmlns="http://www.w3.org/2000/svg" 
-                        className={`w-4 h-4 ${i < Math.floor(camera.rating) ? 'text-yellow-400' : 'text-gray-600'}`}
-                        fill="currentColor" 
-                        viewBox="0 0 24 24"
-                      >
-                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                      </svg>
-                    ))}
-                    <span className="text-gray-300 ml-2 text-sm">{camera.rating}</span>
-                  </div>
-                  
-                  {/* Kamera başlığı */}
-                  <h3 
-                    className={`text-xl md:text-2xl font-bold mb-3 group-hover:text-transparent group-hover:bg-clip-text transition-all duration-300 text-white`}
-                    style={{ backgroundImage: `linear-gradient(45deg, var(--color-${camera.category.toLowerCase()}), white)` }}
-                  >
+
+                {/* Kamera Bilgileri */}
+                <div className="p-6">
+                  <h3 className="text-xl font-bold mb-3 text-white group flex items-center gap-2">
                     {camera.title}
+                    <span className="block h-0.5 bg-blue-500 w-0 group-hover:w-full transition-all duration-300"></span>
                   </h3>
                   
-                  {/* Kamera özellikleri - Örnek özellikler */}
-                  <div className="space-y-1 mb-5">
-                    {camera.category === 'Mirrorless' && (
-                      <>
-                        <p className="text-gray-300 text-sm flex items-start">
-                          <span className="inline-block w-3 h-3 rounded-full bg-[var(--color-mirrorless)] mr-2 mt-1 flex-shrink-0"></span>
-                          <span>Full-frame 33MP sensor</span>
-                        </p>
-                        <p className="text-gray-300 text-sm flex items-start">
-                          <span className="inline-block w-3 h-3 rounded-full bg-[var(--color-mirrorless)] mr-2 mt-1 flex-shrink-0"></span>
-                          <span>4K 60fps video recording</span>
-                        </p>
-                        <p className="text-gray-300 text-sm flex items-start">
-                          <span className="inline-block w-3 h-3 rounded-full bg-[var(--color-mirrorless)] mr-2 mt-1 flex-shrink-0"></span>
-                          <span>Superior low-light performance</span>
-                        </p>
-                      </>
-                    )}
-                    {camera.category === 'Action' && (
-                      <>
-                        <p className="text-gray-300 text-sm flex items-start">
-                          <span className="inline-block w-3 h-3 rounded-full bg-[var(--color-action)] mr-2 mt-1 flex-shrink-0"></span>
-                          <span>5.3K video resolution</span>
-                        </p>
-                        <p className="text-gray-300 text-sm flex items-start">
-                          <span className="inline-block w-3 h-3 rounded-full bg-[var(--color-action)] mr-2 mt-1 flex-shrink-0"></span>
-                          <span>Waterproof to 10m</span>
-                        </p>
-                        <p className="text-gray-300 text-sm flex items-start">
-                          <span className="inline-block w-3 h-3 rounded-full bg-[var(--color-action)] mr-2 mt-1 flex-shrink-0"></span>
-                          <span>Horizon lock stabilization</span>
-                        </p>
-                      </>
-                    )}
+                  {/* Key Features */}
+                  <div className="mb-5">
+                    <h4 className="text-sm font-semibold text-gray-400 mb-3">Key Features:</h4>
+                    <ul className="space-y-2">
+                      {camera.category === 'Mirrorless' && (
+                        <>
+                          <li className="flex items-start gap-2 text-sm text-gray-300">
+                            <svg className="w-4 h-4 text-green-500 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                            </svg>
+                            <span>Full-frame 33MP sensor</span>
+                          </li>
+                          <li className="flex items-start gap-2 text-sm text-gray-300">
+                            <svg className="w-4 h-4 text-green-500 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                            </svg>
+                            <span>4K 60fps video recording</span>
+                          </li>
+                          <li className="flex items-start gap-2 text-sm text-gray-300">
+                            <svg className="w-4 h-4 text-green-500 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                            </svg>
+                            <span>Superior low-light performance</span>
+                          </li>
+                        </>
+                      )}
+                      {camera.category === 'Action' && (
+                        <>
+                          <li className="flex items-start gap-2 text-sm text-gray-300">
+                            <svg className="w-4 h-4 text-green-500 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                            </svg>
+                            <span>5.3K video resolution</span>
+                          </li>
+                          <li className="flex items-start gap-2 text-sm text-gray-300">
+                            <svg className="w-4 h-4 text-green-500 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                            </svg>
+                            <span>Waterproof to 10m</span>
+                          </li>
+                          <li className="flex items-start gap-2 text-sm text-gray-300">
+                            <svg className="w-4 h-4 text-green-500 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                            </svg>
+                            <span>Horizon lock stabilization</span>
+                          </li>
+                        </>
+                      )}
+                    </ul>
                   </div>
-                  
-                  {/* Link buton */}
+
+                  {/* CTA Button */}
                   <Link 
                     href={camera.link}
-                    className={`inline-flex w-full items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-black font-bold transition-all duration-300 hover:gap-3 overflow-hidden btn-gradient-${camera.category.toLowerCase()}`}
+                    className="w-full inline-flex items-center justify-center gap-2 py-3 px-4 bg-gradient-to-r from-blue-500 to-violet-600 hover:from-blue-600 hover:to-violet-700 text-white rounded-lg transition-all duration-300 hover:shadow-lg"
                   >
-                    View Details <FaArrowRight className="text-sm" />
+                    View Details 
+                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
+                    </svg>
                   </Link>
                 </div>
               </div>
@@ -625,12 +614,15 @@ export default function Home() {
           </div>
           
           {/* Tüm kameraları görüntüle butonu */}
-          <div className="text-center mt-12 md:mt-16">
+          <div className="text-center mt-12">
             <Link 
               href="/cameras"
-              className="inline-flex items-center gap-2 py-2.5 px-8 rounded-full bg-white/10 backdrop-blur-sm text-white font-semibold border border-white/20 hover:bg-white/20 transition-all duration-300 hover:gap-3 hover:shadow-[0_0_20px_rgba(255,255,255,0.2)]"
+              className="inline-flex items-center justify-center gap-2 py-3 px-8 bg-blue-500 hover:bg-blue-600 text-white rounded-full transition-all duration-300 shadow-lg hover:shadow-xl"
             >
-              View All Cameras <FaArrowRight />
+              View All Cameras 
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
+              </svg>
             </Link>
           </div>
         </div>
