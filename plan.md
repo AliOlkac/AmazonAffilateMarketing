@@ -461,7 +461,7 @@ Bu yol haritası, projenin geliştirme, içerik, SEO, analiz ve uzun vadeli büy
 ### C. Web Sitesi Geliştirme
 - [ ] C1. Temel sayfa yapısını oluşturma
    - [ ] Ana sayfa (Homepage)
-   - [ ] Grup sayfaları (Kategori sayfaları)
+   - [x] Grup sayfaları (Kategori sayfaları)
    - [ ] Ekstra sayfalar (Hakkımızda, İletişim vb.)
 - [ ] C2. SEO yapılandırmasını gerçekleştirme
    - [ ] Meta etiketleri ve başlık yapılandırması

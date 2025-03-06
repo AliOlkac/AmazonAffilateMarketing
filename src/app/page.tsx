@@ -57,7 +57,7 @@ const featuredCameras = [
     id: "sony-a7iv",
     title: "Sony A7 IV",
     category: "Mirrorless",
-    image: "/images/cameras/hero-bg.webp",
+    image: "/images/cameras/sony-a7iv.webp",
     price: "$2,499",
     rating: 4.9,
     link: "/mirrorless-cameras",
@@ -66,7 +66,7 @@ const featuredCameras = [
     id: "canon-r6",
     title: "Canon EOS R6",
     category: "Mirrorless",
-    image: "/images/cameras/hero-bg.webp",
+    image: "/images/cameras/canon-r6.webp",
     price: "$2,299",
     rating: 4.8,
     link: "/mirrorless-cameras",
@@ -75,7 +75,7 @@ const featuredCameras = [
     id: "gopro-hero11",
     title: "GoPro Hero 11",
     category: "Action",
-    image: "/images/cameras/hero-bg.webp",
+    image: "/images/cameras/gopro-hero11.webp",
     price: "$399",
     rating: 4.7,
     link: "/action-cameras",
@@ -85,7 +85,7 @@ const featuredCameras = [
 export default function Home() {
   // GSAP animasyonları için referanslar
   const heroRef = useRef(null);
-  const sliderRef = useRef(null);
+  const sliderRef = useRef<HTMLDivElement>(null);
   const categoriesRef = useRef(null);
   const featuredRef = useRef(null);
   const guideRef = useRef(null);
@@ -106,123 +106,177 @@ export default function Home() {
     animation: string;
   }>>([]);
 
+  // Explore butonuna tıklanıldığında slider bölümüne kaydır
+  const scrollToSlider = () => {
+    if (sliderRef.current) {
+      sliderRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   // Neon parçacıkları yalnızca istemci tarafında oluştur
   useEffect(() => {
-    const newParticles = [...Array(20)].map((_, i) => ({
-      id: i,
-      width: `${Math.random() * 10 + 2}px`,
-      height: `${Math.random() * 10 + 2}px`,
-      color: cameraCategories[i % cameraCategories.length].color,
-      shadow: `0 0 20px ${cameraCategories[i % cameraCategories.length].color}`,
-      left: `${Math.random() * 100}%`,
-      top: `${Math.random() * 100}%`,
-      opacity: Math.random() * 0.5 + 0.2,
-      animation: `float ${Math.random() * 20 + 10}s linear infinite`
-    }));
+    // Parçacık sayısını 20'den 60'a çıkarıyoruz
+    const newParticles = [...Array(60)].map((_, i) => {
+      // Her parçacık için rastgele kategori rengi seçiyoruz
+      const randomCategoryIndex = Math.floor(Math.random() * cameraCategories.length);
+      const particleColor = cameraCategories[randomCategoryIndex].color;
+      
+      // Parçacığın büyüklüğü için daha geniş bir aralık kullanıyoruz (2-15px)
+      const particleSize = Math.random() * 13 + 2;
+      
+      // Bazı parçacıkları yuvarlak, bazılarını oval yapıyoruz
+      const isRound = Math.random() > 0.3;
+      
+      // Bazı parçacıkları ekranın altından başlatacağız
+      const startFromBottom = Math.random() > 0.7;
+      const topPosition = startFromBottom ? `${100 + Math.random() * 20}%` : `${Math.random() * 100}%`;
+      
+      return {
+        id: i,
+        width: isRound ? `${particleSize}px` : `${particleSize}px`,
+        height: isRound ? `${particleSize}px` : `${particleSize * (Math.random() * 0.5 + 0.5)}px`,
+        color: particleColor,
+        shadow: `0 0 ${Math.random() * 15 + 10}px ${particleColor}`,
+        left: `${Math.random() * 100}%`,
+        top: topPosition,
+        opacity: Math.random() * 0.6 + 0.2, // Daha geniş opaklık aralığı (0.2-0.8)
+        // Animasyon süresini 5-15 saniye aralığına düşürüyoruz (daha hızlı)
+        animation: startFromBottom 
+          ? `floatUp ${Math.random() * 10 + 15}s linear infinite` 
+          : `float${Math.floor(Math.random() * 3) + 1} ${Math.random() * 10 + 5}s linear infinite`
+      };
+    });
     
     setParticles(newParticles);
   }, []);
 
   // GSAP animasyonları
   useEffect(() => {
-    // ScrollTrigger plugin'ini kaydet
-    gsap.registerPlugin(ScrollTrigger);
-    
-    // Ana timeline'ı oluştur
-    const tl = gsap.timeline();
-    
-    // Hero animasyonu
-    tl.from(".hero-title", {
-      y: 50,
-      opacity: 0,
-      duration: 1,
-      ease: "power3.out"
-    })
-    .from(".hero-subtitle", {
-      y: 30,
-      opacity: 0,
-      duration: 0.8,
-      ease: "power3.out"
-    }, "-=0.6")
-    .from(".hero-cta", {
-      y: 20,
-      opacity: 0,
-      duration: 0.8,
-      ease: "power3.out"
-    }, "-=0.6");
-    
-    // Slider animasyonu
-    gsap.from(".slider-container", {
-      opacity: 0,
-      y: 50,
-      duration: 1,
-      scrollTrigger: {
-        trigger: sliderRef.current,
-        start: "top 80%",
-        toggleActions: "play none none none"
+    if (typeof window !== "undefined") {
+      // ScrollTrigger plugin'ini kaydet
+      if (gsap.utils.toArray(".hero-title").length > 0) {
+        try {
+          gsap.registerPlugin(ScrollTrigger);
+        
+          // Ana timeline'ı oluştur
+          const tl = gsap.timeline();
+        
+          // Hero animasyonu - Daha basit tutuyoruz
+          tl.from(".hero-title", {
+            y: 50,
+            opacity: 0,
+            duration: 1,
+            ease: "power3.out"
+          })
+          .from(".hero-subtitle", {
+            y: 30,
+            opacity: 0,
+            duration: 0.8,
+            ease: "power3.out"
+          }, "-=0.6")
+          .from(".hero-cta", {
+            y: 20,
+            opacity: 0,
+            duration: 0.8,
+            ease: "power3.out"
+          }, "-=0.6");
+          
+          // Diğer bölümlerin animasyonları referanslar mevcutsa çalışır
+          const sliderContainer = document.querySelector(".slider-container");
+          if (sliderContainer) {
+            gsap.from(sliderContainer, {
+              opacity: 0,
+              y: 50,
+              duration: 1,
+              scrollTrigger: {
+                trigger: sliderRef.current,
+                start: "top 80%",
+                toggleActions: "play none none none"
+              }
+            });
+          }
+          
+          // Kategoriler animasyonu
+          const categoryCards = document.querySelectorAll(".category-card");
+          if (categoryCards.length > 0) {
+            gsap.from(categoryCards, {
+              opacity: 0,
+              y: 50,
+              stagger: 0.2,
+              duration: 0.8,
+              scrollTrigger: {
+                trigger: categoriesRef.current,
+                start: "top 70%",
+                toggleActions: "play none none none"
+              }
+            });
+          }
+          
+          // Öne çıkan kameralar animasyonu
+          const featuredCameraCards = document.querySelectorAll(".featured-camera");
+          if (featuredCameraCards.length > 0) {
+            gsap.from(featuredCameraCards, {
+              opacity: 0,
+              x: -50,
+              stagger: 0.2,
+              duration: 0.8,
+              scrollTrigger: {
+                trigger: featuredRef.current,
+                start: "top 70%",
+                toggleActions: "play none none none"
+              }
+            });
+          }
+          
+          // Rehber bölümü animasyonu
+          const guideContent = document.querySelector(".guide-content");
+          if (guideContent) {
+            gsap.from(guideContent, {
+              opacity: 0,
+              y: 50,
+              duration: 0.8,
+              scrollTrigger: {
+                trigger: guideRef.current,
+                start: "top 70%",
+                toggleActions: "play none none none"
+              }
+            });
+          }
+          
+          // CTA bölümü animasyonu
+          const ctaContent = document.querySelector(".cta-content");
+          if (ctaContent) {
+            gsap.from(ctaContent, {
+              opacity: 0,
+              scale: 0.9,
+              duration: 0.8,
+              scrollTrigger: {
+                trigger: ctaRef.current,
+                start: "top 80%",
+                toggleActions: "play none none none"
+              }
+            });
+          }
+          
+        } catch (error) {
+          console.error("GSAP animasyonu yüklenirken hata oluştu:", error);
+        }
       }
-    });
-    
-    // Kategoriler animasyonu
-    gsap.from(".category-card", {
-      opacity: 0,
-      y: 50,
-      stagger: 0.2,
-      duration: 0.8,
-      scrollTrigger: {
-        trigger: categoriesRef.current,
-        start: "top 70%",
-        toggleActions: "play none none none"
-      }
-    });
-    
-    // Öne çıkan kameralar animasyonu
-    gsap.from(".featured-camera", {
-      opacity: 0,
-      x: -50,
-      stagger: 0.2,
-      duration: 0.8,
-      scrollTrigger: {
-        trigger: featuredRef.current,
-        start: "top 70%",
-        toggleActions: "play none none none"
-      }
-    });
-    
-    // Rehber bölümü animasyonu
-    gsap.from(".guide-content", {
-      opacity: 0,
-      y: 50,
-      duration: 0.8,
-      scrollTrigger: {
-        trigger: guideRef.current,
-        start: "top 70%",
-        toggleActions: "play none none none"
-      }
-    });
-    
-    // CTA bölümü animasyonu
-    gsap.from(".cta-content", {
-      opacity: 0,
-      scale: 0.9,
-      duration: 0.8,
-      scrollTrigger: {
-        trigger: ctaRef.current,
-        start: "top 80%",
-        toggleActions: "play none none none"
-      }
-    });
-    
-    // Otomatik slider için interval
-    const sliderInterval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % cameraCategories.length);
-    }, 5000);
-    
-    // Cleanup fonksiyonu
-    return () => {
-      clearInterval(sliderInterval);
-      ScrollTrigger.getAll().forEach(t => t.kill());
-    };
+      
+      // Otomatik slider için interval
+      const sliderInterval = setInterval(() => {
+        setCurrentSlide((prev) => (prev + 1) % cameraCategories.length);
+      }, 5000);
+      
+      // Cleanup fonksiyonu
+      return () => {
+        clearInterval(sliderInterval);
+        // Her şeyi temizle
+        if (typeof ScrollTrigger !== 'undefined') {
+          ScrollTrigger.getAll().forEach(t => t.kill());
+        }
+      };
+    }
   }, []);
 
   return (
@@ -235,6 +289,13 @@ export default function Home() {
           background: "radial-gradient(circle at center, rgba(25,25,35,1) 0%, rgba(10,10,20,1) 100%)"
         }}
       >
+        {/* Arka plan parıltı efekti */}
+        <div className="absolute inset-0 opacity-30">
+          <div className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full bg-[#FF00FF] blur-[120px]"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-64 h-64 rounded-full bg-[#00FFFF] blur-[120px]"></div>
+          <div className="absolute top-1/2 right-1/3 w-64 h-64 rounded-full bg-[#FFFF00] blur-[120px]"></div>
+        </div>
+        
         {/* Neon renkli parçacıklar (sadece görsel efekt) */}
         <div className="absolute inset-0 overflow-hidden">
           {particles.map((particle) => (
@@ -255,20 +316,26 @@ export default function Home() {
           ))}
         </div>
         
-        <div className="container mx-auto px-6 z-10 text-center">
-          <h1 className="hero-title text-5xl md:text-7xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-[#00FFFF] via-[#FF00FF] to-[#FFFF00]">
+        <div className="container mx-auto px-6 z-10 text-center animate-fade-in">
+          <h1 className="hero-title text-5xl md:text-7xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-[#00FFFF] via-[#FF00FF] to-[#FFFF00] animate-slide-up">
             Find Your Perfect Camera
           </h1>
-          <p className="hero-subtitle text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
+          <p className="hero-subtitle text-xl md:text-2xl mb-8 max-w-3xl mx-auto animate-slide-up-delay-1">
             Expert reviews and buying guides for every photography need
           </p>
-          <button className="hero-cta bg-gradient-to-r from-[#FF00FF] to-[#00FFFF] hover:from-[#00FFFF] hover:to-[#FF00FF] text-black font-bold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-[0_0_25px_rgba(255,0,255,0.7)]">
+          <button 
+            onClick={scrollToSlider}
+            className="hero-cta bg-gradient-to-r from-[#FF00FF] to-[#00FFFF] hover:from-[#00FFFF] hover:to-[#FF00FF] text-black font-bold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-[0_0_25px_rgba(255,0,255,0.7)] animate-slide-up-delay-2"
+          >
             Explore Cameras
           </button>
         </div>
         
         {/* Scroll down indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <div 
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce cursor-pointer"
+          onClick={scrollToSlider}
+        >
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
           </svg>
@@ -284,7 +351,7 @@ export default function Home() {
             </span>
           </h2>
           
-          <div className="slider-container relative h-[400px] md:h-[500px] overflow-hidden rounded-2xl shadow-[0_0_50px_rgba(255,0,255,0.3)]">
+          <div className="slider-container relative h-[400px] md:h-[500px] overflow-hidden rounded-2xl shadow-[0_0_50px_rgba(255,0,255,0.3)] animate-fade-in">
             {cameraCategories.map((category, index) => (
               <div 
                 key={category.id}
@@ -337,7 +404,7 @@ export default function Home() {
         </div>
       </section>
       
-      {/* Kategoriler vitrini */}
+      {/* Kamera kategorileri kartları */}
       <section ref={categoriesRef} className="py-20 bg-gray-900">
         <div className="container mx-auto px-6">
           <h2 className="text-4xl font-bold mb-12 text-center">
@@ -347,29 +414,32 @@ export default function Home() {
           </h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {cameraCategories.map((category) => (
+            {cameraCategories.map((category, index) => (
               <Link 
-                href={category.link} 
+                href={category.link}
                 key={category.id}
-                className="category-card group relative overflow-hidden rounded-xl transition-all duration-500 hover:transform hover:scale-[1.02]"
-                style={{
-                  boxShadow: `0 0 20px ${category.color}30`
+                className={`group category-card relative overflow-hidden rounded-xl transition-all duration-500 transform hover:scale-[1.03] hover:shadow-[0_0_30px_rgba(255,255,0,0.3)] ${index % 3 === 0 ? 'animate-slide-up' : index % 3 === 1 ? 'animate-slide-up-delay-1' : 'animate-slide-up-delay-2'}`}
+                style={{ 
+                  opacity: 1, /* SSR için önemli */
+                  borderLeft: `5px solid ${category.color}`,
+                  backgroundColor: "#111827" /* bg-gray-900 equivalent */
                 }}
               >
-                <div className="h-60 relative overflow-hidden">
-                  <Image
-                    src={category.image}
-                    alt={category.title}
-                    fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-110"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  />
+                <div className="h-40 relative overflow-hidden">
                   <div 
-                    className="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent opacity-80"
                     style={{
-                      background: `linear-gradient(to top, black, transparent), linear-gradient(45deg, ${category.color}40, transparent)`
+                      position: "absolute",
+                      top: 0,
+                      left: 0,
+                      right: 0,
+                      bottom: 0,
+                      backgroundImage: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url(${category.image})`,
+                      backgroundSize: "cover",
+                      backgroundPosition: "center",
+                      transition: "all 0.5s ease"
                     }}
-                  />
+                    className="group-hover:scale-110"
+                  ></div>
                 </div>
                 <div className="p-6 bg-gray-800">
                   <h3 className="text-xl font-bold mb-2 group-hover:text-transparent group-hover:bg-clip-text transition-all duration-300" 
@@ -404,20 +474,22 @@ export default function Home() {
             </span>
           </h2>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {featuredCameras.map((camera) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 animate-fade-in">
+            {featuredCameras.map((camera, index) => (
               <Link 
                 href={camera.link} 
                 key={camera.id}
-                className="featured-camera bg-gray-900 rounded-xl overflow-hidden transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,255,255,0.4)] transform hover:scale-[1.03]"
+                className={`featured-camera bg-gray-900 rounded-xl overflow-hidden transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,255,255,0.4)] transform hover:scale-[1.03] ${index === 0 ? 'animate-slide-up' : index === 1 ? 'animate-slide-up-delay-1' : 'animate-slide-up-delay-2'}`}
+                style={{opacity: 1}} /* Bu satır önemli, SSR render sırasında elementlerin görünmesini sağlar */
               >
                 <div className="h-48 relative">
-                  <Image
+          <Image
                     src={camera.image}
                     alt={camera.title}
                     fill
                     className="object-cover"
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    unoptimized /* Amazon resimlerini yüklememiz gerektiğinden bu flag gerekli */
                   />
                 </div>
                 <div className="p-6">
@@ -494,7 +566,7 @@ export default function Home() {
             
             <div className="mt-10 text-center">
               <Link 
-                href="/buying-guide" 
+                href="/" 
                 className="inline-flex items-center gap-2 bg-gradient-to-r from-[#FFFF00] to-[#FF00FF] hover:from-[#FF00FF] hover:to-[#FFFF00] text-black font-bold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-[0_0_25px_rgba(255,255,0,0.7)]"
               >
                 Read Full Guide <FaArrowRight />
@@ -526,14 +598,14 @@ export default function Home() {
             
             <div className="flex flex-wrap gap-4 justify-center">
               <Link 
-                href="/all-cameras" 
+                href="/" 
                 className="bg-gradient-to-r from-[#FF00FF] to-[#00FFFF] hover:from-[#00FFFF] hover:to-[#FF00FF] text-black font-bold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-[0_0_25px_rgba(255,0,255,0.7)]"
               >
                 Browse All Cameras
               </Link>
               
               <Link 
-                href="/buying-guide" 
+                href="/" 
                 className="bg-transparent border-2 border-[#00FFFF] text-[#00FFFF] hover:text-white hover:border-white font-bold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-[0_0_25px_rgba(0,255,255,0.7)]"
               >
                 Read Buying Guide
