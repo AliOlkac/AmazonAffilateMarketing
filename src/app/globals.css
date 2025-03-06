@@ -8,6 +8,29 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --color-mirrorless: #FF00FF;
+  --color-action: #00FF00;
+  --color-compact: #FFFF00;
+  --color-dslr: #00FFFF;
+  --color-vlog: #FF5500;
+  
+  --color-mirrorless-bg: rgba(255, 0, 255, 0.3);
+  --color-action-bg: rgba(0, 255, 0, 0.3);
+  --color-compact-bg: rgba(255, 255, 0, 0.3);
+  --color-dslr-bg: rgba(0, 255, 255, 0.3);
+  --color-vlog-bg: rgba(255, 85, 0, 0.3);
+  
+  --color-mirrorless-shadow: 0 0 15px rgba(255, 0, 255, 0.5);
+  --color-action-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
+  --color-compact-shadow: 0 0 15px rgba(255, 255, 0, 0.5);
+  --color-dslr-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+  --color-vlog-shadow: 0 0 15px rgba(255, 85, 0, 0.5);
+  
+  --gradient-mirrorless: linear-gradient(90deg, #FF00FF, #9000FF);
+  --gradient-action: linear-gradient(90deg, #00FF00, #00AA00);
+  --gradient-compact: linear-gradient(90deg, #FFFF00, #DDAA00);
+  --gradient-dslr: linear-gradient(90deg, #00FFFF, #0088AA);
+  --gradient-vlog: linear-gradient(90deg, #FF5500, #CC4400);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -119,4 +142,52 @@ body {
     transform: translateY(-100vh);
     opacity: 0;
   }
+}
+
+/* Kategori etiketleri için sınıflar */
+.category-tag-mirrorless {
+  background-color: var(--color-mirrorless-bg);
+  box-shadow: var(--color-mirrorless-shadow);
+  color: var(--color-mirrorless);
+}
+
+.category-tag-action {
+  background-color: var(--color-action-bg);
+  box-shadow: var(--color-action-shadow);
+  color: var(--color-action);
+}
+
+.category-tag-compact {
+  background-color: var(--color-compact-bg);
+  box-shadow: var(--color-compact-shadow);
+  color: var(--color-compact);
+}
+
+/* Buton gradyanları için sınıflar */
+.btn-gradient-mirrorless {
+  background: var(--gradient-mirrorless);
+  box-shadow: 0 0 15px rgba(255, 0, 255, 0.3);
+}
+
+.btn-gradient-action {
+  background: var(--gradient-action);
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
+}
+
+.btn-gradient-compact {
+  background: var(--gradient-compact);
+  box-shadow: 0 0 15px rgba(255, 255, 0, 0.3);
+}
+
+/* Kart gölgeleri için sınıflar */
+.card-shadow-mirrorless {
+  box-shadow: 0 0 25px rgba(255, 0, 255, 0.15);
+}
+
+.card-shadow-action {
+  box-shadow: 0 0 25px rgba(0, 255, 0, 0.15);
+}
+
+.card-shadow-compact {
+  box-shadow: 0 0 25px rgba(255, 255, 0, 0.15);
 }

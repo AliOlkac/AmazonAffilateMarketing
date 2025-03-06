@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { FaArrowRight } from "react-icons/fa";
 import gsap from "gsap";
@@ -57,7 +56,7 @@ const featuredCameras = [
     id: "sony-a7iv",
     title: "Sony A7 IV",
     category: "Mirrorless",
-    image: "/images/cameras/sony-a7iv.webp",
+    image: "/images/cameras/hero-bg.webp",
     price: "$2,499",
     rating: 4.9,
     link: "/mirrorless-cameras",
@@ -66,7 +65,7 @@ const featuredCameras = [
     id: "canon-r6",
     title: "Canon EOS R6",
     category: "Mirrorless",
-    image: "/images/cameras/canon-r6.webp",
+    image: "/images/cameras/hero-bg.webp",
     price: "$2,299",
     rating: 4.8,
     link: "/mirrorless-cameras",
@@ -75,7 +74,7 @@ const featuredCameras = [
     id: "gopro-hero11",
     title: "GoPro Hero 11",
     category: "Action",
-    image: "/images/cameras/gopro-hero11.webp",
+    image: "/images/cameras/hero-bg.webp",
     price: "$399",
     rating: 4.7,
     link: "/action-cameras",
@@ -343,58 +342,147 @@ export default function Home() {
       </section>
       
       {/* Döngüsel slider bölümü */}
-      <section ref={sliderRef} className="py-20 bg-gray-800">
-        <div className="container mx-auto px-6">
-          <h2 className="text-4xl font-bold mb-16 text-center">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00FFFF] to-[#FF00FF]">
+      <section 
+        ref={sliderRef} 
+        className="py-24 relative"
+        style={{
+          background: "linear-gradient(to bottom, rgba(10,10,20,1) 0%, rgba(25,25,35,1) 50%, rgba(15,15,25,1) 100%)"
+        }}
+      >
+        {/* Arka plan parıltı efekti */}
+        <div className="absolute inset-0 opacity-30 overflow-hidden">
+          <div className="absolute top-1/3 right-1/4 w-72 h-72 rounded-full bg-[#00FFFF] blur-[150px]"></div>
+          <div className="absolute bottom-1/3 left-1/4 w-72 h-72 rounded-full bg-[#FF00FF] blur-[150px]"></div>
+        </div>
+        
+        <div className="container mx-auto px-4 relative z-10">
+          <h2 className="text-5xl font-bold mb-16 text-center">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00FFFF] via-[#FF00FF] to-[#FFFF00]">
               Discover Camera Categories
             </span>
           </h2>
           
-          <div className="slider-container relative h-[400px] md:h-[500px] overflow-hidden rounded-2xl shadow-[0_0_50px_rgba(255,0,255,0.3)] animate-fade-in">
-            {cameraCategories.map((category, index) => (
-              <div 
-                key={category.id}
-                className={`absolute inset-0 transition-all duration-1000 ease-in-out ${
-                  index === currentSlide ? "opacity-100 z-10" : "opacity-0 z-0"
-                }`}
-                style={{
-                  background: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url(${category.image})`,
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
-                  borderLeft: `8px solid ${category.color}`,
-                  boxShadow: `0 0 30px ${category.color}80`
-                }}
+          <div className="slider-container relative overflow-hidden rounded-3xl shadow-[0_0_80px_rgba(255,0,255,0.2)] animate-fade-in">
+            {/* Ana slider */}
+            <div 
+              className="relative h-[450px] md:h-[600px] lg:h-[700px] overflow-hidden"
+              style={{
+                background: "#0a0a0f"
+              }}
+            >
+              {/* Manuel ileri/geri navigasyon butonları */}
+              <button 
+                onClick={() => setCurrentSlide((prev) => (prev === 0 ? cameraCategories.length - 1 : prev - 1))}
+                className="absolute left-4 top-1/2 transform -translate-y-1/2 z-30 w-12 h-12 md:w-16 md:h-16 flex items-center justify-center rounded-full bg-black/30 backdrop-blur-md text-white hover:bg-black/50 transition-all duration-300"
+                aria-label="Previous slide"
               >
-                <div className="absolute bottom-0 left-0 p-8 md:p-12 w-full">
-                  <h3 className="text-3xl md:text-4xl font-bold mb-2" style={{ color: category.color }}>
-                    {category.title}
-                  </h3>
-                  <p className="text-lg md:text-xl mb-6 max-w-2xl">
-                    {category.description}
-                  </p>
-                  <Link 
-                    href={category.link}
-                    className="inline-flex items-center gap-2 py-2 px-6 rounded-full text-black font-semibold transition-all duration-300 hover:pl-4 hover:pr-8"
-                    style={{ 
-                      backgroundColor: category.color,
-                      boxShadow: `0 0 20px ${category.color}`
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
+                  <path fillRule="evenodd" d="M7.72 12.53a.75.75 0 010-1.06l7.5-7.5a.75.75 0 111.06 1.06L9.31 12l6.97 6.97a.75.75 0 11-1.06 1.06l-7.5-7.5z" clipRule="evenodd" />
+                </svg>
+              </button>
+              
+              <button 
+                onClick={() => setCurrentSlide((prev) => (prev + 1) % cameraCategories.length)}
+                className="absolute right-4 top-1/2 transform -translate-y-1/2 z-30 w-12 h-12 md:w-16 md:h-16 flex items-center justify-center rounded-full bg-black/30 backdrop-blur-md text-white hover:bg-black/50 transition-all duration-300"
+                aria-label="Next slide"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
+                  <path fillRule="evenodd" d="M16.28 11.47a.75.75 0 010 1.06l-7.5 7.5a.75.75 0 01-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 011.06-1.06l7.5 7.5z" clipRule="evenodd" />
+                </svg>
+              </button>
+                
+              {/* Slaytlar */}
+              {cameraCategories.map((category, index) => (
+                <div 
+                  key={category.id}
+                  className={`absolute inset-0 transition-all duration-1000 ease-in-out ${
+                    index === currentSlide ? "opacity-100 z-10" : "opacity-0 z-0"
+                  }`}
+                >
+                  {/* Arkaplan ve sınır efekti */}
+                  <div 
+                    className="absolute inset-0 overflow-hidden bg-cover bg-center"
+                    style={{
+                      backgroundImage: `linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.6)), url(${category.image})`
                     }}
                   >
-                    Explore <FaArrowRight />
-                  </Link>
+                    {/* Neon sınır efekti */}
+                    <div 
+                      className={`absolute inset-y-0 left-0 w-1 md:w-2`}
+                      style={{ 
+                        backgroundColor: `var(--color-${category.id})`,
+                        boxShadow: `var(--color-${category.id}-shadow)`
+                      }}
+                    ></div>
+                  </div>
+                  
+                  {/* İçerik */}
+                  <div className="absolute bottom-0 left-0 p-8 md:p-16 w-full md:max-w-3xl bg-gradient-to-t from-black/80 via-black/50 to-transparent">
+                    <h3 
+                      className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4"
+                      style={{ 
+                        color: `var(--color-${category.id})`,
+                        textShadow: `0 0 20px var(--color-${category.id})80` 
+                      }}
+                    >
+                      {category.title}
+                    </h3>
+                    <p className="text-lg md:text-xl mb-8 text-white/90 max-w-2xl">
+                      {category.description}
+                    </p>
+                    <Link 
+                      href={category.link}
+                      className={`inline-flex items-center gap-3 py-3 px-8 rounded-full text-black font-semibold transition-all duration-300 transform hover:scale-105 hover:gap-4 btn-gradient-${category.id}`}
+                    >
+                      Explore <FaArrowRight />
+                    </Link>
+                  </div>
+                </div>
+              ))}
+              
+              {/* Slider mini preview ve göstergeler */}
+              <div className="absolute bottom-6 right-6 z-30 hidden md:flex flex-col items-end gap-4">
+                <div className="flex gap-3">
+                  {cameraCategories.map((category, index) => (
+                    <button
+                      key={index}
+                      aria-label={`Go to slide ${index + 1}`}
+                      onClick={() => setCurrentSlide(index)}
+                      className={`group relative transition-all duration-300 ${
+                        index === currentSlide ? "opacity-100 scale-110" : "opacity-60 hover:opacity-90 scale-100"
+                      }`}
+                    >
+                      <div
+                        className="w-16 h-10 rounded overflow-hidden border-2 transition-all duration-300"
+                        style={{
+                          backgroundImage: `url(${category.image})`,
+                          backgroundSize: "cover",
+                          backgroundPosition: "center",
+                          borderColor: index === currentSlide ? category.color : "transparent",
+                          boxShadow: index === currentSlide ? `0 0 15px ${category.color}` : "none"
+                        }}
+                      ></div>
+                    </button>
+                  ))}
+                </div>
+                
+                {/* Mevcut/toplam slayt göstergesi */}
+                <div className="text-white bg-black/30 backdrop-blur-md px-4 py-1 rounded-full">
+                  <span className="font-semibold text-lg">{currentSlide + 1}</span>
+                  <span className="mx-1 opacity-60">/</span>
+                  <span className="opacity-60">{cameraCategories.length}</span>
                 </div>
               </div>
-            ))}
+            </div>
             
-            {/* Slider indicators */}
-            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-20 flex gap-2">
+            {/* Mobil cihazlar için sayfa noktaları */}
+            <div className="md:hidden absolute bottom-4 left-1/2 transform -translate-x-1/2 z-20 flex gap-3">
               {cameraCategories.map((_, index) => (
                 <button
                   key={index}
                   aria-label={`Go to slide ${index + 1}`}
                   className={`w-3 h-3 rounded-full transition-all ${
-                    index === currentSlide ? "w-8 bg-white" : "bg-white/50"
+                    index === currentSlide ? "w-10 bg-white" : "bg-white/50"
                   }`}
                   onClick={() => setCurrentSlide(index)}
                 />
@@ -404,115 +492,143 @@ export default function Home() {
         </div>
       </section>
       
-      {/* Kamera kategorileri kartları */}
-      <section ref={categoriesRef} className="py-20 bg-gray-900">
-        <div className="container mx-auto px-6">
-          <h2 className="text-4xl font-bold mb-12 text-center">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFFF00] to-[#00FF00]">
-              Camera Categories
-            </span>
-          </h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {cameraCategories.map((category, index) => (
-              <Link 
-                href={category.link}
-                key={category.id}
-                className={`group category-card relative overflow-hidden rounded-xl transition-all duration-500 transform hover:scale-[1.03] hover:shadow-[0_0_30px_rgba(255,255,0,0.3)] ${index % 3 === 0 ? 'animate-slide-up' : index % 3 === 1 ? 'animate-slide-up-delay-1' : 'animate-slide-up-delay-2'}`}
-                style={{ 
-                  opacity: 1, /* SSR için önemli */
-                  borderLeft: `5px solid ${category.color}`,
-                  backgroundColor: "#111827" /* bg-gray-900 equivalent */
-                }}
-              >
-                <div className="h-40 relative overflow-hidden">
-                  <div 
-                    style={{
-                      position: "absolute",
-                      top: 0,
-                      left: 0,
-                      right: 0,
-                      bottom: 0,
-                      backgroundImage: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url(${category.image})`,
-                      backgroundSize: "cover",
-                      backgroundPosition: "center",
-                      transition: "all 0.5s ease"
-                    }}
-                    className="group-hover:scale-110"
-                  ></div>
-                </div>
-                <div className="p-6 bg-gray-800">
-                  <h3 className="text-xl font-bold mb-2 group-hover:text-transparent group-hover:bg-clip-text transition-all duration-300" 
-                    style={{ 
-                      color: category.color,
-                      backgroundImage: `linear-gradient(45deg, ${category.color}, white)`
-                    }}>
-                    {category.title}
-                  </h3>
-                  <p className="text-gray-300 text-sm mb-4">
-                    {category.description}
-                  </p>
-                  <div className="flex justify-end">
-                    <span className="inline-flex items-center gap-1 text-sm font-semibold transition-all duration-300 group-hover:gap-3"
-                      style={{ color: category.color }}>
-                      View Guide <FaArrowRight />
-                    </span>
-                  </div>
-                </div>
-              </Link>
-            ))}
-          </div>
+      {/* Öne Çıkan Kamera Modelleri */}
+      <section ref={categoriesRef} className="py-24 relative">
+        {/* Arka plan efekti */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0f111a] via-[#131626] to-[#0f111a] opacity-80"></div>
+        
+        {/* Arka plan parıltı efekti - biraz daha belirgin */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-1/4 right-1/3 w-96 h-96 rounded-full bg-[#00FFFF] opacity-20 blur-[150px]"></div>
+          <div className="absolute bottom-1/3 left-1/4 w-96 h-96 rounded-full bg-[#FF00FF] opacity-20 blur-[150px]"></div>
+          <div className="absolute top-2/3 right-1/4 w-96 h-96 rounded-full bg-[#00FF00] opacity-15 blur-[150px]"></div>
         </div>
-      </section>
-      
-      {/* Öne çıkan kameralar */}
-      <section ref={featuredRef} className="py-20 bg-gray-800">
-        <div className="container mx-auto px-6">
-          <h2 className="text-4xl font-bold mb-12 text-center">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00FF00] to-[#00FFFF]">
-              Featured Cameras
-            </span>
-          </h2>
+        
+        <div className="container mx-auto px-4 relative z-10">
+          {/* Başlık bölümü */}
+          <div className="text-center mb-16">
+            <h2 className="text-5xl font-bold mb-6 leading-tight">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFFF00] via-[#00FF00] to-[#00FFFF]">
+                Featured Camera Models
+              </span>
+            </h2>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+              Discover our handpicked selection of top-rated cameras that deliver exceptional performance for every photography need
+            </p>
+          </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 animate-fade-in">
-            {featuredCameras.map((camera, index) => (
-              <Link 
-                href={camera.link} 
+          {/* Kamera kartları */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            {featuredCameras.map((camera) => (
+              <div 
                 key={camera.id}
-                className={`featured-camera bg-gray-900 rounded-xl overflow-hidden transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,255,255,0.4)] transform hover:scale-[1.03] ${index === 0 ? 'animate-slide-up' : index === 1 ? 'animate-slide-up-delay-1' : 'animate-slide-up-delay-2'}`}
-                style={{opacity: 1}} /* Bu satır önemli, SSR render sırasında elementlerin görünmesini sağlar */
+                className={`featured-camera group relative bg-gray-900/40 backdrop-blur-sm rounded-2xl overflow-hidden transition-all duration-500 transform hover:scale-[1.02] border border-white/5 hover:border-white/10 card-shadow-${camera.category.toLowerCase()}`}
               >
-                <div className="h-48 relative">
-          <Image
-                    src={camera.image}
-                    alt={camera.title}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    unoptimized /* Amazon resimlerini yüklememiz gerektiğinden bu flag gerekli */
-                  />
-                </div>
-                <div className="p-6">
-                  <div className="flex justify-between items-start mb-3">
-                    <h3 className="text-xl font-bold">{camera.title}</h3>
-                    <span className="text-[#00FFFF] font-bold">{camera.price}</span>
+                {/* Görsel konteyneri */}
+                <div className="h-48 md:h-56 relative overflow-hidden">
+                  {/* Kategori etiketi */}
+                  <div 
+                    className={`absolute top-4 left-4 z-10 px-4 py-1 rounded-full text-sm font-semibold backdrop-blur-md category-tag-${camera.category.toLowerCase()}`}
+                  >
+                    {camera.category}
                   </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-gray-400">{camera.category}</span>
-                    <div className="flex items-center gap-1">
-                      <span className="text-[#FFFF00]">★</span>
-                      <span>{camera.rating}/5</span>
-                    </div>
+                  
+                  {/* Fiyat etiketi */}
+                  <div className="absolute top-4 right-4 z-10 bg-black/50 backdrop-blur-md px-4 py-1 rounded-full text-white font-bold">
+                    {camera.price}
+                  </div>
+                  
+                  {/* Kamera görseli */}
+                  <div className="absolute inset-0 group-hover:scale-110 transition-transform duration-700">
+                    <div 
+                      className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/10 opacity-60 group-hover:opacity-40 transition-opacity duration-500"
+                    ></div>
+                    <div
+                      className="w-full h-full bg-cover bg-center"
+                      style={{ backgroundImage: `url(${camera.image})` }}
+                    ></div>
                   </div>
                 </div>
-              </Link>
+                
+                {/* İçerik bölümü */}
+                <div className="p-5 md:p-6 relative">
+                  {/* Derecelendirme yıldızları */}
+                  <div className="flex items-center gap-1 mb-3">
+                    {[...Array(5)].map((_, i) => (
+                      <svg 
+                        key={i} 
+                        xmlns="http://www.w3.org/2000/svg" 
+                        className={`w-4 h-4 ${i < Math.floor(camera.rating) ? 'text-yellow-400' : 'text-gray-600'}`}
+                        fill="currentColor" 
+                        viewBox="0 0 24 24"
+                      >
+                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                      </svg>
+                    ))}
+                    <span className="text-gray-300 ml-2 text-sm">{camera.rating}</span>
+                  </div>
+                  
+                  {/* Kamera başlığı */}
+                  <h3 
+                    className={`text-xl md:text-2xl font-bold mb-3 group-hover:text-transparent group-hover:bg-clip-text transition-all duration-300 text-white`}
+                    style={{ backgroundImage: `linear-gradient(45deg, var(--color-${camera.category.toLowerCase()}), white)` }}
+                  >
+                    {camera.title}
+                  </h3>
+                  
+                  {/* Kamera özellikleri - Örnek özellikler */}
+                  <div className="space-y-1 mb-5">
+                    {camera.category === 'Mirrorless' && (
+                      <>
+                        <p className="text-gray-300 text-sm flex items-start">
+                          <span className="inline-block w-3 h-3 rounded-full bg-[var(--color-mirrorless)] mr-2 mt-1 flex-shrink-0"></span>
+                          <span>Full-frame 33MP sensor</span>
+                        </p>
+                        <p className="text-gray-300 text-sm flex items-start">
+                          <span className="inline-block w-3 h-3 rounded-full bg-[var(--color-mirrorless)] mr-2 mt-1 flex-shrink-0"></span>
+                          <span>4K 60fps video recording</span>
+                        </p>
+                        <p className="text-gray-300 text-sm flex items-start">
+                          <span className="inline-block w-3 h-3 rounded-full bg-[var(--color-mirrorless)] mr-2 mt-1 flex-shrink-0"></span>
+                          <span>Superior low-light performance</span>
+                        </p>
+                      </>
+                    )}
+                    {camera.category === 'Action' && (
+                      <>
+                        <p className="text-gray-300 text-sm flex items-start">
+                          <span className="inline-block w-3 h-3 rounded-full bg-[var(--color-action)] mr-2 mt-1 flex-shrink-0"></span>
+                          <span>5.3K video resolution</span>
+                        </p>
+                        <p className="text-gray-300 text-sm flex items-start">
+                          <span className="inline-block w-3 h-3 rounded-full bg-[var(--color-action)] mr-2 mt-1 flex-shrink-0"></span>
+                          <span>Waterproof to 10m</span>
+                        </p>
+                        <p className="text-gray-300 text-sm flex items-start">
+                          <span className="inline-block w-3 h-3 rounded-full bg-[var(--color-action)] mr-2 mt-1 flex-shrink-0"></span>
+                          <span>Horizon lock stabilization</span>
+                        </p>
+                      </>
+                    )}
+                  </div>
+                  
+                  {/* Link buton */}
+                  <Link 
+                    href={camera.link}
+                    className={`inline-flex w-full items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-black font-bold transition-all duration-300 hover:gap-3 overflow-hidden btn-gradient-${camera.category.toLowerCase()}`}
+                  >
+                    View Details <FaArrowRight className="text-sm" />
+                  </Link>
+                </div>
+              </div>
             ))}
           </div>
           
-          <div className="text-center mt-12">
+          {/* Tüm kameraları görüntüle butonu */}
+          <div className="text-center mt-12 md:mt-16">
             <Link 
-              href="/" 
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-[#00FFFF] to-[#00FF00] hover:from-[#00FF00] hover:to-[#00FFFF] text-black font-bold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-[0_0_25px_rgba(0,255,255,0.7)]"
+              href="/cameras"
+              className="inline-flex items-center gap-2 py-2.5 px-8 rounded-full bg-white/10 backdrop-blur-sm text-white font-semibold border border-white/20 hover:bg-white/20 transition-all duration-300 hover:gap-3 hover:shadow-[0_0_20px_rgba(255,255,255,0.2)]"
             >
               View All Cameras <FaArrowRight />
             </Link>
@@ -521,55 +637,220 @@ export default function Home() {
       </section>
       
       {/* Kamera seçim rehberi */}
-      <section ref={guideRef} className="py-20 bg-gray-900">
-        <div className="container mx-auto px-6">
-          <div className="guide-content max-w-4xl mx-auto bg-gray-800 p-8 md:p-12 rounded-2xl shadow-[0_0_30px_rgba(255,255,0,0.2)]">
-            <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFFF00] to-[#FF00FF]">
+      <section ref={guideRef} className="py-24 relative overflow-hidden">
+        {/* Arka plan */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0f111a] via-[#131626] to-[#0f111a]"></div>
+        
+        {/* Dekoratif elemanlar */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-0 left-0 w-full h-64 bg-gradient-to-b from-[#FF00FF]/10 to-transparent"></div>
+          <div className="absolute bottom-0 right-0 w-full h-64 bg-gradient-to-t from-[#00FFFF]/10 to-transparent"></div>
+          <div className="absolute top-1/4 right-[10%] w-72 h-72 rounded-full bg-[#FF00FF]/5 blur-[80px]"></div>
+          <div className="absolute bottom-1/3 left-[5%] w-80 h-80 rounded-full bg-[#00FFFF]/5 blur-[100px]"></div>
+          
+          {/* Dekoratif kamera siluetleri */}
+          <div className="absolute -right-20 top-20 w-80 h-80 opacity-5">
+            <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 17.5C15.0376 17.5 17.5 15.0376 17.5 12C17.5 8.96243 15.0376 6.5 12 6.5C8.96243 6.5 6.5 8.96243 6.5 12C6.5 15.0376 8.96243 17.5 12 17.5Z" />
+              <path d="M2 8.34233V15.6577C2 17.4903 2 18.4071 2.5192 19.0476C2.80721 19.4023 3.20643 19.6674 3.65823 19.8129C4.54278 20.0737 5.6192 19.68 7.77203 18.8926C9.44872 18.2797 10.2871 17.9733 11.1456 17.9914C11.3829 17.9972 11.6181 18.0147 11.8507 18.0437C12.5983 18.1547 13.2382 18.4178 14.5181 18.9439L16.6283 19.8111C18.1927 20.4567 18.975 20.7794 19.5773 20.6383C19.8853 20.5659 20.1583 20.4053 20.3644 20.1759C20.8106 19.6788 20.8262 18.8543 20.8573 17.2054C20.8776 16.1972 20.8878 15.6931 20.7656 15.2198C20.6649 14.8306 20.4844 14.4669 20.2367 14.151C19.9243 13.7574 19.4895 13.4487 18.6198 12.8313L16.5231 11.3905C16.1684 11.1442 15.9911 11.021 15.8121 10.917C14.7502 10.3656 13.5414 10.1382 12.342 10.2615C12.1449 10.2836 11.9499 10.3216 11.5599 10.3975L11.1783 10.4716C10.5662 10.5961 10.2601 10.6584 9.9659 10.7005C9.11741 10.8258 8.2588 10.7783 7.42708 10.5618C7.0956 10.4683 6.78841 10.3293 6.17403 10.0513L4.24407 9.07415C3.15456 8.58683 2.6098 8.34317 2.29678 8.49629C2.12633 8.57446 1.98569 8.70332 1.89399 8.86539C1.7 9.19299 1.7 9.76362 1.7 10.9049V12.7969" strokeWidth="1.5" strokeLinecap="round" />
+            </svg>
+          </div>
+          
+          <div className="absolute -left-32 bottom-10 w-80 h-80 opacity-5">
+            <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8.5 9C8.22386 9 8 9.22386 8 9.5C8 9.77614 8.22386 10 8.5 10C8.77614 10 9 9.77614 9 9.5C9 9.22386 8.77614 9 8.5 9Z" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              <path d="M15.5 9C15.2239 9 15 9.22386 15 9.5C15 9.77614 15.2239 10 15.5 10C15.7761 10 16 9.77614 16 9.5C16 9.22386 15.7761 9 15.5 9Z" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              <path d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              <path d="M2 11.9997C2 7.28562 2 4.92856 3.46447 3.46409C4.92893 1.99963 7.28596 1.99963 12 1.99963C16.714 1.99963 19.0711 1.99963 20.5355 3.46409C22 4.92856 22 7.28562 22 11.9997C22 16.7137 22 19.0708 20.5355 20.5352C19.0711 21.9997 16.714 21.9997 12 21.9997C7.28596 21.9997 4.92893 21.9997 3.46447 20.5352C2 19.0708 2 16.7137 2 11.9997Z" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </div>
+        </div>
+        
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="text-center mb-16">
+            <h2 className="text-5xl font-bold mb-6">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFFF00] via-[#FF00FF] to-[#00FFFF]">
                 How to Choose Your Perfect Camera
               </span>
             </h2>
-            
-            <div className="space-y-6">
-              <div className="flex gap-4 items-start">
-                <div className="w-10 h-10 rounded-full bg-[#FFFF00] text-black flex items-center justify-center font-bold text-xl shrink-0">1</div>
-                <div>
-                  <h3 className="text-xl font-bold mb-2 text-[#FFFF00]">Define Your Photography Needs</h3>
-                  <p className="text-gray-300">Are you shooting landscapes, portraits, action sports, or making videos? Each camera type excels in different scenarios.</p>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+              Follow our expert guidance to find the camera that matches your needs, budget, and shooting style
+            </p>
+          </div>
+          
+          <div className="guide-content max-w-6xl mx-auto">
+            {/* Adımları içeren kartlar - modern düzen */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {/* Adım 1 */}
+              <div 
+                className="relative overflow-hidden bg-gray-800/40 backdrop-blur-sm rounded-2xl p-8 border border-white/5 transition-all duration-500 hover:shadow-[0_0_30px_rgba(255,255,0,0.15)] hover:border-[#FFFF00]/20 group"
+              >
+                {/* Arkaplan parlama efekti */}
+                <div className="absolute inset-0 bg-gradient-to-br from-[#FFFF00]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                
+                <div className="flex items-start gap-6 relative z-10">
+                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#FFFF00] to-[#DDAA00] text-black flex items-center justify-center font-bold text-2xl shrink-0 shadow-[0_0_20px_rgba(255,255,0,0.3)]">
+                    1
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-bold mb-4 text-[#FFFF00]">Define Your Photography Needs</h3>
+                    <p className="text-gray-300 mb-4">
+                      Different cameras excel at different types of photography. Consider what you&apos;ll primarily shoot:
+                    </p>
+                    <ul className="space-y-2 text-gray-300">
+                      <li className="flex items-center gap-2">
+                        <span className="text-[#FFFF00]">•</span>
+                        <span><strong>Landscape:</strong> High resolution, weather sealing</span>
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <span className="text-[#FFFF00]">•</span>
+                        <span><strong>Portrait:</strong> Shallow depth of field, skin tone reproduction</span>
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <span className="text-[#FFFF00]">•</span>
+                        <span><strong>Action:</strong> Fast autofocus, high burst rate</span>
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <span className="text-[#FFFF00]">•</span>
+                        <span><strong>Video:</strong> 4K resolution, stabilization, audio options</span>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
               </div>
               
-              <div className="flex gap-4 items-start">
-                <div className="w-10 h-10 rounded-full bg-[#FF00FF] text-black flex items-center justify-center font-bold text-xl shrink-0">2</div>
-                <div>
-                  <h3 className="text-xl font-bold mb-2 text-[#FF00FF]">Consider Your Budget</h3>
-                  <p className="text-gray-300">Cameras range from a few hundred to several thousand dollars. We help you find the best value in your price range.</p>
+              {/* Adım 2 */}
+              <div 
+                className="relative overflow-hidden bg-gray-800/40 backdrop-blur-sm rounded-2xl p-8 border border-white/5 transition-all duration-500 hover:shadow-[0_0_30px_rgba(255,0,255,0.15)] hover:border-[#FF00FF]/20 group"
+              >
+                {/* Arkaplan parlama efekti */}
+                <div className="absolute inset-0 bg-gradient-to-br from-[#FF00FF]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                
+                <div className="flex items-start gap-6 relative z-10">
+                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#FF00FF] to-[#9900CC] text-black flex items-center justify-center font-bold text-2xl shrink-0 shadow-[0_0_20px_rgba(255,0,255,0.3)]">
+                    2
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-bold mb-4 text-[#FF00FF]">Consider Your Budget Range</h3>
+                    <p className="text-gray-300 mb-4">
+                      Cameras come at every price point, each offering different features and capabilities:
+                    </p>
+                    <div className="space-y-3">
+                      <div className="bg-black/30 p-3 rounded-lg">
+                        <p className="font-semibold text-[#FF00FF] mb-1">Entry-Level: $400-800</p>
+                        <p className="text-sm text-gray-300">Great for beginners, basic features, good image quality</p>
+                      </div>
+                      <div className="bg-black/30 p-3 rounded-lg">
+                        <p className="font-semibold text-[#FF00FF] mb-1">Mid-Range: $800-1,500</p>
+                        <p className="text-sm text-gray-300">Better build quality, improved autofocus, weather resistance</p>
+                      </div>
+                      <div className="bg-black/30 p-3 rounded-lg">
+                        <p className="font-semibold text-[#FF00FF] mb-1">Professional: $1,500+</p>
+                        <p className="text-sm text-gray-300">Top-tier performance, durability, specialized features</p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
               
-              <div className="flex gap-4 items-start">
-                <div className="w-10 h-10 rounded-full bg-[#00FFFF] text-black flex items-center justify-center font-bold text-xl shrink-0">3</div>
-                <div>
-                  <h3 className="text-xl font-bold mb-2 text-[#00FFFF]">Think About Size and Weight</h3>
-                  <p className="text-gray-300">If you&apos;ll be carrying your camera for long periods, a lighter mirrorless or compact camera might be preferable.</p>
+              {/* Adım 3 */}
+              <div 
+                className="relative overflow-hidden bg-gray-800/40 backdrop-blur-sm rounded-2xl p-8 border border-white/5 transition-all duration-500 hover:shadow-[0_0_30px_rgba(0,255,255,0.15)] hover:border-[#00FFFF]/20 group"
+              >
+                {/* Arkaplan parlama efekti */}
+                <div className="absolute inset-0 bg-gradient-to-br from-[#00FFFF]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                
+                <div className="flex items-start gap-6 relative z-10">
+                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#00FFFF] to-[#0088AA] text-black flex items-center justify-center font-bold text-2xl shrink-0 shadow-[0_0_20px_rgba(0,255,255,0.3)]">
+                    3
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-bold mb-4 text-[#00FFFF]">Consider Size and Weight</h3>
+                    <p className="text-gray-300 mb-4">
+                      The camera&apos;s portability affects how likely you are to bring it with you:
+                    </p>
+                    <div className="space-y-3">
+                      <div className="flex items-center gap-3">
+                        <div className="w-12 h-12 flex-shrink-0 bg-black/30 rounded-full flex items-center justify-center">
+                          <svg className="w-6 h-6 text-[#00FFFF]" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15 6L9 12L15 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                          </svg>
+                        </div>
+                        <p className="text-gray-300">
+                          <strong className="text-[#00FFFF]">DSLR:</strong> Larger, heavier, but excellent ergonomics
+                        </p>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <div className="w-12 h-12 flex-shrink-0 bg-black/30 rounded-full flex items-center justify-center">
+                          <svg className="w-6 h-6 text-[#00FFFF]" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15 6L9 12L15 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                          </svg>
+                        </div>
+                        <p className="text-gray-300">
+                          <strong className="text-[#00FFFF]">Mirrorless:</strong> Compact but powerful, excellent for travel
+                        </p>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <div className="w-12 h-12 flex-shrink-0 bg-black/30 rounded-full flex items-center justify-center">
+                          <svg className="w-6 h-6 text-[#00FFFF]" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15 6L9 12L15 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                          </svg>
+                        </div>
+                        <p className="text-gray-300">
+                          <strong className="text-[#00FFFF]">Compact:</strong> Ultra-portable, fits in pocket, ideal for everyday
+                        </p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
               
-              <div className="flex gap-4 items-start">
-                <div className="w-10 h-10 rounded-full bg-[#00FF00] text-black flex items-center justify-center font-bold text-xl shrink-0">4</div>
-                <div>
-                  <h3 className="text-xl font-bold mb-2 text-[#00FF00]">Research Available Lenses</h3>
-                  <p className="text-gray-300">For DSLR and mirrorless cameras, the lens ecosystem is crucial for your photography&apos;s future expansion.</p>
+              {/* Adım 4 */}
+              <div 
+                className="relative overflow-hidden bg-gray-800/40 backdrop-blur-sm rounded-2xl p-8 border border-white/5 transition-all duration-500 hover:shadow-[0_0_30px_rgba(0,255,0,0.15)] hover:border-[#00FF00]/20 group"
+              >
+                {/* Arkaplan parlama efekti */}
+                <div className="absolute inset-0 bg-gradient-to-br from-[#00FF00]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                
+                <div className="flex items-start gap-6 relative z-10">
+                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#00FF00] to-[#008800] text-black flex items-center justify-center font-bold text-2xl shrink-0 shadow-[0_0_20px_rgba(0,255,0,0.3)]">
+                    4
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-bold mb-4 text-[#00FF00]">Research Available Lenses</h3>
+                    <p className="text-gray-300 mb-4">
+                      For interchangeable lens cameras, the lens ecosystem is crucial for your photography&apos;s future:
+                    </p>
+                    <div className="relative h-36 overflow-hidden rounded-xl bg-black/20">
+                      <div className="absolute inset-0 flex items-center p-4 bg-gradient-to-r from-black/70 via-black/40 to-transparent">
+                        <div className="space-y-3 max-w-xs">
+                          <div className="flex items-center gap-2">
+                            <span className="w-2 h-2 rounded-full bg-[#00FF00]"></span>
+                            <p className="text-sm text-gray-300">Wide selection of lenses for different needs</p>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <span className="w-2 h-2 rounded-full bg-[#00FF00]"></span>
+                            <p className="text-sm text-gray-300">Consider third-party options for better value</p>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <span className="w-2 h-2 rounded-full bg-[#00FF00]"></span>
+                            <p className="text-sm text-gray-300">Factor lens costs into your overall budget</p>
+                          </div>
+                        </div>
+                      </div>
+                     
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
             
-            <div className="mt-10 text-center">
+            <div className="text-center mt-16">
               <Link 
                 href="/" 
-                className="inline-flex items-center gap-2 bg-gradient-to-r from-[#FFFF00] to-[#FF00FF] hover:from-[#FF00FF] hover:to-[#FFFF00] text-black font-bold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-[0_0_25px_rgba(255,255,0,0.7)]"
+                className="inline-flex items-center gap-2 py-3 px-8 rounded-xl bg-gradient-to-r from-[#FFFF00] via-[#FF00FF] to-[#00FFFF] hover:from-[#00FFFF] hover:via-[#FF00FF] hover:to-[#FFFF00] text-black font-bold transition-all duration-500 transform hover:scale-105 hover:shadow-[0_0_30px_rgba(255,255,0,0.3)]"
               >
-                Read Full Guide <FaArrowRight />
+                Read Our Complete Camera Guide <FaArrowRight className="transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
             </div>
           </div>
