@@ -131,12 +131,12 @@ export default function Home() {
       const topPosition = startFromBottom ? `${100 + Math.random() * 20}%` : `${Math.random() * 100}%`;
       
       return {
-        id: i,
+      id: i,
         width: isRound ? `${particleSize}px` : `${particleSize}px`,
         height: isRound ? `${particleSize}px` : `${particleSize * (Math.random() * 0.5 + 0.5)}px`,
         color: particleColor,
         shadow: `0 0 ${Math.random() * 15 + 10}px ${particleColor}`,
-        left: `${Math.random() * 100}%`,
+      left: `${Math.random() * 100}%`,
         top: topPosition,
         opacity: Math.random() * 0.6 + 0.2, // Daha geniş opaklık aralığı (0.2-0.8)
         // Animasyon süresini 5-15 saniye aralığına düşürüyoruz (daha hızlı)
@@ -392,12 +392,12 @@ export default function Home() {
               </button>
                 
               {/* Slaytlar */}
-              {cameraCategories.map((category, index) => (
-                <div 
-                  key={category.id}
-                  className={`absolute inset-0 transition-all duration-1000 ease-in-out ${
-                    index === currentSlide ? "opacity-100 z-10" : "opacity-0 z-0"
-                  }`}
+            {cameraCategories.map((category, index) => (
+              <div 
+                key={category.id}
+                className={`absolute inset-0 transition-all duration-1000 ease-in-out ${
+                  index === currentSlide ? "opacity-100 z-10" : "opacity-0 z-0"
+                }`}
                 >
                   {/* Arkaplan ve sınır efekti */}
                   <div 
@@ -420,26 +420,26 @@ export default function Home() {
                   <div className="absolute bottom-0 left-0 p-8 md:p-16 w-full md:max-w-3xl bg-gradient-to-t from-black/80 via-black/50 to-transparent">
                     <h3 
                       className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4"
-                      style={{ 
+                style={{
                         color: `var(--color-${category.id})`,
                         textShadow: `0 0 20px var(--color-${category.id})80` 
                       }}
                     >
-                      {category.title}
-                    </h3>
+                    {category.title}
+                  </h3>
                     <p className="text-lg md:text-xl mb-8 text-white/90 max-w-2xl">
-                      {category.description}
-                    </p>
-                    <Link 
-                      href={category.link}
+                    {category.description}
+                  </p>
+                  <Link 
+                    href={category.link}
                       className={`inline-flex items-center gap-3 py-3 px-8 rounded-full text-black font-semibold transition-all duration-300 transform hover:scale-105 hover:gap-4 btn-gradient-${category.id}`}
-                    >
-                      Explore <FaArrowRight />
-                    </Link>
-                  </div>
+                  >
+                    Explore <FaArrowRight />
+                  </Link>
                 </div>
-              ))}
-              
+              </div>
+            ))}
+            
               {/* Slider mini preview ve göstergeler */}
               <div className="absolute bottom-6 right-6 z-30 hidden md:flex flex-col items-end gap-4">
                 <div className="flex gap-3">
@@ -503,7 +503,7 @@ export default function Home() {
           <p className="text-lg text-center mb-12 text-gray-300 max-w-3xl mx-auto">
             Discover our handpicked selection of top-rated cameras that deliver exceptional performance for every photography need
           </p>
-
+          
           {/* Kamera Kartları - DSLR sayfasındaki tasarıma göre yenilendi */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {featuredCameras.map((camera) => (
@@ -684,7 +684,7 @@ export default function Home() {
                   <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#FFFF00] to-[#DDAA00] text-black flex items-center justify-center font-bold text-2xl shrink-0 shadow-[0_0_20px_rgba(255,255,0,0.3)]">
                     1
                   </div>
-                  <div>
+                <div>
                     <h3 className="text-2xl font-bold mb-4 text-[#FFFF00]">Define Your Photography Needs</h3>
                     <p className="text-gray-300 mb-4">
                       Different cameras excel at different types of photography. Consider what you&apos;ll primarily shoot:
@@ -722,7 +722,7 @@ export default function Home() {
                   <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#FF00FF] to-[#9900CC] text-black flex items-center justify-center font-bold text-2xl shrink-0 shadow-[0_0_20px_rgba(255,0,255,0.3)]">
                     2
                   </div>
-                  <div>
+                <div>
                     <h3 className="text-2xl font-bold mb-4 text-[#FF00FF]">Consider Your Budget Range</h3>
                     <p className="text-gray-300 mb-4">
                       Cameras come at every price point, each offering different features and capabilities:
@@ -756,7 +756,7 @@ export default function Home() {
                   <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#00FFFF] to-[#0088AA] text-black flex items-center justify-center font-bold text-2xl shrink-0 shadow-[0_0_20px_rgba(0,255,255,0.3)]">
                     3
                   </div>
-                  <div>
+                <div>
                     <h3 className="text-2xl font-bold mb-4 text-[#00FFFF]">Consider Size and Weight</h3>
                     <p className="text-gray-300 mb-4">
                       The camera&apos;s portability affects how likely you are to bring it with you:
@@ -808,7 +808,7 @@ export default function Home() {
                   <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#00FF00] to-[#008800] text-black flex items-center justify-center font-bold text-2xl shrink-0 shadow-[0_0_20px_rgba(0,255,0,0.3)]">
                     4
                   </div>
-                  <div>
+                <div>
                     <h3 className="text-2xl font-bold mb-4 text-[#00FF00]">Research Available Lenses</h3>
                     <p className="text-gray-300 mb-4">
                       For interchangeable lens cameras, the lens ecosystem is crucial for your photography&apos;s future:
