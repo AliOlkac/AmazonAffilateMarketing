@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import Link from "next/link";
 import { FaCamera, FaInfoCircle, FaStar, FaCheckCircle, FaAmazon, FaShoppingCart } from "react-icons/fa";
@@ -644,8 +644,8 @@ export default function DSLRCameras() {
                       href={camera.amazon_link} 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      className={`px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white rounded-lg flex items-center gap-2 transition-all duration-300 ${
-                        hoveredCard === index ? 'bg-orange-600 shadow-lg' : ''
+                      className={`px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg flex items-center gap-2 transition-all duration-300 ${
+                        hoveredCard === index ? 'bg-blue-600 shadow-lg' : ''
                       }`}
                     >
                       <FaAmazon className={hoveredCard === index ? 'animate-bounce' : ''} /> View on Amazon
