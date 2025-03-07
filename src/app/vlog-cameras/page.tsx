@@ -2,11 +2,12 @@
 
 import Link from "next/link";
 import { FaCamera, FaInfoCircle, FaStar, FaCheckCircle, FaAmazon, FaShoppingCart } from "react-icons/fa";
-import { MdPhotoCamera, MdCameraAlt, MdOutlineHistory } from "react-icons/md";
+import { MdPhotoCamera, MdCameraAlt, MdOutlineHistory, MdVideocam, MdFlipCameraAndroid } from "react-icons/md";
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
+import { FaMicrophone } from "react-icons/fa";
 
 // Vlog cameras data
 const vlogCameras = [
@@ -112,7 +113,7 @@ const popularVlogCameras = [
   {
     id: 1,
     name: "Sony ZV-1",
-    image: "/images/cameras/sony-zv1.webp",
+    image: "/images/cameras/hero-bg.webp",
     rating: 4.8,
     description: "Purpose-built vlogging camera with excellent autofocus and audio quality",
     price: "$748.00",
@@ -144,7 +145,7 @@ const popularVlogCameras = [
   {
     id: 2,
     name: "Canon PowerShot G7 X Mark III",
-    image: "/images/cameras/canon-g7xiii.webp",
+    image: "/images/cameras/hero-bg.webp",
     rating: 4.7,
     description: "Popular vlogging compact with YouTube live streaming capabilities",
     price: "$749.00",
@@ -176,7 +177,7 @@ const popularVlogCameras = [
   {
     id: 3,
     name: "Sony Alpha ZV-E10",
-    image: "/images/cameras/sony-zve10.webp",
+    image: "/images/cameras/hero-bg.webp",
     rating: 4.8,
     description: "Interchangeable lens vlogging camera with APS-C sensor",
     price: "$698.00",
@@ -208,7 +209,7 @@ const popularVlogCameras = [
   {
     id: 4,
     name: "DJI Pocket 2",
-    image: "/images/cameras/dji-pocket2.webp",
+    image: "/images/cameras/hero-bg.webp",
     rating: 4.6,
     description: "Ultra-compact gimbal camera with excellent stabilization",
     price: "$349.00",
@@ -241,7 +242,7 @@ const popularVlogCameras = [
   {
     id: 5,
     name: "Panasonic LUMIX G100",
-    image: "/images/cameras/panasonic-g100.webp",
+    image: "/images/cameras/hero-bg.webp",
     rating: 4.5,
     description: "Lightweight mirrorless vlogging camera with Nokia OZO Audio",
     price: "$647.99",
@@ -269,7 +270,7 @@ const popularVlogCameras = [
       "No headphone jack"
     ],
     amazon_link: "https://www.amazon.com/PANASONIC-Mirrorless-Recording-Technology-DC-G100KKIT/dp/B08965JV8D"
-  }
+    }
 ];
 
 // Photography tips for Vlog cameras
@@ -323,7 +324,12 @@ export default function VlogCameras() {
   const introTextRef = useRef(null);
   const camerasWrapperRef = useRef(null);
   const cameraCardsRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const parallaxBgRef = useRef(null); // Parallax efekti için referans eklendi
+  const guideSectionsRefs = useRef<(HTMLDivElement | null)[]>([]); // Rehber bölümleri için referans
+  const ctaSectionRef = useRef(null);
+  const tipsRef = useRef(null);
+  const categoriesRef = useRef(null);
+  const historyRef = useRef(null);
+  const parallaxBgRef = useRef(null);
 
   // Handle camera card hover
   const handleCardHover = (index: number | null) => {
@@ -372,9 +378,130 @@ export default function VlogCameras() {
       });
     }
 
-    // Other section animations
-    // ... other animations ...
+    // Intro section animation
+    gsap.from(introTitleRef.current, {
+      scrollTrigger: {
+        trigger: introTitleRef.current,
+        start: "top 80%"
+      },
+      opacity: 0,
+      y: 30,
+      duration: 0.6
+    });
 
+    gsap.from(introTextRef.current, {
+      scrollTrigger: {
+        trigger: introTextRef.current,
+        start: "top 80%"
+      },
+      opacity: 0,
+      y: 30,
+      duration: 0.6,
+      delay: 0.2
+    });
+
+    // Camera cards animation for the container
+    gsap.from(camerasWrapperRef.current, {
+      scrollTrigger: {
+        trigger: camerasWrapperRef.current,
+        start: "top 80%"
+      },
+      opacity: 0,
+      y: 40,
+      duration: 0.5
+    });
+
+    // Staggered animation for each camera card
+    cameraCardsRefs.current.forEach((card, index) => {
+      if (card) {
+        gsap.from(card, {
+          scrollTrigger: {
+            trigger: card,
+            start: "top 85%"
+          },
+          opacity: 0,
+          y: 50,
+          duration: 0.6,
+          delay: index * 0.15, // Kademeli gecikmeli animasyon
+          ease: "power3.out"
+        });
+      }
+    });
+
+    // Staggered animation for guide sections
+    guideSectionsRefs.current.forEach((section, index) => {
+      if (section) {
+        gsap.from(section, {
+          scrollTrigger: {
+            trigger: section,
+            start: "top 85%"
+          },
+          opacity: 0,
+          x: index % 2 === 0 ? -40 : 40, // Farklı yönlerden giriş efekti
+          duration: 0.7,
+          delay: index * 0.1,
+          ease: "power2.out"
+        });
+      }
+    });
+
+    // Animation for tips section
+    if (tipsRef.current) {
+    gsap.from(tipsRef.current, {
+      scrollTrigger: {
+        trigger: tipsRef.current,
+        start: "top 80%"
+      },
+      opacity: 0,
+      y: 30,
+      duration: 0.6
+    });
+    }
+
+    // Animation for categories section
+    if (categoriesRef.current) {
+    gsap.from(categoriesRef.current, {
+      scrollTrigger: {
+        trigger: categoriesRef.current,
+        start: "top 80%"
+      },
+      opacity: 0,
+      y: 30,
+      duration: 0.6
+    });
+    }
+
+    // Animation for history section
+    if (historyRef.current) {
+    gsap.from(historyRef.current, {
+      scrollTrigger: {
+        trigger: historyRef.current,
+        start: "top 80%"
+      },
+      opacity: 0,
+      y: 30,
+      duration: 0.6
+    });
+    }
+
+    // CTA section animation
+    if (ctaSectionRef.current) {
+    gsap.from(ctaSectionRef.current, {
+      scrollTrigger: {
+        trigger: ctaSectionRef.current,
+        start: "top 80%"
+      },
+      opacity: 0,
+      y: 30,
+      duration: 0.8,
+      ease: "power2.out"
+    });
+    }
+
+    // Cleanup function
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
   }, []);
 
   return (
@@ -385,7 +512,7 @@ export default function VlogCameras() {
         <div className="absolute inset-0 bg-gray-900/70 z-10"></div>
         <div 
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(/images/cameras/vlog-hero.webp)` }}
+          style={{ backgroundImage: `url(/images/cameras/hero-bg.webp)` }}
           ref={parallaxBgRef}
         ></div>
         
@@ -428,7 +555,7 @@ export default function VlogCameras() {
           </div>
         </div>
       </section>
-      
+
       {/* Most Popular Vlog Cameras Section */}
       <section id="popular-cameras" className="py-16 px-4 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
         <div className="container mx-auto">
@@ -438,11 +565,18 @@ export default function VlogCameras() {
           </p>
 
           {/* Popular Vlog Camera Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" ref={camerasWrapperRef}>
             {popularVlogCameras.map((camera, index) => (
               <div 
                 key={camera.id} 
                 className="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg transition-all duration-500 transform hover:shadow-xl hover:-translate-y-2"
+                ref={(el) => {
+                  if (cameraCardsRefs.current) {
+                    cameraCardsRefs.current[index] = el;
+                  }
+                }}
+                onMouseEnter={() => handleCardHover(index)}
+                onMouseLeave={() => handleCardHover(null)}
               >
                 {/* Camera Image */}
                 <div className="h-64 overflow-hidden relative bg-gray-100 dark:bg-gray-700">
@@ -476,7 +610,9 @@ export default function VlogCameras() {
                 <div className="p-6">
                   <h3 className="text-xl font-bold mb-3 text-gray-800 dark:text-white group">
                     {camera.name}
-                    <span className="block h-0.5 bg-blue-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+                    <span className={`block h-0.5 bg-blue-500 transform transition-transform duration-300 ${
+                      hoveredCard === index ? 'scale-x-100' : 'scale-x-0'
+                    }`}></span>
                   </h3>
                   
                   {/* Price */}
@@ -489,8 +625,12 @@ export default function VlogCameras() {
                     <h4 className="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-2">Key Features:</h4>
                     <ul className="space-y-1">
                       {camera.key_features.slice(0, 4).map((feature, idx) => (
-                        <li key={idx} className="flex items-start gap-2 text-sm text-gray-600 dark:text-gray-300">
-                          <FaCheckCircle className="text-green-500 mt-1 flex-shrink-0" />
+                        <li key={idx} className={`flex items-start gap-2 text-sm text-gray-600 dark:text-gray-300 transition-transform duration-300 ${
+                          hoveredCard === index ? `transform translate-x-${idx+1}` : ''
+                        }`}>
+                          <FaCheckCircle className={`text-green-500 mt-1 flex-shrink-0 ${
+                            hoveredCard === index ? 'animate-pulse' : ''
+                          }`} />
                           <span>{feature}</span>
                         </li>
                       ))}
@@ -502,7 +642,9 @@ export default function VlogCameras() {
                     href={camera.amazon_link} 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="w-full px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white rounded-lg flex items-center gap-2 justify-center transition-all duration-300"
+                    className={`w-full px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white rounded-lg flex items-center gap-2 justify-center transition-all duration-300 ${
+                      hoveredCard === index ? 'bg-orange-600 shadow-lg' : ''
+                    }`}
                   >
                     <FaAmazon /> View on Amazon
                   </a>
@@ -614,7 +756,7 @@ export default function VlogCameras() {
       </section>
 
       {/* Tips Section */}
-      <section id="photography-tips" className="py-16 px-4 bg-gray-100 dark:bg-gray-700">
+      <section id="photography-tips" className="py-16 px-4 bg-gray-100 dark:bg-gray-700" ref={tipsRef}>
         <div className="container mx-auto max-w-5xl">
           <h2 className="text-3xl font-bold mb-6 text-center text-gray-800 dark:text-white">
             Vlogging Tips & Techniques
@@ -642,7 +784,7 @@ export default function VlogCameras() {
       </section>
 
       {/* Categories Section */}
-      <section id="vlog-categories" className="py-16 px-4 bg-white dark:bg-gray-800">
+      <section id="vlog-categories" className="py-16 px-4 bg-white dark:bg-gray-800" ref={categoriesRef}>
         <div className="container mx-auto max-w-5xl">
           <h2 className="text-3xl font-bold mb-6 text-center text-gray-800 dark:text-white">
             Vlog Camera Categories
@@ -676,7 +818,7 @@ export default function VlogCameras() {
       </section>
 
       {/* History Section */}
-      <section id="vlog-history" className="py-16 px-4 bg-gray-50 dark:bg-gray-900">
+      <section id="vlog-history" className="py-16 px-4 bg-gray-50 dark:bg-gray-900" ref={historyRef}>
         <div className="container mx-auto max-w-4xl">
           <div className="flex items-center gap-3 mb-6 justify-center">
             <MdOutlineHistory className="text-3xl text-green-500 dark:text-green-400" />
@@ -698,7 +840,7 @@ export default function VlogCameras() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-4 bg-gradient-to-br from-green-900 to-black text-white relative overflow-hidden">
+      <section className="py-20 px-4 bg-gradient-to-br from-green-900 to-black text-white relative overflow-hidden" ref={ctaSectionRef}>
         <div className="absolute inset-0 opacity-20">
           <div className="absolute top-0 left-0 w-64 h-64 bg-green-500 rounded-full filter blur-3xl"></div>
           <div className="absolute bottom-0 right-0 w-80 h-80 bg-emerald-500 rounded-full filter blur-3xl"></div>
@@ -723,6 +865,56 @@ export default function VlogCameras() {
           
           <div className="mt-12 text-gray-400 text-sm">
             <p>Our reviews are based on extensive testing and research. We may earn a commission through affiliate links at no extra cost to you.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Vlog Camera Buying Guide */}
+      <section id="buying-guide" className="py-16 px-4 bg-gray-50 dark:bg-gray-900">
+        <div className="container mx-auto max-w-4xl">
+          <h2 className="text-3xl font-bold mb-10 text-gray-800 dark:text-white text-center">Vlog Camera Buying Guide</h2>
+          
+          <div className="space-y-8">
+            {[
+              {
+                title: "Video Quality & Resolution",
+                content: "Look for cameras that offer at least 4K video resolution with good bitrates (100Mbps+). Higher frame rates like 60fps or 120fps are useful for smooth slow-motion footage. For serious vloggers, 10-bit color recording is a plus.",
+                icon: <MdVideocam className="text-2xl" />
+              },
+              {
+                title: "Audio Features",
+                content: "Great audio is essential for vlogging. Prioritize cameras with external microphone inputs, good quality built-in microphones, and ideally, headphone jacks for audio monitoring. Some vlogging cameras include special wind noise reduction features.",
+                icon: <FaMicrophone className="text-2xl" />
+              },
+              {
+                title: "Flip Screen & Monitoring",
+                content: "A fully articulating flip screen is crucial for vlogging to frame yourself properly. Cameras with flip screens that can face forward let you monitor your composition, exposure and focus while recording yourself.",
+                icon: <MdFlipCameraAndroid className="text-2xl" />
+              },
+              {
+                title: "Autofocus Performance",
+                content: "Look for cameras with reliable face/eye detection autofocus that works well in video mode. Good focus tracking will keep you sharp as you move around, which is essential for dynamic vlogs and on-the-go content.",
+                icon: <MdCameraAlt className="text-2xl" />
+              }
+            ].map((section, index) => (
+              <div key={index} ref={(el) => {
+                if (guideSectionsRefs.current) {
+                  guideSectionsRefs.current[index] = el;
+                }
+              }}>
+                <div className="flex gap-5 items-start bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-300">
+                  <div className="flex-shrink-0 bg-gradient-to-br from-green-100 to-teal-100 dark:from-green-900 dark:to-teal-900 p-3 rounded-lg">
+                    <span className="text-green-600 dark:text-green-300 text-xl">
+                      {section.icon}
+                    </span>
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold mb-3 text-gray-800 dark:text-white">{section.title}</h3>
+                    <p className="text-gray-600 dark:text-gray-300">{section.content}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>

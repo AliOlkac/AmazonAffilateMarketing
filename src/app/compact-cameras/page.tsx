@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { FaCamera, FaInfoCircle, FaStar, FaCheckCircle, FaAmazon, FaShoppingCart } from "react-icons/fa";
-import { MdPhotoCamera, MdCameraAlt, MdOutlineHistory } from "react-icons/md";
+import { FaCamera, FaInfoCircle, FaStar, FaCheckCircle, FaAmazon, FaShoppingCart, FaEye, FaSlidersH } from "react-icons/fa";
+import { MdPhotoCamera, MdCameraAlt, MdOutlineHistory, MdSettings } from "react-icons/md";
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -112,7 +112,7 @@ const popularCompactCameras = [
   {
     id: 1,
     name: "Sony RX100 VII",
-    image: "/images/cameras/sony-rx100vii.webp",
+    image: "/images/cameras/hero-bg.webp",
     rating: 4.8,
     description: "Premium compact camera with exceptional autofocus and professional image quality",
     price: "$1,299.99",
@@ -144,7 +144,7 @@ const popularCompactCameras = [
   {
     id: 2,
     name: "Canon PowerShot G7 X Mark III",
-    image: "/images/cameras/canon-g7xiii.webp",
+    image: "/images/cameras/hero-bg.webp",
     rating: 4.6,
     description: "Versatile compact camera ideal for vlogging and content creation",
     price: "$749.00",
@@ -176,7 +176,7 @@ const popularCompactCameras = [
   {
     id: 3,
     name: "Ricoh GR III",
-    image: "/images/cameras/ricoh-griii.webp",
+    image: "/images/cameras/hero-bg.webp",
     rating: 4.7,
     description: "Ultra-compact street photography camera with APS-C sensor",
     price: "$899.95",
@@ -208,7 +208,7 @@ const popularCompactCameras = [
   {
     id: 4,
     name: "Panasonic Lumix ZS200 / TZ200",
-    image: "/images/cameras/panasonic-zs200.webp",
+    image: "/images/cameras/hero-bg.webp",
     rating: 4.5,
     description: "Travel zoom compact with impressive 15x optical zoom",
     price: "$647.99",
@@ -240,7 +240,7 @@ const popularCompactCameras = [
   {
     id: 5,
     name: "Fujifilm X100V",
-    image: "/images/cameras/fujifilm-x100v.webp",
+    image: "/images/cameras/hero-bg.webp",
     rating: 4.9,
     description: "Premium compact with APS-C sensor and unique hybrid viewfinder",
     price: "$1,399.00",
@@ -268,7 +268,7 @@ const popularCompactCameras = [
       "Video features not as advanced"
     ],
     amazon_link: "https://www.amazon.com/Fujifilm-X100V-Digital-Camera-Silver/dp/B084B6D63Y"
-  }
+    }
 ];
 
 // Photography tips for Compact cameras
@@ -322,7 +322,12 @@ export default function CompactCameras() {
   const introTextRef = useRef(null);
   const camerasWrapperRef = useRef(null);
   const cameraCardsRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const parallaxBgRef = useRef(null); // Parallax efekti için referans eklendi
+  const guideSectionsRefs = useRef<(HTMLDivElement | null)[]>([]); // Rehber bölümleri için referans
+  const ctaSectionRef = useRef(null);
+  const tipsRef = useRef(null);
+  const categoriesRef = useRef(null);
+  const historyRef = useRef(null);
+  const parallaxBgRef = useRef(null);
 
   // Handle camera card hover
   const handleCardHover = (index: number | null) => {
@@ -371,9 +376,130 @@ export default function CompactCameras() {
       });
     }
 
-    // Other section animations
-    // ... other animations ...
+    // Intro section animation
+    gsap.from(introTitleRef.current, {
+      scrollTrigger: {
+        trigger: introTitleRef.current,
+        start: "top 80%"
+      },
+      opacity: 0,
+      y: 30,
+      duration: 0.6
+    });
 
+    gsap.from(introTextRef.current, {
+      scrollTrigger: {
+        trigger: introTextRef.current,
+        start: "top 80%"
+      },
+      opacity: 0,
+      y: 30,
+      duration: 0.6,
+      delay: 0.2
+    });
+
+    // Camera cards animation for the container
+    gsap.from(camerasWrapperRef.current, {
+      scrollTrigger: {
+        trigger: camerasWrapperRef.current,
+        start: "top 80%"
+      },
+      opacity: 0,
+      y: 40,
+      duration: 0.5
+    });
+
+    // Staggered animation for each camera card
+    cameraCardsRefs.current.forEach((card, index) => {
+      if (card) {
+        gsap.from(card, {
+          scrollTrigger: {
+            trigger: card,
+            start: "top 85%"
+          },
+          opacity: 0,
+          y: 50,
+          duration: 0.6,
+          delay: index * 0.15, // Kademeli gecikmeli animasyon
+          ease: "power3.out"
+        });
+      }
+    });
+
+    // Staggered animation for guide sections
+    guideSectionsRefs.current.forEach((section, index) => {
+      if (section) {
+        gsap.from(section, {
+          scrollTrigger: {
+            trigger: section,
+            start: "top 85%"
+          },
+          opacity: 0,
+          x: index % 2 === 0 ? -40 : 40, // Farklı yönlerden giriş efekti
+          duration: 0.7,
+          delay: index * 0.1,
+          ease: "power2.out"
+        });
+      }
+    });
+
+    // Animation for tips section
+    if (tipsRef.current) {
+    gsap.from(tipsRef.current, {
+      scrollTrigger: {
+        trigger: tipsRef.current,
+        start: "top 80%"
+      },
+      opacity: 0,
+      y: 30,
+      duration: 0.6
+    });
+    }
+
+    // Animation for categories section
+    if (categoriesRef.current) {
+    gsap.from(categoriesRef.current, {
+      scrollTrigger: {
+        trigger: categoriesRef.current,
+        start: "top 80%"
+      },
+      opacity: 0,
+      y: 30,
+      duration: 0.6
+    });
+    }
+
+    // Animation for history section
+    if (historyRef.current) {
+    gsap.from(historyRef.current, {
+      scrollTrigger: {
+        trigger: historyRef.current,
+        start: "top 80%"
+      },
+      opacity: 0,
+      y: 30,
+      duration: 0.6
+    });
+    }
+
+    // CTA section animation
+    if (ctaSectionRef.current) {
+    gsap.from(ctaSectionRef.current, {
+      scrollTrigger: {
+        trigger: ctaSectionRef.current,
+        start: "top 80%"
+      },
+      opacity: 0,
+      y: 30,
+      duration: 0.8,
+      ease: "power2.out"
+    });
+    }
+
+    // Cleanup function
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
   }, []);
 
   return (
@@ -384,7 +510,7 @@ export default function CompactCameras() {
         <div className="absolute inset-0 bg-gray-900/70 z-10"></div>
         <div 
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(/images/cameras/compact-hero.webp)` }}
+          style={{ backgroundImage: `url(/images/cameras/hero-bg.webp)` }}
           ref={parallaxBgRef}
         ></div>
         
@@ -427,7 +553,7 @@ export default function CompactCameras() {
           </div>
         </div>
       </section>
-      
+
       {/* Most Popular Compact Cameras Section */}
       <section id="popular-cameras" className="py-16 px-4 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
         <div className="container mx-auto">
@@ -437,11 +563,18 @@ export default function CompactCameras() {
           </p>
 
           {/* Popular Compact Camera Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" ref={camerasWrapperRef}>
             {popularCompactCameras.map((camera, index) => (
               <div 
                 key={camera.id} 
                 className="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg transition-all duration-500 transform hover:shadow-xl hover:-translate-y-2"
+                ref={(el) => {
+                  if (cameraCardsRefs.current) {
+                    cameraCardsRefs.current[index] = el;
+                  }
+                }}
+                onMouseEnter={() => handleCardHover(index)}
+                onMouseLeave={() => handleCardHover(null)}
               >
                 {/* Camera Image */}
                 <div className="h-64 overflow-hidden relative bg-gray-100 dark:bg-gray-700">
@@ -475,7 +608,9 @@ export default function CompactCameras() {
                 <div className="p-6">
                   <h3 className="text-xl font-bold mb-3 text-gray-800 dark:text-white group">
                     {camera.name}
-                    <span className="block h-0.5 bg-blue-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+                    <span className={`block h-0.5 bg-blue-500 transform transition-transform duration-300 ${
+                      hoveredCard === index ? 'scale-x-100' : 'scale-x-0'
+                    }`}></span>
                   </h3>
                   
                   {/* Price */}
@@ -488,8 +623,12 @@ export default function CompactCameras() {
                     <h4 className="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-2">Key Features:</h4>
                     <ul className="space-y-1">
                       {camera.key_features.slice(0, 4).map((feature, idx) => (
-                        <li key={idx} className="flex items-start gap-2 text-sm text-gray-600 dark:text-gray-300">
-                          <FaCheckCircle className="text-green-500 mt-1 flex-shrink-0" />
+                        <li key={idx} className={`flex items-start gap-2 text-sm text-gray-600 dark:text-gray-300 transition-transform duration-300 ${
+                          hoveredCard === index ? `transform translate-x-${idx+1}` : ''
+                        }`}>
+                          <FaCheckCircle className={`text-green-500 mt-1 flex-shrink-0 ${
+                            hoveredCard === index ? 'animate-pulse' : ''
+                          }`} />
                           <span>{feature}</span>
                         </li>
                       ))}
@@ -501,7 +640,9 @@ export default function CompactCameras() {
                     href={camera.amazon_link} 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="w-full px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white rounded-lg flex items-center gap-2 justify-center transition-all duration-300"
+                    className={`w-full px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white rounded-lg flex items-center gap-2 justify-center transition-all duration-300 ${
+                      hoveredCard === index ? 'bg-orange-600 shadow-lg' : ''
+                    }`}
                   >
                     <FaAmazon /> View on Amazon
                   </a>
@@ -613,7 +754,7 @@ export default function CompactCameras() {
       </section>
 
       {/* Tips Section */}
-      <section id="photography-tips" className="py-16 px-4 bg-gray-100 dark:bg-gray-700">
+      <section id="photography-tips" className="py-16 px-4 bg-gray-100 dark:bg-gray-700" ref={tipsRef}>
         <div className="container mx-auto max-w-5xl">
           <h2 className="text-3xl font-bold mb-6 text-center text-gray-800 dark:text-white">
             Compact Camera Tips & Techniques
@@ -641,7 +782,7 @@ export default function CompactCameras() {
       </section>
 
       {/* Categories Section */}
-      <section id="compact-categories" className="py-16 px-4 bg-white dark:bg-gray-800">
+      <section id="compact-categories" className="py-16 px-4 bg-white dark:bg-gray-800" ref={categoriesRef}>
         <div className="container mx-auto max-w-5xl">
           <h2 className="text-3xl font-bold mb-6 text-center text-gray-800 dark:text-white">
             Compact Camera Categories
@@ -675,7 +816,7 @@ export default function CompactCameras() {
       </section>
 
       {/* History Section */}
-      <section id="compact-history" className="py-16 px-4 bg-gray-50 dark:bg-gray-900">
+      <section id="compact-history" className="py-16 px-4 bg-gray-50 dark:bg-gray-900" ref={historyRef}>
         <div className="container mx-auto max-w-4xl">
           <div className="flex items-center gap-3 mb-6 justify-center">
             <MdOutlineHistory className="text-3xl text-purple-500 dark:text-purple-400" />
@@ -722,6 +863,56 @@ export default function CompactCameras() {
           
           <div className="mt-12 text-gray-400 text-sm">
             <p>Our reviews are based on extensive testing and research. We may earn a commission through affiliate links at no extra cost to you.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Compact Camera Buying Guide */}
+      <section id="buying-guide" className="py-16 px-4 bg-gray-50 dark:bg-gray-900">
+        <div className="container mx-auto max-w-4xl">
+          <h2 className="text-3xl font-bold mb-10 text-gray-800 dark:text-white text-center">Compact Camera Buying Guide</h2>
+          
+          <div className="space-y-8">
+            {[
+              {
+                title: "Sensor Size",
+                content: "Compact cameras come with varying sensor sizes from 1/2.3\" (smallest) to 1\" to APS-C (largest). Larger sensors generally produce better image quality and low-light performance, but make the camera larger and more expensive.",
+                icon: <MdSettings className="text-2xl" />
+              },
+              {
+                title: "Zoom Range vs. Lens Quality",
+                content: "Consider the trade-off between zoom range and lens quality. Cameras with extensive zoom ranges often compromise on lens quality and maximum aperture. Fixed-lens compacts often have superior optics but no zoom flexibility.",
+                icon: <MdCameraAlt className="text-2xl" />
+              },
+              {
+                title: "Viewfinder Options",
+                content: "Some premium compacts offer electronic viewfinders (EVFs) which can be invaluable in bright sunlight. Consider whether a built-in EVF, pop-up EVF, or LCD-only design meets your shooting style needs.",
+                icon: <FaEye className="text-2xl" />
+              },
+              {
+                title: "Controls & Customization",
+                content: "Advanced users should look for cameras with manual controls and customizable buttons. Premium compacts often offer DSLR-like control wheels and function buttons that streamline your shooting experience.",
+                icon: <FaSlidersH className="text-2xl" />
+              }
+            ].map((section, index) => (
+              <div key={index} ref={(el) => {
+                if (guideSectionsRefs.current) {
+                  guideSectionsRefs.current[index] = el;
+                }
+              }}>
+                <div className="flex gap-5 items-start bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-300">
+                  <div className="flex-shrink-0 bg-gradient-to-br from-purple-100 to-blue-100 dark:from-purple-900 dark:to-blue-900 p-3 rounded-lg">
+                    <span className="text-purple-600 dark:text-purple-300 text-xl">
+                      {section.icon}
+                    </span>
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold mb-3 text-gray-800 dark:text-white">{section.title}</h3>
+                    <p className="text-gray-600 dark:text-gray-300">{section.content.replace("'", "&apos;")}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>

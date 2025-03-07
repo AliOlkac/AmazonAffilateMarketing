@@ -1,9 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 "use client";
 
-import Link from "next/link";
 import { FaCamera, FaInfoCircle, FaStar, FaCheckCircle, FaAmazon, FaShoppingCart } from "react-icons/fa";
-import { MdPhotoCamera, MdCameraAlt, MdOutlineHistory } from "react-icons/md";
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -152,7 +150,7 @@ const popularActionCameras = [
   {
     id: 1,
     name: "GoPro HERO11 Black",
-    image: "/images/cameras/gopro-hero11.webp",
+    image: "/images/cameras/hero-bg.webp",
     rating: 4.8,
     description: "Flagship action camera with revolutionary sensor and unmatched stabilization",
     price: "$399.99",
@@ -184,7 +182,7 @@ const popularActionCameras = [
   {
     id: 2,
     name: "DJI Osmo Action 4",
-    image: "/images/cameras/dji-action4.webp",
+    image: "/images/cameras/hero-bg.webp",
     rating: 4.7,
     description: "Feature-rich action camera with exceptional low-light performance and magnetic mounting",
     price: "$379.00",
@@ -216,7 +214,7 @@ const popularActionCameras = [
   {
     id: 3,
     name: "Insta360 ONE RS",
-    image: "/images/cameras/insta360-one-rs.webp",
+    image: "/images/cameras/hero-bg.webp",
     rating: 4.6,
     description: "Modular action camera system with interchangeable lenses including 360° capabilities",
     price: "$299.99",
@@ -248,7 +246,7 @@ const popularActionCameras = [
   {
     id: 4,
     name: "AKASO Brave 7 LE",
-    image: "/images/cameras/akaso-brave7.webp",
+    image: "/images/cameras/hero-bg.webp",
     rating: 4.4,
     description: "Budget-friendly action camera with dual screens and impressive specifications",
     price: "$139.99",
@@ -280,7 +278,7 @@ const popularActionCameras = [
   {
     id: 5,
     name: "Sony RX0 II",
-    image: "/images/cameras/sony-rx0ii.webp",
+    image: "/images/cameras/hero-bg.webp",
     rating: 4.5,
     description: "Premium compact action camera with 1-inch sensor and professional image quality",
     price: "$698.00",
@@ -323,7 +321,12 @@ export default function ActionCameras() {
   const introTextRef = useRef(null);
   const camerasWrapperRef = useRef(null);
   const cameraCardsRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const parallaxBgRef = useRef(null); // Parallax efekti için referans eklendi
+  const guideSectionsRefs = useRef<(HTMLDivElement | null)[]>([]); // Rehber bölümleri için referans
+  const ctaSectionRef = useRef(null);
+  const tipsRef = useRef(null);
+  const categoriesRef = useRef(null);
+  const historyRef = useRef(null);
+  const parallaxBgRef = useRef(null);
 
   // Handle camera card hover
   const handleCardHover = (index: number | null) => {
@@ -372,9 +375,130 @@ export default function ActionCameras() {
       });
     }
 
-    // Other section animations
-    // ... other animations ...
+    // Intro section animation
+    gsap.from(introTitleRef.current, {
+      scrollTrigger: {
+        trigger: introTitleRef.current,
+        start: "top 80%"
+      },
+      opacity: 0,
+      y: 30,
+      duration: 0.6
+    });
 
+    gsap.from(introTextRef.current, {
+      scrollTrigger: {
+        trigger: introTextRef.current,
+        start: "top 80%"
+      },
+      opacity: 0,
+      y: 30,
+      duration: 0.6,
+      delay: 0.2
+    });
+
+    // Camera cards animation for the container
+    gsap.from(camerasWrapperRef.current, {
+      scrollTrigger: {
+        trigger: camerasWrapperRef.current,
+        start: "top 80%"
+      },
+      opacity: 0,
+      y: 40,
+      duration: 0.5
+    });
+
+    // Staggered animation for each camera card
+    cameraCardsRefs.current.forEach((card, index) => {
+      if (card) {
+        gsap.from(card, {
+          scrollTrigger: {
+            trigger: card,
+            start: "top 85%"
+          },
+          opacity: 0,
+          y: 50,
+          duration: 0.6,
+          delay: index * 0.15, // Kademeli gecikmeli animasyon
+          ease: "power3.out"
+        });
+      }
+    });
+
+    // Staggered animation for guide sections
+    guideSectionsRefs.current.forEach((section, index) => {
+      if (section) {
+        gsap.from(section, {
+          scrollTrigger: {
+            trigger: section,
+            start: "top 85%"
+          },
+          opacity: 0,
+          x: index % 2 === 0 ? -40 : 40, // Farklı yönlerden giriş efekti
+          duration: 0.7,
+          delay: index * 0.1,
+          ease: "power2.out"
+        });
+      }
+    });
+
+    // Animation for tips section
+    if (tipsRef.current) {
+      gsap.from(tipsRef.current, {
+        scrollTrigger: {
+          trigger: tipsRef.current,
+          start: "top 80%"
+        },
+        opacity: 0,
+        y: 30,
+        duration: 0.6
+      });
+    }
+
+    // Animation for categories section
+    if (categoriesRef.current) {
+      gsap.from(categoriesRef.current, {
+        scrollTrigger: {
+          trigger: categoriesRef.current,
+          start: "top 80%"
+        },
+        opacity: 0,
+        y: 30,
+        duration: 0.6
+      });
+    }
+
+    // Animation for history section
+    if (historyRef.current) {
+      gsap.from(historyRef.current, {
+        scrollTrigger: {
+          trigger: historyRef.current,
+          start: "top 80%"
+        },
+        opacity: 0,
+        y: 30,
+        duration: 0.6
+      });
+    }
+
+    // CTA section animation
+    if (ctaSectionRef.current) {
+      gsap.from(ctaSectionRef.current, {
+        scrollTrigger: {
+          trigger: ctaSectionRef.current,
+          start: "top 80%"
+        },
+        opacity: 0,
+        y: 30,
+        duration: 0.8,
+        ease: "power2.out"
+      });
+    }
+
+    // Cleanup function
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
   }, []);
 
   return (
@@ -385,7 +509,7 @@ export default function ActionCameras() {
         <div className="absolute inset-0 bg-gray-900/70 z-10"></div>
         <div 
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(/images/cameras/action-hero.webp)` }}
+          style={{ backgroundImage: `url(/images/cameras/hero-bg.webp)` }}
           ref={parallaxBgRef}
         ></div>
         
@@ -438,11 +562,18 @@ export default function ActionCameras() {
           </p>
 
           {/* Popular Action Camera Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" ref={camerasWrapperRef}>
             {popularActionCameras.map((camera, index) => (
               <div 
                 key={camera.id} 
                 className="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg transition-all duration-500 transform hover:shadow-xl hover:-translate-y-2"
+                ref={(el) => {
+                  if (cameraCardsRefs.current) {
+                    cameraCardsRefs.current[index] = el;
+                  }
+                }}
+                onMouseEnter={() => handleCardHover(index)}
+                onMouseLeave={() => handleCardHover(null)}
               >
                 {/* Camera Image */}
                 <div className="h-64 overflow-hidden relative bg-gray-100 dark:bg-gray-700">
@@ -476,7 +607,9 @@ export default function ActionCameras() {
                 <div className="p-6">
                   <h3 className="text-xl font-bold mb-3 text-gray-800 dark:text-white group">
                     {camera.name}
-                    <span className="block h-0.5 bg-blue-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+                    <span className={`block h-0.5 bg-blue-500 transform transition-transform duration-300 ${
+                      hoveredCard === index ? 'scale-x-100' : 'scale-x-0'
+                    }`}></span>
                   </h3>
                   
                   {/* Price */}
@@ -489,20 +622,26 @@ export default function ActionCameras() {
                     <h4 className="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-2">Key Features:</h4>
                     <ul className="space-y-1">
                       {camera.key_features.slice(0, 4).map((feature, idx) => (
-                        <li key={idx} className="flex items-start gap-2 text-sm text-gray-600 dark:text-gray-300">
-                          <FaCheckCircle className="text-green-500 mt-1 flex-shrink-0" />
+                        <li key={idx} className={`flex items-start gap-2 text-sm text-gray-600 dark:text-gray-300 transition-transform duration-300 ${
+                          hoveredCard === index ? `transform translate-x-${idx+1}` : ''
+                        }`}>
+                          <FaCheckCircle className={`text-green-500 mt-1 flex-shrink-0 ${
+                            hoveredCard === index ? 'animate-pulse' : ''
+                          }`} />
                           <span>{feature}</span>
                         </li>
                       ))}
                     </ul>
                   </div>
-                  
+
                   {/* Amazon Link */}
                   <a 
                     href={camera.amazon_link} 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="w-full px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white rounded-lg flex items-center gap-2 justify-center transition-all duration-300"
+                    className={`w-full px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white rounded-lg flex items-center gap-2 justify-center transition-all duration-300 ${
+                      hoveredCard === index ? 'bg-orange-600 shadow-lg' : ''
+                    }`}
                   >
                     <FaAmazon /> View on Amazon
                   </a>
@@ -516,96 +655,56 @@ export default function ActionCameras() {
       {/* Top Action Cameras Section */}
       <section id="top-cameras" className="py-16 px-4 bg-white dark:bg-gray-800 rounded-t-[40px] shadow-lg">
         <div className="container mx-auto">
-          <h2 className="text-3xl font-bold mb-2 text-center text-gray-800 dark:text-white">
-            Best 5 Action Cameras for Every Adventure
-          </h2>
+          <h2 className="text-3xl font-bold mb-6 text-center text-gray-800 dark:text-white">Top Action Cameras of 2024</h2>
           <p className="text-lg text-center mb-12 text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            From extreme sports to underwater exploration, find the perfect action camera for your adventures
+            Our expert selection of the best action cameras for every adventure, based on performance, durability, and value
           </p>
 
-          {/* Camera Cards */}
-          <div ref={camerasWrapperRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {actionCameras.map((camera, index) => (
+          {/* Action Camera Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {actionCameras.map((camera) => (
               <div 
-                key={camera.id}
-                onMouseEnter={() => handleCardHover(index)}
-                onMouseLeave={() => handleCardHover(null)}
-                className={`bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg transition-all duration-500 transform ${
-                  hoveredCard === index ? 'scale-[1.02] shadow-2xl' : 'hover:shadow-xl hover:-translate-y-2'
-                }`}
+                key={camera.id} 
+                className="bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700"
               >
-                <div className="absolute top-2 left-2 bg-orange-600 text-white py-1 px-3 rounded-full text-sm font-medium z-10">
-                  {index === 0 && "Best Overall"}
-                  {index === 1 && "Best for Vlogging"}
-                  {index === 2 && "Best 360°"}
-                  {index === 3 && "Best Budget"}
-                  {index === 4 && "Best Professional"}
-                </div>
-                {/* Camera Image */}
-                <div className="h-72 md:h-80 lg:h-96 overflow-hidden relative bg-gray-100 dark:bg-gray-700">
+                <div className="h-56 overflow-hidden relative bg-gray-100 dark:bg-gray-700">
                   <Image 
                     src={camera.image} 
                     alt={camera.name}
                     fill
-                    quality={100}
-                    priority={index === 0}
-                    className="object-contain p-4 transition-transform duration-300 hover:scale-110"
-                    sizes="(max-width: 768px) 90vw, (max-width: 1200px) 45vw, 30vw"
+                    className="object-cover hover:scale-105 transition-transform duration-300"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
-                  {/* Rating badge overlay */}
-                  <div className="absolute top-2 right-2 bg-yellow-400 text-gray-900 py-1 px-3 rounded-full flex items-center gap-1 font-medium z-10">
-                    <FaStar className={`${hoveredCard === index ? 'animate-pulse' : ''}`} /> {camera.rating}
+                  <div className="absolute top-2 right-2 bg-yellow-400 text-gray-900 py-1 px-3 rounded-full flex items-center gap-1 font-medium">
+                    <FaStar /> {camera.rating}
                   </div>
                 </div>
-
-                {/* Camera Info */}
+                
                 <div className="p-6">
-                  <h3 className="text-xl font-bold mb-2 text-gray-800 dark:text-white group">
-                    {camera.name}
-                    <span className={`block h-0.5 bg-orange-500 transform scale-x-0 transition-transform duration-300 ${
-                      hoveredCard === index ? 'scale-x-100' : ''
-                    }`}></span>
-                  </h3>
+                  <h3 className="text-xl font-bold mb-2 text-gray-800 dark:text-white">{camera.name}</h3>
                   <p className="text-gray-600 dark:text-gray-300 mb-4">{camera.description}</p>
+                  <div className="text-xl font-bold text-blue-600 dark:text-blue-400 mb-4">{camera.price}</div>
                   
                   <div className="mb-4">
                     <h4 className="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-2">Key Features:</h4>
-                    <ul className="space-y-2">
-                      {camera.key_features.map((feature, idx) => (
-                        <li key={idx} className={`flex items-start gap-2 text-sm text-gray-600 dark:text-gray-300 transition-transform duration-300 ${
-                          hoveredCard === index ? `transform translate-x-${idx}` : ''
-                        }`}>
-                          <FaCheckCircle className={`text-orange-500 mt-1 flex-shrink-0 ${
-                            hoveredCard === index ? 'animate-bounce' : ''
-                          }`} />
+                    <ul className="space-y-1">
+                      {camera.key_features.slice(0, 3).map((feature, idx) => (
+                        <li key={idx} className="flex items-start gap-2 text-sm text-gray-600 dark:text-gray-300">
+                          <FaCheckCircle className="text-green-500 mt-1 flex-shrink-0" />
                           <span>{feature}</span>
                         </li>
                       ))}
                     </ul>
                   </div>
-
-                  {/* Detailed description */}
-                  <div className={`mb-4 overflow-hidden transition-all duration-300 ${
-                    hoveredCard === index ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'
-                  }`}>
-                    <p className="text-sm text-gray-600 dark:text-gray-300 italic">
-                      {camera.detailed_description}
-                    </p>
-                  </div>
-
-                  <div className="flex items-center justify-between">
-                    <div className="text-xl font-bold text-gray-800 dark:text-white">{camera.price}</div>
-                    <a 
-                      href={camera.amazon_link} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className={`px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white rounded-lg flex items-center gap-2 transition-all duration-300 ${
-                        hoveredCard === index ? 'bg-orange-600 shadow-lg' : ''
-                      }`}
-                    >
-                      <FaAmazon className={hoveredCard === index ? 'animate-bounce' : ''} /> View on Amazon
-                    </a>
-                  </div>
+                  
+                  <a 
+                    href={camera.amazon_link} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="block text-center w-full px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white rounded-lg transition-colors duration-300 flex items-center justify-center gap-2"
+                  >
+                    <FaAmazon /> View on Amazon
+                  </a>
                 </div>
               </div>
             ))}
@@ -613,111 +712,76 @@ export default function ActionCameras() {
         </div>
       </section>
 
-      {/* Tips Section */}
-      <section id="photography-tips" className="py-16 px-4 bg-gray-100 dark:bg-gray-700">
+      {/* Photography Tips Section */}
+      <section id="guide" className="py-16 px-4 bg-gray-50 dark:bg-gray-900">
         <div className="container mx-auto max-w-5xl">
-          <h2 className="text-3xl font-bold mb-6 text-center text-gray-800 dark:text-white">
-            Action Camera Tips
-          </h2>
-          <p className="text-lg text-center mb-10 text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            Master your action camera with these essential tips and techniques
+          <h2 className="text-3xl font-bold mb-2 text-center text-gray-800 dark:text-white">Action Camera Photography Tips</h2>
+          <p className="text-lg text-center mb-12 text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+            Expert advice to help you get the most out of your action camera
           </p>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8" ref={tipsRef}>
             {photographyTips.map((tip, index) => (
-              <div key={index} className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
-                <div className="flex items-start gap-4">
-                  <div className="bg-orange-100 dark:bg-orange-900 p-3 rounded-full">
-                    <MdPhotoCamera className="text-orange-500 dark:text-orange-300 text-xl" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold mb-2 text-gray-800 dark:text-white">{tip.title}</h3>
-                    <p className="text-gray-600 dark:text-gray-300">{tip.content}</p>
-                  </div>
-                </div>
+              <div key={index} className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-all">
+                <h3 className="text-xl font-bold mb-3 text-gray-800 dark:text-white">{tip.title}</h3>
+                <p className="text-gray-600 dark:text-gray-300">{tip.content}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Categories Section */}
-      <section id="action-categories" className="py-16 px-4 bg-white dark:bg-gray-800">
+      {/* Use Case Categories Section */}
+      <section className="py-16 px-4 bg-white dark:bg-gray-800">
         <div className="container mx-auto max-w-5xl">
-          <h2 className="text-3xl font-bold mb-6 text-center text-gray-800 dark:text-white">
-            Action Camera Categories
-          </h2>
-          <p className="text-lg text-center mb-10 text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            Find the perfect action camera for your specific needs
+          <h2 className="text-3xl font-bold mb-2 text-center text-gray-800 dark:text-white">Action Camera Categories</h2>
+          <p className="text-lg text-center mb-12 text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+            Different types of action cameras for specific uses
           </p>
-          
-          <div className="space-y-8">
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8" ref={categoriesRef}>
             {cameraCategories.map((category, index) => (
-              <div key={index} className="bg-gray-50 dark:bg-gray-700 p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
-                <div className="flex flex-col md:flex-row gap-6">
-                  <div className="flex-shrink-0 flex items-start justify-center">
-                    <div className="bg-orange-100 dark:bg-orange-900 p-4 rounded-full">
-                      <MdCameraAlt className="text-orange-500 dark:text-orange-300 text-3xl" />
-                    </div>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold mb-2 text-gray-800 dark:text-white">{category.title}</h3>
-                    <p className="text-gray-600 dark:text-gray-300 mb-3">{category.description}</p>
-                    <div className="bg-gray-100 dark:bg-gray-600 p-3 rounded-lg">
-                      <span className="block text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">Popular Models:</span>
-                      <span className="text-gray-700 dark:text-gray-300">{category.examples}</span>
-                    </div>
-                  </div>
-                </div>
+              <div 
+                key={index} 
+                className="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-gray-700 dark:to-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-all"
+                ref={(el) => {
+                  if (guideSectionsRefs.current) {
+                    guideSectionsRefs.current[index] = el;
+                  }
+                }}
+              >
+                <h3 className="text-xl font-bold mb-3 text-gray-800 dark:text-white">{category.title}</h3>
+                <p className="text-gray-600 dark:text-gray-300 mb-4">{category.description}</p>
+                <p className="text-sm font-medium text-gray-500 dark:text-gray-400">
+                  Examples: <span className="text-blue-600 dark:text-blue-400">{category.examples}</span>
+                </p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* History Section */}
-      <section id="action-history" className="py-16 px-4 bg-gray-50 dark:bg-gray-900">
-        <div className="container mx-auto max-w-4xl">
-          <div className="flex items-center gap-3 mb-6 justify-center">
-            <MdOutlineHistory className="text-3xl text-orange-500 dark:text-orange-400" />
-            <h2 className="text-3xl font-bold text-gray-800 dark:text-white">The Evolution of Action Cameras</h2>
-          </div>
-          
-          <div className="space-y-6 text-gray-600 dark:text-gray-300">
-            <p className="text-lg">
-              Whether you&apos;re a YouTube creator, adventure sports enthusiast, or travel vlogger, action cameras have become essential tools for capturing dynamic moments in stunning quality.
-            </p>
-            <p className="text-lg">
-              The evolution of action cameras has been remarkable, from basic waterproof cameras to today&apos;s sophisticated devices with advanced stabilization, 4K resolution, and AI-powered features. These innovations have transformed how we capture life&apos;s most exciting moments.
-            </p>
-            <p className="text-lg">
-              Today&apos;s action cameras continue to push boundaries with features like 5K resolution, 360-degree capture, and AI-powered stabilization, making them more versatile than ever before.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 px-4 bg-gradient-to-br from-orange-900 to-black text-white relative overflow-hidden">
+      {/* Call-to-Action Section */}
+      <section className="py-20 px-4 bg-gradient-to-br from-blue-900 to-black text-white relative overflow-hidden" ref={ctaSectionRef}>
         <div className="absolute inset-0 opacity-20">
-          <div className="absolute top-0 left-0 w-64 h-64 bg-orange-500 rounded-full filter blur-3xl"></div>
-          <div className="absolute bottom-0 right-0 w-80 h-80 bg-red-500 rounded-full filter blur-3xl"></div>
-          <div className="absolute top-1/2 left-1/3 w-40 h-40 bg-yellow-400 rounded-full filter blur-2xl"></div>
+          <div className="absolute top-0 left-0 w-64 h-64 bg-blue-500 rounded-full filter blur-3xl"></div>
+          <div className="absolute bottom-0 right-0 w-80 h-80 bg-cyan-500 rounded-full filter blur-3xl"></div>
+          <div className="absolute top-1/2 left-1/3 w-40 h-40 bg-teal-400 rounded-full filter blur-2xl"></div>
         </div>
 
         <div className="container mx-auto text-center relative z-10">
           <div className="max-w-3xl mx-auto bg-white/5 backdrop-blur-lg p-10 rounded-3xl border border-white/10 shadow-lg">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready for Your Next Adventure?</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Capture Your Adventures?</h2>
             <p className="text-xl max-w-2xl mx-auto mb-8">
-              Find the perfect action camera to capture your most exciting moments and share your adventures with the world.
+              Browse our selection of the best action cameras and find the perfect companion for your next adventure.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="#top-cameras" className="px-8 py-4 bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700 rounded-full font-medium text-lg transition duration-300 shadow-lg shadow-orange-500/20 hover:shadow-orange-600/30 flex items-center justify-center gap-2">
-                <FaShoppingCart /> Explore Cameras
-              </Link>
-              <Link href="#buying-guide" className="px-8 py-4 bg-white/10 hover:bg-white/20 border border-white/30 rounded-full font-medium text-lg transition duration-300 backdrop-blur-sm flex items-center justify-center gap-2">
+              <a href="#top-cameras" className="px-8 py-4 bg-gradient-to-r from-blue-500 to-cyan-600 hover:from-blue-600 hover:to-cyan-700 rounded-full font-medium text-lg transition duration-300 shadow-lg shadow-blue-500/20 hover:shadow-blue-600/30 flex items-center justify-center gap-2">
+                <FaCamera /> Explore Cameras
+              </a>
+              <a href="#guide" className="px-8 py-4 bg-white/10 hover:bg-white/20 border border-white/30 rounded-full font-medium text-lg transition duration-300 backdrop-blur-sm flex items-center justify-center gap-2">
                 <FaInfoCircle /> Read Buying Guide
-              </Link>
+              </a>
             </div>
           </div>
           
@@ -728,4 +792,4 @@ export default function ActionCameras() {
       </section>
     </div>
   );
-} 
+}
