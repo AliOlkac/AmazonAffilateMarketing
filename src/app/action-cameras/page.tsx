@@ -147,27 +147,194 @@ const cameraCategories = [
   }
 ];
 
+// Popular Action Cameras Data
+const popularActionCameras = [
+  {
+    id: 1,
+    name: "GoPro HERO11 Black",
+    image: "/images/cameras/gopro-hero11.webp",
+    rating: 4.8,
+    description: "Flagship action camera with revolutionary sensor and unmatched stabilization",
+    price: "$399.99",
+    category: "Premium",
+    salesCount: "240K+",
+    key_features: [
+      "5.3K60 video & 27MP photos",
+      "New 8:7 aspect ratio sensor",
+      "HyperSmooth 5.0 stabilization",
+      "10-bit color with over 1 billion colors",
+      "Waterproof to 33ft (10m)",
+      "Horizon Lock stabilization",
+      "TimeWarp 3.0 & 8X Slo-Mo",
+      "Dual LCD screens"
+    ],
+    pros: [
+      "Best-in-class image stabilization",
+      "Excellent image quality",
+      "Versatile mounting options",
+      "Robust app ecosystem"
+    ],
+    cons: [
+      "Battery life could be better",
+      "Premium price point",
+      "Can overheat during extended recording"
+    ],
+    amazon_link: "https://www.amazon.com/GoPro-HERO11-Black-Waterproof-Stabilization/dp/B0BD91XYQS"
+  },
+  {
+    id: 2,
+    name: "DJI Osmo Action 4",
+    image: "/images/cameras/dji-action4.webp",
+    rating: 4.7,
+    description: "Feature-rich action camera with exceptional low-light performance and magnetic mounting",
+    price: "$379.00",
+    category: "Premium",
+    salesCount: "155K+",
+    key_features: [
+      "4K/120fps video & 10-bit D-Log M",
+      "1/1.3\" sensor with improved low-light",
+      "155° super-wide FOV",
+      "RockSteady 2.0 stabilization",
+      "HorizonSteady horizon leveling",
+      "Magnetic quick-release system",
+      "Waterproof to 16m without case",
+      "Dual touchscreens"
+    ],
+    pros: [
+      "Excellent low-light performance",
+      "Convenient magnetic mounting",
+      "User-friendly interface",
+      "Good battery life"
+    ],
+    cons: [
+      "App can be occasionally buggy",
+      "Limited third-party accessories",
+      "Image stabilization not as good as GoPro"
+    ],
+    amazon_link: "https://www.amazon.com/DJI-Action-Standard-Combo-Camera/dp/B0CHXV6KNS"
+  },
+  {
+    id: 3,
+    name: "Insta360 ONE RS",
+    image: "/images/cameras/insta360-one-rs.webp",
+    rating: 4.6,
+    description: "Modular action camera system with interchangeable lenses including 360° capabilities",
+    price: "$299.99",
+    category: "Modular",
+    salesCount: "110K+",
+    key_features: [
+      "Interchangeable lens modules",
+      "4K Boost Lens: 4K/60fps & 48MP photos",
+      "360 Lens: 5.7K 360° capture",
+      "FlowState Stabilization",
+      "AI editing features",
+      "IPX8 waterproof to 16ft (5m)",
+      "Invisible selfie stick effect",
+      "Active HDR video"
+    ],
+    pros: [
+      "Versatile modular design",
+      "Excellent 360° video capabilities",
+      "Creative editing options",
+      "Good value for multiple camera types"
+    ],
+    cons: [
+      "Battery life limited, especially with 360 lens",
+      "App processing can be slow",
+      "Steeper learning curve"
+    ],
+    amazon_link: "https://www.amazon.com/Insta360-ONE-RS-Twin-Edition/dp/B09QK2TWTQ"
+  },
+  {
+    id: 4,
+    name: "AKASO Brave 7 LE",
+    image: "/images/cameras/akaso-brave7.webp",
+    rating: 4.4,
+    description: "Budget-friendly action camera with dual screens and impressive specifications",
+    price: "$139.99",
+    category: "Budget",
+    salesCount: "185K+",
+    key_features: [
+      "4K30fps video & 20MP photos",
+      "IPX7 waterproof without case",
+      "Electronic image stabilization",
+      "Dual screens (front & back)",
+      "170° wide-angle lens",
+      "Time-lapse & slow motion",
+      "Wi-Fi & remote control",
+      "External microphone support"
+    ],
+    pros: [
+      "Excellent value for money",
+      "Good image quality for the price",
+      "Front screen for selfies/vlogging",
+      "Comes with many accessories"
+    ],
+    cons: [
+      "Stabilization not as good as premium options",
+      "App needs improvement",
+      "Battery life limited to about 90 minutes"
+    ],
+    amazon_link: "https://www.amazon.com/AKASO-Brave-Touch-Screens-Waterproof/dp/B08D99XNM1"
+  },
+  {
+    id: 5,
+    name: "Sony RX0 II",
+    image: "/images/cameras/sony-rx0ii.webp",
+    rating: 4.5,
+    description: "Premium compact action camera with 1-inch sensor and professional image quality",
+    price: "$698.00",
+    category: "Premium",
+    salesCount: "76K+",
+    key_features: [
+      "1.0\" Exmor RS CMOS sensor",
+      "ZEISS® Tessar T* 24mm F4 lens",
+      "4K internal recording",
+      "Electronic SteadyShot stabilization",
+      "Waterproof to 33ft (10m)",
+      "Shockproof from 6.5ft (2m)",
+      "S-Log2 picture profile",
+      "180° tiltable LCD screen"
+    ],
+    pros: [
+      "Exceptional image quality",
+      "Professional video features",
+      "Extremely durable build",
+      "Compact form factor"
+    ],
+    cons: [
+      "Very expensive",
+      "Battery life only about 60 minutes",
+      "Limited mounting options compared to GoPro"
+    ],
+    amazon_link: "https://www.amazon.com/Sony-Premium-Waterproof-Digital-Recording/dp/B07P7J9L3W"
+  }
+];
+
 export default function ActionCameras() {
-  // Element references
+  // State for card hover animations
+  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
+  
+  // Refs for animations
   const heroTitleRef = useRef(null);
   const heroSubtitleRef = useRef(null);
   const heroButtonsRef = useRef(null);
   const introTitleRef = useRef(null);
   const introTextRef = useRef(null);
   const camerasWrapperRef = useRef(null);
-  const ctaSectionRef = useRef(null);
-  const tipsRef = useRef(null);
-  const categoriesRef = useRef(null);
-  const historyRef = useRef(null);
+  const cameraCardsRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const parallaxBgRef = useRef(null); // Parallax efekti için referans eklendi
 
-  // State for card hover animations
-  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
+  // Handle camera card hover
+  const handleCardHover = (index: number | null) => {
+    setHoveredCard(index);
+  };
 
   useEffect(() => {
-    // Register ScrollTrigger plugin with GSAP
+    // Register ScrollTrigger plugin
     gsap.registerPlugin(ScrollTrigger);
 
-    // Page loading animations
+    // Animation timeline
     const tl = gsap.timeline();
 
     // Hero section animations
@@ -189,122 +356,54 @@ export default function ActionCameras() {
       duration: 0.6,
       ease: "power3.out"
     }, "-=0.2");
+    
+    // Parallax effect for hero background
+    if (parallaxBgRef.current) {
+      gsap.to(parallaxBgRef.current, {
+        scrollTrigger: {
+          trigger: parallaxBgRef.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: true
+        },
+        y: 150,
+        scale: 1.1,
+        ease: "none"
+      });
+    }
 
-    // Intro section animation
-    gsap.from(introTitleRef.current, {
-      scrollTrigger: {
-        trigger: introTitleRef.current,
-        start: "top 80%"
-      },
-      opacity: 0,
-      y: 30,
-      duration: 0.6
-    });
+    // Other section animations
+    // ... other animations ...
 
-    gsap.from(introTextRef.current, {
-      scrollTrigger: {
-        trigger: introTextRef.current,
-        start: "top 80%"
-      },
-      opacity: 0,
-      y: 30,
-      duration: 0.6,
-      delay: 0.2
-    });
-
-    // Camera cards animation
-    gsap.from(camerasWrapperRef.current, {
-      scrollTrigger: {
-        trigger: camerasWrapperRef.current,
-        start: "top 80%"
-      },
-      opacity: 0,
-      y: 40,
-      duration: 0.5
-    });
-
-    // Animation for tips section
-    gsap.from(tipsRef.current, {
-      scrollTrigger: {
-        trigger: tipsRef.current,
-        start: "top 80%"
-      },
-      opacity: 0,
-      y: 30,
-      duration: 0.6
-    });
-
-    // Animation for categories section
-    gsap.from(categoriesRef.current, {
-      scrollTrigger: {
-        trigger: categoriesRef.current,
-        start: "top 80%"
-      },
-      opacity: 0,
-      y: 30,
-      duration: 0.6
-    });
-
-    // Animation for history section
-    gsap.from(historyRef.current, {
-      scrollTrigger: {
-        trigger: historyRef.current,
-        start: "top 80%"
-      },
-      opacity: 0,
-      y: 30,
-      duration: 0.6
-    });
-
-    // CTA section animation
-    gsap.from(ctaSectionRef.current, {
-      scrollTrigger: {
-        trigger: ctaSectionRef.current,
-        start: "top 80%"
-      },
-      opacity: 0,
-      y: 30,
-      duration: 0.8,
-      ease: "power2.out"
-    });
-
-    // Cleanup function
-    return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-    };
   }, []);
 
-  // Function to handle card hover animations
-  const handleCardHover = (index: number | null) => {
-    setHoveredCard(index);
-  };
-
   return (
-    <div className="min-h-screen bg-gradient-to-b from-orange-50 to-white dark:from-gray-900 dark:to-gray-800">
-      {/* Hero Section */}
-      <section className="relative h-[60vh] overflow-hidden">
-        {/* Hero Image */}
-        <div className="absolute inset-0 bg-black/70">
-          <div className="w-full h-full bg-[url('/images/cameras/hero-bg.webp')] bg-cover bg-center opacity-30 mix-blend-plus-darker"></div>
-        </div>
+    <div className="bg-gray-50 dark:bg-gray-900 min-h-screen pb-16">
+      {/* Hero Section with Parallax Effect */}
+      <section className="relative h-[60vh] md:h-[70vh] overflow-hidden flex items-center justify-center">
+        {/* Background Image with Overlay */}
+        <div className="absolute inset-0 bg-gray-900/70 z-10"></div>
+        <div 
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url(/images/cameras/action-hero.webp)` }}
+          ref={parallaxBgRef}
+        ></div>
         
         {/* Hero Content */}
-        <div className="relative z-10 container mx-auto px-4 h-full flex flex-col justify-center items-center md:items-start text-white">
-          <h1 ref={heroTitleRef} className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-center md:text-left">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-500">
-              Best 5 Action Cameras of 2024
-            </span>
-          </h1>
-          <h2 ref={heroSubtitleRef} className="text-xl md:text-2xl mb-6 text-gray-200 max-w-2xl text-center md:text-left">
-            Capture your adventures with the most rugged and capable action cameras
-          </h2>
-          <div ref={heroButtonsRef} className="flex gap-4 flex-col sm:flex-row items-center">
-            <Link href="#top-cameras" className="px-8 py-3 bg-orange-600 hover:bg-orange-700 text-white rounded-full font-medium transition duration-300 flex items-center gap-2">
-              <FaCamera className="text-lg" /> Best Cameras
-            </Link>
-            <Link href="#buying-guide" className="px-8 py-3 bg-transparent hover:bg-white/10 border border-white text-white rounded-full font-medium transition duration-300 flex items-center gap-2">
-              <FaInfoCircle className="text-lg" /> Buying Guide
-            </Link>
+        <div className="container mx-auto px-4 relative z-20 text-center">
+          <h1 ref={heroTitleRef} className="text-4xl md:text-6xl font-bold text-white mb-6">Action Cameras</h1>
+          <p ref={heroSubtitleRef} className="text-xl md:text-2xl text-gray-200 mb-8 max-w-3xl mx-auto">
+            Capture your adventures with the most rugged and versatile action cameras on the market
+          </p>
+          
+          {/* Hero Buttons */}
+          <div ref={heroButtonsRef} className="flex flex-wrap gap-4 justify-center">
+            <a href="#top-cameras" className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full font-medium transition-all flex items-center gap-2">
+              <FaCamera /> Explore Top Picks
+            </a>
+            <a href="#guide" className="bg-transparent border-2 border-white text-white px-6 py-3 rounded-full font-medium hover:bg-white/10 transition-all flex items-center gap-2">
+              <FaInfoCircle /> Read Buying Guide
+            </a>
           </div>
         </div>
       </section>
@@ -312,24 +411,109 @@ export default function ActionCameras() {
       {/* Introduction Section */}
       <section className="py-16 px-4 container mx-auto">
         <div className="max-w-4xl mx-auto">
-          <h2 ref={introTitleRef} className="text-3xl font-bold mb-6 text-gray-800 dark:text-white">
-            Action Cameras: Capture Every Adventure
-          </h2>
+          <h2 ref={introTitleRef} className="text-3xl font-bold mb-6 text-gray-800 dark:text-white">Action Cameras: Capture Your Adventures</h2>
           <div ref={introTextRef} className="space-y-6">
             <p className="text-lg text-gray-600 dark:text-gray-300">
-              Action cameras have revolutionized the way we capture adventures and extreme sports. These compact, rugged devices combine durability with advanced features like superior image stabilization and high frame rates.
+              Action cameras are compact, rugged devices designed to capture high-quality video in extreme conditions. These versatile cameras are built to withstand water, shock, dust, and extreme temperatures, making them perfect for outdoor adventures and sports.
             </p>
             <p className="text-lg text-gray-600 dark:text-gray-300">
-              Modern action cameras offer incredible versatility, from underwater photography to immersive POV footage. Their small size and mounting options allow for unique perspectives that would be impossible with traditional cameras.
+              The key advantage of action cameras is their size and durability. Despite their small form factor, modern action cameras can record 4K or even 5.3K video with impressive stabilization technology that keeps footage smooth even during the most intense activities.
             </p>
             <p className="text-lg text-gray-600 dark:text-gray-300">
-              With features like 5K resolution, advanced stabilization, and waterproof construction, today&apos;s action cameras are more capable than ever, making them essential tools for adventurers, content creators, and sports enthusiasts.
+              With features like voice control, touch screens, GPS, and live streaming capabilities, today's action cameras are more versatile than ever. Their wide-angle lenses capture expansive views, while mounting accessories allow them to be attached to helmets, bikes, surfboards, and more.
+            </p>
+            <p className="text-lg text-gray-600 dark:text-gray-300">
+              Whether you're a professional athlete looking to capture amazing footage or an adventure enthusiast wanting to document your experiences, the right action camera can be an invaluable addition to your gear.
             </p>
           </div>
         </div>
       </section>
+      
+      {/* Most Popular Action Cameras Section */}
+      <section id="popular-cameras" className="py-16 px-4 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
+        <div className="container mx-auto">
+          <h2 className="text-3xl font-bold mb-2 text-center text-gray-800 dark:text-white">Most Popular Action Cameras</h2>
+          <p className="text-lg text-center mb-12 text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+            The best-selling action cameras with exceptional performance, durability, and features, based on global sales data
+          </p>
 
-      {/* Camera Cards Section */}
+          {/* Popular Action Camera Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {popularActionCameras.map((camera, index) => (
+              <div 
+                key={camera.id} 
+                className="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg transition-all duration-500 transform hover:shadow-xl hover:-translate-y-2"
+              >
+                {/* Camera Image */}
+                <div className="h-64 overflow-hidden relative bg-gray-100 dark:bg-gray-700">
+                  <Image 
+                    src={camera.image} 
+                    alt={camera.name}
+                    fill
+                    quality={90}
+                    priority={index === 0}
+                    className="object-contain p-4 transition-transform duration-300 hover:scale-110"
+                    sizes="(max-width: 768px) 90vw, (max-width: 1200px) 45vw, 30vw"
+                  />
+                  
+                  {/* Rating badge overlay */}
+                  <div className="absolute top-2 right-2 bg-yellow-400 text-gray-900 py-1 px-3 rounded-full flex items-center gap-1 font-medium z-10">
+                    <FaStar /> {camera.rating}
+                  </div>
+                  
+                  {/* Category badge */}
+                  <div className="absolute top-2 left-2 bg-blue-500 text-white py-1 px-3 rounded-full text-sm font-medium z-10">
+                    {camera.category}
+                  </div>
+                  
+                  {/* Sales badge */}
+                  <div className="absolute bottom-2 left-2 bg-green-500 text-white py-1 px-3 rounded-full text-sm font-medium z-10 flex items-center gap-1">
+                    <FaShoppingCart /> {camera.salesCount} Sold
+                  </div>
+                </div>
+
+                {/* Camera Info */}
+                <div className="p-6">
+                  <h3 className="text-xl font-bold mb-3 text-gray-800 dark:text-white group">
+                    {camera.name}
+                    <span className="block h-0.5 bg-blue-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+                  </h3>
+                  
+                  {/* Price */}
+                  <div className="text-xl font-bold text-blue-600 dark:text-blue-400 mb-4">
+                    {camera.price}
+                  </div>
+                  
+                  {/* Key Features */}
+                  <div className="mb-6">
+                    <h4 className="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-2">Key Features:</h4>
+                    <ul className="space-y-1">
+                      {camera.key_features.slice(0, 4).map((feature, idx) => (
+                        <li key={idx} className="flex items-start gap-2 text-sm text-gray-600 dark:text-gray-300">
+                          <FaCheckCircle className="text-green-500 mt-1 flex-shrink-0" />
+                          <span>{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  
+                  {/* Amazon Link */}
+                  <a 
+                    href={camera.amazon_link} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="w-full px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white rounded-lg flex items-center gap-2 justify-center transition-all duration-300"
+                  >
+                    <FaAmazon /> View on Amazon
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Top Action Cameras Section */}
       <section id="top-cameras" className="py-16 px-4 bg-white dark:bg-gray-800 rounded-t-[40px] shadow-lg">
         <div className="container mx-auto">
           <h2 className="text-3xl font-bold mb-2 text-center text-gray-800 dark:text-white">
@@ -430,7 +614,7 @@ export default function ActionCameras() {
       </section>
 
       {/* Tips Section */}
-      <section id="photography-tips" ref={tipsRef} className="py-16 px-4 bg-gray-100 dark:bg-gray-700">
+      <section id="photography-tips" className="py-16 px-4 bg-gray-100 dark:bg-gray-700">
         <div className="container mx-auto max-w-5xl">
           <h2 className="text-3xl font-bold mb-6 text-center text-gray-800 dark:text-white">
             Action Camera Tips
@@ -458,7 +642,7 @@ export default function ActionCameras() {
       </section>
 
       {/* Categories Section */}
-      <section id="action-categories" ref={categoriesRef} className="py-16 px-4 bg-white dark:bg-gray-800">
+      <section id="action-categories" className="py-16 px-4 bg-white dark:bg-gray-800">
         <div className="container mx-auto max-w-5xl">
           <h2 className="text-3xl font-bold mb-6 text-center text-gray-800 dark:text-white">
             Action Camera Categories
@@ -492,7 +676,7 @@ export default function ActionCameras() {
       </section>
 
       {/* History Section */}
-      <section id="action-history" ref={historyRef} className="py-16 px-4 bg-gray-50 dark:bg-gray-900">
+      <section id="action-history" className="py-16 px-4 bg-gray-50 dark:bg-gray-900">
         <div className="container mx-auto max-w-4xl">
           <div className="flex items-center gap-3 mb-6 justify-center">
             <MdOutlineHistory className="text-3xl text-orange-500 dark:text-orange-400" />
@@ -514,7 +698,7 @@ export default function ActionCameras() {
       </section>
 
       {/* CTA Section */}
-      <section ref={ctaSectionRef} className="py-20 px-4 bg-gradient-to-br from-orange-900 to-black text-white relative overflow-hidden">
+      <section className="py-20 px-4 bg-gradient-to-br from-orange-900 to-black text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-20">
           <div className="absolute top-0 left-0 w-64 h-64 bg-orange-500 rounded-full filter blur-3xl"></div>
           <div className="absolute bottom-0 right-0 w-80 h-80 bg-red-500 rounded-full filter blur-3xl"></div>

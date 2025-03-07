@@ -163,6 +163,18 @@ body {
   color: var(--color-compact);
 }
 
+.category-tag-dslr {
+  background-color: var(--color-dslr-bg);
+  box-shadow: var(--color-dslr-shadow);
+  color: var(--color-dslr);
+}
+
+.category-tag-vlog {
+  background-color: var(--color-vlog-bg);
+  box-shadow: var(--color-vlog-shadow);
+  color: var(--color-vlog);
+}
+
 /* Buton gradyanları için sınıflar */
 .btn-gradient-mirrorless {
   background: var(--gradient-mirrorless);
@@ -179,6 +191,16 @@ body {
   box-shadow: 0 0 15px rgba(255, 255, 0, 0.3);
 }
 
+.btn-gradient-dslr {
+  background: var(--gradient-dslr);
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+}
+
+.btn-gradient-vlog {
+  background: var(--gradient-vlog);
+  box-shadow: 0 0 15px rgba(255, 85, 0, 0.3);
+}
+
 /* Kart gölgeleri için sınıflar */
 .card-shadow-mirrorless {
   box-shadow: 0 0 25px rgba(255, 0, 255, 0.15);
@@ -190,4 +212,12 @@ body {
 
 .card-shadow-compact {
   box-shadow: 0 0 25px rgba(255, 255, 0, 0.15);
+}
+
+.card-shadow-dslr {
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.15);
+}
+
+.card-shadow-vlog {
+  box-shadow: 0 0 25px rgba(255, 85, 0, 0.15);
 }

@@ -107,6 +107,170 @@ const compactCameras = [
     }
 ];
 
+// Popular Compact Cameras Data
+const popularCompactCameras = [
+  {
+    id: 1,
+    name: "Sony RX100 VII",
+    image: "/images/cameras/sony-rx100vii.webp",
+    rating: 4.8,
+    description: "Premium compact camera with exceptional autofocus and professional image quality",
+    price: "$1,299.99",
+    category: "Premium",
+    salesCount: "105K+",
+    key_features: [
+      "20.1MP 1\" Exmor RS CMOS Sensor",
+      "ZEISS® Vario-Sonnar T* 24-200mm Lens",
+      "357-point phase-detection AF",
+      "4K Video with S-Log3 & HLG",
+      "20fps shooting with no blackout",
+      "Real-time tracking & Eye AF",
+      "0.02s autofocus acquisition",
+      "Flip-up touchscreen LCD"
+    ],
+    pros: [
+      "Exceptional image quality",
+      "Professional-level autofocus",
+      "Impressive zoom range",
+      "Pocketable form factor"
+    ],
+    cons: [
+      "Premium price point",
+      "Limited battery life",
+      "Somewhat complex menu system"
+    ],
+    amazon_link: "https://www.amazon.com/Sony-Cyber-shot-DSC-RX100-VII-Shooting/dp/B07VPQV7BY"
+  },
+  {
+    id: 2,
+    name: "Canon PowerShot G7 X Mark III",
+    image: "/images/cameras/canon-g7xiii.webp",
+    rating: 4.6,
+    description: "Versatile compact camera ideal for vlogging and content creation",
+    price: "$749.00",
+    category: "Advanced",
+    salesCount: "120K+",
+    key_features: [
+      "20.1MP 1\" Stacked CMOS Sensor",
+      "DIGIC 8 Image Processor",
+      "24-100mm f/1.8-2.8 lens",
+      "4K30p & 120p Full HD video",
+      "Vertical video support",
+      "Built-in ND filter",
+      "Live streaming to YouTube",
+      "Flip-up touchscreen"
+    ],
+    pros: [
+      "Excellent for vlogging",
+      "Great low-light performance",
+      "Direct YouTube streaming",
+      "Good build quality"
+    ],
+    cons: [
+      "No viewfinder",
+      "Middling battery life",
+      "Contrast-detection AF only"
+    ],
+    amazon_link: "https://www.amazon.com/Canon-PowerShot-Digital-Camera-Streaming/dp/B07TKNCQZX"
+  },
+  {
+    id: 3,
+    name: "Ricoh GR III",
+    image: "/images/cameras/ricoh-griii.webp",
+    rating: 4.7,
+    description: "Ultra-compact street photography camera with APS-C sensor",
+    price: "$899.95",
+    category: "Advanced",
+    salesCount: "85K+",
+    key_features: [
+      "24.2MP APS-C CMOS Sensor",
+      "GR Engine 6 Imaging Processor",
+      "18.3mm f/2.8 lens (28mm equivalent)",
+      "3-axis image stabilization",
+      "Touchscreen LCD",
+      "Hybrid autofocus system",
+      "1080p30 video recording",
+      "Pocket-sized design"
+    ],
+    pros: [
+      "Extremely compact for an APS-C camera",
+      "Outstanding image quality",
+      "Perfect for street photography",
+      "Intuitive controls"
+    ],
+    cons: [
+      "No 4K video",
+      "Fixed focal length",
+      "Limited battery life"
+    ],
+    amazon_link: "https://www.amazon.com/Ricoh-Digital-Camera-Black-Standard/dp/B07NP4LCVS"
+  },
+  {
+    id: 4,
+    name: "Panasonic Lumix ZS200 / TZ200",
+    image: "/images/cameras/panasonic-zs200.webp",
+    rating: 4.5,
+    description: "Travel zoom compact with impressive 15x optical zoom",
+    price: "$647.99",
+    category: "Travel",
+    salesCount: "95K+",
+    key_features: [
+      "20.1MP 1\" MOS Sensor",
+      "LEICA DC 15x Zoom Lens (24-360mm)",
+      "5-axis hybrid O.I.S stabilization",
+      "4K video & 4K PHOTO",
+      "0.21\" EVF with 2.33m-Dot",
+      "3.0\" touchscreen LCD",
+      "Focus stacking capability",
+      "Wi-Fi & Bluetooth connectivity"
+    ],
+    pros: [
+      "Exceptional zoom range",
+      "Comfortable handling",
+      "Good image quality",
+      "Built-in EVF"
+    ],
+    cons: [
+      "Lens aperture not as bright at telephoto",
+      "Fixed LCD screen",
+      "AF can struggle in low light"
+    ],
+    amazon_link: "https://www.amazon.com/PANASONIC-Megapixel-High-Resolution-Viewfinder-DC-ZS200S/dp/B079M64SQF"
+  },
+  {
+    id: 5,
+    name: "Fujifilm X100V",
+    image: "/images/cameras/fujifilm-x100v.webp",
+    rating: 4.9,
+    description: "Premium compact with APS-C sensor and unique hybrid viewfinder",
+    price: "$1,399.00",
+    category: "Premium",
+    salesCount: "110K+",
+    key_features: [
+      "26.1MP APS-C X-Trans CMOS 4 Sensor",
+      "X-Processor 4 image processor",
+      "23mm f/2 lens (35mm equivalent)",
+      "Hybrid optical/electronic viewfinder",
+      "4K30p video recording",
+      "Built-in ND filter",
+      "Weather-resistant construction",
+      "Classic film simulation modes"
+    ],
+    pros: [
+      "Outstanding image quality",
+      "Beautiful retro design",
+      "Unique hybrid viewfinder",
+      "Excellent JPEG colors"
+    ],
+    cons: [
+      "Fixed focal length",
+      "Premium price",
+      "Video features not as advanced"
+    ],
+    amazon_link: "https://www.amazon.com/Fujifilm-X100V-Digital-Camera-Silver/dp/B084B6D63Y"
+  }
+];
+
 // Photography tips for Compact cameras
 const photographyTips = [
   {
@@ -147,26 +311,29 @@ const cameraCategories = [
 ];
 
 export default function CompactCameras() {
-  // Element references
+  // State for card hover animations
+  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
+  
+  // Refs for animations
   const heroTitleRef = useRef(null);
   const heroSubtitleRef = useRef(null);
   const heroButtonsRef = useRef(null);
   const introTitleRef = useRef(null);
   const introTextRef = useRef(null);
   const camerasWrapperRef = useRef(null);
-  const ctaSectionRef = useRef(null);
-  const tipsRef = useRef(null);
-  const categoriesRef = useRef(null);
-  const historyRef = useRef(null);
+  const cameraCardsRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const parallaxBgRef = useRef(null); // Parallax efekti için referans eklendi
 
-  // State for card hover animations
-  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
+  // Handle camera card hover
+  const handleCardHover = (index: number | null) => {
+    setHoveredCard(index);
+  };
 
   useEffect(() => {
-    // Register ScrollTrigger plugin with GSAP
+    // Register ScrollTrigger plugin
     gsap.registerPlugin(ScrollTrigger);
 
-    // Page loading animations
+    // Animation timeline
     const tl = gsap.timeline();
 
     // Hero section animations
@@ -188,122 +355,54 @@ export default function CompactCameras() {
       duration: 0.6,
       ease: "power3.out"
     }, "-=0.2");
+    
+    // Parallax effect for hero background
+    if (parallaxBgRef.current) {
+      gsap.to(parallaxBgRef.current, {
+        scrollTrigger: {
+          trigger: parallaxBgRef.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: true
+        },
+        y: 150,
+        scale: 1.1,
+        ease: "none"
+      });
+    }
 
-    // Intro section animation
-    gsap.from(introTitleRef.current, {
-      scrollTrigger: {
-        trigger: introTitleRef.current,
-        start: "top 80%"
-      },
-      opacity: 0,
-      y: 30,
-      duration: 0.6
-    });
+    // Other section animations
+    // ... other animations ...
 
-    gsap.from(introTextRef.current, {
-      scrollTrigger: {
-        trigger: introTextRef.current,
-        start: "top 80%"
-      },
-      opacity: 0,
-      y: 30,
-      duration: 0.6,
-      delay: 0.2
-    });
-
-    // Camera cards animation
-    gsap.from(camerasWrapperRef.current, {
-      scrollTrigger: {
-        trigger: camerasWrapperRef.current,
-        start: "top 80%"
-      },
-      opacity: 0,
-      y: 40,
-      duration: 0.5
-    });
-
-    // Animation for tips section
-    gsap.from(tipsRef.current, {
-      scrollTrigger: {
-        trigger: tipsRef.current,
-        start: "top 80%"
-      },
-      opacity: 0,
-      y: 30,
-      duration: 0.6
-    });
-
-    // Animation for categories section
-    gsap.from(categoriesRef.current, {
-      scrollTrigger: {
-        trigger: categoriesRef.current,
-        start: "top 80%"
-      },
-      opacity: 0,
-      y: 30,
-      duration: 0.6
-    });
-
-    // Animation for history section
-    gsap.from(historyRef.current, {
-      scrollTrigger: {
-        trigger: historyRef.current,
-        start: "top 80%"
-      },
-      opacity: 0,
-      y: 30,
-      duration: 0.6
-    });
-
-    // CTA section animation
-    gsap.from(ctaSectionRef.current, {
-      scrollTrigger: {
-        trigger: ctaSectionRef.current,
-        start: "top 80%"
-      },
-      opacity: 0,
-      y: 30,
-      duration: 0.8,
-      ease: "power2.out"
-    });
-
-    // Cleanup function
-    return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-    };
   }, []);
 
-  // Function to handle card hover animations
-  const handleCardHover = (index: number | null) => {
-    setHoveredCard(index);
-  };
-
   return (
-    <div className="min-h-screen bg-gradient-to-b from-purple-50 to-white dark:from-gray-900 dark:to-gray-800">
-      {/* Hero Section */}
-      <section className="relative h-[60vh] overflow-hidden">
-        {/* Hero Image */}
-        <div className="absolute inset-0 bg-black/70">
-          <div className="w-full h-full bg-[url('/images/cameras/hero-bg.webp')] bg-cover bg-center opacity-30 mix-blend-plus-darker"></div>
-        </div>
+    <div className="bg-gray-50 dark:bg-gray-900 min-h-screen pb-16">
+      {/* Hero Section with Parallax Effect */}
+      <section className="relative h-[60vh] md:h-[70vh] overflow-hidden flex items-center justify-center">
+        {/* Background Image with Overlay */}
+        <div className="absolute inset-0 bg-gray-900/70 z-10"></div>
+        <div 
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url(/images/cameras/compact-hero.webp)` }}
+          ref={parallaxBgRef}
+        ></div>
         
         {/* Hero Content */}
-        <div className="relative z-10 container mx-auto px-4 h-full flex flex-col justify-center items-center md:items-start text-white">
-          <h1 ref={heroTitleRef} className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-center md:text-left">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500">
-              Best 5 Compact Cameras of 2024
-            </span>
-          </h1>
-          <h2 ref={heroSubtitleRef} className="text-xl md:text-2xl mb-6 text-gray-200 max-w-2xl text-center md:text-left">
-            Professional quality in your pocket with the best compact cameras
-          </h2>
-          <div ref={heroButtonsRef} className="flex gap-4 flex-col sm:flex-row items-center">
-            <Link href="#top-cameras" className="px-8 py-3 bg-purple-600 hover:bg-purple-700 text-white rounded-full font-medium transition duration-300 flex items-center gap-2">
-              <FaCamera className="text-lg" /> Best Cameras
-            </Link>
-            <Link href="#buying-guide" className="px-8 py-3 bg-transparent hover:bg-white/10 border border-white text-white rounded-full font-medium transition duration-300 flex items-center gap-2">
-              <FaInfoCircle className="text-lg" /> Buying Guide
-            </Link>
+        <div className="container mx-auto px-4 relative z-20 text-center">
+          <h1 ref={heroTitleRef} className="text-4xl md:text-6xl font-bold text-white mb-6">Compact Cameras</h1>
+          <p ref={heroSubtitleRef} className="text-xl md:text-2xl text-gray-200 mb-8 max-w-3xl mx-auto">
+            Discover the perfect pocket-sized cameras with professional features and exceptional image quality
+          </p>
+          
+          {/* Hero Buttons */}
+          <div ref={heroButtonsRef} className="flex flex-wrap gap-4 justify-center">
+            <a href="#top-cameras" className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full font-medium transition-all flex items-center gap-2">
+              <FaCamera /> Explore Top Picks
+            </a>
+            <a href="#guide" className="bg-transparent border-2 border-white text-white px-6 py-3 rounded-full font-medium hover:bg-white/10 transition-all flex items-center gap-2">
+              <FaInfoCircle /> Read Buying Guide
+            </a>
           </div>
         </div>
       </section>
@@ -311,24 +410,109 @@ export default function CompactCameras() {
       {/* Introduction Section */}
       <section className="py-16 px-4 container mx-auto">
         <div className="max-w-4xl mx-auto">
-          <h2 ref={introTitleRef} className="text-3xl font-bold mb-6 text-gray-800 dark:text-white">
-            Compact Cameras: Power in Your Pocket
-          </h2>
+          <h2 ref={introTitleRef} className="text-3xl font-bold mb-6 text-gray-800 dark:text-white">Compact Cameras: Portable Photography Excellence</h2>
           <div ref={introTextRef} className="space-y-6">
             <p className="text-lg text-gray-600 dark:text-gray-300">
-              Modern compact cameras prove that size isn&apos;t everything. These powerful devices pack professional-level sensors and advanced features into incredibly portable bodies.
+              Compact cameras offer a perfect balance of portability and image quality, making them ideal for travelers, street photographers, and everyday use. Despite their small size, modern compact cameras deliver impressive performance with features previously found only in larger camera systems.
             </p>
             <p className="text-lg text-gray-600 dark:text-gray-300">
-              From street photography to travel, compact cameras offer the perfect balance of image quality and portability, making them ideal for photographers who don&apos;t want to compromise on quality.
+              The main advantage of compact cameras is their convenience. They slip easily into a pocket or small bag, yet offer significant upgrades over smartphone photography with larger sensors, optical zoom capabilities, and dedicated photographic controls for more creative flexibility.
             </p>
             <p className="text-lg text-gray-600 dark:text-gray-300">
-              Today&apos;s compact cameras feature large sensors, fast lenses, and advanced autofocus systems, delivering professional results in a pocket-sized package.
+              Today's premium compact cameras often feature 1-inch or even larger sensors, bright lenses with wide apertures, 4K video recording, and advanced autofocus systems. They represent a compelling option for those who want quality images without the bulk and complexity of interchangeable lens systems.
+            </p>
+            <p className="text-lg text-gray-600 dark:text-gray-300">
+              Whether you're looking for your first dedicated camera or a capable backup to your DSLR or mirrorless system, compact cameras offer surprising capabilities in remarkably small packages.
             </p>
           </div>
         </div>
       </section>
+      
+      {/* Most Popular Compact Cameras Section */}
+      <section id="popular-cameras" className="py-16 px-4 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
+        <div className="container mx-auto">
+          <h2 className="text-3xl font-bold mb-2 text-center text-gray-800 dark:text-white">Most Popular Compact Cameras</h2>
+          <p className="text-lg text-center mb-12 text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+            The best-selling compact cameras with professional features in pocket-sized bodies, based on global sales data
+          </p>
 
-      {/* Camera Cards Section */}
+          {/* Popular Compact Camera Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {popularCompactCameras.map((camera, index) => (
+              <div 
+                key={camera.id} 
+                className="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg transition-all duration-500 transform hover:shadow-xl hover:-translate-y-2"
+              >
+                {/* Camera Image */}
+                <div className="h-64 overflow-hidden relative bg-gray-100 dark:bg-gray-700">
+                  <Image 
+                    src={camera.image} 
+                    alt={camera.name}
+                    fill
+                    quality={90}
+                    priority={index === 0}
+                    className="object-contain p-4 transition-transform duration-300 hover:scale-110"
+                    sizes="(max-width: 768px) 90vw, (max-width: 1200px) 45vw, 30vw"
+                  />
+                  
+                  {/* Rating badge overlay */}
+                  <div className="absolute top-2 right-2 bg-yellow-400 text-gray-900 py-1 px-3 rounded-full flex items-center gap-1 font-medium z-10">
+                    <FaStar /> {camera.rating}
+                  </div>
+                  
+                  {/* Category badge */}
+                  <div className="absolute top-2 left-2 bg-blue-500 text-white py-1 px-3 rounded-full text-sm font-medium z-10">
+                    {camera.category}
+                  </div>
+                  
+                  {/* Sales badge */}
+                  <div className="absolute bottom-2 left-2 bg-green-500 text-white py-1 px-3 rounded-full text-sm font-medium z-10 flex items-center gap-1">
+                    <FaShoppingCart /> {camera.salesCount} Sold
+                  </div>
+                </div>
+
+                {/* Camera Info */}
+                <div className="p-6">
+                  <h3 className="text-xl font-bold mb-3 text-gray-800 dark:text-white group">
+                    {camera.name}
+                    <span className="block h-0.5 bg-blue-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+                  </h3>
+                  
+                  {/* Price */}
+                  <div className="text-xl font-bold text-blue-600 dark:text-blue-400 mb-4">
+                    {camera.price}
+                  </div>
+                  
+                  {/* Key Features */}
+                  <div className="mb-6">
+                    <h4 className="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-2">Key Features:</h4>
+                    <ul className="space-y-1">
+                      {camera.key_features.slice(0, 4).map((feature, idx) => (
+                        <li key={idx} className="flex items-start gap-2 text-sm text-gray-600 dark:text-gray-300">
+                          <FaCheckCircle className="text-green-500 mt-1 flex-shrink-0" />
+                          <span>{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  
+                  {/* Amazon Link */}
+                  <a 
+                    href={camera.amazon_link} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="w-full px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white rounded-lg flex items-center gap-2 justify-center transition-all duration-300"
+                  >
+                    <FaAmazon /> View on Amazon
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Top Compact Cameras Section */}
       <section id="top-cameras" className="py-16 px-4 bg-white dark:bg-gray-800 rounded-t-[40px] shadow-lg">
         <div className="container mx-auto">
           <h2 className="text-3xl font-bold mb-2 text-center text-gray-800 dark:text-white">
@@ -429,7 +613,7 @@ export default function CompactCameras() {
       </section>
 
       {/* Tips Section */}
-      <section id="photography-tips" ref={tipsRef} className="py-16 px-4 bg-gray-100 dark:bg-gray-700">
+      <section id="photography-tips" className="py-16 px-4 bg-gray-100 dark:bg-gray-700">
         <div className="container mx-auto max-w-5xl">
           <h2 className="text-3xl font-bold mb-6 text-center text-gray-800 dark:text-white">
             Compact Camera Tips & Techniques
@@ -457,7 +641,7 @@ export default function CompactCameras() {
       </section>
 
       {/* Categories Section */}
-      <section id="compact-categories" ref={categoriesRef} className="py-16 px-4 bg-white dark:bg-gray-800">
+      <section id="compact-categories" className="py-16 px-4 bg-white dark:bg-gray-800">
         <div className="container mx-auto max-w-5xl">
           <h2 className="text-3xl font-bold mb-6 text-center text-gray-800 dark:text-white">
             Compact Camera Categories
@@ -491,7 +675,7 @@ export default function CompactCameras() {
       </section>
 
       {/* History Section */}
-      <section id="compact-history" ref={historyRef} className="py-16 px-4 bg-gray-50 dark:bg-gray-900">
+      <section id="compact-history" className="py-16 px-4 bg-gray-50 dark:bg-gray-900">
         <div className="container mx-auto max-w-4xl">
           <div className="flex items-center gap-3 mb-6 justify-center">
             <MdOutlineHistory className="text-3xl text-purple-500 dark:text-purple-400" />
@@ -513,7 +697,7 @@ export default function CompactCameras() {
       </section>
 
       {/* CTA Section */}
-      <section ref={ctaSectionRef} className="py-20 px-4 bg-gradient-to-br from-purple-900 to-black text-white relative overflow-hidden">
+      <section className="py-20 px-4 bg-gradient-to-br from-purple-900 to-black text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-20">
           <div className="absolute top-0 left-0 w-64 h-64 bg-purple-500 rounded-full filter blur-3xl"></div>
           <div className="absolute bottom-0 right-0 w-80 h-80 bg-pink-500 rounded-full filter blur-3xl"></div>

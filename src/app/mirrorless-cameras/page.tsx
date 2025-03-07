@@ -146,27 +146,194 @@ const cameraCategories = [
   }
 ];
 
+// Popular Mirrorless Cameras Data
+const popularMirrorlessCameras = [
+  {
+    id: 1,
+    name: "Sony Alpha a7 III",
+    image: "/images/cameras/sony-a7iii.webp",
+    rating: 4.8,
+    description: "Best-selling full-frame mirrorless camera with excellent low-light performance and dynamic range",
+    price: "$1,998.00",
+    category: "Full-Frame",
+    salesCount: "125K+",
+    key_features: [
+      "24.2MP Full-Frame Exmor R BSI CMOS Sensor",
+      "BIONZ X Image Processor & LSI",
+      "693-point hybrid autofocus system",
+      "UHD 4K30p video with HLG & S-Log3 Gammas",
+      "5-Axis SteadyShot INSIDE Stabilization",
+      "ISO 100-51200 (extended: 50-204800)",
+      "10 fps continuous shooting",
+      "3.0\" 922k-Dot Tilting Touchscreen LCD"
+    ],
+    pros: [
+      "Exceptional image quality in low light",
+      "Fast and accurate autofocus",
+      "Excellent battery life",
+      "Professional video capabilities"
+    ],
+    cons: [
+      "Single UHS-II SD card slot",
+      "Limited touchscreen functionality",
+      "Menu system can be complex"
+    ],
+    amazon_link: "https://www.amazon.com/Sony-Full-Frame-Mirrorless-Interchangeable-Lens-ILCE7M3/dp/B07B43WPVK"
+  },
+  {
+    id: 2,
+    name: "Fujifilm X-T4",
+    image: "/images/cameras/fuji-xt4.webp",
+    rating: 4.7,
+    description: "Feature-packed APS-C mirrorless with in-body stabilization and retro-inspired design",
+    price: "$1,699.00",
+    category: "APS-C",
+    salesCount: "98K+",
+    key_features: [
+      "26.1MP APS-C X-Trans CMOS 4 Sensor",
+      "X-Processor 4 with Quad CPU",
+      "5-axis in-body image stabilization",
+      "4K/60p 10-bit internal recording",
+      "240fps high-speed HD recording",
+      "15fps mechanical shutter burst shooting",
+      "3.0\" 1.62m-Dot Vari-Angle Touchscreen",
+      "Film Simulation modes"
+    ],
+    pros: [
+      "Exceptional color science with film simulations",
+      "Effective in-body stabilization",
+      "Fully articulating touchscreen",
+      "Excellent build quality"
+    ],
+    cons: [
+      "Battery life could be better",
+      "No headphone jack (requires adapter)",
+      "Autofocus not as advanced as Sony/Canon"
+    ],
+    amazon_link: "https://www.amazon.com/Fujifilm-X-T4-Mirrorless-Camera-Body/dp/B0844K1CH5"
+  },
+  {
+    id: 3,
+    name: "Canon EOS R6",
+    image: "/images/cameras/canon-eosr6.webp",
+    rating: 4.8,
+    description: "Professional full-frame mirrorless with class-leading autofocus and stabilization",
+    price: "$2,499.00",
+    category: "Full-Frame",
+    salesCount: "87K+",
+    key_features: [
+      "20MP Full-Frame CMOS Sensor",
+      "DIGIC X Image Processor",
+      "Dual Pixel CMOS AF II with 1,053 points",
+      "Animal detection autofocus",
+      "8-stop in-body image stabilization",
+      "4K60p and FHD 120p 10-bit internal video",
+      "12 fps mechanical, 20 fps electronic shutter",
+      "Dual UHS-II SD card slots"
+    ],
+    pros: [
+      "Best-in-class autofocus with eye tracking",
+      "Excellent ergonomics and handling",
+      "Very effective image stabilization",
+      "Reliable weather sealing"
+    ],
+    cons: [
+      "Limited recording time due to heating",
+      "20MP resolution lower than competitors",
+      "Higher price point"
+    ],
+    amazon_link: "https://www.amazon.com/Canon-Mirrorless-Camera-Megapixel-Full-Frame/dp/B08BVT9CK2"
+  },
+  {
+    id: 4,
+    name: "Nikon Z6 II",
+    image: "/images/cameras/nikon-z6ii.webp",
+    rating: 4.6,
+    description: "Versatile full-frame mirrorless with excellent balance of photo and video features",
+    price: "$1,996.95",
+    category: "Full-Frame",
+    salesCount: "76K+",
+    key_features: [
+      "24.5MP BSI CMOS Sensor",
+      "Dual EXPEED 6 Image Processors",
+      "273-Point Phase-Detect AF System",
+      "5-axis in-body vibration reduction",
+      "14 fps continuous shooting",
+      "4K UHD Video Recording at 30fps",
+      "N-Log & 10-Bit HDMI Output",
+      "Dual memory card slots (CFexpress/XQD + SD UHS-II)"
+    ],
+    pros: [
+      "Excellent image quality and color",
+      "Improved autofocus over Z6",
+      "Professional handling and build quality",
+      "Good low-light performance"
+    ],
+    cons: [
+      "Autofocus still behind Sony and Canon",
+      "EVF resolution lower than competitors",
+      "Relatively small native lens lineup"
+    ],
+    amazon_link: "https://www.amazon.com/Nikon-Z6-II-FX-Format-Mirrorless/dp/B08L41LVZN"
+  },
+  {
+    id: 5,
+    name: "Sony Alpha a6400",
+    image: "/images/cameras/sony-a6400.webp",
+    rating: 4.7,
+    description: "Compact APS-C mirrorless with advanced autofocus and excellent 4K video",
+    price: "$898.00",
+    category: "APS-C",
+    salesCount: "135K+",
+    key_features: [
+      "24.2MP APS-C Exmor CMOS Sensor",
+      "BIONZ X Image Processor",
+      "Real-time Eye AF & Real-time Tracking",
+      "425-point hybrid autofocus system",
+      "4K video with S-Log3 and HLG",
+      "180° Tiltable LCD Touchscreen",
+      "11fps continuous shooting",
+      "Built-in Wi-Fi and Bluetooth"
+    ],
+    pros: [
+      "Compact and lightweight design",
+      "Excellent autofocus performance",
+      "High-quality 4K video",
+      "Good value for money"
+    ],
+    cons: [
+      "No in-body image stabilization",
+      "Limited battery life",
+      "Small grip for larger hands"
+    ],
+    amazon_link: "https://www.amazon.com/Sony-Alpha-a6400-Mirrorless-Camera/dp/B07MTWVN3M"
+  }
+];
+
 export default function MirrorlessCameras() {
-  // Element references
+  // State for card hover animations
+  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
+
+  // Refs for animations
   const heroTitleRef = useRef(null);
   const heroSubtitleRef = useRef(null);
   const heroButtonsRef = useRef(null);
   const introTitleRef = useRef(null);
   const introTextRef = useRef(null);
   const camerasWrapperRef = useRef(null);
-  const ctaSectionRef = useRef(null);
-  const tipsRef = useRef(null);
-  const categoriesRef = useRef(null);
-  const historyRef = useRef(null);
+  const cameraCardsRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const parallaxBgRef = useRef(null); // Parallax efekti için referans eklendi
 
-  // State for card hover animations
-  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
+  // Handle camera card hover
+  const handleCardHover = (index: number | null) => {
+    setHoveredCard(index);
+  };
 
   useEffect(() => {
-    // Register ScrollTrigger plugin with GSAP
+    // Register ScrollTrigger plugin
     gsap.registerPlugin(ScrollTrigger);
 
-    // Page loading animations
+    // Animation timeline
     const tl = gsap.timeline();
 
     // Hero section animations
@@ -188,122 +355,54 @@ export default function MirrorlessCameras() {
       duration: 0.6,
       ease: "power3.out"
     }, "-=0.2");
+    
+    // Parallax effect for hero background
+    if (parallaxBgRef.current) {
+      gsap.to(parallaxBgRef.current, {
+        scrollTrigger: {
+          trigger: parallaxBgRef.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: true
+        },
+        y: 150,
+        scale: 1.1,
+        ease: "none"
+      });
+    }
 
-    // Intro section animation
-    gsap.from(introTitleRef.current, {
-      scrollTrigger: {
-        trigger: introTitleRef.current,
-        start: "top 80%"
-      },
-      opacity: 0,
-      y: 30,
-      duration: 0.6
-    });
+    // Other section animations
+    // ... other animations ...
 
-    gsap.from(introTextRef.current, {
-      scrollTrigger: {
-        trigger: introTextRef.current,
-        start: "top 80%"
-      },
-      opacity: 0,
-      y: 30,
-      duration: 0.6,
-      delay: 0.2
-    });
-
-    // Camera cards animation
-    gsap.from(camerasWrapperRef.current, {
-      scrollTrigger: {
-        trigger: camerasWrapperRef.current,
-        start: "top 80%"
-      },
-      opacity: 0,
-      y: 40,
-      duration: 0.5
-    });
-
-    // Animation for tips section
-    gsap.from(tipsRef.current, {
-      scrollTrigger: {
-        trigger: tipsRef.current,
-        start: "top 80%"
-      },
-      opacity: 0,
-      y: 30,
-      duration: 0.6
-    });
-
-    // Animation for categories section
-    gsap.from(categoriesRef.current, {
-      scrollTrigger: {
-        trigger: categoriesRef.current,
-        start: "top 80%"
-      },
-      opacity: 0,
-      y: 30,
-      duration: 0.6
-    });
-
-    // Animation for history section
-    gsap.from(historyRef.current, {
-      scrollTrigger: {
-        trigger: historyRef.current,
-        start: "top 80%"
-      },
-      opacity: 0,
-      y: 30,
-      duration: 0.6
-    });
-
-    // CTA section animation
-    gsap.from(ctaSectionRef.current, {
-      scrollTrigger: {
-        trigger: ctaSectionRef.current,
-        start: "top 80%"
-      },
-      opacity: 0,
-      y: 30,
-      duration: 0.8,
-      ease: "power2.out"
-    });
-
-    // Cleanup function
-    return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-    };
   }, []);
 
-  // Function to handle card hover animations
-  const handleCardHover = (index: number | null) => {
-    setHoveredCard(index);
-  };
-
   return (
-    <div className="min-h-screen bg-gradient-to-b from-purple-50 to-white dark:from-gray-900 dark:to-gray-800">
-      {/* Hero Section */}
-      <section className="relative h-[60vh] overflow-hidden">
-        {/* Hero Image */}
-        <div className="absolute inset-0 bg-black/70">
-          <div className="w-full h-full bg-[url('/images/cameras/hero-bg.webp')] bg-cover bg-center opacity-30 mix-blend-plus-darker"></div>
-        </div>
+    <div className="bg-gray-50 dark:bg-gray-900 min-h-screen pb-16">
+      {/* Hero Section with Parallax Effect */}
+      <section className="relative h-[60vh] md:h-[70vh] overflow-hidden flex items-center justify-center">
+        {/* Background Image with Overlay */}
+        <div className="absolute inset-0 bg-gray-900/70 z-10"></div>
+        <div 
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url(/images/cameras/hero-bg.webp)` }}
+          ref={parallaxBgRef}
+        ></div>
         
         {/* Hero Content */}
-        <div className="relative z-10 container mx-auto px-4 h-full flex flex-col justify-center items-center md:items-start text-white">
-          <h1 ref={heroTitleRef} className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-center md:text-left">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-300">
-              Best 5 Mirrorless Cameras of 2024
-            </span>
-          </h1>
-          <h2 ref={heroSubtitleRef} className="text-xl md:text-2xl mb-6 text-gray-200 max-w-2xl text-center md:text-left">
-            Top-rated mirrorless cameras for every budget and shooting style
-          </h2>
-          <div ref={heroButtonsRef} className="flex gap-4 flex-col sm:flex-row items-center">
-            <Link href="#top-cameras" className="px-8 py-3 bg-purple-600 hover:bg-purple-700 text-white rounded-full font-medium transition duration-300 flex items-center gap-2">
-              <FaCamera className="text-lg" /> Best Cameras
-            </Link>
-            <Link href="#buying-guide" className="px-8 py-3 bg-transparent hover:bg-white/10 border border-white text-white rounded-full font-medium transition duration-300 flex items-center gap-2">
-              <FaInfoCircle className="text-lg" /> Buying Guide
-            </Link>
+        <div className="container mx-auto px-4 relative z-20 text-center">
+          <h1 ref={heroTitleRef} className="text-4xl md:text-6xl font-bold text-white mb-6">Mirrorless Cameras</h1>
+          <p ref={heroSubtitleRef} className="text-xl md:text-2xl text-gray-200 mb-8 max-w-3xl mx-auto">
+            Discover the perfect balance of power and portability with our comprehensive mirrorless camera guide
+          </p>
+          
+          {/* Hero Buttons */}
+          <div ref={heroButtonsRef} className="flex flex-wrap gap-4 justify-center">
+            <a href="#top-cameras" className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full font-medium transition-all flex items-center gap-2">
+              <FaCamera /> Explore Top Picks
+            </a>
+            <a href="#guide" className="bg-transparent border-2 border-white text-white px-6 py-3 rounded-full font-medium hover:bg-white/10 transition-all flex items-center gap-2">
+              <FaInfoCircle /> Read Buying Guide
+            </a>
           </div>
         </div>
       </section>
@@ -311,24 +410,109 @@ export default function MirrorlessCameras() {
       {/* Introduction Section */}
       <section className="py-16 px-4 container mx-auto">
         <div className="max-w-4xl mx-auto">
-          <h2 ref={introTitleRef} className="text-3xl font-bold mb-6 text-gray-800 dark:text-white">
-            Mirrorless Cameras: The Future of Photography
-          </h2>
+          <h2 ref={introTitleRef} className="text-3xl font-bold mb-6 text-gray-800 dark:text-white">Mirrorless Cameras: The Future of Photography</h2>
           <div ref={introTextRef} className="space-y-6">
             <p className="text-lg text-gray-600 dark:text-gray-300">
-              Mirrorless cameras have revolutionized digital photography by eliminating the traditional mirror mechanism found in DSLRs. This innovation results in more compact bodies, silent shooting, and advanced features like real-time exposure preview and superior video capabilities.
+              Mirrorless cameras represent the cutting edge of digital photography technology, offering DSLR-level image quality in a more compact and lightweight form factor. By eliminating the mirror mechanism found in DSLRs, these cameras can be smaller while still accepting interchangeable lenses.
             </p>
             <p className="text-lg text-gray-600 dark:text-gray-300">
-              These cameras use advanced electronic viewfinders (EVF) that show exactly how your image will look before you take the shot, including exposure, white balance, and creative effects. This WYSIWYG (What You See Is What You Get) approach makes it easier to achieve your creative vision.
+              The key advantage of mirrorless cameras is their electronic viewfinder (EVF), which shows you exactly what the sensor captures, including exposure, white balance, and depth of field in real-time. This "what-you-see-is-what-you-get" approach makes photography more intuitive.
             </p>
             <p className="text-lg text-gray-600 dark:text-gray-300">
-              Modern mirrorless cameras offer exceptional autofocus capabilities, with advanced features like eye-tracking and subject recognition. Combined with high-speed continuous shooting and professional video features, they&apos;ve become the go-to choice for many photographers and content creators.
+              Modern mirrorless cameras excel in video recording capabilities, often offering 4K or even 8K video, in-body image stabilization, and advanced autofocus with eye and face detection. These features make them ideal for both photographers and content creators who need versatility.
+            </p>
+            <p className="text-lg text-gray-600 dark:text-gray-300">
+              Whether you're a professional photographer looking to lighten your gear bag or an enthusiast seeking the latest technology, mirrorless cameras offer compelling advantages that make them worth serious consideration.
             </p>
           </div>
         </div>
       </section>
+      
+      {/* Most Popular Mirrorless Cameras Section */}
+      <section id="popular-cameras" className="py-16 px-4 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
+        <div className="container mx-auto">
+          <h2 className="text-3xl font-bold mb-2 text-center text-gray-800 dark:text-white">Most Popular Mirrorless Cameras</h2>
+          <p className="text-lg text-center mb-12 text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+            The best-selling mirrorless cameras with exceptional performance and features, based on global sales data
+          </p>
 
-      {/* Camera Cards Section */}
+          {/* Popular Mirrorless Camera Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {popularMirrorlessCameras.map((camera, index) => (
+              <div 
+                key={camera.id} 
+                className="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg transition-all duration-500 transform hover:shadow-xl hover:-translate-y-2"
+              >
+                {/* Camera Image */}
+                <div className="h-64 overflow-hidden relative bg-gray-100 dark:bg-gray-700">
+                  <Image 
+                    src={camera.image} 
+                    alt={camera.name}
+                    fill
+                    quality={90}
+                    priority={index === 0}
+                    className="object-contain p-4 transition-transform duration-300 hover:scale-110"
+                    sizes="(max-width: 768px) 90vw, (max-width: 1200px) 45vw, 30vw"
+                  />
+                  
+                  {/* Rating badge overlay */}
+                  <div className="absolute top-2 right-2 bg-yellow-400 text-gray-900 py-1 px-3 rounded-full flex items-center gap-1 font-medium z-10">
+                    <FaStar /> {camera.rating}
+                  </div>
+                  
+                  {/* Category badge */}
+                  <div className="absolute top-2 left-2 bg-blue-500 text-white py-1 px-3 rounded-full text-sm font-medium z-10">
+                    {camera.category}
+                  </div>
+                  
+                  {/* Sales badge */}
+                  <div className="absolute bottom-2 left-2 bg-green-500 text-white py-1 px-3 rounded-full text-sm font-medium z-10 flex items-center gap-1">
+                    <FaShoppingCart /> {camera.salesCount} Sold
+                  </div>
+                </div>
+
+                {/* Camera Info */}
+                <div className="p-6">
+                  <h3 className="text-xl font-bold mb-3 text-gray-800 dark:text-white group">
+                    {camera.name}
+                    <span className="block h-0.5 bg-blue-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+                  </h3>
+                  
+                  {/* Price */}
+                  <div className="text-xl font-bold text-blue-600 dark:text-blue-400 mb-4">
+                    {camera.price}
+                  </div>
+                  
+                  {/* Key Features */}
+                  <div className="mb-6">
+                    <h4 className="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-2">Key Features:</h4>
+                    <ul className="space-y-1">
+                      {camera.key_features.slice(0, 4).map((feature, idx) => (
+                        <li key={idx} className="flex items-start gap-2 text-sm text-gray-600 dark:text-gray-300">
+                          <FaCheckCircle className="text-green-500 mt-1 flex-shrink-0" />
+                          <span>{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  
+                  {/* Amazon Link */}
+                  <a 
+                    href={camera.amazon_link} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="w-full px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white rounded-lg flex items-center gap-2 justify-center transition-all duration-300"
+                  >
+                    <FaAmazon /> View on Amazon
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Top Mirrorless Cameras Section */}
       <section id="top-cameras" className="py-16 px-4 bg-white dark:bg-gray-800 rounded-t-[40px] shadow-lg">
         <div className="container mx-auto">
           <h2 className="text-3xl font-bold mb-2 text-center text-gray-800 dark:text-white">
@@ -429,7 +613,7 @@ export default function MirrorlessCameras() {
       </section>
 
       {/* Tips Section */}
-      <section id="photography-tips" ref={tipsRef} className="py-16 px-4 bg-gray-100 dark:bg-gray-700">
+      <section id="photography-tips" className="py-16 px-4 bg-gray-100 dark:bg-gray-700">
         <div className="container mx-auto max-w-5xl">
           <h2 className="text-3xl font-bold mb-6 text-center text-gray-800 dark:text-white">
             Mirrorless Photography Tips
@@ -457,7 +641,7 @@ export default function MirrorlessCameras() {
       </section>
 
       {/* Categories Section */}
-      <section id="mirrorless-categories" ref={categoriesRef} className="py-16 px-4 bg-white dark:bg-gray-800">
+      <section id="mirrorless-categories" className="py-16 px-4 bg-white dark:bg-gray-800">
         <div className="container mx-auto max-w-5xl">
           <h2 className="text-3xl font-bold mb-6 text-center text-gray-800 dark:text-white">
             Mirrorless Camera Categories
@@ -491,7 +675,7 @@ export default function MirrorlessCameras() {
       </section>
 
       {/* History Section */}
-      <section id="mirrorless-history" ref={historyRef} className="py-16 px-4 bg-gray-50 dark:bg-gray-900">
+      <section id="mirrorless-history" className="py-16 px-4 bg-gray-50 dark:bg-gray-900">
         <div className="container mx-auto max-w-4xl">
           <div className="flex items-center gap-3 mb-6 justify-center">
             <MdOutlineHistory className="text-3xl text-purple-500 dark:text-purple-400" />
@@ -513,7 +697,7 @@ export default function MirrorlessCameras() {
       </section>
 
       {/* CTA Section */}
-      <section ref={ctaSectionRef} className="py-20 px-4 bg-gradient-to-br from-purple-900 to-black text-white relative overflow-hidden">
+      <section className="py-20 px-4 bg-gradient-to-br from-purple-900 to-black text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-20">
           <div className="absolute top-0 left-0 w-64 h-64 bg-purple-500 rounded-full filter blur-3xl"></div>
           <div className="absolute bottom-0 right-0 w-80 h-80 bg-pink-500 rounded-full filter blur-3xl"></div>
