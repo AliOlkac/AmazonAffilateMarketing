@@ -508,8 +508,8 @@ export default function VlogCameras() {
     <div className="bg-gray-50 dark:bg-gray-900 min-h-screen pb-16">
       {/* Hero Section with Parallax Effect */}
       <section className="relative h-[60vh] md:h-[70vh] overflow-hidden flex items-center justify-center">
-        {/* Background Image with Overlay */}
-        <div className="absolute inset-0 bg-gray-900/70 z-10"></div>
+        {/* Background Image with Overlay - Yeşil tonlu overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-green-900/30 to-emerald-700/30 z-10"></div>
         <div 
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url(/images/cameras/hero-bg.webp)` }}
@@ -523,12 +523,12 @@ export default function VlogCameras() {
             Create professional-quality content with cameras designed specifically for vloggers and content creators
           </p>
           
-          {/* Hero Buttons */}
+          {/* Hero Buttons - Yeşil tonlarda butonlar */}
           <div ref={heroButtonsRef} className="flex flex-wrap gap-4 justify-center">
-            <a href="#top-cameras" className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full font-medium transition-all flex items-center gap-2">
+            <a href="#top-cameras" className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-full font-medium transition-all flex items-center gap-2">
               <FaCamera /> Explore Top Picks
             </a>
-            <a href="#guide" className="bg-transparent border-2 border-white text-white px-6 py-3 rounded-full font-medium hover:bg-white/10 transition-all flex items-center gap-2">
+            <a href="#guide" className="bg-transparent border-2 border-emerald-400 text-emerald-400 px-6 py-3 rounded-full font-medium hover:bg-emerald-400/10 transition-all flex items-center gap-2">
               <FaInfoCircle /> Read Buying Guide
             </a>
           </div>
@@ -550,7 +550,7 @@ export default function VlogCameras() {
               Modern vlog cameras offer impressive 4K video quality, advanced autofocus systems that can track faces and eyes, and sophisticated image stabilization to keep footage smooth even when recording on the move. These capabilities ensure your content looks professional without requiring extensive equipment or technical expertise.
             </p>
             <p className="text-lg text-gray-600 dark:text-gray-300">
-              Whether you're an established content creator or just starting your vlogging journey, choosing the right camera can significantly enhance the quality of your videos and streamline your production process.
+              Whether you&apos;re an established content creator or just starting your vlogging journey, choosing the right camera can significantly enhance the quality of your videos and streamline your production process.
             </p>
           </div>
         </div>

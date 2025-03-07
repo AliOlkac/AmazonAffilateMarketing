@@ -459,10 +459,11 @@ Bu yol haritası, projenin geliştirme, içerik, SEO, analiz ve uzun vadeli büy
    - [x] Git versiyon kontrolü kurma
 
 ### C. Web Sitesi Geliştirme
-- [ ] C1. Temel sayfa yapısını oluşturma
-   - [ ] Ana sayfa (Homepage)
+- [x] C1. Temel sayfa yapısını oluşturma
+   - [x] Ana sayfa (Homepage)
    - [x] Grup sayfaları (Kategori sayfaları)
-   - [ ] Ekstra sayfalar (Hakkımızda, İletişim vb.)
+   - [] Tum sayfalardaki Tum icerik: Gorseller,yazı icerikleri, ürün bilgileri, hepsi düzenlenecek
+
 - [ ] C2. SEO yapılandırmasını gerçekleştirme
    - [ ] Meta etiketleri ve başlık yapılandırması
    - [ ] Site haritası ve robots.txt oluşturma

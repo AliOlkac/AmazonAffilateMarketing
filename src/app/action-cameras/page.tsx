@@ -505,8 +505,8 @@ export default function ActionCameras() {
     <div className="bg-gray-50 dark:bg-gray-900 min-h-screen pb-16">
       {/* Hero Section with Parallax Effect */}
       <section className="relative h-[60vh] md:h-[70vh] overflow-hidden flex items-center justify-center">
-        {/* Background Image with Overlay */}
-        <div className="absolute inset-0 bg-gray-900/70 z-10"></div>
+        {/* Background Image with Overlay - Turuncu tonlu overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-orange-900/30 to-orange-700/30 z-10"></div>
         <div 
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url(/images/cameras/hero-bg.webp)` }}
@@ -520,12 +520,12 @@ export default function ActionCameras() {
             Capture your adventures with the most rugged and versatile action cameras on the market
           </p>
           
-          {/* Hero Buttons */}
+          {/* Hero Buttons - Turuncu tonlarda butonlar */}
           <div ref={heroButtonsRef} className="flex flex-wrap gap-4 justify-center">
-            <a href="#top-cameras" className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full font-medium transition-all flex items-center gap-2">
+            <a href="#top-cameras" className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-full font-medium transition-all flex items-center gap-2">
               <FaCamera /> Explore Top Picks
             </a>
-            <a href="#guide" className="bg-transparent border-2 border-white text-white px-6 py-3 rounded-full font-medium hover:bg-white/10 transition-all flex items-center gap-2">
+            <a href="#guide" className="bg-transparent border-2 border-orange-400 text-orange-400 px-6 py-3 rounded-full font-medium hover:bg-orange-400/10 transition-all flex items-center gap-2">
               <FaInfoCircle /> Read Buying Guide
             </a>
           </div>

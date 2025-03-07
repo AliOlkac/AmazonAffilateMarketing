@@ -445,55 +445,55 @@ export default function MirrorlessCameras() {
 
     // Animation for tips section
     if (tipsRef.current) {
-      gsap.from(tipsRef.current, {
-        scrollTrigger: {
-          trigger: tipsRef.current,
-          start: "top 80%"
-        },
-        opacity: 0,
-        y: 30,
-        duration: 0.6
-      });
+    gsap.from(tipsRef.current, {
+      scrollTrigger: {
+        trigger: tipsRef.current,
+        start: "top 80%"
+      },
+      opacity: 0,
+      y: 30,
+      duration: 0.6
+    });
     }
 
     // Animation for categories section
     if (categoriesRef.current) {
-      gsap.from(categoriesRef.current, {
-        scrollTrigger: {
-          trigger: categoriesRef.current,
-          start: "top 80%"
-        },
-        opacity: 0,
-        y: 30,
-        duration: 0.6
-      });
+    gsap.from(categoriesRef.current, {
+      scrollTrigger: {
+        trigger: categoriesRef.current,
+        start: "top 80%"
+      },
+      opacity: 0,
+      y: 30,
+      duration: 0.6
+    });
     }
 
     // Animation for history section
     if (historyRef.current) {
-      gsap.from(historyRef.current, {
-        scrollTrigger: {
-          trigger: historyRef.current,
-          start: "top 80%"
-        },
-        opacity: 0,
-        y: 30,
-        duration: 0.6
-      });
+    gsap.from(historyRef.current, {
+      scrollTrigger: {
+        trigger: historyRef.current,
+        start: "top 80%"
+      },
+      opacity: 0,
+      y: 30,
+      duration: 0.6
+    });
     }
 
     // CTA section animation
     if (ctaSectionRef.current) {
-      gsap.from(ctaSectionRef.current, {
-        scrollTrigger: {
-          trigger: ctaSectionRef.current,
-          start: "top 80%"
-        },
-        opacity: 0,
-        y: 30,
-        duration: 0.8,
-        ease: "power2.out"
-      });
+    gsap.from(ctaSectionRef.current, {
+      scrollTrigger: {
+        trigger: ctaSectionRef.current,
+        start: "top 80%"
+      },
+      opacity: 0,
+      y: 30,
+      duration: 0.8,
+      ease: "power2.out"
+    });
     }
 
     // Cleanup function
@@ -506,8 +506,8 @@ export default function MirrorlessCameras() {
     <div className="bg-gray-50 dark:bg-gray-900 min-h-screen pb-16">
       {/* Hero Section with Parallax Effect */}
       <section className="relative h-[60vh] md:h-[70vh] overflow-hidden flex items-center justify-center">
-        {/* Background Image with Overlay */}
-        <div className="absolute inset-0 bg-gray-900/70 z-10"></div>
+        {/* Background Image with Overlay - Mavi-indigo tonlu overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-purple-900/30 to-indigo-700/30 z-10"></div>
         <div 
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url(/images/cameras/hero-bg.webp)` }}
@@ -521,12 +521,12 @@ export default function MirrorlessCameras() {
             Discover the perfect balance of power and portability with our comprehensive mirrorless camera guide
           </p>
           
-          {/* Hero Buttons */}
+          {/* Hero Buttons - Mavi-indigo tonlarda butonlar */}
           <div ref={heroButtonsRef} className="flex flex-wrap gap-4 justify-center">
             <a href="#top-cameras" className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full font-medium transition-all flex items-center gap-2">
               <FaCamera /> Explore Top Picks
             </a>
-            <a href="#guide" className="bg-transparent border-2 border-white text-white px-6 py-3 rounded-full font-medium hover:bg-white/10 transition-all flex items-center gap-2">
+            <a href="#guide" className="bg-transparent border-2 border-indigo-400 text-indigo-400 px-6 py-3 rounded-full font-medium hover:bg-indigo-400/10 transition-all flex items-center gap-2">
               <FaInfoCircle /> Read Buying Guide
             </a>
           </div>
@@ -542,18 +542,18 @@ export default function MirrorlessCameras() {
               Mirrorless cameras represent the cutting edge of digital photography technology, offering DSLR-level image quality in a more compact and lightweight form factor. By eliminating the mirror mechanism found in DSLRs, these cameras can be smaller while still accepting interchangeable lenses.
             </p>
             <p className="text-lg text-gray-600 dark:text-gray-300">
-              The key advantage of mirrorless cameras is their electronic viewfinder (EVF), which shows you exactly what the sensor captures, including exposure, white balance, and depth of field in real-time. This "what-you-see-is-what-you-get" approach makes photography more intuitive.
+              The key advantage of mirrorless cameras is their electronic viewfinder (EVF), which shows you exactly what the sensor captures, including exposure, white balance, and depth of field in real-time. This &quot;what-you-see-is-what-you-get&quot; approach makes photography more intuitive.
             </p>
             <p className="text-lg text-gray-600 dark:text-gray-300">
               Modern mirrorless cameras excel in video recording capabilities, often offering 4K or even 8K video, in-body image stabilization, and advanced autofocus with eye and face detection. These features make them ideal for both photographers and content creators who need versatility.
             </p>
             <p className="text-lg text-gray-600 dark:text-gray-300">
-              Whether you're a professional photographer looking to lighten your gear bag or an enthusiast seeking the latest technology, mirrorless cameras offer compelling advantages that make them worth serious consideration.
+              Whether you&apos;re a professional photographer looking to lighten your gear bag or an enthusiast seeking the latest technology, mirrorless cameras offer compelling advantages that make them worth serious consideration.
             </p>
           </div>
         </div>
       </section>
-      
+
       {/* Most Popular Mirrorless Cameras Section */}
       <section id="popular-cameras" className="py-16 px-4 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
         <div className="container mx-auto">

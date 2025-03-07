@@ -506,8 +506,8 @@ export default function CompactCameras() {
     <div className="bg-gray-50 dark:bg-gray-900 min-h-screen pb-16">
       {/* Hero Section with Parallax Effect */}
       <section className="relative h-[60vh] md:h-[70vh] overflow-hidden flex items-center justify-center">
-        {/* Background Image with Overlay */}
-        <div className="absolute inset-0 bg-gray-900/70 z-10"></div>
+        {/* Background Image with Overlay - Sarı tonlu overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-yellow-700/30 to-amber-600/30 z-10"></div>
         <div 
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url(/images/cameras/hero-bg.webp)` }}
@@ -521,12 +521,12 @@ export default function CompactCameras() {
             Discover the perfect pocket-sized cameras with professional features and exceptional image quality
           </p>
           
-          {/* Hero Buttons */}
+          {/* Hero Buttons - Sarı tonlarda butonlar */}
           <div ref={heroButtonsRef} className="flex flex-wrap gap-4 justify-center">
-            <a href="#top-cameras" className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full font-medium transition-all flex items-center gap-2">
+            <a href="#top-cameras" className="bg-yellow-500 hover:bg-yellow-600 text-white px-6 py-3 rounded-full font-medium transition-all flex items-center gap-2">
               <FaCamera /> Explore Top Picks
             </a>
-            <a href="#guide" className="bg-transparent border-2 border-white text-white px-6 py-3 rounded-full font-medium hover:bg-white/10 transition-all flex items-center gap-2">
+            <a href="#guide" className="bg-transparent border-2 border-amber-400 text-amber-400 px-6 py-3 rounded-full font-medium hover:bg-amber-400/10 transition-all flex items-center gap-2">
               <FaInfoCircle /> Read Buying Guide
             </a>
           </div>
@@ -545,10 +545,10 @@ export default function CompactCameras() {
               The main advantage of compact cameras is their convenience. They slip easily into a pocket or small bag, yet offer significant upgrades over smartphone photography with larger sensors, optical zoom capabilities, and dedicated photographic controls for more creative flexibility.
             </p>
             <p className="text-lg text-gray-600 dark:text-gray-300">
-              Today's premium compact cameras often feature 1-inch or even larger sensors, bright lenses with wide apertures, 4K video recording, and advanced autofocus systems. They represent a compelling option for those who want quality images without the bulk and complexity of interchangeable lens systems.
+              Today&apos;s premium compact cameras often feature 1-inch or even larger sensors, bright lenses with wide apertures, 4K video recording, and advanced autofocus systems. They represent a compelling option for those who want quality images without the bulk and complexity of interchangeable lens systems.
             </p>
             <p className="text-lg text-gray-600 dark:text-gray-300">
-              Whether you're looking for your first dedicated camera or a capable backup to your DSLR or mirrorless system, compact cameras offer surprising capabilities in remarkably small packages.
+              Whether you&apos;re looking for your first dedicated camera or a capable backup to your DSLR or mirrorless system, compact cameras offer surprising capabilities in remarkably small packages.
             </p>
           </div>
         </div>
@@ -674,7 +674,7 @@ export default function CompactCameras() {
                   hoveredCard === index ? 'scale-[1.02] shadow-2xl' : 'hover:shadow-xl hover:-translate-y-2'
                 }`}
               >
-                <div className="absolute top-2 left-2 bg-purple-600 text-white py-1 px-3 rounded-full text-sm font-medium z-10">
+                <div className="absolute top-2 left-2 bg-yellow-600 text-white py-1 px-3 rounded-full text-sm font-medium z-10">
                   {index === 0 && "Best Overall"}
                   {index === 1 && "Best Fixed Lens"}
                   {index === 2 && "Best for Street"}
@@ -702,7 +702,7 @@ export default function CompactCameras() {
                 <div className="p-6">
                   <h3 className="text-xl font-bold mb-2 text-gray-800 dark:text-white group">
                     {camera.name}
-                    <span className={`block h-0.5 bg-purple-500 transform scale-x-0 transition-transform duration-300 ${
+                    <span className={`block h-0.5 bg-yellow-500 transform scale-x-0 transition-transform duration-300 ${
                       hoveredCard === index ? 'scale-x-100' : ''
                     }`}></span>
                   </h3>
@@ -715,7 +715,7 @@ export default function CompactCameras() {
                         <li key={idx} className={`flex items-start gap-2 text-sm text-gray-600 dark:text-gray-300 transition-transform duration-300 ${
                           hoveredCard === index ? `transform translate-x-${idx}` : ''
                         }`}>
-                          <FaCheckCircle className={`text-purple-500 mt-1 flex-shrink-0 ${
+                          <FaCheckCircle className={`text-yellow-500 mt-1 flex-shrink-0 ${
                             hoveredCard === index ? 'animate-bounce' : ''
                           }`} />
                           <span>{feature}</span>
@@ -739,8 +739,8 @@ export default function CompactCameras() {
                       href={camera.amazon_link} 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      className={`px-4 py-2 bg-purple-500 hover:bg-purple-600 text-white rounded-lg flex items-center gap-2 transition-all duration-300 ${
-                        hoveredCard === index ? 'bg-purple-600 shadow-lg' : ''
+                      className={`px-4 py-2 bg-yellow-500 hover:bg-yellow-600 text-white rounded-lg flex items-center gap-2 transition-all duration-300 ${
+                        hoveredCard === index ? 'bg-yellow-600 shadow-lg' : ''
                       }`}
                     >
                       <FaAmazon className={hoveredCard === index ? 'animate-bounce' : ''} /> View on Amazon
@@ -767,8 +767,8 @@ export default function CompactCameras() {
             {photographyTips.map((tip, index) => (
               <div key={index} className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
                 <div className="flex items-start gap-4">
-                  <div className="bg-purple-100 dark:bg-purple-900 p-3 rounded-full">
-                    <MdPhotoCamera className="text-purple-500 dark:text-purple-300 text-xl" />
+                  <div className="bg-yellow-100 dark:bg-yellow-900 p-3 rounded-full">
+                    <MdPhotoCamera className="text-yellow-500 dark:text-yellow-300 text-xl" />
                   </div>
                   <div>
                     <h3 className="text-xl font-bold mb-2 text-gray-800 dark:text-white">{tip.title}</h3>
@@ -796,8 +796,8 @@ export default function CompactCameras() {
               <div key={index} className="bg-gray-50 dark:bg-gray-700 p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
                 <div className="flex flex-col md:flex-row gap-6">
                   <div className="flex-shrink-0 flex items-start justify-center">
-                    <div className="bg-purple-100 dark:bg-purple-900 p-4 rounded-full">
-                      <MdCameraAlt className="text-purple-500 dark:text-purple-300 text-3xl" />
+                    <div className="bg-yellow-100 dark:bg-yellow-900 p-4 rounded-full">
+                      <MdCameraAlt className="text-yellow-500 dark:text-yellow-300 text-3xl" />
                     </div>
                   </div>
                   <div>
@@ -819,7 +819,7 @@ export default function CompactCameras() {
       <section id="compact-history" className="py-16 px-4 bg-gray-50 dark:bg-gray-900" ref={historyRef}>
         <div className="container mx-auto max-w-4xl">
           <div className="flex items-center gap-3 mb-6 justify-center">
-            <MdOutlineHistory className="text-3xl text-purple-500 dark:text-purple-400" />
+            <MdOutlineHistory className="text-3xl text-yellow-500 dark:text-yellow-400" />
             <h2 className="text-3xl font-bold text-gray-800 dark:text-white">The Evolution of Compact Cameras</h2>
           </div>
           
@@ -838,11 +838,11 @@ export default function CompactCameras() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-4 bg-gradient-to-br from-purple-900 to-black text-white relative overflow-hidden">
+      <section className="py-20 px-4 bg-gradient-to-br from-yellow-700 to-black text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-20">
-          <div className="absolute top-0 left-0 w-64 h-64 bg-purple-500 rounded-full filter blur-3xl"></div>
-          <div className="absolute bottom-0 right-0 w-80 h-80 bg-pink-500 rounded-full filter blur-3xl"></div>
-          <div className="absolute top-1/2 left-1/3 w-40 h-40 bg-violet-400 rounded-full filter blur-2xl"></div>
+          <div className="absolute top-0 left-0 w-64 h-64 bg-yellow-500 rounded-full filter blur-3xl"></div>
+          <div className="absolute bottom-0 right-0 w-80 h-80 bg-amber-500 rounded-full filter blur-3xl"></div>
+          <div className="absolute top-1/2 left-1/3 w-40 h-40 bg-yellow-400 rounded-full filter blur-2xl"></div>
         </div>
 
         <div className="container mx-auto text-center relative z-10">
@@ -852,7 +852,7 @@ export default function CompactCameras() {
               Find the perfect compact camera that fits your style and never miss a moment.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="#top-cameras" className="px-8 py-4 bg-gradient-to-r from-purple-500 to-pink-600 hover:from-purple-600 hover:to-pink-700 rounded-full font-medium text-lg transition duration-300 shadow-lg shadow-purple-500/20 hover:shadow-purple-600/30 flex items-center justify-center gap-2">
+              <Link href="#top-cameras" className="px-8 py-4 bg-gradient-to-r from-yellow-500 to-pink-600 hover:from-yellow-600 hover:to-pink-700 rounded-full font-medium text-lg transition duration-300 shadow-lg shadow-purple-500/20 hover:shadow-purple-600/30 flex items-center justify-center gap-2">
                 <FaShoppingCart /> Explore Cameras
               </Link>
               <Link href="#buying-guide" className="px-8 py-4 bg-white/10 hover:bg-white/20 border border-white/30 rounded-full font-medium text-lg transition duration-300 backdrop-blur-sm flex items-center justify-center gap-2">

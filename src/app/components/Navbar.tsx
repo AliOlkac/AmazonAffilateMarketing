@@ -30,11 +30,13 @@ export default function Navbar() {
 
   // Camera categories based on the plan
   const cameraCategories = [
+
     { name: "DSLR Cameras", path: "/dslr-cameras" },
     { name: "Mirrorless Cameras", path: "/mirrorless-cameras" },
     { name: "Action Cameras", path: "/action-cameras" },
     { name: "Vlog Cameras", path: "/vlog-cameras" },
     { name: "Compact Cameras", path: "/compact-cameras" },
+    { name: "All Cameras", path: "/cameras" },
   ];
 
   // Handle scroll effect - only in client side
