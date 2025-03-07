@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import Link from "next/link";
 import Image from "next/image";
@@ -171,7 +171,7 @@ export default function Navbar() {
                   className="object-contain"
                 />
               </div>
-              <span className={`font-bold transition-all duration-300 ${isScrolled ? "text-base" : "text-lg"} text-white group-hover:text-blue-400`}>
+              <span className={`font-bold transition-all duration-300 ${isScrolled ? "text-base" : "text-lg"} text-white group-hover:text-orange-400`}>
                 BestCameraReview
               </span>
             </Link>
