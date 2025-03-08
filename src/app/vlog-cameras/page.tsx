@@ -507,12 +507,12 @@ export default function VlogCameras() {
   return (
     <div className="bg-gray-50 dark:bg-gray-900 min-h-screen pb-16">
       {/* Hero Section with Parallax Effect */}
-      <section className="relative h-[60vh] md:h-[70vh] overflow-hidden flex items-center justify-center">
+      <section className="relative h-[100vh] md:h-[100vh] overflow-hidden flex items-center justify-center">
         {/* Background Image with Overlay - Yeşil tonlu overlay */}
         <div className="absolute inset-0 bg-gradient-to-r from-green-900/30 to-emerald-700/30 z-10"></div>
         <div 
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(/images/cameras/hero-bg.webp)` }}
+          style={{ backgroundImage: `url(/images/cameras/categories/vlog.webp)` }}
           ref={parallaxBgRef}
         ></div>
         

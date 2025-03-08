@@ -432,10 +432,10 @@ export default function Cameras() {
       {/* Hero Bölümü */}
       <section 
         ref={heroRef}
-        className="relative h-[80vh] flex items-center justify-center overflow-hidden bg-gray-900 text-white"
+        className="relative h-[100vh] flex items-center justify-center overflow-hidden bg-gray-900 text-white"
       >
         {/* Arkaplan Görüntüsü */}
-        <div className="absolute inset-0 bg-cover bg-center opacity-40" style={{ backgroundImage: `url(/images/cameras/hero-bg.webp)` }}></div>
+        <div className="absolute inset-0 bg-cover bg-center opacity-40" style={{ backgroundImage: `url(/images/cameras/categories/all-cameras.webp)` }}></div>
         
         {/* Renkli overlay gradient */}
         <div className="absolute inset-0 bg-gradient-to-r from-blue-900/70 via-purple-900/70 to-pink-900/70"></div>
