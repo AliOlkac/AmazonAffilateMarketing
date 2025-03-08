@@ -118,92 +118,88 @@ const dslrCameras = [
 const popularDslrCameras = [
   {
     id: "pop1",
-    name: "Canon EOS Rebel T7",
-    image: "/images/cameras/hero-bg.webp",
-    rating: 4.7,
-    salesCount: "50,000+",
-    price: "$479.99",
+    name: "Nikon D850",
+    image: "/images/cameras/nikon-d850.webp",
+    rating: 4.9,
+    salesCount: "75,000+",
+    price: "$2,996.95",
     key_features: [
-      "24.1MP APS-C CMOS Sensor",
-      "DIGIC 4+ Image Processor",
-      "3.0\" 920k-Dot LCD Monitor",
-      "Full HD 1080/30p Video Recording",
-      "9-Point AF System",
-      "ISO 100-6400, Up to 3 fps Shooting"
+      "45.7MP FX-Format BSI CMOS Sensor",
+      "EXPEED 5 Image Processor",
+      "3.2\" 2.36m-Dot Tilting Touchscreen LCD",
+      "4K UHD Video Recording at 30 fps",
+      "153-Point AF System",
+      "ISO 64-25600"
     ],
-    amazon_link: "https://www.amazon.com/Canon-Rebel-T7-18-55mm-II/dp/B07C2Z21X5"
+    amazon_link: "https://www.amazon.com/Nikon-D850-FX-Format-Digital-Camera/dp/B07524LHMT"
   },
   {
     id: "pop2",
-    name: "Nikon D3500",
-    image: "/images/cameras/hero-bg.webp",
+    name: "Canon EOS 5D Mark IV",
+    image: "/images/cameras/canon-5d-mark-iv.webp",
     rating: 4.8,
-    salesCount: "42,000+",
-    price: "$529.95",
-    category: "",
+    salesCount: "65,000+",
+    price: "$2,699.00",
     key_features: [
-      "24.2MP DX-Format CMOS Sensor",
-      "EXPEED 4 Image Processor",
-      "3.0\" 921k-Dot LCD Monitor",
-      "Full HD 1080p Video Recording at 60 fps",
-      "11-Point AF System",
-      "ISO 100-25600"
+      "30.4MP Full-Frame CMOS Sensor",
+      "DIGIC 6+ Image Processor",
+      "3.2\" 1.62m-Dot Touchscreen LCD",
+      "4K Video Recording at 30 fps",
+      "61-Point AF System",
+      "Dual Pixel CMOS AF"
     ],
-    amazon_link: "https://www.amazon.com/Nikon-D3500-18-55mm-VR-Lens/dp/B07GWKDLGT"
+    amazon_link: "https://www.amazon.com/Canon-Mark-Frame-Digital-Camera/dp/B01KURGS9E"
   },
   {
     id: "pop3",
-    name: "Canon EOS 90D",
-    image: "/images/cameras/hero-bg.webp",
-    rating: 4.6,
-    salesCount: "35,000+",
-    price: "$1,199.00",
-    category: "",
+    name: "Nikon D780",
+    image: "/images/cameras/nikon-d780.webp",
+    rating: 4.8,
+    salesCount: "45,000+",
+    price: "$2,296.95",
     key_features: [
-      "32.5MP APS-C CMOS Sensor",
-      "DIGIC 8 Image Processor",
-      "3.0\" 1.04m-Dot Vari-Angle Touchscreen",
-      "UHD 4K30p & Full HD 120p Video Recording",
-      "45-Point All Cross-Type AF System",
-      "Up to 10-fps Shooting"
+      "24.5MP FX-Format BSI CMOS Sensor",
+      "EXPEED 6 Image Processor",
+      "3.2\" 2.36m-Dot Tilting Touchscreen",
+      "4K UHD Video at 30 fps",
+      "51-Point Phase-Detect AF System",
+      "273-Point On-Sensor PDAF System"
     ],
-    amazon_link: "https://www.amazon.com/Canon-Digital-Camera-Black-3616C002/dp/B07WPKXZZF"
+    amazon_link: "https://www.amazon.com/Nikon-D780-FX-Format-Digital-Camera/dp/B083VMMX8H"
   },
   {
     id: "pop4",
-    name: "Nikon D7500",
-    image: "/images/cameras/hero-bg.webp",
+    name: "Canon EOS 90D",
+    image: "/images/cameras/canon-90d.webp",
     rating: 4.7,
-    salesCount: "30,000+",
-    price: "$996.95",
-    category: "",
+    salesCount: "55,000+",
+    price: "$1,199.00",
     key_features: [
-      "20.9MP DX-Format CMOS Sensor",
-      "EXPEED 5 Image Processor",
-      "3.2\" 922k-Dot Tilting Touchscreen LCD",
-      "4K UHD Video Recording at 30 fps",
-      "51-Point AF System",
-      "ISO 100-51200, Up to 8 fps Shooting"
+      "32.5MP APS-C CMOS Sensor",
+      "DIGIC 8 Image Processor",
+      "3\" 1.04m-Dot Vari-Angle Touchscreen",
+      "4K30p Video Recording",
+      "45-Point All Cross-Type AF System",
+      "10 fps Continuous Shooting"
     ],
-    amazon_link: "https://www.amazon.com/Nikon-D7500-DX-Format-Digital-Body/dp/B06Y5ZZTMX"
+    amazon_link: "https://www.amazon.com/Canon-Digital-Camera-Black-3616C002/dp/B07WFQXN2Z"
   },
   {
     id: "pop5",
-    name: "Canon EOS 6D Mark II",
-    image: "/images/cameras/hero-bg.webp",
-    rating: 4.5,
-    salesCount: "25,000+",
-    price: "$1,399.00",
-    category: "",
+    name: "Nikon D7500",
+    image: "/images/cameras/nikon-d7500.webp",
+    rating: 4.7,
+    salesCount: "40,000+",
+    price: "$996.95",
     key_features: [
-      "26.2MP Full-Frame CMOS Sensor",
-      "DIGIC 7 Image Processor",
-      "3.0\" 1.04m-Dot Vari-Angle Touchscreen",
-      "Full HD 1080p Video Recording at 60 fps",
-      "45-Point All Cross-Type AF System",
-      "Dual Pixel CMOS AF"
+      "20.9MP DX-Format CMOS Sensor",
+      "EXPEED 5 Image Processor",
+      "3.2\" 922k-Dot Tilting Touchscreen",
+      "4K UHD Video Recording",
+      "51-Point AF System",
+      "8 fps Continuous Shooting"
     ],
-    amazon_link: "https://www.amazon.com/Canon-Mark-Digital-Camera-Body/dp/B072MZCJKN"
+    amazon_link: "https://www.amazon.com/Nikon-D7500-DX-Format-Digital-Camera/dp/B06Y5ZZTMX"
   }
 ];
 
@@ -510,11 +506,6 @@ export default function DSLRCameras() {
                   {/* Rating badge overlay */}
                   <div className="absolute top-2 right-2 bg-yellow-400 text-gray-900 py-1 px-3 rounded-full flex items-center gap-1 font-medium z-10">
                     <FaStar /> {camera.rating}
-                  </div>
-                  
-                  {/* Category badge */}
-                  <div className="absolute top-2 left-2 bg-blue-500 text-white py-1 px-3 rounded-full text-sm font-medium z-10">
-                    {camera.category}
                   </div>
                   
                   {/* Sales badge */}
