@@ -12,107 +12,107 @@ import Image from "next/image";
 const cameraTypes = [
   {
     id: "dslr",
-    name: "DSLR Kameralar",
+    name: "DSLR Cameras",
     image: "/images/cameras/hero-bg.webp",
-    description: "DSLR (Digital Single-Lens Reflex) kameralar, optik vizör ve ayna mekanizması kullanarak gerçek zamanlı görüntüleme sağlayan profesyonel kameralardır.",
+    description: "DSLR (Digital Single-Lens Reflex) cameras are professional cameras that provide real-time viewing using an optical viewfinder and mirror mechanism.",
     pros: [
-      "Üstün görüntü kalitesi",
-      "Geniş lens ekosistemi",
-      "Uzun pil ömrü",
-      "Dayanıklı gövde yapısı",
-      "Optik vizör avantajı"
+      "Superior image quality",
+      "Wide lens ecosystem",
+      "Long battery life",
+      "Durable body construction",
+      "Optical viewfinder advantage"
     ],
     cons: [
-      "Büyük ve ağır gövde",
-      "Karmaşık menü sistemi",
-      "Aynasız kameralara göre daha az video özellikleri",
-      "Daha yavaş otomatik odaklama (canlı görüntü modunda)"
+      "Large and heavy body",
+      "Complex menu system",
+      "Fewer video features compared to mirrorless",
+      "Slower autofocus (in live view mode)"
     ],
-    idealFor: "Profesyonel fotoğrafçılık, spor, vahşi yaşam ve portre fotoğrafçılığı",
+    idealFor: "Professional photography, sports, wildlife, and portrait photography",
     link: "/dslr-cameras"
   },
   {
     id: "mirrorless",
-    name: "Aynasız Kameralar",
+    name: "Mirrorless Cameras",
     image: "/images/cameras/hero-bg.webp",
-    description: "Aynasız kameralar, DSLR'lara benzer görüntü kalitesi sunarken daha kompakt yapıda olan ve elektronik vizör kullanan modern kameralardır.",
+    description: "Mirrorless cameras are modern cameras that offer similar image quality to DSLRs while being more compact and using an electronic viewfinder.",
     pros: [
-      "Kompakt ve hafif gövde",
-      "Üstün video özellikleri",
-      "Sessiz çekim imkanı",
-      "Gelişmiş otomatik odaklama",
-      "WYSIWYG (Ne görüyorsan onu alırsın) elektronik vizör"
+      "Compact and lightweight body",
+      "Superior video features",
+      "Silent shooting capability",
+      "Advanced autofocus",
+      "WYSIWYG (What You See Is What You Get) electronic viewfinder"
     ],
     cons: [
-      "Daha kısa pil ömrü",
-      "Daha sınırlı lens seçeneği (gelişmekte)",
-      "Bazı modellerde aşırı ısınma sorunları",
-      "Profesyonel modeller için yüksek fiyat"
+      "Shorter battery life",
+      "More limited lens selection (improving)",
+      "Overheating issues in some models",
+      "High price for professional models"
     ],
-    idealFor: "Seyahat fotoğrafçılığı, video içerik üretimi, sokak fotoğrafçılığı",
+    idealFor: "Travel photography, video content creation, street photography",
     link: "/mirrorless-cameras"
   },
   {
     id: "compact",
-    name: "Kompakt Kameralar",
+    name: "Compact Cameras",
     image: "/images/cameras/hero-bg.webp",
-    description: "Kompakt kameralar, cep boyu boyutlarında, sabit lensli ve kolay kullanımlı kameralardır.",
+    description: "Compact cameras are pocket-sized cameras with fixed lenses and easy-to-use interfaces.",
     pros: [
-      "Ultra taşınabilir boyut",
-      "Kullanım kolaylığı",
-      "Akıllı telefonlardan daha iyi görüntü kalitesi",
-      "Zoom özelliği",
-      "Otomatik modlarda iyi performans"
+      "Ultra-portable size",
+      "Ease of use",
+      "Better image quality than smartphones",
+      "Zoom capability",
+      "Good performance in automatic modes"
     ],
     cons: [
-      "Sınırlı manuel kontrol",
-      "Lens değiştirilemez",
-      "Düşük ışık performansı sınırlı",
-      "Küçük sensör boyutu"
+      "Limited manual control",
+      "Non-interchangeable lens",
+      "Limited low-light performance",
+      "Small sensor size"
     ],
-    idealFor: "Günlük kullanım, seyahat, aile etkinlikleri, başlangıç seviyesi fotoğrafçılık",
+    idealFor: "Daily use, travel, family events, beginner photography",
     link: "/compact-cameras"
   },
   {
     id: "action",
-    name: "Aksiyon Kameraları",
+    name: "Action Cameras",
     image: "/images/cameras/hero-bg.webp",
-    description: "Aksiyon kameraları, zorlu koşullarda kullanım için tasarlanmış, ultra dayanıklı ve kompakt video kameralarıdır.",
+    description: "Action cameras are ultra-durable and compact video cameras designed for use in challenging conditions.",
     pros: [
-      "Çok dayanıklı yapı",
-      "Su geçirmez özellik",
-      "Geniş açılı lens",
-      "Stabilizasyon teknolojisi",
-      "Kompakt boyut"
+      "Very durable construction",
+      "Waterproof feature",
+      "Wide-angle lens",
+      "Stabilization technology",
+      "Compact size"
     ],
     cons: [
-      "Sınırlı düşük ışık performansı",
-      "Kısa pil ömrü",
-      "Düşük ses kalitesi",
-      "Sınırlı zoom yeteneği"
+      "Limited low-light performance",
+      "Short battery life",
+      "Low audio quality",
+      "Limited zoom capability"
     ],
-    idealFor: "Macera sporları, sualtı çekimleri, POV (bakış açısı) videolar, ekstrem koşullar",
+    idealFor: "Adventure sports, underwater shooting, POV (point of view) videos, extreme conditions",
     link: "/action-cameras"
   },
   {
     id: "vlog",
-    name: "Vlog Kameraları",
+    name: "Vlog Cameras",
     image: "/images/cameras/hero-bg.webp",
-    description: "Vlog kameraları, içerik üreticileri için tasarlanmış, kendini çekme özellikleri gelişmiş kameralardır.",
+    description: "Vlog cameras are designed for content creators with advanced self-shooting features.",
     pros: [
-      "Döner ekran",
-      "Gelişmiş otofokus",
-      "İyi mikrofon kalitesi",
-      "Kompakt boyut",
-      "Sosyal medya bağlantı özellikleri"
+      "Flip screen",
+      "Advanced autofocus",
+      "Good microphone quality",
+      "Compact size",
+      "Social media connectivity features"
     ],
     cons: [
-      "Genellikle sabit lens",
-      "DSLR/aynasıza göre daha küçük sensör",
-      "Sınırlı manuel kontrol",
-      "Bazı modellerde aşırı ısınma"
+      "Usually fixed lens",
+      "Smaller sensor than DSLR/mirrorless",
+      "Limited manual control",
+      "Overheating in some models"
     ],
-    idealFor: "YouTube içerik üreticileri, sosyal medya influencerları, video bloggerlar",
+    idealFor: "YouTube content creators, social media influencers, video bloggers",
     link: "/vlog-cameras"
   }
 ];
@@ -206,57 +206,57 @@ export default function BuyingGuide() {
 
   return (
     <div className="bg-gray-50 dark:bg-gray-900 min-h-screen pb-16">
-      {/* Hero Bölümü */}
+      {/* Hero Section */}
       <section className="relative h-[60vh] md:h-[70vh] overflow-hidden flex items-center justify-center">
-        {/* Arka plan ve Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-900/80 to-indigo-700/80 z-10"></div>
+        {/* Background and Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-pink-700/30 to-indigo-700/80 z-10"></div>
         <div 
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url(/images/cameras/hero-bg.webp)` }}
           ref={parallaxBgRef}
         ></div>
         
-        {/* Hero İçeriği */}
+        {/* Hero Content */}
         <div className="container mx-auto px-4 relative z-20 text-center">
-          <h1 ref={heroTitleRef} className="text-4xl md:text-6xl font-bold text-white mb-6">Kamera Satın Alma Rehberi</h1>
+          <h1 ref={heroTitleRef} className="text-4xl md:text-6xl font-bold text-white mb-6">Camera Buying Guide</h1>
           <p ref={heroSubtitleRef} className="text-xl md:text-2xl text-gray-200 mb-8 max-w-3xl mx-auto">
-            Fotoğrafçılık seviyenize ve ihtiyaçlarınıza uygun en iyi kamerayı seçmek için kapsamlı rehberimiz
+            Your comprehensive guide to choosing the perfect camera for your photography level and needs
           </p>
           
-          {/* Hero Butonları */}
+          {/* Hero Buttons */}
           <div ref={heroButtonsRef} className="flex flex-wrap gap-4 justify-center">
             <a href="#camera-types" className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full font-medium transition-all flex items-center gap-2">
-              <FaCamera /> Kamera Türlerini Keşfet
+              <FaCamera /> Explore Camera Types
             </a>
             <a href="#buying-factors" className="bg-transparent border-2 border-white text-white px-6 py-3 rounded-full font-medium hover:bg-white/10 transition-all flex items-center gap-2">
-              <FaInfoCircle /> Satın Alma Faktörleri
+              <FaInfoCircle /> Buying Factors
             </a>
           </div>
         </div>
       </section>
 
-      {/* Giriş Bölümü */}
+      {/* Introduction Section */}
       <section className="py-16 px-4 container mx-auto">
         <div className="max-w-4xl mx-auto">
-          <h2 ref={introTitleRef} className="text-3xl font-bold mb-6 text-gray-800 dark:text-white">Doğru Kamera Seçimi İçin Kapsamlı Rehber</h2>
+          <h2 ref={introTitleRef} className="text-3xl font-bold mb-6 text-gray-800 dark:text-white">Comprehensive Guide to Choosing the Right Camera</h2>
           <div ref={introTextRef} className="space-y-6">
             <p className="text-lg text-gray-600 dark:text-gray-300">
-              Doğru kamera seçimi, hem bütçenize hem de fotoğrafçılık veya video çekim ihtiyaçlarınıza uygun olmalıdır. Piyasada çok çeşitli kamera seçenekleri bulunduğundan, hangi kamera türünün sizin için en uygun olduğunu belirlemek karmaşık bir süreç olabilir.
+              Choosing the right camera should match both your budget and your photography or video shooting needs. With so many camera options available in the market, determining which type of camera is best for you can be a complex process.
             </p>
             <p className="text-lg text-gray-600 dark:text-gray-300">
-              Bu rehberde, farklı kamera türlerinin özelliklerini, avantaj ve dezavantajlarını inceleyerek doğru seçimi yapmanıza yardımcı olacağız. Ayrıca, satın alma sırasında dikkat edilmesi gereken faktörleri ve bütçenize uygun en iyi seçenekleri de değerlendireceğiz.
+              In this guide, we&apos;ll help you make the right choice by examining the features, advantages, and disadvantages of different camera types. We&apos;ll also evaluate the factors to consider during purchase and the best options for your budget.
             </p>
             <p className="text-lg text-gray-600 dark:text-gray-300">
-              Bu rehberin sonunda, ihtiyaçlarınıza en uygun kamera türünü belirlemiş olacak ve satın alma sürecinizde bilinçli bir karar verebileceksiniz.
+              By the end of this guide, you&apos;ll have identified the camera type that best suits your needs and be able to make an informed decision in your purchase process.
             </p>
           </div>
         </div>
       </section>
 
-      {/* İçindekiler Bölümü */}
+      {/* Table of Contents */}
       <section id="table-of-contents" className="py-12 px-4 bg-gray-100 dark:bg-gray-800 rounded-3xl mx-4 md:mx-8 lg:mx-16 mb-16">
         <div className="container mx-auto max-w-4xl">
-          <h2 className="text-2xl font-bold mb-8 text-gray-800 dark:text-white text-center">Bu Rehberde Neler Var?</h2>
+          <h2 className="text-2xl font-bold mb-8 text-gray-800 dark:text-white text-center">What&apos;s in This Guide?</h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <a href="#camera-types" className="flex gap-4 items-center p-4 bg-white dark:bg-gray-700 rounded-xl hover:shadow-lg transition-all group">
@@ -264,8 +264,8 @@ export default function BuyingGuide() {
                 <MdCameraAlt className="text-blue-500 dark:text-blue-300 text-xl" />
               </div>
               <div>
-                <h3 className="font-bold text-gray-800 dark:text-white text-lg">Kamera Türleri</h3>
-                <p className="text-gray-600 dark:text-gray-300 text-sm">DSLR, aynasız, kompakt ve diğer kamera türlerinin karşılaştırması</p>
+                <h3 className="font-bold text-gray-800 dark:text-white text-lg">Camera Types</h3>
+                <p className="text-gray-600 dark:text-gray-300 text-sm">Comparison of DSLR, mirrorless, compact, and other camera types</p>
               </div>
             </a>
             
@@ -274,8 +274,8 @@ export default function BuyingGuide() {
                 <MdSettings className="text-blue-500 dark:text-blue-300 text-xl" />
               </div>
               <div>
-                <h3 className="font-bold text-gray-800 dark:text-white text-lg">Satın Alma Faktörleri</h3>
-                <p className="text-gray-600 dark:text-gray-300 text-sm">Kamera seçerken dikkat edilmesi gereken teknik özellikler</p>
+                <h3 className="font-bold text-gray-800 dark:text-white text-lg">Buying Factors</h3>
+                <p className="text-gray-600 dark:text-gray-300 text-sm">Technical features to consider when choosing a camera</p>
               </div>
             </a>
             
@@ -284,8 +284,8 @@ export default function BuyingGuide() {
                 <MdCompare className="text-blue-500 dark:text-blue-300 text-xl" />
               </div>
               <div>
-                <h3 className="font-bold text-gray-800 dark:text-white text-lg">Karşılaştırma Tablosu</h3>
-                <p className="text-gray-600 dark:text-gray-300 text-sm">Farklı kamera türlerini yan yana karşılaştırın</p>
+                <h3 className="font-bold text-gray-800 dark:text-white text-lg">Comparison Table</h3>
+                <p className="text-gray-600 dark:text-gray-300 text-sm">Compare different camera types side by side</p>
               </div>
             </a>
             
@@ -294,8 +294,8 @@ export default function BuyingGuide() {
                 <FaSearch className="text-blue-500 dark:text-blue-300 text-xl" />
               </div>
               <div>
-                <h3 className="font-bold text-gray-800 dark:text-white text-lg">Karar Rehberi</h3>
-                <p className="text-gray-600 dark:text-gray-300 text-sm">İhtiyaçlarınıza göre en uygun kamerayı bulun</p>
+                <h3 className="font-bold text-gray-800 dark:text-white text-lg">Decision Guide</h3>
+                <p className="text-gray-600 dark:text-gray-300 text-sm">Find the best camera for your needs</p>
               </div>
             </a>
             
@@ -304,8 +304,8 @@ export default function BuyingGuide() {
                 <FaQuestionCircle className="text-blue-500 dark:text-blue-300 text-xl" />
               </div>
               <div>
-                <h3 className="font-bold text-gray-800 dark:text-white text-lg">Sık Sorulan Sorular</h3>
-                <p className="text-gray-600 dark:text-gray-300 text-sm">Kamera alımı ile ilgili en çok sorulan sorular</p>
+                <h3 className="font-bold text-gray-800 dark:text-white text-lg">Frequently Asked Questions</h3>
+                <p className="text-gray-600 dark:text-gray-300 text-sm">Most common questions about camera purchase</p>
               </div>
             </a>
           </div>
@@ -476,106 +476,106 @@ export default function BuyingGuide() {
         </div>
       </section>
 
-      {/* Adım 3: Karşılaştırma Tablosu */}
+      {/* Camera Types Comparison */}
       <section id="comparison" className="py-16 px-4 bg-white dark:bg-gray-800" ref={tableRef}>
         <div className="container mx-auto max-w-6xl">
-          <h2 className="text-3xl font-bold mb-8 text-gray-800 dark:text-white text-center">Kamera Türleri Karşılaştırması</h2>
+          <h2 className="text-3xl font-bold mb-8 text-gray-800 dark:text-white text-center">Camera Types Comparison</h2>
           <p className="text-lg text-center mb-12 text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            Farklı kamera türlerini yan yana karşılaştırarak ihtiyaçlarınızı karşılayan en iyi seçeneği belirleyin
+            Compare different camera types side by side to find the best option that meets your needs
           </p>
 
           <div className="overflow-x-auto pb-4">
             <table className="w-full border-collapse">
               <thead>
                 <tr className="bg-blue-50 dark:bg-blue-900/30">
-                  <th className="p-4 border-b-2 border-blue-200 dark:border-blue-800 text-left">Özellik</th>
+                  <th className="p-4 border-b-2 border-blue-200 dark:border-blue-800 text-left">Feature</th>
                   <th className="p-4 border-b-2 border-blue-200 dark:border-blue-800 text-left">DSLR</th>
-                  <th className="p-4 border-b-2 border-blue-200 dark:border-blue-800 text-left">Aynasız</th>
-                  <th className="p-4 border-b-2 border-blue-200 dark:border-blue-800 text-left">Kompakt</th>
-                  <th className="p-4 border-b-2 border-blue-200 dark:border-blue-800 text-left">Aksiyon</th>
+                  <th className="p-4 border-b-2 border-blue-200 dark:border-blue-800 text-left">Mirrorless</th>
+                  <th className="p-4 border-b-2 border-blue-200 dark:border-blue-800 text-left">Compact</th>
+                  <th className="p-4 border-b-2 border-blue-200 dark:border-blue-800 text-left">Action</th>
                   <th className="p-4 border-b-2 border-blue-200 dark:border-blue-800 text-left">Vlog</th>
                 </tr>
               </thead>
               <tbody>
                 <tr className="border-b border-gray-200 dark:border-gray-700">
-                  <td className="p-4 font-medium">Boyut ve Ağırlık</td>
-                  <td className="p-4">Büyük ve Ağır</td>
-                  <td className="p-4">Orta</td>
-                  <td className="p-4">Küçük ve Hafif</td>
-                  <td className="p-4">Çok Küçük</td>
-                  <td className="p-4">Küçük-Orta</td>
+                  <td className="p-4 font-medium">Size and Weight</td>
+                  <td className="p-4">Large and Heavy</td>
+                  <td className="p-4">Medium</td>
+                  <td className="p-4">Small and Light</td>
+                  <td className="p-4">Very Small</td>
+                  <td className="p-4">Small-Medium</td>
                 </tr>
                 <tr className="border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800">
-                  <td className="p-4 font-medium">Görüntü Kalitesi</td>
-                  <td className="p-4">Mükemmel</td>
-                  <td className="p-4">Mükemmel</td>
-                  <td className="p-4">İyi</td>
-                  <td className="p-4">Orta</td>
-                  <td className="p-4">İyi-Çok İyi</td>
+                  <td className="p-4 font-medium">Image Quality</td>
+                  <td className="p-4">Excellent</td>
+                  <td className="p-4">Excellent</td>
+                  <td className="p-4">Good</td>
+                  <td className="p-4">Medium</td>
+                  <td className="p-4">Good-Very Good</td>
                 </tr>
                 <tr className="border-b border-gray-200 dark:border-gray-700">
-                  <td className="p-4 font-medium">Lens Değiştirme</td>
-                  <td className="p-4">Evet</td>
-                  <td className="p-4">Evet</td>
-                  <td className="p-4">Hayır</td>
-                  <td className="p-4">Sınırlı</td>
-                  <td className="p-4">Model Bağımlı</td>
+                  <td className="p-4 font-medium">Lens Interchangeability</td>
+                  <td className="p-4">Yes</td>
+                  <td className="p-4">Yes</td>
+                  <td className="p-4">No</td>
+                  <td className="p-4">Limited</td>
+                  <td className="p-4">Model Dependent</td>
                 </tr>
                 <tr className="border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800">
-                  <td className="p-4 font-medium">Otomatik Odaklama</td>
-                  <td className="p-4">İyi-Çok İyi</td>
-                  <td className="p-4">Mükemmel</td>
-                  <td className="p-4">İyi</td>
-                  <td className="p-4">Temel</td>
-                  <td className="p-4">Çok İyi</td>
+                  <td className="p-4 font-medium">Autofocus</td>
+                  <td className="p-4">Good-Very Good</td>
+                  <td className="p-4">Excellent</td>
+                  <td className="p-4">Good</td>
+                  <td className="p-4">Basic</td>
+                  <td className="p-4">Very Good</td>
                 </tr>
                 <tr className="border-b border-gray-200 dark:border-gray-700">
-                  <td className="p-4 font-medium">Video Yetenekleri</td>
-                  <td className="p-4">İyi</td>
-                  <td className="p-4">Mükemmel</td>
-                  <td className="p-4">İyi</td>
-                  <td className="p-4">Çok İyi</td>
-                  <td className="p-4">Mükemmel</td>
+                  <td className="p-4 font-medium">Video Capabilities</td>
+                  <td className="p-4">Good</td>
+                  <td className="p-4">Excellent</td>
+                  <td className="p-4">Good</td>
+                  <td className="p-4">Very Good</td>
+                  <td className="p-4">Excellent</td>
                 </tr>
                 <tr className="border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800">
-                  <td className="p-4 font-medium">Pil Ömrü</td>
-                  <td className="p-4">Mükemmel</td>
-                  <td className="p-4">İyi</td>
-                  <td className="p-4">İyi</td>
-                  <td className="p-4">Zayıf</td>
-                  <td className="p-4">Orta</td>
+                  <td className="p-4 font-medium">Battery Life</td>
+                  <td className="p-4">Excellent</td>
+                  <td className="p-4">Good</td>
+                  <td className="p-4">Good</td>
+                  <td className="p-4">Poor</td>
+                  <td className="p-4">Medium</td>
                 </tr>
                 <tr className="border-b border-gray-200 dark:border-gray-700">
-                  <td className="p-4 font-medium">Dayanıklılık</td>
-                  <td className="p-4">Çok İyi</td>
-                  <td className="p-4">İyi-Çok İyi</td>
-                  <td className="p-4">Orta</td>
-                  <td className="p-4">Mükemmel</td>
-                  <td className="p-4">İyi</td>
+                  <td className="p-4 font-medium">Durability</td>
+                  <td className="p-4">Very Good</td>
+                  <td className="p-4">Good-Very Good</td>
+                  <td className="p-4">Medium</td>
+                  <td className="p-4">Excellent</td>
+                  <td className="p-4">Good</td>
                 </tr>
                 <tr className="border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800">
-                  <td className="p-4 font-medium">Fiyat Aralığı</td>
-                  <td className="p-4">Orta-Yüksek</td>
-                  <td className="p-4">Orta-Çok Yüksek</td>
-                  <td className="p-4">Düşük-Orta</td>
-                  <td className="p-4">Düşük-Orta</td>
-                  <td className="p-4">Orta</td>
+                  <td className="p-4 font-medium">Price Range</td>
+                  <td className="p-4">Medium-High</td>
+                  <td className="p-4">Medium-Very High</td>
+                  <td className="p-4">Low-Medium</td>
+                  <td className="p-4">Low-Medium</td>
+                  <td className="p-4">Medium</td>
                 </tr>
                 <tr className="border-b border-gray-200 dark:border-gray-700">
-                  <td className="p-4 font-medium">Öğrenme Eğrisi</td>
-                  <td className="p-4">Dik</td>
-                  <td className="p-4">Orta-Dik</td>
-                  <td className="p-4">Düşük</td>
-                  <td className="p-4">Düşük</td>
-                  <td className="p-4">Düşük-Orta</td>
+                  <td className="p-4 font-medium">Learning Curve</td>
+                  <td className="p-4">Steep</td>
+                  <td className="p-4">Medium-Steep</td>
+                  <td className="p-4">Low</td>
+                  <td className="p-4">Low</td>
+                  <td className="p-4">Low-Medium</td>
                 </tr>
                 <tr className="bg-gray-50 dark:bg-gray-800">
-                  <td className="p-4 font-medium">İdeal Kullanıcı</td>
-                  <td className="p-4">Profesyoneller, Ciddi Amatörler</td>
-                  <td className="p-4">Profesyoneller, İçerik Üreticileri</td>
-                  <td className="p-4">Seyahat Edenler, Günlük Kullanıcılar</td>
-                  <td className="p-4">Macera Severler, Sporcular</td>
-                  <td className="p-4">İçerik Üreticileri, Vloggerlar</td>
+                  <td className="p-4 font-medium">Ideal User</td>
+                  <td className="p-4">Professionals, Serious Amateurs</td>
+                  <td className="p-4">Professionals, Content Creators</td>
+                  <td className="p-4">Travelers, Daily Users</td>
+                  <td className="p-4">Adventure Enthusiasts, Athletes</td>
+                  <td className="p-4">Content Creators, Vloggers</td>
                 </tr>
               </tbody>
             </table>
@@ -583,97 +583,96 @@ export default function BuyingGuide() {
         </div>
       </section>
 
-      {/* Karar Rehberi */}
+      {/* Decision Guide */}
       <section id="decision-guide" className="py-16 px-4 bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-blue-900/30">
         <div className="container mx-auto max-w-4xl">
-          <h2 className="text-3xl font-bold mb-8 text-gray-800 dark:text-white text-center">Hangi Kamera Sizin İçin Doğru Seçim?</h2>
+          <h2 className="text-3xl font-bold mb-8 text-gray-800 dark:text-white text-center">Which Camera is Right for You?</h2>
           <p className="text-lg text-center mb-12 text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            Aşağıdaki sorulara vereceğiniz cevaplara göre ihtiyaçlarınıza en uygun kamera türünü belirleyin
+            Determine the most suitable camera type based on your answers to the following questions
           </p>
 
           <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8">
             <div className="space-y-10">
-              {/* Sorular - Gerçek uygulamada etkileşimli olabilir */}
               <div className="space-y-6">
-                <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-4">1. Kamerayı hangi amaçla kullanacaksınız?</h3>
+                <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-4">1. What will you use the camera for?</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border-l-4 border-blue-500">
-                    <p className="font-medium text-gray-700 dark:text-gray-300">Profesyonel fotoğrafçılık için</p>
-                    <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">DSLR veya Aynasız kameralar idealdir.</p>
+                    <p className="font-medium text-gray-700 dark:text-gray-300">Professional Photography</p>
+                    <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">DSLR or Mirrorless cameras are ideal.</p>
                   </div>
                   <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border-l-4 border-blue-500">
-                    <p className="font-medium text-gray-700 dark:text-gray-300">Video içerik üretimi için</p>
-                    <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">Aynasız veya Vlog kameralar daha uygundur.</p>
+                    <p className="font-medium text-gray-700 dark:text-gray-300">Video Content Creation</p>
+                    <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">Mirrorless or Vlog cameras are more suitable.</p>
                   </div>
                   <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border-l-4 border-blue-500">
-                    <p className="font-medium text-gray-700 dark:text-gray-300">Seyahat ve günlük kullanım için</p>
-                    <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">Kompakt kameralar ideal seçimdir.</p>
+                    <p className="font-medium text-gray-700 dark:text-gray-300">Travel and Daily Use</p>
+                    <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">Compact cameras are the ideal choice.</p>
                   </div>
                   <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border-l-4 border-blue-500">
-                    <p className="font-medium text-gray-700 dark:text-gray-300">Macera ve spor aktiviteleri için</p>
-                    <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">Aksiyon kameralar en uygun seçenektir.</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="space-y-6">
-                <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-4">2. Bütçeniz ne kadar?</h3>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border-l-4 border-blue-500">
-                    <p className="font-medium text-gray-700 dark:text-gray-300">Düşük (500$ altı)</p>
-                    <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">Kompakt, Aksiyon veya giriş seviyesi Vlog kameralar</p>
-                  </div>
-                  <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border-l-4 border-blue-500">
-                    <p className="font-medium text-gray-700 dark:text-gray-300">Orta (500$-1500$)</p>
-                    <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">Giriş/orta seviye DSLR, Aynasız veya premium Vlog kameralar</p>
-                  </div>
-                  <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border-l-4 border-blue-500">
-                    <p className="font-medium text-gray-700 dark:text-gray-300">Yüksek (1500$+)</p>
-                    <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">Profesyonel DSLR veya Aynasız kameralar</p>
+                    <p className="font-medium text-gray-700 dark:text-gray-300">Adventure and Sports Activities</p>
+                    <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">Action cameras are the most suitable option.</p>
                   </div>
                 </div>
               </div>
 
               <div className="space-y-6">
-                <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-4">3. Taşınabilirlik ne kadar önemli?</h3>
+                <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-4">2. What&apos;s your budget?</h3>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border-l-4 border-blue-500">
-                    <p className="font-medium text-gray-700 dark:text-gray-300">Çok önemli</p>
-                    <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">Kompakt, Aksiyon veya Vlog kameralar</p>
+                    <p className="font-medium text-gray-700 dark:text-gray-300">Low (Under $500)</p>
+                    <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">Compact, Action, or entry-level Vlog cameras</p>
                   </div>
                   <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border-l-4 border-blue-500">
-                    <p className="font-medium text-gray-700 dark:text-gray-300">Orta derecede önemli</p>
-                    <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">Aynasız kameralar (daha hafif lenslerle)</p>
+                    <p className="font-medium text-gray-700 dark:text-gray-300">Medium ($500-$1500)</p>
+                    <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">Entry/mid-level DSLR, Mirrorless, or premium Vlog cameras</p>
                   </div>
                   <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border-l-4 border-blue-500">
-                    <p className="font-medium text-gray-700 dark:text-gray-300">Önemli değil</p>
-                    <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">DSLR kameralar (daha iyi tutuş ve pil ömrü için)</p>
+                    <p className="font-medium text-gray-700 dark:text-gray-300">High ($1500+)</p>
+                    <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">Professional DSLR or Mirrorless cameras</p>
                   </div>
                 </div>
               </div>
 
               <div className="space-y-6">
-                <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-4">4. Fotoğrafçılık deneyiminiz ne seviyede?</h3>
+                <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-4">3. How important is portability?</h3>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border-l-4 border-blue-500">
-                    <p className="font-medium text-gray-700 dark:text-gray-300">Yeni başlayan</p>
-                    <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">Kompakt veya giriş seviyesi DSLR/Aynasız</p>
+                    <p className="font-medium text-gray-700 dark:text-gray-300">Very Important</p>
+                    <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">Compact, Action, or Vlog cameras</p>
                   </div>
                   <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border-l-4 border-blue-500">
-                    <p className="font-medium text-gray-700 dark:text-gray-300">Orta seviye</p>
-                    <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">Orta seviye DSLR veya Aynasız kameralar</p>
+                    <p className="font-medium text-gray-700 dark:text-gray-300">Moderately Important</p>
+                    <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">Mirrorless cameras (with lighter lenses)</p>
                   </div>
                   <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border-l-4 border-blue-500">
-                    <p className="font-medium text-gray-700 dark:text-gray-300">İleri seviye/Profesyonel</p>
-                    <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">Profesyonel DSLR veya Aynasız kameralar</p>
+                    <p className="font-medium text-gray-700 dark:text-gray-300">Not Important</p>
+                    <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">DSLR cameras (for better grip and battery life)</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="space-y-6">
+                <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-4">4. What&apos;s your photography experience level?</h3>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border-l-4 border-blue-500">
+                    <p className="font-medium text-gray-700 dark:text-gray-300">Beginner</p>
+                    <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">Compact or entry-level DSLR/Mirrorless</p>
+                  </div>
+                  <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border-l-4 border-blue-500">
+                    <p className="font-medium text-gray-700 dark:text-gray-300">Intermediate</p>
+                    <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">Mid-level DSLR or Mirrorless cameras</p>
+                  </div>
+                  <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border-l-4 border-blue-500">
+                    <p className="font-medium text-gray-700 dark:text-gray-300">Advanced/Professional</p>
+                    <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">Professional DSLR or Mirrorless cameras</p>
                   </div>
                 </div>
               </div>
 
               <div className="bg-yellow-50 dark:bg-yellow-900/20 p-6 rounded-lg border-l-4 border-yellow-500">
-                <h4 className="font-bold text-yellow-700 dark:text-yellow-400 mb-2">Karar vermekte zorlanıyor musunuz?</h4>
+                <h4 className="font-bold text-yellow-700 dark:text-yellow-400 mb-2">Having trouble deciding?</h4>
                 <p className="text-gray-700 dark:text-gray-300">
-                  Her kamera türünün kendine has avantajları ve dezavantajları vardır. En iyi seçimi yapmak için, mümkünse bir kamera mağazasında farklı modelleri elinize alıp denemenizi öneririz. Ayrıca, detaylı bilgi için ilgilendiğiniz kamera kategorisine ait sayfalarımızı ziyaret edebilirsiniz.
+                  Each camera type has its own advantages and disadvantages. We recommend trying different models in a camera store if possible. Also, visit our detailed pages for each camera category for more information.
                 </p>
               </div>
             </div>
@@ -681,47 +680,47 @@ export default function BuyingGuide() {
         </div>
       </section>
 
-      {/* Adım 4: Sık Sorulan Sorular Bölümü */}
+      {/* FAQ Section */}
       <section id="faq" className="py-16 px-4 bg-white dark:bg-gray-800" ref={faqRef}>
         <div className="container mx-auto max-w-4xl">
-          <h2 className="text-3xl font-bold mb-8 text-gray-800 dark:text-white text-center">Sık Sorulan Sorular</h2>
+          <h2 className="text-3xl font-bold mb-8 text-gray-800 dark:text-white text-center">Frequently Asked Questions</h2>
           <p className="text-lg text-center mb-12 text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            Kamera seçimi ve satın alımı hakkında en çok sorulan soruların cevapları
+            Answers to the most common questions about camera selection and purchase
           </p>
 
           <div className="space-y-6">
             {[
               {
-                question: "DSLR ve aynasız kamera arasındaki temel fark nedir?",
-                answer: "DSLR kameralar, görüntüyü optik vizöre yansıtan bir ayna mekanizması kullanırken, aynasız kameralar elektronik vizör kullanır. Aynasız kameralar daha kompakt ve hafiftir, genellikle daha iyi video özellikleri sunar ve sessiz çekim yapabilir. DSLR'lar ise daha uzun pil ömrü, daha geniş lens seçenekleri ve genellikle daha iyi tutuş ergonomisi sunar."
+                question: "What is the main difference between DSLR and mirrorless cameras?",
+                answer: "DSLR cameras use a mirror mechanism to reflect the image to an optical viewfinder, while mirrorless cameras use an electronic viewfinder. Mirrorless cameras are more compact and lighter, generally offer better video features, and can shoot silently. DSLRs offer longer battery life, a wider selection of lenses, and typically better ergonomics."
               },
               {
-                question: "Yeni başlayan biri için hangi kamera türü en uygundur?",
-                answer: "Yeni başlayanlar için genellikle giriş seviyesi DSLR veya aynasız kameralar önerilir. Bu kameralar öğrenme sürecinde büyüme imkanı sunarken, otomatik modları sayesinde hemen güzel sonuçlar almanızı sağlar. Alternatif olarak, taşınabilirlik önemliyse ve daha basit bir deneyim arıyorsanız, iyi bir kompakt kamera da ideal olabilir."
+                question: "Which type of camera is best for beginners?",
+                answer: "For beginners, entry-level DSLR or mirrorless cameras are often recommended. These cameras offer room for growth in your photography journey while providing automatic modes for immediate good results. Alternatively, if portability is important and you want a simpler experience, a good compact camera might be ideal."
               },
               {
-                question: "Kamera alırken megapiksel sayısı ne kadar önemlidir?",
-                answer: "Megapiksel sayısı, çözünürlüğü ve dolayısıyla fotoğrafın detay seviyesini etkiler. Ancak, daha fazla megapiksel her zaman daha iyi görüntü kalitesi anlamına gelmez. Sensör boyutu, lens kalitesi ve görüntü işleme yetenekleri genellikle megapiksel sayısından daha önemlidir. Çoğu modern kamera, normal baskılar ve dijital kullanım için yeterli megapiksel sunar (16MP ve üzeri)."
+                question: "How important is the megapixel count when choosing a camera?",
+                answer: "Megapixel count affects resolution and thus the level of detail in photos. However, more megapixels don't always mean better image quality. Sensor size, lens quality, and image processing capabilities are often more important than megapixel count. Most modern cameras offer sufficient megapixels (16MP and above) for normal prints and digital use."
               },
               {
-                question: "İkinci el kamera satın almak güvenli midir?",
-                answer: "İkinci el kamera satın almak, doğru kaynaktan aldığınız sürece güvenli olabilir. Güvenilir satıcılar veya özel kamera mağazalarından alım yapmak, ürün garantisi veya iade politikası sunan platformları tercih etmek daha güvenlidir. Satın almadan önce kamerayı fiziksel olarak incelemek, deklanşör sayısını öğrenmek ve tüm fonksiyonları test etmek önemlidir."
+                question: "Is it safe to buy a used camera?",
+                answer: "Buying a used camera can be safe if purchased from the right source. It's safer to buy from reputable sellers or specialized camera stores, or platforms that offer product warranty or return policies. It's important to physically inspect the camera, check the shutter count, and test all functions before purchasing."
               },
               {
-                question: "Kamera gövdesi mi yoksa lens mi daha önemlidir?",
-                answer: "Genellikle lens, görüntü kalitesini belirlemede kamera gövdesinden daha önemli bir faktördür. İyi bir lens, orta seviye bir gövde ile mükemmel sonuçlar verebilir, ancak kötü bir lens, en iyi gövdeyle bile sınırlı sonuçlar verecektir. Bu nedenle, kaliteli lensler için bütçe ayırmak genellikle daha iyi bir yatırımdır. Başlangıç için, bir kit lens ile başlayıp zaman içinde lens koleksiyonunuzu genişletebilirsiniz."
+                question: "Which is more important: camera body or lens?",
+                answer: "Generally, the lens is more important in determining image quality than the camera body. A good lens can produce excellent results with a mid-range body, while a poor lens will limit results even with the best body. Therefore, investing in quality lenses is often a better investment. You can start with a kit lens and expand your lens collection over time."
               },
               {
-                question: "Video çekimi için en önemli kamera özellikleri nelerdir?",
-                answer: "Video çekimi için önemli özellikler: 4K çözünürlük, yüksek kare hızı seçenekleri (60fps veya üzeri), etkili görüntü stabilizasyonu, iyi otomatik odaklama, mikrofon girişi, uzun kayıt süreleri ve iyi pil ömrüdür. Aynasız kameralar ve özel vlog kameraları genellikle video performansında öne çıkar."
+                question: "What are the most important camera features for video shooting?",
+                answer: "Important features for video shooting include: 4K resolution, high frame rate options (60fps or higher), effective image stabilization, good autofocus, microphone input, long recording times, and good battery life. Mirrorless cameras and dedicated vlog cameras typically excel in video performance."
               },
               {
-                question: "Ne zaman tam çerçeve (full-frame) kamera almak gerekir?",
-                answer: "Tam çerçeve kameralar, düşük ışık performansı, daha geniş dinamik aralık ve daha sığ alan derinliği kontrolü gibi avantajlar sunar. Özellikle profesyonel portre, manzara, mimari veya düğün fotoğrafçılığı yapıyorsanız, düşük ışık koşullarında sıklıkla çekim yapıyorsanız veya büyük baskılar oluşturacaksanız, tam çerçeve sensörleri düşünmelisiniz. Ancak, bu kameralar genellikle daha pahalıdır ve daha ağırdır."
+                question: "When should I consider getting a full-frame camera?",
+                answer: "Full-frame cameras offer advantages in low-light performance, wider dynamic range, and better depth-of-field control. Consider a full-frame camera if you're doing professional portrait, landscape, architectural, or wedding photography, frequently shoot in low-light conditions, or need to create large prints. However, these cameras are typically more expensive and heavier."
               },
               {
-                question: "Bir kamera için en önemli aksesuarlar nelerdir?",
-                answer: "Önemli kamera aksesuarları: yedek piller, hafıza kartları, temizleme kiti, UV filtre (lens koruma), tripod veya monopod, kamera çantası ve biraz daha ileri seviye için harici flaş veya mikrofondur. Kullanım amacınıza göre, uzaktan kumanda, ND filtreler veya gimbal gibi özel aksesuarlar da düşünülebilir."
+                question: "What are the essential camera accessories?",
+                answer: "Essential camera accessories include: spare batteries, memory cards, cleaning kit, UV filter (lens protection), tripod or monopod, camera bag, and for more advanced use, external flash or microphone. Depending on your use case, you might also consider remote control, ND filters, or a gimbal."
               }
             ].map((item, index) => (
               <div 
@@ -731,7 +730,6 @@ export default function BuyingGuide() {
                 <button 
                   className="w-full text-left p-6 font-bold text-gray-800 dark:text-white text-lg flex justify-between items-center focus:outline-none"
                   onClick={() => {
-                    // Bu basit gösterim amaçlı - gerçek projede bir state ile toggle yapılmalı
                     const content = document.getElementById(`faq-content-${index}`);
                     if (content) {
                       content.classList.toggle('hidden');
@@ -750,7 +748,7 @@ export default function BuyingGuide() {
         </div>
       </section>
 
-      {/* Adım 5: CTA Bölümü */}
+      {/* CTA Section */}
       <section className="py-20 px-4 bg-gradient-to-br from-blue-900 to-indigo-900 text-white relative overflow-hidden" ref={ctaSectionRef}>
         <div className="absolute inset-0 opacity-20">
           <div className="absolute top-0 left-0 w-64 h-64 bg-blue-500 rounded-full filter blur-3xl"></div>
@@ -759,41 +757,41 @@ export default function BuyingGuide() {
         </div>
 
         <div className="container mx-auto max-w-5xl text-center relative z-10">
-          <h2 className="text-3xl md:text-4xl font-bold mb-8">Kamera Türünüzü Seçtiniz mi?</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-8">Have You Chosen Your Camera Type?</h2>
           <p className="text-xl mb-10 max-w-2xl mx-auto">
-            Rehberimiz yardımıyla artık hangi kamera türünün size uygun olduğunu biliyorsunuz. Şimdi her kategorideki en iyi kameraları keşfedin!
+            Now that you know which camera type suits you best with our guide, discover the top cameras in each category!
           </p>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
             <Link href="/dslr-cameras" className="bg-white/10 hover:bg-white/20 backdrop-blur-sm p-6 rounded-xl flex flex-col items-center transition-all">
               <FaCamera className="text-3xl mb-4" />
-              <span className="font-medium">DSLR Kameralar</span>
+              <span className="font-medium">DSLR Cameras</span>
             </Link>
             <Link href="/mirrorless-cameras" className="bg-white/10 hover:bg-white/20 backdrop-blur-sm p-6 rounded-xl flex flex-col items-center transition-all">
               <MdCameraAlt className="text-3xl mb-4" />
-              <span className="font-medium">Aynasız Kameralar</span>
+              <span className="font-medium">Mirrorless Cameras</span>
             </Link>
             <Link href="/compact-cameras" className="bg-white/10 hover:bg-white/20 backdrop-blur-sm p-6 rounded-xl flex flex-col items-center transition-all">
               <MdPhotoCamera className="text-3xl mb-4" />
-              <span className="font-medium">Kompakt Kameralar</span>
+              <span className="font-medium">Compact Cameras</span>
             </Link>
             <Link href="/action-cameras" className="bg-white/10 hover:bg-white/20 backdrop-blur-sm p-6 rounded-xl flex flex-col items-center transition-all">
               <MdVideocam className="text-3xl mb-4" />
-              <span className="font-medium">Aksiyon Kameraları</span>
+              <span className="font-medium">Action Cameras</span>
             </Link>
             <Link href="/vlog-cameras" className="bg-white/10 hover:bg-white/20 backdrop-blur-sm p-6 rounded-xl flex flex-col items-center transition-all">
               <FaCamera className="text-3xl mb-4" />
-              <span className="font-medium">Vlog Kameraları</span>
+              <span className="font-medium">Vlog Cameras</span>
             </Link>
           </div>
           
           <div className="mt-12 bg-white/5 backdrop-blur-lg p-8 rounded-3xl border border-white/10 shadow-lg">
-            <h3 className="text-2xl font-bold mb-4">Hala Kararsız mısınız?</h3>
+            <h3 className="text-2xl font-bold mb-4">Still Undecided?</h3>
             <p className="mb-6">
-              Kamera seçimi konusunda uzman tavsiyesine mi ihtiyacınız var? İhtiyaçlarınızı ve bütçenizi belirtin, size en uygun modelleri önerelim.
+              Need expert advice on camera selection? Let us know your needs and budget, and we&apos;ll recommend the best models for you.
             </p>
             <Link href="/contact" className="inline-flex items-center gap-2 bg-white text-blue-900 px-8 py-3 rounded-full font-medium hover:bg-blue-50 transition-all">
-              <FaInfoCircle /> Bize Ulaşın
+              <FaInfoCircle /> Contact Us
             </Link>
           </div>
         </div>
