@@ -879,7 +879,7 @@ export default function Home() {
               </Link>
               
               <Link 
-                href="/" 
+                href="/buying-guide" 
                 className="bg-transparent border-2 border-[#00FFFF] text-[#00FFFF] hover:text-white hover:border-white font-bold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-[0_0_25px_rgba(0,255,255,0.7)]"
               >
                 Read Buying Guide
