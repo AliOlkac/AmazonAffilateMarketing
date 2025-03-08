@@ -872,8 +872,9 @@ export default function Home() {
             <div className="flex flex-wrap gap-4 justify-center">
               <Link 
                 href="/" 
-                className="bg-gradient-to-r from-[#FF00FF] to-[#00FFFF] hover:from-[#00FFFF] hover:to-[#FF00FF] text-black font-bold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-[0_0_25px_rgba(255,0,255,0.7)]"
-              >
+                className="bg-gradient-to-r from-[#FF00FF] to-[#00FFFF] hover:from-[#00FFFF] hover:to-[#FF00FF] 
+                text-black font-bold py-3 px-8 rounded-full transition-[background-color] duration-500 ease-in-out 
+                transform hover:scale-105 hover:shadow-[0_0_25px_rgba(255,0,255,0.7)]"              >
                 Browse All Cameras
               </Link>
               
