@@ -10,211 +10,196 @@ import Image from "next/image";
 
 // Metadata for DSLR Cameras page - Metadata doesn't work in client components in Next.js, so we removed it
 // export const metadata = {
-//   title: "Best DSLR Cameras | 2025 Buying Guide",
-//   description: "The best DSLR cameras of 2025, features, price comparison, and professional reviews.",
+//   title: "Best DSLR Cameras | 2024 Buying Guide",
+//   description: "The best DSLR cameras of 2024, features, price comparison, and professional reviews.",
 // };
-
-
-// Most Popular DSLR Cameras Data
-const popularDslrCameras = [
-  {
-    id: "pop1",
-    name: "Canon EOS Rebel T7",
-    image: "/images/cameras/hero-bg.webp",
-    rating: 4.7,
-    salesCount: "50,000+",
-    price: "$479.00",
-    key_features: [
-      "24.1MP APS-C CMOS Sensor",
-      "DIGIC 4+ Image Processor",
-      "3.0\" 920k-Dot LCD Monitor",
-      "Full HD 1080/30p Video Recording",
-      "9-Point AF System",
-      "ISO 100-6400, Up to 3 fps Shooting",
-      "Built-in Wi-Fi and NFC"
-    ],
-    amazon_link: "https://www.amazon.com/Canon-Rebel-T7-18-55mm-II/dp/B07C2Z21X5"
-  },
-  {
-    id: "pop2",
-    name: "Canon EOS Rebel SL3 / 250D",
-    image: "/images/cameras/hero-bg.webp",
-    rating: 4.8,
-    salesCount: "45,000+",
-    price: "$699.00",
-    category: "Entry-Level DSLR",
-    key_features: [
-      "24.1MP APS-C CMOS Sensor",
-      "DIGIC 8 Image Processor",
-      "3.0\" 1.04m-Dot Vari-Angle Touchscreen",
-      "UHD 4K24p Video and 4K Time-Lapse Movie",
-      "9-Point AF System with Dual Pixel CMOS AF",
-      "ISO 100-25600, Up to 5 fps Shooting",
-      "Built-in Wi-Fi and Bluetooth"
-    ],
-    amazon_link: "https://www.amazon.com/canon-rebel-18-55mm-lens-white/dp/b07qhpt781"
-  },
-  {
-    id: "pop3",
-    name: "Nikon D7500 DX-Format",
-    image: "/images/cameras/hero-bg.webp",
-    rating: 4.6,
-    salesCount: "35,000+",
-    price: "$996.95",
-    category: "Enthusiast DSLR",
-    key_features: [
-      "20.9MP DX-Format CMOS Sensor",
-      "EXPEED 5 Image Processor",
-      "3.2\" 922k-Dot Tilting Touchscreen LCD",
-      "4K UHD Video Recording at 30 fps",
-      "51-Point AF System",
-      "ISO 100-51200, Up to 8 fps Shooting",
-      "AF-S DX NIKKOR 18-140mm f/3.5-5.6G ED VR Lens"
-    ],
-    amazon_link: "https://www.amazon.com/Nikon-20-9MP-Camera-18-140mm-3-5-5-6G/dp/B06Y5RTN1T"
-  },
-  {
-    id: "pop4",
-    name: "Canon EOS Rebel T100 / 4000D",
-    image: "/images/cameras/hero-bg.webp",
-    rating: 4.5,
-    salesCount: "32,000+",
-    price: "$447.05",
-    category: "Budget DSLR",
-    key_features: [
-      "18MP APS-C CMOS Sensor",
-      "DIGIC 4+ Image Processor",
-      "3.0\" 920k-Dot LCD Monitor",
-      "Full HD 1080p Video Recording at 30 fps",
-      "9-Point AF System",
-      "ISO 100-6400, Up to 3 fps Shooting",
-      "Built-in Wi-Fi"
-    ],
-    amazon_link: "https://www.amazon.com/Canon-18-55mm-3-5-5-6-Grip-Pod-Professional/dp/B0C7WJ9B5B"
-  },
-  {
-    id: "pop5",
-    name: "Canon EOS Rebel T7 Bundle",
-    image: "/images/cameras/hero-bg.webp",
-    rating: 4.6,
-    salesCount: "28,000+",
-    price: "$449.00",
-    category: "Value Bundle",
-    key_features: [
-      "24.1MP APS-C CMOS Sensor",
-      "DIGIC 4+ Image Processor",
-      "3.0\" 920k-Dot LCD Monitor",
-      "Full HD 1080/30p Video Recording",
-      "9-Point AF System",
-      "ISO 100-6400 (Expandable to 12800)",
-      "Includes 18-55mm Lens, Filters, and Accessories"
-    ],
-    amazon_link: "https://www.amazon.com/Canon-18-55mm-3-5-5-6-Filters-Professional/dp/B08BFHJX1J"
-  }
-];
-
 
 // Sample DSLR camera data
 const dslrCameras = [
     {
       id: 1,
       name: "Nikon D850",
-      image: "/images/cameras/hero-bg.webp",
+      image: "/images/cameras/nikon-d850.jpg",
       rating: 4.9,
       description: "Best Overall DSLR: Professional-grade full-frame camera with exceptional resolution and versatility.",
-      price: "$2,996.95",
+      price: "$2,500-3,000",
       key_features: [
-        "45.7MP FX-Format BSI CMOS Sensor",
-        "EXPEED 5 Image Processor",
-        "3.2\" 2.36m-Dot Tilting Touchscreen LCD",
-        "4K UHD Video Recording at 30 fps",
-        "Multi-CAM 20K 153-Point AF System",
-        "Native ISO: 64-25600"
+        "45.7MP full-frame BSI sensor",
+        "Wide dynamic range",
+        "4K UHD video",
+        "7fps continuous shooting",
+        "Professional-grade build quality"
       ],
       pros: ["Excellent image quality", "Fast autofocus", "Great handling", "Good battery life", "Weather-sealed body"],
       cons: ["No in-body stabilization", "Heavy for extended use", "Limited 4K video options"],
-      amazon_link: "https://www.amazon.com/Nikon-D850-Digital-Camera-20-9MP/dp/B077D7WZBX",
-      detailed_description: "The Nikon D850 is a professional-grade full-frame DSLR that combines high resolution with impressive speed. Perfect for wildlife and sports photography, it offers professional-grade features in a durable body."
+      amazon_link: "https://www.amazon.com/Nikon-D850-FX-Format-Digital-Camera/dp/B07524LHMT/",
+      detailed_description: "According to RTINGS and many other review sites, one of the best DSLR cameras ever made. Perfect for professional photographers, studio and landscape photographers."
     },
     {
       id: 2,
       name: "Canon EOS 5D Mark IV",
-      image: "/images/cameras/hero-bg.webp",
+      image: "/images/cameras/canon-eos-5d-mark-iv.jpg",
       rating: 4.8,
       description: "Best for Professional Photography: Versatile full-frame DSLR with excellent image quality and reliable performance.",
-      price: "$2,699.00",
+      price: "$2,000-2,500",
       key_features: [
         "30.4MP full-frame sensor",
-        "DIGIC 6+ processor",
-        "4K UHD video",
+        "Dual Pixel CMOS AF",
+        "4K video",
         "61-point AF system",
         "7fps continuous shooting"
       ],
       pros: ["Excellent image quality", "Great low-light performance", "Advanced video features", "Long battery life", "Robust build"],
       cons: ["Expensive", "Heavy body", "Limited AF points compared to mirrorless"],
       amazon_link: "https://www.amazon.com/Canon-EOS-5D-Mark-IV-Body/dp/B075F5N7WZ",
-      detailed_description: "The Canon EOS 5D Mark IV is a versatile DSLR that combines high resolution with impressive speed. Perfect for wildlife and sports photography, it offers professional-grade features in a durable body."
+      detailed_description: "A versatile DSLR that combines high resolution with impressive speed. Perfect for wedding photographers, portrait photographers, and professional videographers."
     },
     {
       id: 3,
-      name: "Canon EOS 90D",
-      image: "/images/cameras/hero-bg.webp",
+      name: "Pentax K-1 Mark II",
+      image: "/images/cameras/pentax-k1-mark-ii.jpg",
       rating: 4.7,
-      description: "Best APS-C DSLR: High-resolution crop sensor camera with fast performance and excellent ergonomics.",
-      price: "$1,199.00",
+      description: "Best for Landscape Photography: Feature-rich full-frame DSLR with excellent weather sealing and innovative technologies.",
+      price: "$1,800-2,000",
       key_features: [
-        "32.5MP APS-C CMOS sensor",
-        "DIGIC 8 processor",
-        "4K video recording",
-        "45-point AF system",
-        "10fps continuous shooting"
+        "36.4MP full-frame sensor",
+        "5-axis image stabilization",
+        "Pixel Shift Resolution technology",
+        "Weather-sealed construction",
+        "Built-in GPS and astrotracer"
       ],
-      pros: ["Excellent image quality", "Fast autofocus", "Great handling", "Good battery life", "Weather-sealed body"],
-      cons: ["No in-body stabilization", "Heavy for extended use", "Limited 4K video options"],
-      amazon_link: "https://www.amazon.com/Canon-Digital-Camera-Black-3616C002/dp/B07WFQXN2Z",
-      detailed_description: "The Canon EOS 90D is a versatile DSLR that combines high resolution with impressive speed. Perfect for wildlife and sports photography, it offers professional-grade features in a durable body."
+      pros: ["Excellent image quality", "Best-in-class stabilization", "Weather-sealed design", "Unique features", "Great value"],
+      cons: ["Limited lens selection", "Slower autofocus", "Bulky design"],
+      amazon_link: "https://www.amazon.com/Pentax-36-4MP-Weather-Resistant-Digital-Camera/dp/B079Q3F7Y9",
+      detailed_description: "A feature-packed DSLR with excellent weather sealing and innovative technologies. Ideal for landscape photographers and night sky photographers who shoot in challenging conditions."
     },
     {
       id: 4,
-      name: "Nikon D7500",
-      image: "/images/cameras/hero-bg.webp",
+      name: "Nikon D780",
+      image: "/images/cameras/nikon-d780.jpg",
       rating: 4.7,
-      description: "Best Mid-Range DSLR: Excellent balance of performance, features, and price for enthusiast photographers.",
-      price: "$996.95",
+      description: "Best Hybrid DSLR: Combines traditional DSLR benefits with modern mirrorless features for versatile performance.",
+      price: "$2,000-2,300",
       key_features: [
-        "20.9MP APS-C sensor",
-        "EXPEED 5 processor",
-        "4K UHD video",
-        "153-point AF system",
-        "10fps continuous shooting"
+        "24.5MP full-frame sensor",
+        "Hybrid AF system",
+        "4K video",
+        "7fps viewfinder shooting, 12fps live view",
+        "51-point phase-detection AF"
       ],
-      pros: ["Professional build quality", "Exceptional AF system", "Fast continuous shooting", "Deep buffer", "Excellent handling"],
-      cons: ["No built-in flash", "Heavy body", "Expensive for APS-C"],
-      amazon_link: "https://www.amazon.com/Nikon-D7500-Digital-Camera-Body/dp/B07FZ5XWZS",
-      detailed_description: "The Nikon D7500 is a professional-grade APS-C DSLR that excels in fast-action photography. Its advanced autofocus system and robust build make it ideal for sports and wildlife photographers."
+      pros: ["Excellent image quality", "Superb low-light performance", "Fast and accurate autofocus", "Great battery life", "Modern features"],
+      cons: ["Expensive for features", "Single card slot", "No in-body stabilization"],
+      amazon_link: "https://www.amazon.com/Nikon-D780-FX-Format-Digital-Camera/dp/B083C1CR9C",
+      detailed_description: "The perfect transitional camera between DSLR and mirrorless technologies. Ideal for those who want the benefits of both systems in one versatile camera body."
     },
     {
       id: 5,
-      name: "Canon EOS Rebel T8i / 850D",
-      image: "/images/cameras/hero-bg.webp",
+      name: "Nikon D500",
+      image: "/images/cameras/nikon-d500.jpg",
       rating: 4.6,
-      description: "Best Entry-Level DSLR: User-friendly camera with guided interface and solid image quality for beginners.",
-      price: "$749.00",
+      description: "Best APS-C DSLR: Professional-grade crop sensor camera with exceptional speed and focusing capabilities.",
+      price: "$1,500-1,800",
       key_features: [
-        "24.2MP APS-C sensor",
-        "DIGIC 8 processor",
-        "4K UHD video",
-        "45-point AF system",
-        "5fps continuous shooting"
+        "20.9MP APS-C sensor",
+        "10fps continuous shooting",
+        "4K video",
+        "153-point AF system",
+        "Weather-sealed construction"
       ],
-      pros: ["Affordable full-frame", "Excellent image quality", "Vari-angle touchscreen", "Built-in GPS", "Good low-light performance"],
-      cons: ["No 4K video", "Single card slot", "Basic AF system"],
-      amazon_link: "https://www.amazon.com/Canon-EOS-Rebel-T8i-Digital-Camera/dp/B07FZ5XWZS",
-      detailed_description: "The Canon EOS Rebel T8i is a user-friendly DSLR camera designed for beginners. It offers solid image quality, a vari-angle touchscreen, and guided shooting modes for easy photography."
+      pros: ["Excellent autofocus", "Fast burst shooting", "Great buffer depth", "Professional build quality", "Good low-light performance"],
+      cons: ["No built-in flash", "Limited touchscreen functionality", "Expensive for APS-C"],
+      amazon_link: "https://www.amazon.com/Nikon-D500-DX-Format-Digital-Body/dp/B01A7Q0J3Y",
+      detailed_description: "A sports and wildlife photographer's dream camera with exceptional speed and focusing capabilities in a durable body designed for professional use."
     }
 ];
 
-
+// Most Popular DSLR Cameras Data
+const popularDslrCameras = [
+  {
+    id: "pop1",
+    name: "Canon EOS Rebel T7",
+    image: "/images/cameras/canon-eos-rebel-t7.jpg",
+    rating: 4.7,
+    salesCount: "50,000+",
+    price: "$500-550",
+    key_features: [
+      "24MP APS-C sensor",
+      "Full HD video",
+      "User-friendly interface",
+      "9-Point AF System",
+      "ISO 100-6400, Up to 3 fps Shooting"
+    ],
+    amazon_link: "https://www.amazon.com/Canon-Rebel-T7-18-55mm-II/dp/B07C2Z21X5/"
+  },
+  {
+    id: "pop2",
+    name: "Canon EOS Rebel T6",
+    image: "/images/cameras/canon-eos-rebel-t6.jpg",
+    rating: 4.6,
+    salesCount: "45,000+",
+    price: "$400-450",
+    category: "Entry-Level",
+    key_features: [
+      "18MP APS-C sensor",
+      "WiFi connectivity",
+      "Full HD video",
+      "9-Point AF System",
+      "ISO 100-6400"
+    ],
+    amazon_link: "https://www.amazon.com/Canon-Digital-Camera-18-55mm-3-5-5-6/dp/B06XNTPN8C/"
+  },
+  {
+    id: "pop3",
+    name: "Nikon D7500",
+    image: "/images/cameras/nikon-d7500.jpg",
+    rating: 4.8,
+    salesCount: "35,000+",
+    price: "$1,000-1,200",
+    category: "Mid-Advanced",
+    key_features: [
+      "20.9MP APS-C sensor",
+      "4K video",
+      "8fps continuous shooting",
+      "51-Point AF System",
+      "ISO 100-51200"
+    ],
+    amazon_link: "https://www.amazon.com/Nikon-20-9MP-Camera-18-140mm-3-5-5-6G/dp/B06Y5RTN1T/"
+  },
+  {
+    id: "pop4",
+    name: "Canon EOS 2000D/Rebel T7",
+    image: "/images/cameras/canon-eos-2000d.jpg",
+    rating: 4.5,
+    salesCount: "30,000+",
+    price: "$500-600",
+    category: "Entry-Level",
+    key_features: [
+      "24.1MP APS-C sensor",
+      "WiFi connectivity",
+      "Full HD video",
+      "9-Point AF System",
+      "ISO 100-6400"
+    ],
+    amazon_link: "https://www.amazon.com/Canon-18-55mm-75-300mm-Wideangle-Accessory/dp/B0BJXWBW7C/"
+  },
+  {
+    id: "pop5",
+    name: "Nikon D850",
+    image: "/images/cameras/nikon-d850.jpg",
+    rating: 4.9,
+    salesCount: "25,000+",
+    price: "$2,500-3,000",
+    category: "Professional",
+    key_features: [
+      "45.7MP full-frame BSI CMOS sensor",
+      "4K video",
+      "7fps continuous shooting",
+      "153-Point AF System",
+      "ISO 64-25600"
+    ],
+    amazon_link: "https://www.amazon.com/Nikon-D850-FX-Format-Digital-Camera/dp/B07524LHMT/"
+  }
+];
 
 // Photography tips for DSLR cameras
 const photographyTips = [
@@ -451,7 +436,7 @@ export default function DSLRCameras() {
         <div className="container mx-auto px-4 relative z-20 text-center">
           <h1 ref={heroTitleRef} className="text-4xl md:text-6xl font-bold text-white mb-6">DSLR Cameras</h1>
           <p ref={heroSubtitleRef} className="text-xl md:text-2xl text-gray-200 mb-8 max-w-3xl mx-auto">
-            Find the perfect DSLR camera for your photography needs with our comprehensive 2025 buying guide
+            Find the perfect DSLR camera for your photography needs with our comprehensive 2024 buying guide
           </p>
           
           {/* Hero Buttons */}
@@ -482,7 +467,7 @@ export default function DSLRCameras() {
               Despite the rising popularity of mirrorless cameras, DSLRs maintain several advantages: longer battery life, extensive lens selections built up over decades, better handling with larger grips, and often more affordable prices for comparable image quality. The optical viewfinder also eliminates the need to constantly power a digital display, saving battery and providing a distraction-free viewing experience.
             </p>
             <p className="text-lg text-gray-600 dark:text-gray-300">
-              On this page, you&apos;ll find the most preferred and best-performing DSLR cameras of 2025, 
+              On this page, you&apos;ll find the most preferred and best-performing DSLR cameras of 2024, 
               compare their features, and choose the model that best fits your budget and photography needs. Whether you&apos;re shooting landscapes, portraits, sports, or wildlife, there&apos;s a DSLR camera here that will help you capture stunning images.
             </p>
           </div>
@@ -522,11 +507,9 @@ export default function DSLRCameras() {
                   </div>
                   
                   {/* Category badge */}
-                  {camera.category && (
-                    <div className="absolute top-2 left-2 bg-blue-500 text-white py-1 px-3 rounded-full text-sm font-medium z-10">
-                      {camera.category}
-                    </div>
-                  )}
+                  <div className="absolute top-2 left-2 bg-blue-500 text-white py-1 px-3 rounded-full text-sm font-medium z-10">
+                    {camera.category}
+                  </div>
                   
                   {/* Sales badge */}
                   <div className="absolute bottom-2 left-2 bg-green-500 text-white py-1 px-3 rounded-full text-sm font-medium z-10 flex items-center gap-1">
@@ -578,7 +561,7 @@ export default function DSLRCameras() {
       {/* Top DSLR Cameras Section */}
       <section id="top-cameras" className="py-16 px-4 bg-white dark:bg-gray-800 rounded-t-[40px] shadow-lg">
         <div className="container mx-auto">
-          <h2 className="text-3xl font-bold mb-2 text-center text-gray-800 dark:text-white">Best DSLR Cameras of 2025</h2>
+          <h2 className="text-3xl font-bold mb-2 text-center text-gray-800 dark:text-white">Best DSLR Cameras of 2024</h2>
           <p className="text-lg text-center mb-12 text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
             The best DSLR cameras for different needs and budgets, selected based on our expert reviews and user experiences
           </p>

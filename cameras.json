@@ -1,0 +1,662 @@
+{
+  "dslr": {
+    "amazonBestSellers": [
+      {
+        "name": "Canon EOS Rebel T7",
+        "link": "https://www.amazon.com/Canon-Rebel-T7-18-55mm-II/dp/B07C2Z21X5/",
+        "price": "$500-550",
+        "level": "Entry-Level",
+        "features": [
+          "24MP APS-C sensor",
+          "Full HD video",
+          "User-friendly interface"
+        ],
+        "idealUser": "Beginners in photography, students, budget-conscious users",
+        "imageUrl": "/images/cameras/canon-eos-rebel-t7.jpg"
+      },
+      {
+        "name": "Canon EOS Rebel T6",
+        "link": "https://www.amazon.com/Canon-Digital-Camera-18-55mm-3-5-5-6/dp/B06XNTPN8C/",
+        "price": "$400-450",
+        "level": "Entry-Level",
+        "features": [
+          "18MP APS-C sensor",
+          "WiFi connectivity",
+          "Full HD video"
+        ],
+        "idealUser": "First-time DSLR buyers, hobby photographers",
+        "imageUrl": "/images/cameras/canon-eos-rebel-t6.jpg"
+      },
+      {
+        "name": "Nikon D7500",
+        "link": "https://www.amazon.com/Nikon-20-9MP-Camera-18-140mm-3-5-5-6G/dp/B06Y5RTN1T/",
+        "price": "$1,000-1,200",
+        "level": "Mid-Advanced",
+        "features": [
+          "20.9MP APS-C sensor",
+          "4K video",
+          "8fps continuous shooting"
+        ],
+        "idealUser": "Experienced photographers, sports and nature photography enthusiasts",
+        "imageUrl": "/images/cameras/nikon-d7500.jpg"
+      },
+      {
+        "name": "Canon EOS 2000D/Rebel T7",
+        "link": "https://www.amazon.com/Canon-18-55mm-75-300mm-Wideangle-Accessory/dp/B0BJXWBW7C/",
+        "price": "$500-600",
+        "level": "Entry-Level",
+        "features": [
+          "24.1MP APS-C sensor",
+          "WiFi connectivity",
+          "Full HD video"
+        ],
+        "idealUser": "Family photography, travel and event photography",
+        "imageUrl": "/images/cameras/canon-eos-2000d.jpg"
+      },
+      {
+        "name": "Nikon D850",
+        "link": "https://www.amazon.com/Nikon-D850-FX-Format-Digital-Camera/dp/B07524LHMT/",
+        "price": "$2,500-3,000",
+        "level": "Professional",
+        "features": [
+          "45.7MP full-frame BSI CMOS sensor",
+          "4K video",
+          "7fps continuous shooting"
+        ],
+        "idealUser": "Professional photographers, studio and landscape photographers",
+        "imageUrl": "/images/cameras/nikon-d850.jpg"
+      }
+    ],
+    "best2025": [
+      {
+        "name": "Nikon D850",
+        "price": "$2,500-3,000",
+        "level": "Professional",
+        "features": [
+          "45.7MP full-frame BSI sensor",
+          "Wide dynamic range",
+          "4K UHD video"
+        ],
+        "whyGreat": "According to RTINGS and many other review sites, one of the best DSLR cameras ever made",
+        "idealUser": "Professional photographers, studio and landscape photographers",
+        "imageUrl": "/images/cameras/nikon-d850.jpg"
+      },
+      {
+        "name": "Canon EOS 5D Mark IV",
+        "price": "$2,000-2,500",
+        "level": "Professional",
+        "features": [
+          "30.4MP full-frame sensor",
+          "Dual Pixel CMOS AF",
+          "4K video"
+        ],
+        "idealUser": "Wedding photographers, portrait photographers, professional videographers",
+        "imageUrl": "/images/cameras/canon-eos-5d-mark-iv.jpg"
+      },
+      {
+        "name": "Pentax K-1 Mark II",
+        "price": "$1,800-2,000",
+        "level": "Advanced-Professional",
+        "features": [
+          "36.4MP full-frame sensor",
+          "5-axis image stabilization",
+          "Pixel Shift Resolution technology"
+        ],
+        "idealUser": "Landscape photographers, night sky photographers",
+        "imageUrl": "/images/cameras/pentax-k1-mark-ii.jpg"
+      },
+      {
+        "name": "Nikon D780",
+        "price": "$2,000-2,300",
+        "level": "Advanced",
+        "features": [
+          "24.5MP full-frame sensor",
+          "Hybrid AF system",
+          "4K video"
+        ],
+        "idealUser": "Those transitioning between DSLR and mirrorless, versatile photographers",
+        "imageUrl": "/images/cameras/nikon-d780.jpg"
+      },
+      {
+        "name": "Nikon D500",
+        "price": "$1,500-1,800",
+        "level": "Advanced",
+        "features": [
+          "20.9MP APS-C sensor",
+          "10fps continuous shooting",
+          "4K video"
+        ],
+        "idealUser": "Sports and wildlife photographers, fast action photographers",
+        "imageUrl": "/images/cameras/nikon-d500.jpg"
+      }
+    ]
+  },
+  "mirrorless": {
+    "amazonBestSellers": [
+      {
+        "name": "Canon EOS R50",
+        "link": "https://www.amazon.com/Canon-Mirrorless-RF-S18-45mm-Smartphone-Connection/dp/B0BTTV6CT1/",
+        "price": "$800-900",
+        "level": "Entry-Mid",
+        "features": [
+          "24.2MP APS-C sensor",
+          "4K video",
+          "Smartphone connectivity"
+        ],
+        "idealUser": "First-time mirrorless camera users, vloggers, social media content creators",
+        "imageUrl": "/images/cameras/canon-eos-r50.jpg"
+      },
+      {
+        "name": "Canon EOS R6 Mark II",
+        "link": "https://www.amazon.com/Canon-EOS-Mark-Mirrorless-Oversampling/dp/B0BL7ZVY78/",
+        "price": "$2,500-2,700",
+        "level": "Professional",
+        "features": [
+          "24.2MP full-frame sensor",
+          "40fps electronic shutter",
+          "6K oversampling"
+        ],
+        "idealUser": "Sports photographers, professional videographers, wedding photographers",
+        "imageUrl": "/images/cameras/canon-eos-r6-mark-ii.jpg"
+      },
+      {
+        "name": "Sony Alpha ZV-E10",
+        "link": "https://www.amazon.com/Sony-Alpha-ZV-E10-Interchangeable-Mirrorless/dp/B09BBLH4SG/",
+        "price": "$700-800",
+        "level": "Entry-Mid",
+        "features": [
+          "24.2MP APS-C sensor",
+          "Flip-out screen",
+          "Product showcase mode"
+        ],
+        "idealUser": "Vloggers, YouTube content creators, social media influencers",
+        "imageUrl": "/images/cameras/sony-alpha-zv-e10.jpg"
+      },
+      {
+        "name": "Sony Alpha a6400",
+        "link": "https://www.amazon.com/Sony-Alpha-a6400-Mirrorless-Camera/dp/B07MV3P7M8/",
+        "price": "$900-1,000",
+        "level": "Mid-Range",
+        "features": [
+          "24.2MP APS-C sensor",
+          "180° rotating screen",
+          "4K video"
+        ],
+        "idealUser": "Vloggers, travel photographers, amateur videographers",
+        "imageUrl": "/images/cameras/sony-alpha-a6400.jpg"
+      },
+      {
+        "name": "Sony Alpha a7 III",
+        "link": "https://www.amazon.com/Sony-Full-frame-Mirrorless-Interchangeable-Lens-ILCE7M3K/dp/B07B45D8WV/",
+        "price": "$1,800-2,000",
+        "level": "Advanced-Professional",
+        "features": [
+          "24.2MP full-frame sensor",
+          "5-axis image stabilization",
+          "4K HDR video"
+        ],
+        "idealUser": "Professional photographers, low-light photography enthusiasts",
+        "imageUrl": "/images/cameras/sony-alpha-a7-iii.jpg"
+      }
+    ],
+    "best2025": [
+      {
+        "name": "Sony α1 II",
+        "price": "$6,500+",
+        "level": "Professional",
+        "features": [
+          "50MP full-frame sensor",
+          "8K video",
+          "30fps continuous shooting"
+        ],
+        "idealUser": "Studio photographers, sports photographers, professional video production",
+        "imageUrl": "/images/cameras/sony-a1-ii.jpg"
+      },
+      {
+        "name": "Sony α7 IV",
+        "price": "$2,400-2,600",
+        "level": "Advanced-Professional",
+        "features": [
+          "33MP full-frame sensor",
+          "Advanced autofocus",
+          "4K 60p video"
+        ],
+        "whyGreat": "According to WIRED, offers excellent dynamic range and the best autofocus system on the market",
+        "idealUser": "Professional photographers, portrait photographers, video creators",
+        "imageUrl": "/images/cameras/sony-a7-iv.jpg"
+      },
+      {
+        "name": "Nikon Z7 II",
+        "price": "$2,800-3,000",
+        "level": "Professional",
+        "features": [
+          "45.7MP full-frame sensor",
+          "Base ISO 64",
+          "Dual processors"
+        ],
+        "idealUser": "Landscape photographers, studio photographers, detail-oriented shooters",
+        "imageUrl": "/images/cameras/nikon-z7-ii.jpg"
+      },
+      {
+        "name": "Fujifilm X-T30 II",
+        "price": "$900-1,000",
+        "level": "Mid-Range",
+        "features": [
+          "26MP APS-C sensor",
+          "4K video",
+          "Film simulations"
+        ],
+        "idealUser": "Travel photographers, street photographers, compact camera seekers",
+        "imageUrl": "/images/cameras/fujifilm-x-t30-ii.jpg"
+      },
+      {
+        "name": "Olympus OM-D E-M10 Mark IV",
+        "price": "$700-800",
+        "level": "Entry-Mid",
+        "features": [
+          "20MP Micro Four Thirds sensor",
+          "5-axis image stabilization",
+          "4K video"
+        ],
+        "whyGreat": "According to Wirecutter, the best mirrorless camera for most people",
+        "idealUser": "Photography beginners, those seeking lightweight and compact cameras",
+        "imageUrl": "/images/cameras/olympus-om-d-e-m10-mark-iv.jpg"
+      }
+    ]
+  },
+  "action": {
+    "amazonBestSellers": [
+      {
+        "name": "AKASO EK7000",
+        "link": "https://www.amazon.com/AKASO-EK7000-Sports-Waterproof-Camcorder/dp/B01HGM33HG/",
+        "price": "$60-80",
+        "level": "Entry-Level",
+        "features": [
+          "4K 25fps video",
+          "30m waterproof",
+          "WiFi connectivity"
+        ],
+        "idealUser": "Budget-conscious users, action camera beginners",
+        "imageUrl": "/images/cameras/akaso-ek7000.jpg"
+      },
+      {
+        "name": "DJI Osmo Action 4",
+        "link": "https://www.amazon.com/DJI-Essential-Waterproof-Performance-Long-Lasting/dp/B0DS2B3P2B/",
+        "price": "$350-400",
+        "level": "Advanced",
+        "features": [
+          "4K 120fps video",
+          "Advanced stabilization",
+          "Long battery life"
+        ],
+        "idealUser": "Extreme sports enthusiasts, professional content creators",
+        "imageUrl": "/images/cameras/dji-osmo-action-4.jpg"
+      },
+      {
+        "name": "GoPro HERO13 Black",
+        "link": "https://www.amazon.com/GoPro-HERO13-Black-Compatability-HB/dp/B0DCM34GXX/",
+        "price": "$400-450",
+        "level": "Professional",
+        "features": [
+          "5.3K 60fps video",
+          "New lens modules",
+          "Advanced stabilization"
+        ],
+        "idealUser": "Professional video content creators, extreme sports athletes",
+        "imageUrl": "/images/cameras/gopro-hero13-black.jpg"
+      },
+      {
+        "name": "GoPro Hero12 Black",
+        "link": "https://www.amazon.com/GoPro-Hero12-Black-Commerce-Package/dp/B0DD5G9QGJ/",
+        "price": "$350-400",
+        "level": "Advanced-Professional",
+        "features": [
+          "5.3K video",
+          "HyperSmooth 5.0",
+          "HDR video"
+        ],
+        "idealUser": "Active sports enthusiasts, vloggers, extreme sports photographers",
+        "imageUrl": "/images/cameras/gopro-hero12-black.jpg"
+      },
+      {
+        "name": "DJI Osmo Action 5 Pro",
+        "link": "https://www.amazon.com/DJI-Standard-Waterproof-Stabilization-Touchscreens/dp/B0DBQTC2P7/",
+        "price": "$450-500",
+        "level": "Professional",
+        "features": [
+          "Dual touch screens",
+          "4K 120fps",
+          "Advanced stabilization"
+        ],
+        "idealUser": "Professional content creators, diving and water sports enthusiasts",
+        "imageUrl": "/images/cameras/dji-osmo-action-5-pro.jpg"
+      }
+    ],
+    "best2025": [
+      {
+        "name": "DJI Osmo Action 5 Pro",
+        "price": "$450-500",
+        "level": "Professional",
+        "features": [
+          "High-quality sensor",
+          "Advanced stabilization",
+          "Underwater performance"
+        ],
+        "idealUser": "Professional content creators, extreme sports enthusiasts",
+        "imageUrl": "/images/cameras/dji-osmo-action-5-pro.jpg"
+      },
+      {
+        "name": "GoPro Hero 13 Black",
+        "price": "$400-450",
+        "level": "Professional",
+        "features": [
+          "Interchangeable lens modules",
+          "Magnetic mounting",
+          "5.3K video"
+        ],
+        "whyGreat": "According to TechRadar, offers creative shooting options with the newest lens mods and ND filters",
+        "idealUser": "Professional content creators, extreme sports athletes",
+        "imageUrl": "/images/cameras/gopro-hero13-black.jpg"
+      },
+      {
+        "name": "Insta360 X4",
+        "price": "$500-550",
+        "level": "Advanced-Professional",
+        "features": [
+          "360° shooting",
+          "5.7K video",
+          "AI editing features"
+        ],
+        "idealUser": "360° content creators, virtual reality project shooters",
+        "imageUrl": "/images/cameras/insta360-x4.jpg"
+      },
+      {
+        "name": "AKASO EK7000 Pro",
+        "price": "$80-100",
+        "level": "Entry-Level",
+        "features": [
+          "4K 25fps video",
+          "Electronic image stabilization",
+          "40m waterproof"
+        ],
+        "idealUser": "Budget-conscious users, hobby usage",
+        "imageUrl": "/images/cameras/akaso-ek7000-pro.jpg"
+      },
+      {
+        "name": "GoPro HERO",
+        "price": "$200-250",
+        "level": "Entry-Mid",
+        "features": [
+          "Compact waterproof design",
+          "User-friendly interface",
+          "1080p video"
+        ],
+        "idealUser": "Action camera beginners, budget-conscious users",
+        "imageUrl": "/images/cameras/gopro-hero.jpg"
+      }
+    ]
+  },
+  "vlog": {
+    "amazonBestSellers": [
+      {
+        "name": "DJI Osmo Pocket 3",
+        "link": "https://www.amazon.com/DJI-Vlogging-Stabilization-Tracking-Photography/dp/B0CG19FGQ5/",
+        "price": "$500-550",
+        "level": "Advanced",
+        "features": [
+          "4K 120fps video",
+          "3-axis gimbal",
+          "Tracking feature"
+        ],
+        "idealUser": "Vloggers, social media content creators, travel content creators",
+        "imageUrl": "/images/cameras/dji-osmo-pocket-3.jpg"
+      },
+      {
+        "name": "Canon PowerShot V10",
+        "link": "https://www.amazon.com/Canon-Wide-Angle-Face-Tracking-Microphone-Stabilization/dp/B0C5497S98/",
+        "price": "$250-300",
+        "level": "Entry-Mid",
+        "features": [
+          "Vertical shooting",
+          "Built-in tripod",
+          "Special microphone design"
+        ],
+        "idealUser": "Social media vloggers, TikTok and Instagram users",
+        "imageUrl": "/images/cameras/canon-powershot-v10.jpg"
+      },
+      {
+        "name": "Sony ZV-1",
+        "link": "https://www.amazon.com/Sony-Content-Creators-Vlogging-Microphone/dp/B08965JV8D/",
+        "price": "$700-750",
+        "level": "Mid-Advanced",
+        "features": [
+          "20.1MP sensor",
+          "Product showcase mode",
+          "Wind-cutting microphone"
+        ],
+        "idealUser": "YouTube vloggers, product reviewers, travel vloggers",
+        "imageUrl": "/images/cameras/sony-zv-1.jpg"
+      },
+      {
+        "name": "DJI Pocket 2",
+        "link": "https://www.amazon.com/DJI-Pocket-Stabilizer-Pocket-Sized-ActiveTrack/dp/B08J7FL57P/",
+        "price": "$350-400",
+        "level": "Mid-Range",
+        "features": [
+          "3-axis gimbal",
+          "4K 60fps video",
+          "ActiveTrack feature"
+        ],
+        "idealUser": "Mobile vloggers, travelers, those seeking lightweight equipment",
+        "imageUrl": "/images/cameras/dji-pocket-2.jpg"
+      },
+      {
+        "name": "Sony FDR-AX43 UHD",
+        "link": "https://www.amazon.com/Sony-FDR-AX43-UHD-Handycam-Camcorder/dp/B084QBSQGW/",
+        "price": "$900-1,000",
+        "level": "Advanced",
+        "features": [
+          "20x optical zoom",
+          "Exmor R CMOS sensor",
+          "Built-in gimbal"
+        ],
+        "idealUser": "Professional video producers, documentary makers, event videographers",
+        "imageUrl": "/images/cameras/sony-fdr-ax43-uhd.jpg"
+      }
+    ],
+    "best2025": [
+      {
+        "name": "Sony ZV-E1",
+        "price": "$2,000-2,200",
+        "level": "Professional",
+        "features": [
+          "Full-frame sensor",
+          "Background blur",
+          "Excellent audio recording quality"
+        ],
+        "whyGreat": "According to PCMag, the best vlogging camera ever tested",
+        "idealUser": "Professional vloggers, YouTube content creators, influencers",
+        "imageUrl": "/images/cameras/sony-zv-e1.jpg"
+      },
+      {
+        "name": "Canon PowerShot V1",
+        "price": "$500-600",
+        "level": "Mid-Advanced",
+        "features": [
+          "Compact design",
+          "Built-in LED light",
+          "Advanced audio recording capabilities"
+        ],
+        "idealUser": "Professional vloggers, social media content creators",
+        "imageUrl": "/images/cameras/canon-powershot-v1.jpg"
+      },
+      {
+        "name": "Sony ZV-1 II",
+        "price": "$750-800",
+        "level": "Mid-Advanced",
+        "features": [
+          "Wide-angle lens",
+          "Product showcase mode",
+          "New 'Cinematic Vlog' setting"
+        ],
+        "note": "According to Wirecutter, screen difficult to see in sunlight but easily controlled with Sony phone app",
+        "idealUser": "YouTube vloggers, product reviewers, content creators",
+        "imageUrl": "/images/cameras/sony-zv-1-ii.jpg"
+      },
+      {
+        "name": "Panasonic LUMIX GH7",
+        "price": "$2,000-2,200",
+        "level": "Professional",
+        "features": [
+          "Micro Four Thirds sensor",
+          "Professional video features",
+          "Advanced audio recording options"
+        ],
+        "whyGreat": "According to RTINGS, the best camera tested for advanced video work and vlogs",
+        "idealUser": "Professional videographers, YouTube production teams",
+        "imageUrl": "/images/cameras/panasonic-lumix-gh7.jpg"
+      },
+      {
+        "name": "DJI Osmo Pocket 3",
+        "price": "$500-550",
+        "level": "Advanced",
+        "features": [
+          "Advanced gimbal",
+          "Large sensor",
+          "Compact design"
+        ],
+        "idealUser": "Mobile vloggers, travel content creators",
+        "imageUrl": "/images/cameras/dji-osmo-pocket-3.jpg"
+      }
+    ]
+  },
+  "compact": {
+    "amazonBestSellers": [
+      {
+        "name": "Panasonic LUMIX FZ80D",
+        "price": "$400-450",
+        "level": "Entry-Mid",
+        "features": [
+          "60x zoom",
+          "4K video",
+          "Touch screen"
+        ],
+        "idealUser": "Travel photographers, nature photographers, those seeking long zoom",
+        "imageUrl": "/images/cameras/panasonic-lumix-fz80d.jpg"
+      },
+      {
+        "name": "Panasonic LUMIX ZS99",
+        "price": "$350-400",
+        "level": "Mid-Range",
+        "features": [
+          "30x zoom",
+          "4K video",
+          "Post Focus feature"
+        ],
+        "idealUser": "Travelers, family photographers, compact camera seekers",
+        "imageUrl": "/images/cameras/panasonic-lumix-zs99.jpg"
+      },
+      {
+        "name": "KODAK PIXPRO FZ45-BK",
+        "price": "$150-200",
+        "level": "Entry-Level",
+        "features": [
+          "4x zoom",
+          "16MP sensor",
+          "HD video"
+        ],
+        "idealUser": "Budget-conscious users, photography beginners",
+        "imageUrl": "/images/cameras/kodak-pixpro-fz45.jpg"
+      },
+      {
+        "name": "4K Digital Camera for Photography",
+        "price": "$100-150",
+        "level": "Entry-Level",
+        "features": [
+          "48MP sensor",
+          "16x digital zoom",
+          "3.0\" screen"
+        ],
+        "idealUser": "Budget-conscious users, those with basic photo and video needs",
+        "imageUrl": "/images/cameras/4k-digital-camera.jpg"
+      },
+      {
+        "name": "Digital Camera FHD 1080P",
+        "price": "$80-100",
+        "level": "Entry-Level",
+        "features": [
+          "1080p video",
+          "Dual screen",
+          "Simple operation"
+        ],
+        "idealUser": "Photography beginners, children, budget-conscious users",
+        "imageUrl": "/images/cameras/digital-camera-fhd.jpg"
+      }
+    ],
+    "best2025": [
+      {
+        "name": "Fujifilm X100VI",
+        "price": "$1,400-1,500",
+        "level": "Advanced-Professional",
+        "features": [
+          "40MP APS-C sensor",
+          "Fixed 23mm f/2 lens",
+          "Hybrid viewfinder"
+        ],
+        "whyGreat": "According to RTINGS, the best compact digital camera tested, with the most features",
+        "idealUser": "Professional street photographers, travel photographers",
+        "imageUrl": "/images/cameras/fujifilm-x100vi.jpg"
+      },
+      {
+        "name": "Sony RX100 VII",
+        "price": "$1,200-1,300",
+        "level": "Advanced",
+        "features": [
+          "20.1MP 1\" sensor",
+          "24-200mm equivalent zoom lens",
+          "4K video"
+        ],
+        "whyGreat": "According to Wirecutter, the best choice for those wanting significantly better photos and video than smartphones",
+        "idealUser": "Those seeking portable professional camera, premium compact camera users",
+        "imageUrl": "/images/cameras/sony-rx100-vii.jpg"
+      },
+      {
+        "name": "Canon PowerShot G5 X Mark II",
+        "price": "$850-900",
+        "level": "Mid-Advanced",
+        "features": [
+          "20.1MP 1\" sensor",
+          "24-120mm f/1.8-2.8 lens",
+          "Pop-up EVF"
+        ],
+        "whyGreat": "According to TechRadar, ideal for everyday shooting, a well-built compact camera",
+        "idealUser": "Travel photographers, family photography, everyday use",
+        "imageUrl": "/images/cameras/canon-powershot-g5-x-mark-ii.jpg"
+      },
+      {
+        "name": "Ricoh GR IIIx",
+        "price": "$1,000-1,100",
+        "level": "Advanced",
+        "features": [
+          "24.2MP APS-C sensor",
+          "40mm equivalent lens",
+          "Compact body"
+        ],
+        "idealUser": "Street photographers, travelers, quality compact camera seekers",
+        "imageUrl": "/images/cameras/ricoh-gr-iiix.jpg"
+      },
+      {
+        "name": "Leica D-Lux 8",
+        "price": "$1,500-1,700",
+        "level": "Advanced-Professional",
+        "features": [
+          "17MP Four Thirds sensor",
+          "Leica lens quality",
+          "Premium build"
+        ],
+        "idealUser": "Luxury camera seekers, those valuing Leica quality",
+        "imageUrl": "/images/cameras/leica-d-lux-8.jpg"
+      }
+    ]
+  }
+} 

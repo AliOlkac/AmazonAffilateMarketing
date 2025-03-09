@@ -12,98 +12,98 @@ import Image from "next/image";
 const mirrorlessCameras = [
     {
       id: 1,
-      name: "Sony Alpha a7 IV",
-      image: "/images/cameras/hero-bg.webp",
+      name: "Sony α1 II",
+      image: "/images/cameras/sony-a1-ii.jpg",
       rating: 4.9,
-      description: "Best Overall Mirrorless: Full-frame camera with exceptional image quality, advanced autofocus, and professional 4K video capabilities.",
-      price: "$2,499.99",
+      description: "Best Professional Mirrorless: Flagship camera with exceptional resolution, speed, and video capabilities for professionals.",
+      price: "$6,500+",
       key_features: [
-        "33MP Full-frame Exmor R CMOS sensor",
-        "BIONZ XR processor",
-        "4K 60p video recording",
-        "759-point AF system",
-        "5-axis image stabilization"
+        "50MP full-frame sensor",
+        "8K video",
+        "30fps continuous shooting",
+        "Advanced AI-powered AF",
+        "Robust professional build quality"
       ],
-      pros: ["Excellent image quality", "Advanced AF system", "Great ergonomics", "Professional video features", "Robust build quality"],
-      cons: ["Higher price point", "Complex menu system", "Heavy for a mirrorless"],
+      pros: ["Exceptional resolution", "Incredible speed", "Professional video features", "Best-in-class AF", "Dual card slots"],
+      cons: ["Very expensive", "Complex menu system", "Learning curve for new users"],
       amazon_link: "https://amazon.com/product-link",
-      detailed_description: "The Sony A7 IV represents the perfect balance of resolution, speed, and video capability. Its 33MP sensor delivers outstanding image quality with excellent dynamic range and low-light performance. The advanced autofocus system with real-time tracking makes it ideal for both photography and videography."
+      detailed_description: "A professional-grade powerhouse designed for studio photographers, sports photographers, and professional video production. The ultimate hybrid shooting tool for demanding professionals."
     },
     {
       id: 2,
-      name: "Canon EOS R6 Mark II",
-      image: "/images/cameras/hero-bg.webp",
+      name: "Sony α7 IV",
+      image: "/images/cameras/sony-a7-iv.jpg",
       rating: 4.8,
-      description: "Best for Hybrid Shooters: Versatile full-frame camera with exceptional autofocus, high-speed shooting, and excellent video capabilities.",
-      price: "$2,499.00",
+      description: "Best All-Around Mirrorless: Versatile full-frame camera with excellent image quality and advanced features for enthusiasts and professionals.",
+      price: "$2,400-2,600",
       key_features: [
-        "24.2MP Full-frame CMOS sensor",
-        "DIGIC X processor",
+        "33MP full-frame sensor",
+        "Advanced autofocus",
         "4K 60p video",
-        "40fps continuous shooting",
-        "Dual Pixel CMOS AF II"
+        "Creative shooting modes",
+        "10-bit 4:2:2 video"
       ],
-      pros: ["Fast continuous shooting", "Excellent AF performance", "Great low-light capability", "Dual card slots", "Advanced video features"],
-      cons: ["No 8K video", "Battery life could be better", "Rolling shutter in electronic mode"],
+      pros: ["Excellent image quality", "Best autofocus system on market", "Great dynamic range", "Professional video capabilities", "Good battery life"],
+      cons: ["Rolling shutter in video", "Complex menu system", "Relatively heavy"],
       amazon_link: "https://amazon.com/product-link",
-      detailed_description: "The Canon EOS R6 Mark II is designed for photographers who demand speed and versatility. With its impressive 40fps continuous shooting and advanced Dual Pixel AF II system, it excels in both still photography and video."
+      detailed_description: "According to WIRED, offers excellent dynamic range and the best autofocus system on the market. Perfect for professional photographers, portrait photographers, and serious video creators."
     },
     {
       id: 3,
-      name: "Fujifilm X-T5",
-      image: "/images/cameras/hero-bg.webp",
+      name: "Nikon Z7 II",
+      image: "/images/cameras/nikon-z7-ii.jpg",
       rating: 4.8,
-      description: "Best APS-C Mirrorless: Feature-rich camera with excellent color science, film simulations, and impressive image quality in a compact body.",
-      price: "$1,699.00",
+      description: "Best for Landscape Photography: High-resolution mirrorless camera with exceptional dynamic range and detail rendering.",
+      price: "$2,800-3,000",
       key_features: [
-        "40.2MP X-Trans CMOS 5 sensor",
-        "X-Processor 5",
-        "6.2K video recording",
-        "425-point AF system",
-        "7-stop IBIS"
+        "45.7MP full-frame sensor",
+        "Base ISO 64",
+        "Dual processors",
+        "5-axis image stabilization",
+        "4K 60p video"
       ],
-      pros: ["Excellent image quality", "Retro design with modern features", "Compact size", "Great color reproduction", "Strong battery life"],
-      cons: ["Smaller sensor than full-frame", "AF not as advanced as competitors", "Limited buffer depth"],
+      pros: ["Exceptional detail", "Excellent dynamic range", "Robust weather sealing", "Good ergonomics", "Improved AF system"],
+      cons: ["Buffer limitations", "Limited native lens options", "AF tracking not best-in-class"],
       amazon_link: "https://amazon.com/product-link",
-      detailed_description: "The Fujifilm X-T5 combines classic styling with cutting-edge technology. Its 40.2MP sensor delivers stunning image quality with Fujifilm&apos;s renowned color science."
+      detailed_description: "With its high-resolution sensor and base ISO of 64, the Nikon Z7 II is the ultimate tool for landscape photographers, studio photographers, and other detail-oriented shooters."
     },
     {
       id: 4,
-      name: "Nikon Z6 II",
-      image: "/images/cameras/hero-bg.webp",
+      name: "Fujifilm X-T30 II",
+      image: "/images/cameras/fujifilm-x-t30-ii.jpg",
       rating: 4.7,
-      description: "Best Value Full-Frame: Well-rounded mirrorless camera with excellent low-light performance, dual card slots, and improved autofocus system.",
-      price: "$1,996.95",
+      description: "Best Mid-Range APS-C: Compact camera with excellent image quality, film simulations, and impressive performance in a smaller body.",
+      price: "$900-1,000",
       key_features: [
-        "24.5MP BSI CMOS sensor",
-        "Dual EXPEED 6 processors",
-        "4K 60p video",
-        "273-point AF system",
-        "14fps continuous shooting"
+        "26MP APS-C sensor",
+        "4K video",
+        "Film simulations",
+        "Fast autofocus system",
+        "Classic retro design"
       ],
-      pros: ["Excellent value for money", "Great low-light performance", "Dual card slots", "Professional build quality", "Improved autofocus"],
-      cons: ["Limited third-party lens options", "Menu system could be better", "Average EVF resolution"],
+      pros: ["Excellent image quality", "Compact size", "Great color reproduction", "Good value for money", "Intuitive controls"],
+      cons: ["No in-body stabilization", "Limited battery life", "Small grip"],
       amazon_link: "https://amazon.com/product-link",
-      detailed_description: "The Nikon Z6 II offers exceptional value for photographers seeking a professional-grade full-frame mirrorless camera. Its versatile feature set makes it ideal for both stills and video."
+      detailed_description: "The perfect travel and street photography camera with Fujifilm's renowned color science and film simulations in a compact, affordable package."
     },
     {
       id: 5,
-      name: "OM System OM-1",
-      image: "/images/cameras/hero-bg.webp",
-      rating: 4.7,
-      description: "Best Micro Four Thirds: Weather-sealed camera with computational photography features, excellent stabilization, and impressive speed.",
-      price: "$2,199.99",
+      name: "Olympus OM-D E-M10 Mark IV",
+      image: "/images/cameras/olympus-om-d-e-m10-mark-iv.jpg",
+      rating: 4.6,
+      description: "Best Entry-Level Mirrorless: Compact, feature-rich Micro Four Thirds camera with excellent stabilization and user-friendly interface.",
+      price: "$700-800",
       key_features: [
-        "33MP Full-frame sensor",
-        "AI-powered AF",
-        "4K 60p 10-bit video",
-        "759-point AF system",
-        "Compact body design"
+        "20MP Micro Four Thirds sensor",
+        "5-axis image stabilization",
+        "4K video",
+        "Flip-down selfie screen",
+        "Lightweight design"
       ],
-      pros: ["Extremely compact", "Great image quality", "Advanced AF features", "Excellent video capabilities", "Built-in stabilization"],
-      cons: ["Small EVF", "Limited physical controls", "Single card slot"],
+      pros: ["Excellent stabilization", "Compact and lightweight", "Good image quality", "Feature-rich for beginners", "Affordable price"],
+      cons: ["Smaller sensor than APS-C", "Limited low-light performance", "Basic AF system"],
       amazon_link: "https://amazon.com/product-link",
-      detailed_description: "The Sony A7C II packs full-frame performance into an incredibly compact body, making it perfect for travel and street photography while maintaining professional image quality."
+      detailed_description: "According to Wirecutter, the best mirrorless camera for most people. Perfect for photography beginners and those seeking a lightweight and compact camera system."
     }
 ];
 
@@ -150,163 +150,148 @@ const cameraCategories = [
 const popularMirrorlessCameras = [
   {
     id: 1,
-    name: "Sony Alpha a7 III",
-    image: "/images/cameras/hero-bg.webp",
+    name: "Canon EOS R50",
+    image: "/images/cameras/canon-eos-r50.jpg",
     rating: 4.8,
-    description: "Best-selling full-frame mirrorless camera with excellent low-light performance and dynamic range",
-    price: "$1,998.00",
-    category: "Full-Frame",
-    salesCount: "125K+",
+    description: "Compact and capable mirrorless camera for beginners and content creators",
+    price: "$800-900",
+    category: "Entry-Mid",
+    salesCount: "95K+",
     key_features: [
-      "24.2MP Full-Frame Exmor R BSI CMOS Sensor",
-      "BIONZ X Image Processor & LSI",
-      "693-point hybrid autofocus system",
-      "UHD 4K30p video with HLG & S-Log3 Gammas",
-      "5-Axis SteadyShot INSIDE Stabilization",
-      "ISO 100-51200 (extended: 50-204800)",
-      "10 fps continuous shooting",
-      "3.0\" 922k-Dot Tilting Touchscreen LCD"
+      "24.2MP APS-C sensor",
+      "4K video",
+      "Smartphone connectivity",
+      "Vari-angle touchscreen",
+      "Dual Pixel CMOS AF"
     ],
     pros: [
-      "Exceptional image quality in low light",
-      "Fast and accurate autofocus",
-      "Excellent battery life",
-      "Professional video capabilities"
+      "Compact and lightweight",
+      "User-friendly interface",
+      "Excellent autofocus",
+      "Good image quality"
     ],
     cons: [
-      "Single UHS-II SD card slot",
-      "Limited touchscreen functionality",
-      "Menu system can be complex"
+      "Limited battery life",
+      "Limited native RF-S lens options",
+      "No in-body stabilization"
     ],
-    amazon_link: "https://www.amazon.com/Sony-Full-Frame-Mirrorless-Interchangeable-Lens-ILCE7M3/dp/B07B43WPVK"
+    amazon_link: "https://www.amazon.com/Canon-Mirrorless-RF-S18-45mm-Smartphone-Connection/dp/B0BTTV6CT1/"
   },
   {
     id: 2,
-    name: "Fujifilm X-T4",
-    image: "/images/cameras/hero-bg.webp",
+    name: "Canon EOS R6 Mark II",
+    image: "/images/cameras/canon-eos-r6-mark-ii.jpg",
     rating: 4.7,
-    description: "Feature-packed APS-C mirrorless with in-body stabilization and retro-inspired design",
-    price: "$1,699.00",
-    category: "APS-C",
-    salesCount: "98K+",
+    description: "High-performance full-frame mirrorless for professionals and serious enthusiasts",
+    price: "$2,500-2,700",
+    category: "Professional",
+    salesCount: "75K+",
     key_features: [
-      "26.1MP APS-C X-Trans CMOS 4 Sensor",
-      "X-Processor 4 with Quad CPU",
-      "5-axis in-body image stabilization",
-      "4K/60p 10-bit internal recording",
-      "240fps high-speed HD recording",
-      "15fps mechanical shutter burst shooting",
-      "3.0\" 1.62m-Dot Vari-Angle Touchscreen",
-      "Film Simulation modes"
+      "24.2MP full-frame sensor",
+      "40fps electronic shutter",
+      "6K oversampling",
+      "Dual Pixel CMOS AF II",
+      "In-body image stabilization"
     ],
     pros: [
-      "Exceptional color science with film simulations",
-      "Effective in-body stabilization",
-      "Fully articulating touchscreen",
-      "Excellent build quality"
+      "Exceptional autofocus",
+      "Fast burst shooting",
+      "Excellent image quality",
+      "Professional video features"
     ],
     cons: [
+      "Higher price point",
       "Battery life could be better",
-      "No headphone jack (requires adapter)",
-      "Autofocus not as advanced as Sony/Canon"
+      "Limited buffer with RAW files"
     ],
-    amazon_link: "https://www.amazon.com/Fujifilm-X-T4-Mirrorless-Camera-Body/dp/B0844K1CH5"
+    amazon_link: "https://www.amazon.com/Canon-EOS-Mark-Mirrorless-Oversampling/dp/B0BL7ZVY78/"
   },
   {
     id: 3,
-    name: "Canon EOS R6",
-    image: "/images/cameras/hero-bg.webp",
-    rating: 4.8,
-    description: "Professional full-frame mirrorless with class-leading autofocus and stabilization",
-    price: "$2,499.00",
-    category: "Full-Frame",
-    salesCount: "87K+",
+    name: "Sony Alpha ZV-E10",
+    image: "/images/cameras/sony-alpha-zv-e10.jpg",
+    rating: 4.6,
+    description: "Vlog-focused mirrorless camera with excellent video features for content creators",
+    price: "$700-800",
+    category: "Entry-Mid",
+    salesCount: "120K+",
     key_features: [
-      "20MP Full-Frame CMOS Sensor",
-      "DIGIC X Image Processor",
-      "Dual Pixel CMOS AF II with 1,053 points",
-      "Animal detection autofocus",
-      "8-stop in-body image stabilization",
-      "4K60p and FHD 120p 10-bit internal video",
-      "12 fps mechanical, 20 fps electronic shutter",
-      "Dual UHS-II SD card slots"
+      "24.2MP APS-C sensor",
+      "Flip-out screen",
+      "Product showcase mode",
+      "Directional 3-capsule mic",
+      "Real-time Eye AF"
     ],
     pros: [
-      "Best-in-class autofocus with eye tracking",
-      "Excellent ergonomics and handling",
-      "Very effective image stabilization",
-      "Reliable weather sealing"
+      "Excellent autofocus",
+      "Great video quality",
+      "Specialized vlogging features",
+      "Compact size"
     ],
     cons: [
-      "Limited recording time due to heating",
-      "20MP resolution lower than competitors",
-      "Higher price point"
+      "No viewfinder",
+      "Limited battery life",
+      "No in-body stabilization"
     ],
-    amazon_link: "https://www.amazon.com/Canon-Mirrorless-Camera-Megapixel-Full-Frame/dp/B08BVT9CK2"
+    amazon_link: "https://www.amazon.com/Sony-Alpha-ZV-E10-Interchangeable-Mirrorless/dp/B09BBLH4SG/"
   },
   {
     id: 4,
-    name: "Nikon Z6 II",
-    image: "/images/cameras/hero-bg.webp",
-    rating: 4.6,
-    description: "Versatile full-frame mirrorless with excellent balance of photo and video features",
-    price: "$1,996.95",
-    category: "Full-Frame",
-    salesCount: "76K+",
+    name: "Sony Alpha a6400",
+    image: "/images/cameras/sony-alpha-a6400.jpg",
+    rating: 4.7,
+    description: "Fast and capable APS-C mirrorless with excellent autofocus and 4K video",
+    price: "$900-1,000",
+    category: "Mid-Range",
+    salesCount: "110K+",
     key_features: [
-      "24.5MP BSI CMOS Sensor",
-      "Dual EXPEED 6 Image Processors",
-      "273-Point Phase-Detect AF System",
-      "5-axis in-body vibration reduction",
-      "14 fps continuous shooting",
-      "4K UHD Video Recording at 30fps",
-      "N-Log & 10-Bit HDMI Output",
-      "Dual memory card slots (CFexpress/XQD + SD UHS-II)"
+      "24.2MP APS-C sensor",
+      "180° rotating screen",
+      "4K video",
+      "Real-time Eye AF",
+      "425-point phase-detection AF"
     ],
     pros: [
-      "Excellent image quality and color",
-      "Improved autofocus over Z6",
-      "Professional handling and build quality",
-      "Good low-light performance"
+      "Excellent autofocus tracking",
+      "High-quality 4K video",
+      "Compact and lightweight",
+      "Weather-sealed construction"
     ],
     cons: [
-      "Autofocus still behind Sony and Canon",
-      "EVF resolution lower than competitors",
-      "Relatively small native lens lineup"
+      "No in-body stabilization",
+      "Somewhat limited buffer",
+      "Complex menu system"
     ],
-    amazon_link: "https://www.amazon.com/Nikon-Z6-II-FX-Format-Mirrorless/dp/B08L41LVZN"
+    amazon_link: "https://www.amazon.com/Sony-Alpha-a6400-Mirrorless-Camera/dp/B07MV3P7M8/"
   },
   {
     id: 5,
-    name: "Sony Alpha a6400",
-    image: "/images/cameras/hero-bg.webp",
-    rating: 4.7,
-    description: "Compact APS-C mirrorless with advanced autofocus and excellent 4K video",
-    price: "$898.00",
-    category: "APS-C",
-    salesCount: "135K+",
+    name: "Sony Alpha a7 III",
+    image: "/images/cameras/sony-alpha-a7-iii.jpg",
+    rating: 4.8,
+    description: "Popular full-frame mirrorless with excellent all-around performance",
+    price: "$1,800-2,000",
+    category: "Advanced-Professional",
+    salesCount: "150K+",
     key_features: [
-      "24.2MP APS-C Exmor CMOS Sensor",
-      "BIONZ X Image Processor",
-      "Real-time Eye AF & Real-time Tracking",
-      "425-point hybrid autofocus system",
-      "4K video with S-Log3 and HLG",
-      "180° Tiltable LCD Touchscreen",
-      "11fps continuous shooting",
-      "Built-in Wi-Fi and Bluetooth"
+      "24.2MP full-frame sensor",
+      "5-axis image stabilization",
+      "4K HDR video",
+      "693-point AF system",
+      "10fps continuous shooting"
     ],
     pros: [
-      "Compact and lightweight design",
-      "Excellent autofocus performance",
-      "High-quality 4K video",
-      "Good value for money"
+      "Excellent dynamic range",
+      "Great low-light performance",
+      "Fast and reliable autofocus",
+      "Good battery life"
     ],
     cons: [
-      "No in-body image stabilization",
-      "Limited battery life",
-      "Small grip for larger hands"
+      "Dated menu system",
+      "Average EVF resolution",
+      "Limited touchscreen functionality"
     ],
-    amazon_link: "https://www.amazon.com/Sony-Alpha-a6400-Mirrorless-Camera/dp/B07MTWVN3M"
+    amazon_link: "https://www.amazon.com/Sony-Full-frame-Mirrorless-Interchangeable-Lens-ILCE7M3K/dp/B07B45D8WV/"
   }
 ];
 

@@ -11,98 +11,98 @@ import Image from "next/image";
 const actionCameras = [
     {
       id: 1,
-      name: "GoPro HERO11 Black",
-      image: "/images/cameras/hero-bg.webp",
+      name: "DJI Osmo Action 5 Pro",
+      image: "/images/cameras/dji-osmo-action-5-pro.jpg",
       rating: 4.8,
-      description: "Best Overall: Industry-leading action camera with incredible image stabilization, 5.3K video, and waterproof design for adventure enthusiasts and content creators.",
-      price: "$399.99",
+      description: "Best Overall Action Camera: Premium device with exceptional image quality, stabilization, and underwater capabilities.",
+      price: "$450-500",
       key_features: [
-        "5.3K60 video recording",
-        "27MP photos",
-        "HyperSmooth 5.0 stabilization",
-        "10-bit color depth",
-        "Waterproof to 33ft"
+        "High-quality sensor",
+        "Advanced stabilization",
+        "Underwater performance",
+        "Dual touch screens",
+        "4K 120fps video"
       ],
-      pros: ["Excellent image stabilization", "High-resolution sensor", "Advanced features", "Rugged build", "Great low-light performance"],
-      cons: ["Premium price", "Battery life could be better", "Learning curve for advanced features"],
-      amazon_link: "https://amazon.com/product-link",
-      detailed_description: "The GoPro HERO11 Black sets the standard for action cameras with its revolutionary stabilization, high-resolution sensor, and professional-grade features. Perfect for extreme sports and adventure photography."
+      pros: ["Excellent image quality", "Superb stabilization", "Waterproof design", "User-friendly interface", "Great low-light performance"],
+      cons: ["Premium price", "Larger size than some competitors", "Battery life could be better"],
+      amazon_link: "https://www.amazon.com/DJI-Standard-Waterproof-Stabilization-Touchscreens/dp/B0DBQTC2P7/",
+      detailed_description: "A professional-grade action camera with exceptional image quality and stabilization. Perfect for professional content creators and extreme sports enthusiasts."
     },
     {
       id: 2,
-      name: "DJI Osmo Action 4",
-      image: "/images/cameras/hero-bg.webp",
+      name: "GoPro Hero 13 Black",
+      image: "/images/cameras/gopro-hero13-black.jpg",
       rating: 4.7,
-      description: "Best for Low Light: Premium action camera with exceptional low-light performance, 4K/120fps video, and innovative magnetic mounting system.",
-      price: "$379.00",
+      description: "Best for Creative Shooting: Latest flagship GoPro with innovative lens modules and exceptional video capabilities.",
+      price: "$400-450",
       key_features: [
-        "4K120 video recording",
-        "155° super-wide FOV",
-        "RockSteady 3.0",
-        "Dual touchscreens",
-        "16m waterproof"
+        "Interchangeable lens modules",
+        "Magnetic mounting",
+        "5.3K video",
+        "Advanced HDR",
+        "HyperSmooth stabilization"
       ],
-      pros: ["Dual screens", "Excellent stabilization", "Great audio quality", "Magnetic mounting", "Fast charging"],
-      cons: ["Limited third-party accessories", "No built-in GPS", "Slightly larger form factor"],
-      amazon_link: "https://amazon.com/product-link",
-      detailed_description: "The DJI Osmo Action 4 combines innovative features with excellent image quality, making it perfect for vloggers and content creators who need reliability and versatility."
+      pros: ["Versatile lens options", "Excellent image quality", "Class-leading stabilization", "Robust ecosystem", "Good low-light performance"],
+      cons: ["Modules sold separately", "Complex for beginners", "Battery life limitations"],
+      amazon_link: "https://www.amazon.com/GoPro-HERO13-Black-Compatability-HB/dp/B0DCM34GXX/",
+      detailed_description: "According to TechRadar, offers creative shooting options with the newest lens mods and ND filters. The ultimate tool for professional content creators and extreme sports athletes."
     },
     {
       id: 3,
-      name: "Insta360 X3",
-      image: "/images/cameras/hero-bg.webp",
+      name: "Insta360 X4",
+      image: "/images/cameras/insta360-x4.jpg",
       rating: 4.6,
-      description: "Best 360° Camera: Versatile action camera that captures immersive 360° footage and can be converted to traditional action camera mode.",
-      price: "$449.99",
+      description: "Best 360° Action Camera: Revolutionary device that captures immersive spherical video with advanced editing features.",
+      price: "$500-550",
       key_features: [
-        "5.7K 360° capture",
-        "72MP photos",
-        "Active HDR video",
-        "Invisible selfie stick",
-        "IPX8 waterproof"
+        "360° shooting",
+        "5.7K video",
+        "AI editing features",
+        "FlowState stabilization",
+        "Waterproof design"
       ],
-      pros: ["Versatile 360° capture", "Excellent app features", "Good stabilization", "Creative shooting modes", "Durable build"],
-      cons: ["Higher price point", "Complex editing workflow", "Large file sizes"],
-      amazon_link: "https://amazon.com/product-link",
-      detailed_description: "The Insta360 X3 revolutionizes action photography with its 360-degree capture capabilities, allowing for unique perspectives and creative storytelling options."
+      pros: ["Unique 360° capture", "Innovative editing tools", "High-quality video", "Versatile mounting", "Good software support"],
+      cons: ["Higher price point", "Steeper learning curve", "Memory-intensive footage"],
+      amazon_link: "https://www.amazon.com/Insta360-Standard-Bundle-Waterproof-Stabilization/dp/B0DBQBMQH2/",
+      detailed_description: "The ultimate tool for capturing immersive content, perfect for 360° content creators and virtual reality project shooters looking for unmatched creative possibilities."
     },
     {
       id: 4,
-      name: "GoPro HERO10 Black",
-      image: "/images/cameras/hero-bg.webp",
-      rating: 4.7,
-      description: "Best Value: Previous generation GoPro with excellent performance at a more affordable price point.",
-      price: "$299.99",
+      name: "AKASO EK7000 Pro",
+      image: "/images/cameras/akaso-ek7000-pro.jpg",
+      rating: 4.5,
+      description: "Best Budget Action Camera: Affordable device with impressive features and good performance for casual users.",
+      price: "$80-100",
       key_features: [
-        "4K30 video recording",
-        "20MP photos",
-        "IPX8 waterproof",
-        "Dual screens",
-        "6-axis stabilization"
+        "4K 25fps video",
+        "Electronic image stabilization",
+        "40m waterproof",
+        "WiFi connectivity",
+        "Remote control"
       ],
-      pros: ["Affordable price", "Good image quality", "Dual screens", "Included accessories", "User-friendly"],
-      cons: ["Lower frame rates", "Basic stabilization", "Average low-light performance"],
-      amazon_link: "https://amazon.com/product-link",
-      detailed_description: "The GoPro HERO10 Black offers impressive value with features typically found in premium action cameras, making it perfect for beginners and budget-conscious adventurers."
+      pros: ["Exceptional value", "Good image quality", "Included accessories", "Waterproof case", "Easy to use"],
+      cons: ["Limited low-light performance", "Basic stabilization", "Lower frame rates"],
+      amazon_link: "https://www.amazon.com/AKASO-Touch-Screen-Underwater-Waterproof-Accessories/dp/B07SJ3X5GD/",
+      detailed_description: "A feature-packed budget option that delivers impressive results without breaking the bank. Perfect for casual users, beginners, and those with basic action camera needs."
     },
     {
       id: 5,
-      name: "AKASO Brave 7 LE",
-      image: "/images/cameras/hero-bg.webp",
+      name: "GoPro HERO",
+      image: "/images/cameras/gopro-hero.jpg",
       rating: 4.5,
-      description: "Best Budget Option: Affordable action camera with dual screens, 4K recording, and IPX7 waterproof rating.",
-      price: "$139.99",
+      description: "Best Entry-Level GoPro: Simplified action camera with core GoPro features at a more accessible price point.",
+      price: "$200-250",
       key_features: [
-        "4K30 video recording",
-        "20MP photos",
-        "IPX8 waterproof",
-        "Dual screens",
-        "6-axis stabilization"
+        "Compact waterproof design",
+        "User-friendly interface",
+        "1080p video",
+        "Basic stabilization",
+        "GoPro ecosystem access"
       ],
-      pros: ["Affordable price", "Good image quality", "Dual screens", "Included accessories", "User-friendly"],
-      cons: ["Lower frame rates", "Basic stabilization", "Average low-light performance"],
-      amazon_link: "https://amazon.com/product-link",
-      detailed_description: "The AKASO Brave 7 LE offers impressive value with features typically found in premium action cameras, making it perfect for beginners and budget-conscious adventurers."
+      pros: ["GoPro quality", "Simplified interface", "Compatible with GoPro mounts", "Durable construction", "Good image quality"],
+      cons: ["Limited resolution", "Basic features", "No front display"],
+      amazon_link: "https://www.amazon.com/GoPro-Hero-Compact-Waterproof-Action/dp/B0DCLRRHSP/",
+      detailed_description: "A simplified GoPro model that focuses on the essential features while maintaining good image quality and ease of use. Perfect for action camera beginners and budget-conscious users."
     }
 ];
 
@@ -149,163 +149,148 @@ const cameraCategories = [
 const popularActionCameras = [
   {
     id: 1,
-    name: "GoPro HERO11 Black",
-    image: "/images/cameras/hero-bg.webp",
-    rating: 4.8,
-    description: "Flagship action camera with revolutionary sensor and unmatched stabilization",
-    price: "$399.99",
-    category: "Premium",
-    salesCount: "240K+",
+    name: "AKASO EK7000",
+    image: "/images/cameras/akaso-ek7000.jpg",
+    rating: 4.6,
+    description: "Entry-level action camera with 4K recording and waterproof case",
+    price: "$60-80",
+    category: "Entry-Level",
+    salesCount: "250K+",
     key_features: [
-      "5.3K60 video & 27MP photos",
-      "New 8:7 aspect ratio sensor",
-      "HyperSmooth 5.0 stabilization",
-      "10-bit color with over 1 billion colors",
-      "Waterproof to 33ft (10m)",
-      "Horizon Lock stabilization",
-      "TimeWarp 3.0 & 8X Slo-Mo",
-      "Dual LCD screens"
+      "4K 25fps video",
+      "30m waterproof",
+      "WiFi connectivity",
+      "170° wide angle lens",
+      "Multiple shooting modes"
     ],
     pros: [
-      "Best-in-class image stabilization",
-      "Excellent image quality",
-      "Versatile mounting options",
-      "Robust app ecosystem"
+      "Exceptional value",
+      "Good image quality for the price",
+      "Includes accessories and case",
+      "Easy to use"
     ],
     cons: [
-      "Battery life could be better",
-      "Premium price point",
-      "Can overheat during extended recording"
+      "Basic stabilization",
+      "Limited low-light performance",
+      "Average battery life"
     ],
-    amazon_link: "https://www.amazon.com/GoPro-HERO11-Black-Waterproof-Stabilization/dp/B0BD91XYQS"
+    amazon_link: "https://www.amazon.com/AKASO-EK7000-Sports-Waterproof-Camcorder/dp/B01HGM33HG/"
   },
   {
     id: 2,
     name: "DJI Osmo Action 4",
-    image: "/images/cameras/hero-bg.webp",
+    image: "/images/cameras/dji-osmo-action-4.jpg",
     rating: 4.7,
-    description: "Feature-rich action camera with exceptional low-light performance and magnetic mounting",
-    price: "$379.00",
-    category: "Premium",
-    salesCount: "155K+",
+    description: "Advanced action camera with exceptional low-light performance",
+    price: "$350-400",
+    category: "Advanced",
+    salesCount: "120K+",
     key_features: [
-      "4K/120fps video & 10-bit D-Log M",
-      "1/1.3\" sensor with improved low-light",
-      "155° super-wide FOV",
-      "RockSteady 2.0 stabilization",
-      "HorizonSteady horizon leveling",
-      "Magnetic quick-release system",
-      "Waterproof to 16m without case",
-      "Dual touchscreens"
+      "4K 120fps video",
+      "Advanced stabilization",
+      "Long battery life",
+      "Superior low-light capability",
+      "Waterproof design"
     ],
     pros: [
       "Excellent low-light performance",
-      "Convenient magnetic mounting",
+      "Superior image quality",
       "User-friendly interface",
-      "Good battery life"
+      "Reliable stabilization"
     ],
     cons: [
-      "App can be occasionally buggy",
-      "Limited third-party accessories",
-      "Image stabilization not as good as GoPro"
+      "Higher price point",
+      "Limited ecosystem compared to GoPro",
+      "Heavier than some competitors"
     ],
-    amazon_link: "https://www.amazon.com/DJI-Action-Standard-Combo-Camera/dp/B0CHXV6KNS"
+    amazon_link: "https://www.amazon.com/DJI-Essential-Waterproof-Performance-Long-Lasting/dp/B0DS2B3P2B/"
   },
   {
     id: 3,
-    name: "Insta360 ONE RS",
-    image: "/images/cameras/hero-bg.webp",
-    rating: 4.6,
-    description: "Modular action camera system with interchangeable lenses including 360° capabilities",
-    price: "$299.99",
-    category: "Modular",
-    salesCount: "110K+",
+    name: "GoPro HERO13 Black",
+    image: "/images/cameras/gopro-hero13-black.jpg",
+    rating: 4.8,
+    description: "Flagship action camera with innovative lens system and professional features",
+    price: "$400-450",
+    category: "Professional",
+    salesCount: "180K+",
     key_features: [
-      "Interchangeable lens modules",
-      "4K Boost Lens: 4K/60fps & 48MP photos",
-      "360 Lens: 5.7K 360° capture",
-      "FlowState Stabilization",
-      "AI editing features",
-      "IPX8 waterproof to 16ft (5m)",
-      "Invisible selfie stick effect",
-      "Active HDR video"
+      "5.3K 60fps video",
+      "New lens modules",
+      "Advanced stabilization",
+      "10-bit color",
+      "Professional workflow support"
     ],
     pros: [
-      "Versatile modular design",
-      "Excellent 360° video capabilities",
-      "Creative editing options",
-      "Good value for multiple camera types"
+      "Class-leading image quality",
+      "Revolutionary lens system",
+      "Best-in-class stabilization",
+      "Professional software ecosystem"
     ],
     cons: [
-      "Battery life limited, especially with 360 lens",
-      "App processing can be slow",
-      "Steeper learning curve"
+      "Premium price",
+      "Additional cost for lens mods",
+      "Complex for casual users"
     ],
-    amazon_link: "https://www.amazon.com/Insta360-ONE-RS-Twin-Edition/dp/B09QK2TWTQ"
+    amazon_link: "https://www.amazon.com/GoPro-HERO13-Black-Compatability-HB/dp/B0DCM34GXX/"
   },
   {
     id: 4,
-    name: "AKASO Brave 7 LE",
-    image: "/images/cameras/hero-bg.webp",
-    rating: 4.4,
-    description: "Budget-friendly action camera with dual screens and impressive specifications",
-    price: "$139.99",
-    category: "Budget",
-    salesCount: "185K+",
+    name: "GoPro Hero12 Black",
+    image: "/images/cameras/gopro-hero12-black.jpg",
+    rating: 4.7,
+    description: "Powerful previous-generation GoPro with excellent features and performance",
+    price: "$350-400",
+    category: "Advanced-Professional",
+    salesCount: "200K+",
     key_features: [
-      "4K30fps video & 20MP photos",
-      "IPX7 waterproof without case",
-      "Electronic image stabilization",
-      "Dual screens (front & back)",
-      "170° wide-angle lens",
-      "Time-lapse & slow motion",
-      "Wi-Fi & remote control",
-      "External microphone support"
+      "5.3K video",
+      "HyperSmooth 5.0",
+      "HDR video",
+      "27MP photos",
+      "Pro-level color options"
     ],
     pros: [
-      "Excellent value for money",
-      "Good image quality for the price",
-      "Front screen for selfies/vlogging",
-      "Comes with many accessories"
+      "Excellent image quality",
+      "Superior stabilization",
+      "Professional color options",
+      "Robust accessory ecosystem"
     ],
     cons: [
-      "Stabilization not as good as premium options",
-      "App needs improvement",
-      "Battery life limited to about 90 minutes"
+      "Battery limitations in cold weather",
+      "Higher price point",
+      "Learning curve for advanced features"
     ],
-    amazon_link: "https://www.amazon.com/AKASO-Brave-Touch-Screens-Waterproof/dp/B08D99XNM1"
+    amazon_link: "https://www.amazon.com/GoPro-Hero12-Black-Commerce-Package/dp/B0DD5G9QGJ/"
   },
   {
     id: 5,
-    name: "Sony RX0 II",
-    image: "/images/cameras/hero-bg.webp",
-    rating: 4.5,
-    description: "Premium compact action camera with 1-inch sensor and professional image quality",
-    price: "$698.00",
-    category: "Premium",
-    salesCount: "76K+",
+    name: "DJI Osmo Action 5 Pro",
+    image: "/images/cameras/dji-osmo-action-5-pro.jpg",
+    rating: 4.8,
+    description: "Premium action camera with dual screens and exceptional image quality",
+    price: "$450-500",
+    category: "Professional",
+    salesCount: "95K+",
     key_features: [
-      "1.0\" Exmor RS CMOS sensor",
-      "ZEISS® Tessar T* 24mm F4 lens",
-      "4K internal recording",
-      "Electronic SteadyShot stabilization",
-      "Waterproof to 33ft (10m)",
-      "Shockproof from 6.5ft (2m)",
-      "S-Log2 picture profile",
-      "180° tiltable LCD screen"
+      "Dual touch screens",
+      "4K 120fps",
+      "Advanced stabilization",
+      "Magnetic mounting system",
+      "Waterproof design"
     ],
     pros: [
-      "Exceptional image quality",
-      "Professional video features",
-      "Extremely durable build",
-      "Compact form factor"
+      "Superior image quality",
+      "Excellent stabilization",
+      "Innovative magnetic mounts",
+      "User-friendly dual-screen design"
     ],
     cons: [
-      "Very expensive",
-      "Battery life only about 60 minutes",
-      "Limited mounting options compared to GoPro"
+      "Premium price",
+      "Newer to the market",
+      "Limited third-party accessories"
     ],
-    amazon_link: "https://www.amazon.com/Sony-Premium-Waterproof-Digital-Recording/dp/B07P7J9L3W"
+    amazon_link: "https://www.amazon.com/DJI-Standard-Waterproof-Stabilization-Touchscreens/dp/B0DBQTC2P7/"
   }
 ];
 

@@ -13,98 +13,98 @@ import { FaMicrophone } from "react-icons/fa";
 const vlogCameras = [
     {
       id: 1,
-      name: "Sony ZV-1 II",
-      image: "/images/cameras/hero-bg.webp",
-      rating: 4.8,
-      description: "Best Overall: Compact vlogging camera with excellent autofocus, built-in ND filter, and high-quality 4K video specifically designed for content creators.",
-      price: "$899.99",
+      name: "Sony ZV-E1",
+      image: "/images/cameras/sony-zv-e1.jpg",
+      rating: 4.9,
+      description: "Best Professional Vlog Camera: Full-frame camera with exceptional image quality and advanced features for professional content creators.",
+      price: "$2,000-2,200",
       key_features: [
-        "18-50mm equivalent zoom lens",
-        "4K 60p video recording",
-        "Real-time Eye AF",
-        "Product Showcase Setting",
-        "Built-in ND filter"
+        "Full-frame sensor",
+        "Background blur",
+        "Excellent audio recording quality",
+        "Advanced AF tracking",
+        "High-quality 4K video"
       ],
-      pros: ["Excellent autofocus", "Compact design", "Great image quality", "Built for content creation", "Good low-light performance"],
-      cons: ["Limited battery life", "No headphone jack", "Small buttons"],
+      pros: ["Exceptional image quality", "Professional audio features", "Best-in-class autofocus", "Low-light performance", "Cinematic video options"],
+      cons: ["Higher price point", "Larger size than some competitors", "Steeper learning curve"],
       amazon_link: "https://amazon.com/product-link",
-      detailed_description: "The Sony ZV-1 II is specifically designed for vloggers and content creators, offering the perfect balance of image quality, portability, and creator-focused features."
+      detailed_description: "According to PCMag, the best vlogging camera ever tested. A professional-grade tool for YouTube content creators, influencers and serious video producers."
     },
     {
       id: 2,
-      name: "Canon PowerShot G7 X Mark III",
-      image: "/images/cameras/hero-bg.webp",
+      name: "Canon PowerShot V1",
+      image: "/images/cameras/canon-powershot-v1.jpg",
       rating: 4.7,
-      description: "Best Compact Vlog Camera: Pocket-sized camera with 4K video, vertical video support, and live streaming capabilities.",
-      price: "$749.00",
+      description: "Best Mid-Range Vlog Camera: Compact, purpose-built camera with excellent features for social media content creators.",
+      price: "$500-600",
       key_features: [
-        "20.1MP 1-inch sensor",
-        "4K 30p video",
+        "Compact design",
+        "Built-in LED light",
+        "Advanced audio recording capabilities",
         "Vertical video support",
-        "Live streaming capability",
-        "24-100mm f/1.8-2.8 lens"
+        "Wireless streaming"
       ],
-      pros: ["Great image quality", "YouTube live streaming", "Compact size", "Touch screen", "Good zoom range"],
-      cons: ["No external mic input", "Average battery life", "Contrast-detect AF"],
+      pros: ["Purpose-built for vlogging", "Excellent audio quality", "Integrated LED light", "Easy to use", "Good value"],
+      cons: ["Smaller sensor than mirrorless cameras", "Limited lens options", "Basic manual controls"],
       amazon_link: "https://amazon.com/product-link",
-      detailed_description: "The Canon PowerShot G7 X Mark III is a powerful compact camera that's perfect for vloggers who need portability without sacrificing quality."
+      detailed_description: "A camera specifically designed for content creators with thoughtful features like built-in lighting and advanced audio capabilities. Perfect for professional vloggers and social media content creators."
     },
     {
       id: 3,
-      name: "Panasonic LUMIX GH6",
-      image: "/images/cameras/hero-bg.webp",
-      rating: 4.9,
-      description: "Best Professional Vlog Camera: High-end Micro Four Thirds camera with exceptional video features, including 5.7K recording and professional codecs.",
-      price: "$1,997.99",
+      name: "Sony ZV-1 II",
+      image: "/images/cameras/sony-zv-1-ii.jpg",
+      rating: 4.8,
+      description: "Best Compact Vlog Camera: Powerful point-and-shoot with creator-focused features in a pocket-sized package.",
+      price: "$750-800",
       key_features: [
-        "20.3MP MFT sensor",
-        "4K 30p video",
-        "OZO Audio by Nokia",
-        "5-axis hybrid IS",
-        "Fully articulating screen"
+        "Wide-angle lens",
+        "Product showcase mode",
+        "New 'Cinematic Vlog' setting",
+        "Real-time tracking and Eye AF",
+        "Directional 3-capsule mic"
       ],
-      pros: ["Superior audio quality", "Lightweight design", "Good image stabilization", "Clear EVF", "Great for beginners"],
-      cons: ["Crop in 4K", "Limited battery life", "No headphone jack"],
+      pros: ["Excellent autofocus", "Compact and portable", "Great in-camera audio", "Creator-focused features", "Good image quality"],
+      cons: ["Screen difficult to see in sunlight", "Limited battery life", "Fixed lens"],
       amazon_link: "https://amazon.com/product-link",
-      detailed_description: "The Panasonic LUMIX G100 stands out with its innovative audio technology and user-friendly features, making it perfect for vloggers who prioritize sound quality."
+      detailed_description: "According to Wirecutter, the screen can be difficult to see in sunlight but it's easily controlled with Sony's phone app. A perfect blend of portability and performance for YouTube vloggers, product reviewers, and content creators."
     },
     {
       id: 4,
-      name: "Sony Alpha ZV-E10",
-      image: "/images/cameras/hero-bg.webp",
-      rating: 4.7,
-      description: "Best Interchangeable Lens Vlog Camera: Compact APS-C camera with excellent autofocus, interchangeable lenses, and creator-focused features.",
-      price: "$699.99",
+      name: "Panasonic LUMIX GH7",
+      image: "/images/cameras/panasonic-lumix-gh7.jpg",
+      rating: 4.8,
+      description: "Best for Advanced Video: Hybrid camera with professional-grade video features and excellent flexibility.",
+      price: "$2,000-2,200",
       key_features: [
-        "26.1MP X-Trans CMOS 4",
-        "4K 30p video",
-        "In-body stabilization",
-        "Fully articulating screen",
-        "F-Log recording"
+        "Micro Four Thirds sensor",
+        "Professional video features",
+        "Advanced audio recording options",
+        "Extensive frame rate options",
+        "V-Log profile included"
       ],
-      pros: ["Excellent image quality", "Great stabilization", "Professional features", "Compact body", "Film simulations"],
-      cons: ["Higher price point", "Complex menu system", "Average battery life"],
+      pros: ["Professional video capabilities", "Excellent stabilization", "Great ergonomics", "Rugged construction", "Extensive lens ecosystem"],
+      cons: ["Complex menu system", "Autofocus not best-in-class", "Bulkier than some vlog cameras"],
       amazon_link: "https://amazon.com/product-link",
-      detailed_description: "The Fujifilm X-S10 offers a perfect balance for content creators who need both excellent video and still photo capabilities in a compact body."
+      detailed_description: "According to RTINGS, the best camera tested for advanced video work and vlogs. The ultimate tool for professional videographers and YouTube production teams requiring maximum creative control."
     },
     {
       id: 5,
-      name: "DJI Pocket 3",
-      image: "/images/cameras/hero-bg.webp",
+      name: "DJI Osmo Pocket 3",
+      image: "/images/cameras/dji-osmo-pocket-3.jpg",
       rating: 4.6,
-      description: "Best Stabilized Vlog Camera: Innovative camera with built-in 3-axis gimbal, 4K video, and intelligent tracking features.",
-      price: "$519.00",
+      description: "Best Stabilized Vlog Camera: Innovative camera with built-in gimbal for smooth footage on the move.",
+      price: "$500-550",
       key_features: [
-        "1-inch sensor",
+        "Advanced gimbal",
+        "Large sensor",
+        "Compact design",
         "4K 120fps video",
-        "3-axis stabilization",
-        "1.5-inch touchscreen",
-        "AI tracking"
+        "Tracking features"
       ],
-      pros: ["Excellent stabilization", "Compact size", "Great image quality", "Easy to use", "Active tracking"],
-      cons: ["Limited battery life", "No zoom lens", "Limited low-light performance"],
-      amazon_link: "https://amazon.com/product-link",
-      detailed_description: "The DJI Pocket 3 combines incredible stabilization with high-quality imaging, making it perfect for on-the-go vloggers who need reliable stabilization."
+      pros: ["Exceptional stabilization", "Pocketable size", "Good image quality", "Built-in gimbal", "AI tracking features"],
+      cons: ["Limited in low light", "No interchangeable lenses", "Audio not best-in-class"],
+      amazon_link: "https://www.amazon.com/DJI-Vlogging-Stabilization-Tracking-Photography/dp/B0CG19FGQ5/",
+      detailed_description: "The perfect tool for on-the-go content creators who need reliable stabilization in a compact package. Ideal for mobile vloggers and travel content creators who prioritize portability."
     }
 ];
 
