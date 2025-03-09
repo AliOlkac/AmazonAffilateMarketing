@@ -1,13 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { FaCamera, FaInfoCircle, FaStar, FaCheckCircle, FaAmazon, FaShoppingCart } from "react-icons/fa";
-import { MdPhotoCamera, MdCameraAlt, MdOutlineHistory, MdVideocam, MdFlipCameraAndroid } from "react-icons/md";
-import { useEffect, useRef, useState } from "react";
+import { FaCamera, FaInfoCircle, FaMicrophone } from "react-icons/fa";
+import { MdCompare, MdPhotoCamera, MdCameraAlt, MdVideocam, MdFlipCameraAndroid } from "react-icons/md";
+import { useEffect, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Image from "next/image";
-import { FaMicrophone } from "react-icons/fa";
+import CameraCard from "../components/CameraCard";
 
 // Vlog cameras data
 const vlogCameras = [
@@ -112,165 +111,93 @@ const vlogCameras = [
 const popularVlogCameras = [
   {
     id: 1,
-    name: "Sony ZV-1",
-    image: "/images/cameras/hero-bg.webp",
-    rating: 4.8,
-    description: "Purpose-built vlogging camera with excellent autofocus and audio quality",
-    price: "$748.00",
-    category: "Compact",
-    salesCount: "185K+",
+    name: "Sony ZV-E1",
+    image: "/images/cameras/sony-zv-e1.jpg",
+    rating: 4.9,
+    description: "Best Professional Vlog Camera: Full-frame camera with exceptional image quality and advanced features for professional content creators.",
+    price: "$2,000-2,200",
     key_features: [
-      "20.1MP 1\" Exmor RS CMOS Sensor",
-      "ZEISS 24-70mm f/1.8-2.8 lens",
-      "Real-time Eye AF & tracking",
-      "Background defocus button",
-      "Product showcase setting",
-      "Directional 3-capsule microphone",
-      "4K video with no recording limit",
-      "Flip-out touchscreen"
+      "Full-frame sensor",
+      "Background blur",
+      "Excellent audio recording quality",
+      "Advanced AF tracking",
+      "High-quality 4K video"
     ],
-    pros: [
-      "Excellent autofocus performance",
-      "Superior audio quality",
-      "Compact and lightweight",
-      "Purpose-built for vlogging"
-    ],
-    cons: [
-      "Limited battery life",
-      "No headphone jack",
-      "No built-in viewfinder"
-    ],
-    amazon_link: "https://www.amazon.com/Sony-Content-Creators-Vlogging-Microphone/dp/B088XCGLCD"
+    detailed_description: "According to PCMag, the best vlogging camera ever tested. A professional-grade tool for YouTube content creators, influencers and serious video producers.",
+    amazon_link: "https://amazon.com/product-link"
   },
   {
     id: 2,
-    name: "Canon PowerShot G7 X Mark III",
-    image: "/images/cameras/hero-bg.webp",
+    name: "Canon PowerShot V1",
+    image: "/images/cameras/canon-powershot-v1.jpg",
     rating: 4.7,
-    description: "Popular vlogging compact with YouTube live streaming capabilities",
-    price: "$749.00",
-    category: "Compact",
-    salesCount: "145K+",
+    description: "Best Mid-Range Vlog Camera: Compact, purpose-built camera with excellent features for social media content creators.",
+    price: "$500-600",
     key_features: [
-      "20.1MP 1\" Stacked CMOS Sensor",
-      "DIGIC 8 Image Processor",
-      "24-100mm f/1.8-2.8 lens",
-      "Uncropped 4K30p video",
-      "YouTube live streaming",
+      "Compact design",
+      "Built-in LED light",
+      "Advanced audio recording capabilities",
       "Vertical video support",
-      "3.0\" tilting touchscreen LCD",
-      "Microphone input"
+      "Wireless streaming"
     ],
-    pros: [
-      "Excellent image stabilization",
-      "Great low-light performance",
-      "Live streaming capability",
-      "Compact and portable"
-    ],
-    cons: [
-      "No eye detection AF",
-      "No hot shoe for accessories",
-      "Below average battery life"
-    ],
-    amazon_link: "https://www.amazon.com/Canon-PowerShot-Digital-Camera-Streaming/dp/B07TKNCQZX"
+    detailed_description: "A camera specifically designed for content creators with thoughtful features like built-in lighting and advanced audio capabilities.",
+    amazon_link: "https://amazon.com/product-link"
   },
   {
     id: 3,
-    name: "Sony Alpha ZV-E10",
-    image: "/images/cameras/hero-bg.webp",
+    name: "Sony ZV-1 II",
+    image: "/images/cameras/sony-zv-1-ii.jpg",
     rating: 4.8,
-    description: "Interchangeable lens vlogging camera with APS-C sensor",
-    price: "$698.00",
-    category: "Mirrorless",
-    salesCount: "170K+",
+    description: "Best Compact Vlog Camera: Powerful point-and-shoot with creator-focused features in a pocket-sized package.",
+    price: "$750-800",
     key_features: [
-      "24.2MP APS-C Exmor CMOS Sensor",
-      "Interchangeable lens system",
-      "Real-time Eye AF & tracking",
-      "Background defocus button",
-      "Product showcase setting",
-      "Directional 3-capsule microphone",
-      "4K30p & S-Log3/S-Gamut3",
-      "Fully articulating touchscreen"
+      "Wide-angle lens",
+      "Product showcase mode",
+      "New 'Cinematic Vlog' setting",
+      "Real-time tracking and Eye AF",
+      "Directional 3-capsule mic"
     ],
-    pros: [
-      "Excellent image quality",
-      "Great low-light performance",
-      "Flexible lens options",
-      "Superior audio recording"
-    ],
-    cons: [
-      "No in-body stabilization",
-      "Rolling shutter in 4K",
-      "Overheating concerns"
-    ],
-    amazon_link: "https://www.amazon.com/Sony-Alpha-ZV-E10-Interchangeable-Lens-Camera/dp/B09BBN2B4X"
+    detailed_description: "According to Wirecutter, the screen can be difficult to see in sunlight but it's easily controlled with Sony's phone app.",
+    amazon_link: "https://amazon.com/product-link"
   },
   {
     id: 4,
-    name: "DJI Pocket 2",
-    image: "/images/cameras/hero-bg.webp",
-    rating: 4.6,
-    description: "Ultra-compact gimbal camera with excellent stabilization",
-    price: "$349.00",
-    category: "Gimbal",
-    salesCount: "210K+",
+    name: "Panasonic LUMIX GH7",
+    image: "/images/cameras/panasonic-lumix-gh7.jpg",
+    rating: 4.8,
+    description: "Best for Advanced Video: Hybrid camera with professional-grade video features and excellent flexibility.",
+    price: "$2,000-2,200",
     key_features: [
-      "1/1.7\" CMOS sensor",
-      "3-axis mechanical gimbal",
-      "4K/60fps video",
-      "8x zoom (4x lossless in 1080p)",
-      "ActiveTrack 3.0",
-      "Hyperlapse and timelapse",
-      "Story mode with templates",
-      "Lightweight: only 117g"
+      "Micro Four Thirds sensor",
+      "Professional video features",
+      "Advanced audio recording options",
+      "Extensive frame rate options",
+      "V-Log profile included"
     ],
-    pros: [
-      "Outstanding stabilization",
-      "Extremely portable",
-      "Excellent tracking features",
-      "Good battery life"
-    ],
-    cons: [
-      "Small sensor size",
-      "Audio quality is average",
-      "Limited in low light",
-      "Accessories sold separately"
-    ],
-    amazon_link: "https://www.amazon.com/DJI-Pocket-Stabilizer-Smartphone-OSMO/dp/B08LYKQ5Y8"
+    pros: ["Professional video capabilities", "Excellent stabilization", "Great ergonomics", "Rugged construction", "Extensive lens ecosystem"],
+    cons: ["Complex menu system", "Autofocus not best-in-class", "Bulkier than some vlog cameras"],
+    amazon_link: "https://amazon.com/product-link",
+    detailed_description: "According to RTINGS, the best camera tested for advanced video work and vlogs. The ultimate tool for professional videographers and YouTube production teams requiring maximum creative control."
   },
   {
     id: 5,
-    name: "Panasonic LUMIX G100",
-    image: "/images/cameras/hero-bg.webp",
-    rating: 4.5,
-    description: "Lightweight mirrorless vlogging camera with Nokia OZO Audio",
-    price: "$647.99",
-    category: "Mirrorless",
-    salesCount: "95K+",
+    name: "DJI Osmo Pocket 3",
+    image: "/images/cameras/dji-osmo-pocket-3.jpg",
+    rating: 4.6,
+    description: "Best Stabilized Vlog Camera: Innovative camera with built-in gimbal for smooth footage on the move.",
+    price: "$500-550",
     key_features: [
-      "20.3MP MFT Digital Live MOS Sensor",
-      "5-axis hybrid I.S. (with compatible lens)",
-      "Nokia OZO Audio with 3 microphones",
-      "4K30p video recording",
-      "V-Log L profile",
-      "Face/eye detection AF",
-      "Fully articulating touchscreen",
-      "Compact frame weighing only 345g"
+      "Advanced gimbal",
+      "Large sensor",
+      "Compact design",
+      "4K 120fps video",
+      "Tracking features"
     ],
-    pros: [
-      "Excellent audio quality",
-      "Compact and lightweight",
-      "Clear, bright electronic viewfinder",
-      "Good ergonomics"
-    ],
-    cons: [
-      "4K video has significant crop",
-      "Limited battery life",
-      "No headphone jack"
-    ],
-    amazon_link: "https://www.amazon.com/PANASONIC-Mirrorless-Recording-Technology-DC-G100KKIT/dp/B08965JV8D"
-    }
+    pros: ["Exceptional stabilization", "Pocketable size", "Good image quality", "Built-in gimbal", "AI tracking features"],
+    cons: ["Limited in low light", "No interchangeable lenses", "Audio not best-in-class"],
+    amazon_link: "https://www.amazon.com/DJI-Vlogging-Stabilization-Tracking-Photography/dp/B0CG19FGQ5/",
+    detailed_description: "The perfect tool for on-the-go content creators who need reliable stabilization in a compact package. Ideal for mobile vloggers and travel content creators who prioritize portability."
+  }
 ];
 
 // Photography tips for Vlog cameras
@@ -313,196 +240,18 @@ const cameraCategories = [
 ];
 
 export default function VlogCameras() {
-  // State for card hover animations
-  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
-  
-  // Refs for animations
-  const heroTitleRef = useRef(null);
-  const heroSubtitleRef = useRef(null);
-  const heroButtonsRef = useRef(null);
-  const introTitleRef = useRef(null);
-  const introTextRef = useRef(null);
-  const camerasWrapperRef = useRef(null);
-  const cameraCardsRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const guideSectionsRefs = useRef<(HTMLDivElement | null)[]>([]); // Rehber bölümleri için referans
-  const ctaSectionRef = useRef(null);
-  const tipsRef = useRef(null);
-  const categoriesRef = useRef(null);
-  const historyRef = useRef(null);
-  const parallaxBgRef = useRef(null);
+  // GSAP initialization
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+  }, []);
 
-  // Handle camera card hover
+  // State for card hover effects
+  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
+
+  // Function to handle card hover animations
   const handleCardHover = (index: number | null) => {
     setHoveredCard(index);
   };
-
-  useEffect(() => {
-    // Register ScrollTrigger plugin
-    gsap.registerPlugin(ScrollTrigger);
-
-    // Animation timeline
-    const tl = gsap.timeline();
-
-    // Hero section animations
-    tl.from(heroTitleRef.current, {
-      opacity: 0,
-      y: 50,
-      duration: 0.8,
-      ease: "power3.out"
-    })
-    .from(heroSubtitleRef.current, {
-      opacity: 0,
-      y: 30,
-      duration: 0.6,
-      ease: "power3.out"
-    }, "-=0.4")
-    .from(heroButtonsRef.current, {
-      opacity: 0,
-      y: 20,
-      duration: 0.6,
-      ease: "power3.out"
-    }, "-=0.2");
-    
-    // Parallax effect for hero background
-    if (parallaxBgRef.current) {
-      gsap.to(parallaxBgRef.current, {
-        scrollTrigger: {
-          trigger: parallaxBgRef.current,
-          start: "top top",
-          end: "bottom top",
-          scrub: true
-        },
-        y: 150,
-        scale: 1.1,
-        ease: "none"
-      });
-    }
-
-    // Intro section animation
-    gsap.from(introTitleRef.current, {
-      scrollTrigger: {
-        trigger: introTitleRef.current,
-        start: "top 80%"
-      },
-      opacity: 0,
-      y: 30,
-      duration: 0.6
-    });
-
-    gsap.from(introTextRef.current, {
-      scrollTrigger: {
-        trigger: introTextRef.current,
-        start: "top 80%"
-      },
-      opacity: 0,
-      y: 30,
-      duration: 0.6,
-      delay: 0.2
-    });
-
-    // Camera cards animation for the container
-    gsap.from(camerasWrapperRef.current, {
-      scrollTrigger: {
-        trigger: camerasWrapperRef.current,
-        start: "top 80%"
-      },
-      opacity: 0,
-      y: 40,
-      duration: 0.5
-    });
-
-    // Staggered animation for each camera card
-    cameraCardsRefs.current.forEach((card, index) => {
-      if (card) {
-        gsap.from(card, {
-          scrollTrigger: {
-            trigger: card,
-            start: "top 85%"
-          },
-          opacity: 0,
-          y: 50,
-          duration: 0.6,
-          delay: index * 0.15, // Kademeli gecikmeli animasyon
-          ease: "power3.out"
-        });
-      }
-    });
-
-    // Staggered animation for guide sections
-    guideSectionsRefs.current.forEach((section, index) => {
-      if (section) {
-        gsap.from(section, {
-          scrollTrigger: {
-            trigger: section,
-            start: "top 85%"
-          },
-          opacity: 0,
-          x: index % 2 === 0 ? -40 : 40, // Farklı yönlerden giriş efekti
-          duration: 0.7,
-          delay: index * 0.1,
-          ease: "power2.out"
-        });
-      }
-    });
-
-    // Animation for tips section
-    if (tipsRef.current) {
-    gsap.from(tipsRef.current, {
-      scrollTrigger: {
-        trigger: tipsRef.current,
-        start: "top 80%"
-      },
-      opacity: 0,
-      y: 30,
-      duration: 0.6
-    });
-    }
-
-    // Animation for categories section
-    if (categoriesRef.current) {
-    gsap.from(categoriesRef.current, {
-      scrollTrigger: {
-        trigger: categoriesRef.current,
-        start: "top 80%"
-      },
-      opacity: 0,
-      y: 30,
-      duration: 0.6
-    });
-    }
-
-    // Animation for history section
-    if (historyRef.current) {
-    gsap.from(historyRef.current, {
-      scrollTrigger: {
-        trigger: historyRef.current,
-        start: "top 80%"
-      },
-      opacity: 0,
-      y: 30,
-      duration: 0.6
-    });
-    }
-
-    // CTA section animation
-    if (ctaSectionRef.current) {
-    gsap.from(ctaSectionRef.current, {
-      scrollTrigger: {
-        trigger: ctaSectionRef.current,
-        start: "top 80%"
-      },
-      opacity: 0,
-      y: 30,
-      duration: 0.8,
-      ease: "power2.out"
-    });
-    }
-
-    // Cleanup function
-    return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-    };
-  }, []);
 
   return (
     <div className="bg-gray-50 dark:bg-gray-900 min-h-screen pb-16">
@@ -513,18 +262,17 @@ export default function VlogCameras() {
         <div 
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url(/images/cameras/categories/vlog.webp)` }}
-          ref={parallaxBgRef}
         ></div>
         
         {/* Hero Content */}
         <div className="container mx-auto px-4 relative z-20 text-center">
-          <h1 ref={heroTitleRef} className="text-4xl md:text-6xl font-bold text-white mb-6">Vlog Cameras</h1>
-          <p ref={heroSubtitleRef} className="text-xl md:text-2xl text-gray-200 mb-8 max-w-3xl mx-auto">
+          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">Vlog Cameras</h1>
+          <p className="text-xl md:text-2xl text-gray-200 mb-8 max-w-3xl mx-auto">
             Create professional-quality content with cameras designed specifically for vloggers and content creators
           </p>
           
           {/* Hero Buttons - Yeşil tonlarda butonlar */}
-          <div ref={heroButtonsRef} className="flex flex-wrap gap-4 justify-center">
+          <div className="flex flex-wrap gap-4 justify-center">
             <a href="#top-cameras" className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-full font-medium transition-all flex items-center gap-2">
               <FaCamera /> Explore Top Picks
             </a>
@@ -538,8 +286,8 @@ export default function VlogCameras() {
       {/* Introduction Section */}
       <section className="py-16 px-4 container mx-auto">
         <div className="max-w-4xl mx-auto">
-          <h2 ref={introTitleRef} className="text-3xl font-bold mb-6 text-gray-800 dark:text-white">Vlog Cameras: Tools for Creative Storytelling</h2>
-          <div ref={introTextRef} className="space-y-6">
+          <h2 className="text-3xl font-bold mb-6 text-gray-800 dark:text-white">Vlog Cameras: Tools for Creative Storytelling</h2>
+          <div className="space-y-6">
             <p className="text-lg text-gray-600 dark:text-gray-300">
               Vlog cameras are specially designed to meet the unique needs of content creators who need to record themselves while producing engaging video content. These cameras combine excellent video quality with features specifically tailored for self-recording and storytelling.
             </p>
@@ -556,207 +304,54 @@ export default function VlogCameras() {
         </div>
       </section>
 
-      {/* Most Popular Vlog Cameras Section */}
-      <section id="popular-cameras" className="py-16 px-4 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
+      {/* Top Vlog Cameras Section */}
+      <section id="top-cameras" className="py-16 px-4 bg-white dark:bg-gray-800 rounded-t-[40px] shadow-lg">
         <div className="container mx-auto">
-          <h2 className="text-3xl font-bold mb-2 text-center text-gray-800 dark:text-white">Most Popular Vlog Cameras</h2>
+          <h2 className="text-3xl font-bold mb-2 text-center text-gray-800 dark:text-white">Best Vlog Cameras of 2024</h2>
           <p className="text-lg text-center mb-12 text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            The best-selling cameras for content creators with features that make vlogging and video creation seamless
+            The best vlog cameras for different needs and budgets, selected based on our expert reviews and user experiences
           </p>
 
-          {/* Popular Vlog Camera Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" ref={camerasWrapperRef}>
-            {popularVlogCameras.map((camera, index) => (
-              <div 
-                key={camera.id} 
-                className="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg transition-all duration-500 transform hover:shadow-xl hover:-translate-y-2"
-                ref={(el) => {
-                  if (cameraCardsRefs.current) {
-                    cameraCardsRefs.current[index] = el;
-                  }
-                }}
-                onMouseEnter={() => handleCardHover(index)}
-                onMouseLeave={() => handleCardHover(null)}
-              >
-                {/* Camera Image */}
-                <div className="h-64 overflow-hidden relative bg-gray-100 dark:bg-gray-700">
-                  <Image 
-                    src={camera.image} 
-                    alt={camera.name}
-                    fill
-                    quality={90}
-                    priority={index === 0}
-                    className="object-contain p-4 transition-transform duration-300 hover:scale-110"
-                    sizes="(max-width: 768px) 90vw, (max-width: 1200px) 45vw, 30vw"
-                  />
-                  
-                  {/* Rating badge overlay */}
-                  <div className="absolute top-2 right-2 bg-yellow-400 text-gray-900 py-1 px-3 rounded-full flex items-center gap-1 font-medium z-10">
-                    <FaStar /> {camera.rating}
-                  </div>
-                  
-                  {/* Category badge */}
-                  <div className="absolute top-2 left-2 bg-blue-500 text-white py-1 px-3 rounded-full text-sm font-medium z-10">
-                    {camera.category}
-                  </div>
-                  
-                  {/* Sales badge */}
-                  <div className="absolute bottom-2 left-2 bg-green-500 text-white py-1 px-3 rounded-full text-sm font-medium z-10 flex items-center gap-1">
-                    <FaShoppingCart /> {camera.salesCount} Sold
-                  </div>
-                </div>
-
-                {/* Camera Info */}
-                <div className="p-6">
-                  <h3 className="text-xl font-bold mb-3 text-gray-800 dark:text-white group">
-                    {camera.name}
-                    <span className={`block h-0.5 bg-blue-500 transform transition-transform duration-300 ${
-                      hoveredCard === index ? 'scale-x-100' : 'scale-x-0'
-                    }`}></span>
-                  </h3>
-                  
-                  {/* Price */}
-                  <div className="text-xl font-bold text-blue-600 dark:text-blue-400 mb-4">
-                    {camera.price}
-                  </div>
-                  
-                  {/* Key Features */}
-                  <div className="mb-6">
-                    <h4 className="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-2">Key Features:</h4>
-                    <ul className="space-y-1">
-                      {camera.key_features.slice(0, 4).map((feature, idx) => (
-                        <li key={idx} className={`flex items-start gap-2 text-sm text-gray-600 dark:text-gray-300 transition-transform duration-300 ${
-                          hoveredCard === index ? `transform translate-x-${idx+1}` : ''
-                        }`}>
-                          <FaCheckCircle className={`text-green-500 mt-1 flex-shrink-0 ${
-                            hoveredCard === index ? 'animate-pulse' : ''
-                          }`} />
-                          <span>{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  
-                  {/* Amazon Link */}
-                  <a 
-                    href={camera.amazon_link} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className={`w-full px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white rounded-lg flex items-center gap-2 justify-center transition-all duration-300 ${
-                      hoveredCard === index ? 'bg-orange-600 shadow-lg' : ''
-                    }`}
-                  >
-                    <FaAmazon /> View on Amazon
-                  </a>
-                </div>
-              </div>
+          {/* Vlog Camera Cards - Yeni bileşen kullanarak */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {vlogCameras.map((camera, index) => (
+              <CameraCard 
+                key={camera.id}
+                camera={camera}
+                index={index}
+                hoveredCard={hoveredCard}
+                handleCardHover={handleCardHover}
+              />
             ))}
           </div>
         </div>
       </section>
 
-      {/* Top Vlog Cameras Section */}
-      <section id="top-cameras" className="py-16 px-4 bg-white dark:bg-gray-800 rounded-t-[40px] shadow-lg">
+      {/* Popular Vlog Cameras Section */}
+      <section id="popular-cameras" className="py-16 px-4 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
         <div className="container mx-auto">
-          <h2 className="text-3xl font-bold mb-2 text-center text-gray-800 dark:text-white">
-            Best 5 Vlog Cameras for Content Creation
-          </h2>
+          <h2 className="text-3xl font-bold mb-2 text-center text-gray-800 dark:text-white">Most Popular Vlog Cameras</h2>
           <p className="text-lg text-center mb-12 text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            From YouTube videos to social media content, find the perfect camera for your creative needs
+            The best-selling vlog cameras chosen by content creators worldwide, based on sales data and customer satisfaction
           </p>
 
-          {/* Camera Cards */}
-          <div ref={camerasWrapperRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {vlogCameras.map((camera, index) => (
-              <div 
+          {/* Popular Vlog Camera Cards - Yeni bileşen kullanarak */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {popularVlogCameras && popularVlogCameras.map((camera, index) => (
+              <CameraCard 
                 key={camera.id}
-                onMouseEnter={() => handleCardHover(index)}
-                onMouseLeave={() => handleCardHover(null)}
-                className={`bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg transition-all duration-500 transform ${
-                  hoveredCard === index ? 'scale-[1.02] shadow-2xl' : 'hover:shadow-xl hover:-translate-y-2'
-                }`}
-              >
-                <div className="absolute top-2 left-2 bg-green-600 text-white py-1 px-3 rounded-full text-sm font-medium z-10">
-                  {index === 0 && "Best Overall"}
-                  {index === 1 && "Best Compact"}
-                  {index === 2 && "Best Audio"}
-                  {index === 3 && "Best Hybrid"}
-                  {index === 4 && "Best Stabilized"}
-                </div>
-                {/* Camera Image */}
-                <div className="h-72 md:h-80 lg:h-96 overflow-hidden relative bg-gray-100 dark:bg-gray-700">
-                  <Image 
-                    src={camera.image} 
-                    alt={camera.name}
-                    fill
-                    quality={100}
-                    priority={index === 0}
-                    className="object-contain p-4 transition-transform duration-300 hover:scale-110"
-                    sizes="(max-width: 768px) 90vw, (max-width: 1200px) 45vw, 30vw"
-                  />
-                  {/* Rating badge overlay */}
-                  <div className="absolute top-2 right-2 bg-yellow-400 text-gray-900 py-1 px-3 rounded-full flex items-center gap-1 font-medium z-10">
-                    <FaStar className={`${hoveredCard === index ? 'animate-pulse' : ''}`} /> {camera.rating}
-                  </div>
-                </div>
-
-                {/* Camera Info */}
-                <div className="p-6">
-                  <h3 className="text-xl font-bold mb-2 text-gray-800 dark:text-white group">
-                    {camera.name}
-                    <span className={`block h-0.5 bg-green-500 transform scale-x-0 transition-transform duration-300 ${
-                      hoveredCard === index ? 'scale-x-100' : ''
-                    }`}></span>
-                  </h3>
-                  <p className="text-gray-600 dark:text-gray-300 mb-4">{camera.description}</p>
-                  
-                  <div className="mb-4">
-                    <h4 className="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-2">Key Features:</h4>
-                    <ul className="space-y-2">
-                      {camera.key_features.map((feature, idx) => (
-                        <li key={idx} className={`flex items-start gap-2 text-sm text-gray-600 dark:text-gray-300 transition-transform duration-300 ${
-                          hoveredCard === index ? `transform translate-x-${idx}` : ''
-                        }`}>
-                          <FaCheckCircle className={`text-green-500 mt-1 flex-shrink-0 ${
-                            hoveredCard === index ? 'animate-bounce' : ''
-                          }`} />
-                          <span>{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  {/* Detailed description */}
-                  <div className={`mb-4 overflow-hidden transition-all duration-300 ${
-                    hoveredCard === index ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'
-                  }`}>
-                    <p className="text-sm text-gray-600 dark:text-gray-300 italic">
-                      {camera.detailed_description}
-                    </p>
-                  </div>
-
-                  <div className="flex items-center justify-between">
-                    <div className="text-xl font-bold text-gray-800 dark:text-white">{camera.price}</div>
-                    <a 
-                      href={camera.amazon_link} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className={`px-4 py-2 bg-green-500 hover:bg-green-600 text-white rounded-lg flex items-center gap-2 transition-all duration-300 ${
-                        hoveredCard === index ? 'bg-green-600 shadow-lg' : ''
-                      }`}
-                    >
-                      <FaAmazon className={hoveredCard === index ? 'animate-bounce' : ''} /> View on Amazon
-                    </a>
-                  </div>
-                </div>
-              </div>
+                camera={camera}
+                index={index}
+                hoveredCard={hoveredCard}
+                handleCardHover={handleCardHover}
+              />
             ))}
           </div>
         </div>
       </section>
 
       {/* Tips Section */}
-      <section id="photography-tips" className="py-16 px-4 bg-gray-100 dark:bg-gray-700" ref={tipsRef}>
+      <section id="photography-tips" className="py-16 px-4 bg-gray-100 dark:bg-gray-700">
         <div className="container mx-auto max-w-5xl">
           <h2 className="text-3xl font-bold mb-6 text-center text-gray-800 dark:text-white">
             Vlogging Tips & Techniques
@@ -784,7 +379,7 @@ export default function VlogCameras() {
       </section>
 
       {/* Categories Section */}
-      <section id="vlog-categories" className="py-16 px-4 bg-white dark:bg-gray-800" ref={categoriesRef}>
+      <section id="vlog-categories" className="py-16 px-4 bg-white dark:bg-gray-800">
         <div className="container mx-auto max-w-5xl">
           <h2 className="text-3xl font-bold mb-6 text-center text-gray-800 dark:text-white">
             Vlog Camera Categories
@@ -818,10 +413,10 @@ export default function VlogCameras() {
       </section>
 
       {/* History Section */}
-      <section id="vlog-history" className="py-16 px-4 bg-gray-50 dark:bg-gray-900" ref={historyRef}>
+      <section id="vlog-history" className="py-16 px-4 bg-gray-50 dark:bg-gray-900">
         <div className="container mx-auto max-w-4xl">
           <div className="flex items-center gap-3 mb-6 justify-center">
-            <MdOutlineHistory className="text-3xl text-green-500 dark:text-green-400" />
+            <MdCompare className="text-3xl text-green-500 dark:text-green-400" />
             <h2 className="text-3xl font-bold text-gray-800 dark:text-white">The Evolution of Vlog Cameras</h2>
           </div>
           
@@ -840,7 +435,7 @@ export default function VlogCameras() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-4 bg-gradient-to-br from-green-900 to-black text-white relative overflow-hidden" ref={ctaSectionRef}>
+      <section className="py-20 px-4 bg-gradient-to-br from-green-900 to-black text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-20">
           <div className="absolute top-0 left-0 w-64 h-64 bg-green-500 rounded-full filter blur-3xl"></div>
           <div className="absolute bottom-0 right-0 w-80 h-80 bg-emerald-500 rounded-full filter blur-3xl"></div>
@@ -855,7 +450,7 @@ export default function VlogCameras() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="#top-cameras" className="px-8 py-4 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 rounded-full font-medium text-lg transition duration-300 shadow-lg shadow-green-500/20 hover:shadow-green-600/30 flex items-center justify-center gap-2">
-                <FaShoppingCart /> Explore Cameras
+                <FaCamera /> Explore Cameras
               </Link>
               <Link href="#buying-guide" className="px-8 py-4 bg-white/10 hover:bg-white/20 border border-white/30 rounded-full font-medium text-lg transition duration-300 backdrop-blur-sm flex items-center justify-center gap-2">
                 <FaInfoCircle /> Read Buying Guide
@@ -897,21 +492,15 @@ export default function VlogCameras() {
                 icon: <MdCameraAlt className="text-2xl" />
               }
             ].map((section, index) => (
-              <div key={index} ref={(el) => {
-                if (guideSectionsRefs.current) {
-                  guideSectionsRefs.current[index] = el;
-                }
-              }}>
-                <div className="flex gap-5 items-start bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-300">
-                  <div className="flex-shrink-0 bg-gradient-to-br from-green-100 to-teal-100 dark:from-green-900 dark:to-teal-900 p-3 rounded-lg">
-                    <span className="text-green-600 dark:text-green-300 text-xl">
-                      {section.icon}
-                    </span>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold mb-3 text-gray-800 dark:text-white">{section.title}</h3>
-                    <p className="text-gray-600 dark:text-gray-300">{section.content}</p>
-                  </div>
+              <div key={index} className="flex gap-5 items-start bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-300">
+                <div className="flex-shrink-0 bg-gradient-to-br from-green-100 to-teal-100 dark:from-green-900 dark:to-teal-900 p-3 rounded-lg">
+                  <span className="text-green-600 dark:text-green-300 text-xl">
+                    {section.icon}
+                  </span>
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold mb-3 text-gray-800 dark:text-white">{section.title}</h3>
+                  <p className="text-gray-600 dark:text-gray-300">{section.content}</p>
                 </div>
               </div>
             ))}

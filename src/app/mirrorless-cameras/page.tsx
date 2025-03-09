@@ -1,12 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { FaCamera, FaInfoCircle, FaStar, FaCheckCircle, FaAmazon, FaShoppingCart } from "react-icons/fa";
-import { MdPhotoCamera, MdCameraAlt, MdOutlineHistory, MdSettings } from "react-icons/md";
-import { useEffect, useRef, useState } from "react";
+import { FaCamera, FaInfoCircle, FaShoppingCart } from "react-icons/fa";
+import { MdCompare, MdPhotoCamera, MdCameraAlt, MdVideocam, MdSettings } from "react-icons/md";
+import { useEffect, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Image from "next/image";
+import CameraCard from "../components/CameraCard";
 
 // Sample Mirrorless camera data
 const mirrorlessCameras = [
@@ -296,196 +296,18 @@ const popularMirrorlessCameras = [
 ];
 
 export default function MirrorlessCameras() {
-  // State for card hover animations
+  // GSAP initialization
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+  }, []);
+
+  // State for card hover effects
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
 
-  // Refs for animations
-  const heroTitleRef = useRef(null);
-  const heroSubtitleRef = useRef(null);
-  const heroButtonsRef = useRef(null);
-  const introTitleRef = useRef(null);
-  const introTextRef = useRef(null);
-  const camerasWrapperRef = useRef(null);
-  const cameraCardsRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const guideSectionsRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const ctaSectionRef = useRef(null);
-  const tipsRef = useRef(null);
-  const categoriesRef = useRef(null);
-  const historyRef = useRef(null);
-  const parallaxBgRef = useRef(null);
-
-  // Handle camera card hover
+  // Function to handle card hover animations
   const handleCardHover = (index: number | null) => {
     setHoveredCard(index);
   };
-
-  useEffect(() => {
-    // Register ScrollTrigger plugin
-    gsap.registerPlugin(ScrollTrigger);
-
-    // Animation timeline
-    const tl = gsap.timeline();
-
-    // Hero section animations
-    tl.from(heroTitleRef.current, {
-      opacity: 0,
-      y: 50,
-      duration: 0.8,
-      ease: "power3.out"
-    })
-    .from(heroSubtitleRef.current, {
-      opacity: 0,
-      y: 30,
-      duration: 0.6,
-      ease: "power3.out"
-    }, "-=0.4")
-    .from(heroButtonsRef.current, {
-      opacity: 0,
-      y: 20,
-      duration: 0.6,
-      ease: "power3.out"
-    }, "-=0.2");
-    
-    // Parallax effect for hero background
-    if (parallaxBgRef.current) {
-      gsap.to(parallaxBgRef.current, {
-        scrollTrigger: {
-          trigger: parallaxBgRef.current,
-          start: "top top",
-          end: "bottom top",
-          scrub: true
-        },
-        y: 150,
-        scale: 1.1,
-        ease: "none"
-      });
-    }
-
-    // Intro section animation
-    gsap.from(introTitleRef.current, {
-      scrollTrigger: {
-        trigger: introTitleRef.current,
-        start: "top 80%"
-      },
-      opacity: 0,
-      y: 30,
-      duration: 0.6
-    });
-
-    gsap.from(introTextRef.current, {
-      scrollTrigger: {
-        trigger: introTextRef.current,
-        start: "top 80%"
-      },
-      opacity: 0,
-      y: 30,
-      duration: 0.6,
-      delay: 0.2
-    });
-
-    // Camera cards animation for the container
-    gsap.from(camerasWrapperRef.current, {
-      scrollTrigger: {
-        trigger: camerasWrapperRef.current,
-        start: "top 80%"
-      },
-      opacity: 0,
-      y: 40,
-      duration: 0.5
-    });
-
-    // Staggered animation for each camera card
-    cameraCardsRefs.current.forEach((card, index) => {
-      if (card) {
-        gsap.from(card, {
-          scrollTrigger: {
-            trigger: card,
-            start: "top 85%"
-          },
-          opacity: 0,
-          y: 50,
-          duration: 0.6,
-          delay: index * 0.15,
-          ease: "power3.out"
-        });
-      }
-    });
-
-    // Staggered animation for guide sections
-    guideSectionsRefs.current.forEach((section, index) => {
-      if (section) {
-        gsap.from(section, {
-          scrollTrigger: {
-            trigger: section,
-            start: "top 85%"
-          },
-          opacity: 0,
-          x: index % 2 === 0 ? -40 : 40,
-          duration: 0.7,
-          delay: index * 0.1,
-          ease: "power2.out"
-        });
-      }
-    });
-
-    // Animation for tips section
-    if (tipsRef.current) {
-    gsap.from(tipsRef.current, {
-      scrollTrigger: {
-        trigger: tipsRef.current,
-        start: "top 80%"
-      },
-      opacity: 0,
-      y: 30,
-      duration: 0.6
-    });
-    }
-
-    // Animation for categories section
-    if (categoriesRef.current) {
-    gsap.from(categoriesRef.current, {
-      scrollTrigger: {
-        trigger: categoriesRef.current,
-        start: "top 80%"
-      },
-      opacity: 0,
-      y: 30,
-      duration: 0.6
-    });
-    }
-
-    // Animation for history section
-    if (historyRef.current) {
-    gsap.from(historyRef.current, {
-      scrollTrigger: {
-        trigger: historyRef.current,
-        start: "top 80%"
-      },
-      opacity: 0,
-      y: 30,
-      duration: 0.6
-    });
-    }
-
-    // CTA section animation
-    if (ctaSectionRef.current) {
-    gsap.from(ctaSectionRef.current, {
-      scrollTrigger: {
-        trigger: ctaSectionRef.current,
-        start: "top 80%"
-      },
-      opacity: 0,
-      y: 30,
-      duration: 0.8,
-      ease: "power2.out"
-    });
-    }
-
-    // Cleanup function
-    return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-    };
-  }, []);
 
   return (
     <div className="bg-gray-50 dark:bg-gray-900 min-h-screen pb-16">
@@ -496,18 +318,17 @@ export default function MirrorlessCameras() {
         <div 
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url(/images/cameras/categories/mirrorless.webp)` }}
-          ref={parallaxBgRef}
         ></div>
         
         {/* Hero Content */}
         <div className="container mx-auto px-4 relative z-20 text-center">
-          <h1 ref={heroTitleRef} className="text-4xl md:text-6xl font-bold text-white mb-6">Mirrorless Cameras</h1>
-          <p ref={heroSubtitleRef} className="text-xl md:text-2xl text-gray-200 mb-8 max-w-3xl mx-auto">
+          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">Mirrorless Cameras</h1>
+          <p className="text-xl md:text-2xl text-gray-200 mb-8 max-w-3xl mx-auto">
             Discover the perfect balance of power and portability with our comprehensive mirrorless camera guide
           </p>
           
           {/* Hero Buttons - Mavi-indigo tonlarda butonlar */}
-          <div ref={heroButtonsRef} className="flex flex-wrap gap-4 justify-center">
+          <div className="flex flex-wrap gap-4 justify-center">
             <a href="#top-cameras" className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full font-medium transition-all flex items-center gap-2">
               <FaCamera /> Explore Top Picks
             </a>
@@ -521,8 +342,8 @@ export default function MirrorlessCameras() {
       {/* Introduction Section */}
       <section className="py-16 px-4 container mx-auto">
         <div className="max-w-4xl mx-auto">
-          <h2 ref={introTitleRef} className="text-3xl font-bold mb-6 text-gray-800 dark:text-white">Mirrorless Cameras: The Future of Photography</h2>
-          <div ref={introTextRef} className="space-y-6">
+          <h2 className="text-3xl font-bold mb-6 text-gray-800 dark:text-white">Mirrorless Cameras: The Future of Photography</h2>
+          <div className="space-y-6">
             <p className="text-lg text-gray-600 dark:text-gray-300">
               Mirrorless cameras represent the cutting edge of digital photography technology, offering DSLR-level image quality in a more compact and lightweight form factor. By eliminating the mirror mechanism found in DSLRs, these cameras can be smaller while still accepting interchangeable lenses.
             </p>
@@ -539,200 +360,47 @@ export default function MirrorlessCameras() {
         </div>
       </section>
 
-      {/* Most Popular Mirrorless Cameras Section */}
-      <section id="popular-cameras" className="py-16 px-4 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
+      {/* Top Mirrorless Cameras Section */}
+      <section id="top-cameras" className="py-16 px-4 bg-white dark:bg-gray-800 rounded-t-[40px] shadow-lg">
         <div className="container mx-auto">
-          <h2 className="text-3xl font-bold mb-2 text-center text-gray-800 dark:text-white">Most Popular Mirrorless Cameras</h2>
+          <h2 className="text-3xl font-bold mb-2 text-center text-gray-800 dark:text-white">Best Mirrorless Cameras of 2024</h2>
           <p className="text-lg text-center mb-12 text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            The best-selling mirrorless cameras with exceptional performance and features, based on global sales data
+            The best mirrorless cameras for different needs and budgets, selected based on our expert reviews and user experiences
           </p>
 
-          {/* Popular Mirrorless Camera Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" ref={camerasWrapperRef}>
-            {popularMirrorlessCameras.map((camera, index) => (
-              <div 
-                key={camera.id} 
-                className="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg transition-all duration-500 transform hover:shadow-xl hover:-translate-y-2"
-                ref={(el) => {
-                  if (cameraCardsRefs.current) {
-                    cameraCardsRefs.current[index] = el;
-                  }
-                }}
-                onMouseEnter={() => handleCardHover(index)}
-                onMouseLeave={() => handleCardHover(null)}
-              >
-                {/* Camera Image */}
-                <div className="h-64 overflow-hidden relative bg-gray-100 dark:bg-gray-700">
-                  <Image 
-                    src={camera.image} 
-                    alt={camera.name}
-                    fill
-                    quality={90}
-                    priority={index === 0}
-                    className="object-contain p-4 transition-transform duration-300 hover:scale-110"
-                    sizes="(max-width: 768px) 90vw, (max-width: 1200px) 45vw, 30vw"
-                  />
-                  
-                  {/* Rating badge overlay */}
-                  <div className="absolute top-2 right-2 bg-yellow-400 text-gray-900 py-1 px-3 rounded-full flex items-center gap-1 font-medium z-10">
-                    <FaStar /> {camera.rating}
-                  </div>
-                  
-                  {/* Category badge */}
-                  <div className="absolute top-2 left-2 bg-blue-500 text-white py-1 px-3 rounded-full text-sm font-medium z-10">
-                    {camera.category}
-                  </div>
-                  
-                  {/* Sales badge */}
-                  <div className="absolute bottom-2 left-2 bg-green-500 text-white py-1 px-3 rounded-full text-sm font-medium z-10 flex items-center gap-1">
-                    <FaShoppingCart /> {camera.salesCount} Sold
-                  </div>
-                </div>
-
-                {/* Camera Info */}
-                <div className="p-6">
-                  <h3 className="text-xl font-bold mb-3 text-gray-800 dark:text-white group">
-                    {camera.name}
-                    <span className={`block h-0.5 bg-blue-500 transform transition-transform duration-300 ${
-                      hoveredCard === index ? 'scale-x-100' : 'scale-x-0'
-                    }`}></span>
-                  </h3>
-                  
-                  {/* Price */}
-                  <div className="text-xl font-bold text-blue-600 dark:text-blue-400 mb-4">
-                    {camera.price}
-                  </div>
-                  
-                  {/* Key Features */}
-                  <div className="mb-6">
-                    <h4 className="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-2">Key Features:</h4>
-                    <ul className="space-y-1">
-                      {camera.key_features.slice(0, 4).map((feature, idx) => (
-                        <li key={idx} className={`flex items-start gap-2 text-sm text-gray-600 dark:text-gray-300 transition-transform duration-300 ${
-                          hoveredCard === index ? `transform translate-x-${idx+1}` : ''
-                        }`}>
-                          <FaCheckCircle className={`text-green-500 mt-1 flex-shrink-0 ${
-                            hoveredCard === index ? 'animate-pulse' : ''
-                          }`} />
-                          <span>{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  
-                  {/* Amazon Link */}
-                  <a 
-                    href={camera.amazon_link} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className={`w-full px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white rounded-lg flex items-center gap-2 justify-center transition-all duration-300 ${
-                      hoveredCard === index ? 'bg-orange-600 shadow-lg' : ''
-                    }`}
-                  >
-                    <FaAmazon /> View on Amazon
-                  </a>
-                </div>
-              </div>
+          {/* Mirrorless Camera Cards - Yeni bileşen kullanarak */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {mirrorlessCameras.map((camera, index) => (
+              <CameraCard 
+                key={camera.id}
+                camera={camera}
+                index={index}
+                hoveredCard={hoveredCard}
+                handleCardHover={handleCardHover}
+              />
             ))}
           </div>
         </div>
       </section>
 
-      {/* Top Mirrorless Cameras Section */}
-      <section id="top-cameras" className="py-16 px-4 bg-white dark:bg-gray-800 rounded-t-[40px] shadow-lg">
+      {/* Most Popular Mirrorless Cameras Section */}
+      <section id="popular-cameras" className="py-16 px-4 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
         <div className="container mx-auto">
-          <h2 className="text-3xl font-bold mb-2 text-center text-gray-800 dark:text-white">
-            Best 5 Mirrorless Cameras for Every Need
-          </h2>
+          <h2 className="text-3xl font-bold mb-2 text-center text-gray-800 dark:text-white">Most Popular Mirrorless Cameras</h2>
           <p className="text-lg text-center mb-12 text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            From professional photography to travel, find the perfect mirrorless camera for your specific needs
+            The best-selling mirrorless cameras chosen by photographers worldwide, based on sales data and customer satisfaction
           </p>
 
-          {/* Camera Cards */}
-          <div ref={camerasWrapperRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {mirrorlessCameras.map((camera, index) => (
-              <div 
+          {/* Popular Mirrorless Camera Cards - Yeni bileşen kullanarak */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {popularMirrorlessCameras.map((camera, index) => (
+              <CameraCard 
                 key={camera.id}
-                onMouseEnter={() => handleCardHover(index)}
-                onMouseLeave={() => handleCardHover(null)}
-                className={`bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg transition-all duration-500 transform ${
-                  hoveredCard === index ? 'scale-[1.02] shadow-2xl' : 'hover:shadow-xl hover:-translate-y-2'
-                }`}
-              >
-                <div className="absolute top-2 left-2 bg-purple-600 text-white py-1 px-3 rounded-full text-sm font-medium z-10">
-                  {index === 0 && "Best Overall"}
-                  {index === 1 && "Best for Action"}
-                  {index === 2 && "Best for Enthusiasts"}
-                  {index === 3 && "Best Value"}
-                  {index === 4 && "Best Compact"}
-                </div>
-                {/* Camera Image */}
-                <div className="h-72 md:h-80 lg:h-96 overflow-hidden relative bg-gray-100 dark:bg-gray-700">
-                  <Image 
-                    src={camera.image} 
-                    alt={camera.name}
-                    fill
-                    quality={100}
-                    priority={index === 0}
-                    className="object-contain p-4 transition-transform duration-300 hover:scale-110"
-                    sizes="(max-width: 768px) 90vw, (max-width: 1200px) 45vw, 30vw"
-                  />
-                  {/* Rating badge overlay */}
-                  <div className="absolute top-2 right-2 bg-yellow-400 text-gray-900 py-1 px-3 rounded-full flex items-center gap-1 font-medium z-10">
-                    <FaStar className={`${hoveredCard === index ? 'animate-pulse' : ''}`} /> {camera.rating}
-                  </div>
-                </div>
-
-                {/* Camera Info */}
-                <div className="p-6">
-                  <h3 className="text-xl font-bold mb-2 text-gray-800 dark:text-white group">
-                    {camera.name}
-                    <span className={`block h-0.5 bg-purple-500 transform scale-x-0 transition-transform duration-300 ${
-                      hoveredCard === index ? 'scale-x-100' : ''
-                    }`}></span>
-                  </h3>
-                  <p className="text-gray-600 dark:text-gray-300 mb-4">{camera.description}</p>
-                  
-                  <div className="mb-4">
-                    <h4 className="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-2">Key Features:</h4>
-                    <ul className="space-y-2">
-                      {camera.key_features.map((feature, idx) => (
-                        <li key={idx} className={`flex items-start gap-2 text-sm text-gray-600 dark:text-gray-300 transition-transform duration-300 ${
-                          hoveredCard === index ? `transform translate-x-${idx}` : ''
-                        }`}>
-                          <FaCheckCircle className={`text-purple-500 mt-1 flex-shrink-0 ${
-                            hoveredCard === index ? 'animate-bounce' : ''
-                          }`} />
-                          <span>{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  {/* Detailed description */}
-                  <div className={`mb-4 overflow-hidden transition-all duration-300 ${
-                    hoveredCard === index ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'
-                  }`}>
-                    <p className="text-sm text-gray-600 dark:text-gray-300 italic">
-                      {camera.detailed_description}
-                    </p>
-                  </div>
-
-                  <div className="flex items-center justify-between">
-                    <div className="text-xl font-bold text-gray-800 dark:text-white">{camera.price}</div>
-                    <a 
-                      href={camera.amazon_link} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className={`px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white rounded-lg flex items-center gap-2 transition-all duration-300 ${
-                        hoveredCard === index ? 'bg-orange-600 shadow-lg' : ''
-                      }`}
-                    >
-                      <FaAmazon className={hoveredCard === index ? 'animate-bounce' : ''} /> View on Amazon
-                    </a>
-                  </div>
-                </div>
-              </div>
+                camera={camera}
+                index={index}
+                hoveredCard={hoveredCard}
+                handleCardHover={handleCardHover}
+              />
             ))}
           </div>
         </div>
@@ -763,24 +431,18 @@ export default function MirrorlessCameras() {
               {
                 title: "Electronic Viewfinder Quality",
                 content: "The EVF is one of the main interfaces with your camera. Look for high resolution (at least 2.36M dots), fast refresh rate, and good magnification for a comfortable shooting experience.",
-                icon: <MdOutlineHistory className="text-2xl" />
+                icon: <MdSettings className="text-2xl" />
               }
             ].map((section, index) => (
-              <div key={index} ref={(el) => {
-                if (guideSectionsRefs.current) {
-                  guideSectionsRefs.current[index] = el;
-                }
-              }}>
-                <div className="flex gap-5 items-start bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-300">
-                  <div className="flex-shrink-0 bg-gradient-to-br from-blue-100 to-indigo-100 dark:from-blue-900 dark:to-indigo-900 p-3 rounded-lg">
-                    <span className="text-blue-600 dark:text-blue-300 text-xl">
-                      {section.icon}
-                    </span>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold mb-3 text-gray-800 dark:text-white">{section.title}</h3>
-                    <p className="text-gray-600 dark:text-gray-300">{section.content}</p>
-                  </div>
+              <div key={index} className="flex gap-5 items-start bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-300">
+                <div className="flex-shrink-0 bg-gradient-to-br from-blue-100 to-indigo-100 dark:from-blue-900 dark:to-indigo-900 p-3 rounded-lg">
+                  <span className="text-blue-600 dark:text-blue-300 text-xl">
+                    {section.icon}
+                  </span>
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold mb-3 text-gray-800 dark:text-white">{section.title}</h3>
+                  <p className="text-gray-600 dark:text-gray-300">{section.content}</p>
                 </div>
               </div>
             ))}
@@ -789,7 +451,7 @@ export default function MirrorlessCameras() {
       </section>
 
       {/* Tips Section */}
-      <section id="photography-tips" className="py-16 px-4 bg-gray-100 dark:bg-gray-700" ref={tipsRef}>
+      <section id="photography-tips" className="py-16 px-4 bg-gray-100 dark:bg-gray-700">
         <div className="container mx-auto max-w-5xl">
           <h2 className="text-3xl font-bold mb-6 text-center text-gray-800 dark:text-white">
             Mirrorless Photography Tips
@@ -817,7 +479,7 @@ export default function MirrorlessCameras() {
       </section>
 
       {/* Categories Section */}
-      <section id="mirrorless-categories" className="py-16 px-4 bg-white dark:bg-gray-800" ref={categoriesRef}>
+      <section id="mirrorless-categories" className="py-16 px-4 bg-white dark:bg-gray-800">
         <div className="container mx-auto max-w-5xl">
           <h2 className="text-3xl font-bold mb-6 text-center text-gray-800 dark:text-white">
             Mirrorless Camera Categories
@@ -851,10 +513,10 @@ export default function MirrorlessCameras() {
       </section>
 
       {/* History Section */}
-      <section id="mirrorless-history" className="py-16 px-4 bg-gray-50 dark:bg-gray-900" ref={historyRef}>
+      <section id="mirrorless-history" className="py-16 px-4 bg-gray-50 dark:bg-gray-900">
         <div className="container mx-auto max-w-4xl">
           <div className="flex items-center gap-3 mb-6 justify-center">
-            <MdOutlineHistory className="text-3xl text-purple-500 dark:text-purple-400" />
+            <MdCompare className="text-3xl text-purple-500 dark:text-purple-400" />
             <h2 className="text-3xl font-bold text-gray-800 dark:text-white">The Rise of Mirrorless Cameras</h2>
           </div>
           
@@ -873,7 +535,7 @@ export default function MirrorlessCameras() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-4 bg-gradient-to-br from-purple-900 to-black text-white relative overflow-hidden" ref={ctaSectionRef}>
+      <section className="py-20 px-4 bg-gradient-to-br from-purple-900 to-black text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-20">
           <div className="absolute top-0 left-0 w-64 h-64 bg-purple-500 rounded-full filter blur-3xl"></div>
           <div className="absolute bottom-0 right-0 w-80 h-80 bg-pink-500 rounded-full filter blur-3xl"></div>

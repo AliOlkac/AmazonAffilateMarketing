@@ -14,6 +14,11 @@ const nextConfig = {
         hostname: 'm.media-amazon.com',
         pathname: '/images/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'www.nikon.com.tr',
+        pathname: '/**',
+      },
     ],
   }
 }

@@ -1,12 +1,12 @@
 'use client';
 
 import Link from "next/link";
-import { FaCamera, FaInfoCircle, FaStar, FaCheckCircle, FaAmazon, FaShoppingCart } from "react-icons/fa";
+import { FaCamera, FaInfoCircle, FaShoppingCart } from "react-icons/fa";
 import { MdCompare, MdPhotoCamera, MdCameraAlt, MdVideocam, MdSettings, MdOutlineHistory } from "react-icons/md";
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Image from "next/image";
+import CameraCard from "../components/CameraCard";
 
 // Metadata for DSLR Cameras page - Metadata doesn't work in client components in Next.js, so we removed it
 // export const metadata = {
@@ -19,7 +19,7 @@ const dslrCameras = [
     {
       id: 1,
       name: "Nikon D850",
-      image: "/images/cameras/nikon-d850.jpg",
+      image: "https://www.nikon.com.tr/globalassets/digizuite/118404-en-d850_24_70e_front.png/OptimizelyDesktopWebP",
       rating: 4.9,
       description: "Best Overall DSLR: Professional-grade full-frame camera with exceptional resolution and versatility.",
       price: "$2,500-3,000",
@@ -116,11 +116,11 @@ const dslrCameras = [
 // Most Popular DSLR Cameras Data
 const popularDslrCameras = [
   {
-    id: "pop1",
+    id: 1,
     name: "Canon EOS Rebel T7",
-    image: "/images/cameras/canon-eos-rebel-t7.jpg",
+    image: "https://m.media-amazon.com/images/I/61BKYlNqH6L._AC_SL1000_.jpg",
     rating: 4.7,
-    salesCount: "50,000+",
+    description: "Best Selling Entry-Level DSLR: Perfect first camera with excellent image quality and easy-to-use features.",
     price: "$500-550",
     key_features: [
       "24MP APS-C sensor",
@@ -129,16 +129,16 @@ const popularDslrCameras = [
       "9-Point AF System",
       "ISO 100-6400, Up to 3 fps Shooting"
     ],
+    detailed_description: "The most popular entry-level DSLR on the market, perfect for beginners looking to step up from smartphone photography.",
     amazon_link: "https://www.amazon.com/Canon-Rebel-T7-18-55mm-II/dp/B07C2Z21X5/"
   },
   {
-    id: "pop2",
+    id: 2,
     name: "Canon EOS Rebel T6",
     image: "/images/cameras/canon-eos-rebel-t6.jpg",
     rating: 4.6,
-    salesCount: "45,000+",
+    description: "Budget-Friendly DSLR: Affordable entry into DSLR photography with solid basics and Wi-Fi connectivity.",
     price: "$400-450",
-    category: "Entry-Level",
     key_features: [
       "18MP APS-C sensor",
       "WiFi connectivity",
@@ -146,58 +146,59 @@ const popularDslrCameras = [
       "9-Point AF System",
       "ISO 100-6400"
     ],
+    detailed_description: "A budget-friendly option that still delivers the core DSLR experience with good image quality and reliable performance.",
     amazon_link: "https://www.amazon.com/Canon-Digital-Camera-18-55mm-3-5-5-6/dp/B06XNTPN8C/"
   },
   {
-    id: "pop3",
-    name: "Nikon D7500",
-    image: "/images/cameras/nikon-d7500.jpg",
-    rating: 4.8,
-    salesCount: "35,000+",
-    price: "$1,000-1,200",
-    category: "Mid-Advanced",
+    id: 3,
+    name: "Nikon D3500",
+    image: "/images/cameras/nikon-d3500.jpg",
+    rating: 4.7,
+    description: "Best for Beginners: User-friendly DSLR with excellent battery life and image quality for new photographers.",
+    price: "$480-550",
     key_features: [
-      "20.9MP APS-C sensor",
-      "4K video",
-      "8fps continuous shooting",
-      "51-Point AF System",
-      "ISO 100-51200"
+      "24.2MP DX-format sensor",
+      "Full HD 1080p 60fps video",
+      "Guide Mode for beginners",
+      "ISO 100-25600",
+      "1,550 shots per charge"
     ],
-    amazon_link: "https://www.amazon.com/Nikon-20-9MP-Camera-18-140mm-3-5-5-6G/dp/B06Y5RTN1T/"
+    detailed_description: "Widely recommended as the best beginner DSLR with its excellent battery life and simplified controls that make learning photography easier.",
+    amazon_link: "https://www.amazon.com/Nikon-D3500-18-55mm-70-300mm-Accessory/dp/B07GZP6JPG/"
   },
   {
-    id: "pop4",
-    name: "Canon EOS 2000D/Rebel T7",
-    image: "/images/cameras/canon-eos-2000d.jpg",
-    rating: 4.5,
-    salesCount: "30,000+",
-    price: "$500-600",
-    category: "Entry-Level",
+    id: 4,
+    name: "Nikon D3500",
+    image: "/images/cameras/nikon-d3500.jpg",
+    rating: 4.7,
+    description: "Best for Beginners: User-friendly DSLR with excellent battery life and image quality for new photographers.",
+    price: "$480-550",
     key_features: [
-      "24.1MP APS-C sensor",
-      "WiFi connectivity",
-      "Full HD video",
-      "9-Point AF System",
-      "ISO 100-6400"
+      "24.2MP DX-format sensor",
+      "Full HD 1080p 60fps video",
+      "Guide Mode for beginners",
+      "ISO 100-25600",
+      "1,550 shots per charge"
     ],
-    amazon_link: "https://www.amazon.com/Canon-18-55mm-75-300mm-Wideangle-Accessory/dp/B0BJXWBW7C/"
+    detailed_description: "Widely recommended as the best beginner DSLR with its excellent battery life and simplified controls that make learning photography easier.",
+    amazon_link: "https://www.amazon.com/Nikon-D3500-18-55mm-70-300mm-Accessory/dp/B07GZP6JPG/"
   },
   {
-    id: "pop5",
-    name: "Nikon D850",
-    image: "/images/cameras/nikon-d850.jpg",
-    rating: 4.9,
-    salesCount: "25,000+",
-    price: "$2,500-3,000",
-    category: "Professional",
+    id: 5,
+    name: "Nikon D3500",
+    image: "/images/cameras/nikon-d3500.jpg",
+    rating: 4.7,
+    description: "Best for Beginners: User-friendly DSLR with excellent battery life and image quality for new photographers.",
+    price: "$480-550",
     key_features: [
-      "45.7MP full-frame BSI CMOS sensor",
-      "4K video",
-      "7fps continuous shooting",
-      "153-Point AF System",
-      "ISO 64-25600"
+      "24.2MP DX-format sensor",
+      "Full HD 1080p 60fps video",
+      "Guide Mode for beginners",
+      "ISO 100-25600",
+      "1,550 shots per charge"
     ],
-    amazon_link: "https://www.amazon.com/Nikon-D850-FX-Format-Digital-Camera/dp/B07524LHMT/"
+    detailed_description: "Widely recommended as the best beginner DSLR with its excellent battery life and simplified controls that make learning photography easier.",
+    amazon_link: "https://www.amazon.com/Nikon-D3500-18-55mm-70-300mm-Accessory/dp/B07GZP6JPG/"
   }
 ];
 
@@ -241,179 +242,17 @@ const cameraCategories = [
 ];
 
 export default function DSLRCameras() {
-  // State for card hover animations
-  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
-
-  // Refs for animations
-  const heroTitleRef = useRef(null);
-  const heroSubtitleRef = useRef(null);
-  const heroButtonsRef = useRef(null);
-  const introTitleRef = useRef(null);
-  const introTextRef = useRef(null);
-  const camerasWrapperRef = useRef(null);
-  const cameraCardsRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const guideSectionsRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const ctaSectionRef = useRef(null);
-  const tipsRef = useRef(null);
-  const categoriesRef = useRef(null);
-  const historyRef = useRef(null);
-  const parallaxBgRef = useRef(null);
-
+  // GSAP initialization
   useEffect(() => {
-    // Register ScrollTrigger plugin with GSAP
     gsap.registerPlugin(ScrollTrigger);
-
-    // Page loading animations
-    const tl = gsap.timeline();
-
-    // Hero section animations
-    tl.from(heroTitleRef.current, {
-      opacity: 0,
-      y: 50,
-      duration: 0.8,
-      ease: "power3.out"
-    })
-    .from(heroSubtitleRef.current, {
-      opacity: 0,
-      y: 30,
-      duration: 0.6,
-      ease: "power3.out"
-    }, "-=0.4")
-    .from(heroButtonsRef.current, {
-      opacity: 0,
-      y: 20,
-      duration: 0.6,
-      ease: "power3.out"
-    }, "-=0.2");
-    
-    // Parallax effect for hero background
-    if (parallaxBgRef.current) {
-      gsap.to(parallaxBgRef.current, {
-        scrollTrigger: {
-          trigger: parallaxBgRef.current,
-          start: "top top",
-          end: "bottom top",
-          scrub: true
-        },
-        y: 150,
-        scale: 1.1,
-        ease: "none"
-      });
-    }
-
-    // Intro section animation
-    gsap.from(introTitleRef.current, {
-      scrollTrigger: {
-        trigger: introTitleRef.current,
-        start: "top 80%"
-      },
-      opacity: 0,
-      y: 30,
-      duration: 0.6
-    });
-
-    gsap.from(introTextRef.current, {
-      scrollTrigger: {
-        trigger: introTextRef.current,
-        start: "top 80%"
-      },
-      opacity: 0,
-      y: 30,
-      duration: 0.6,
-      delay: 0.2
-    });
-
-    // Camera cards animation
-    gsap.from(camerasWrapperRef.current, {
-      scrollTrigger: {
-        trigger: camerasWrapperRef.current,
-        start: "top 80%"
-      },
-      opacity: 0,
-      y: 40,
-      duration: 0.5
-    });
-
-    // Staggered animation for each camera card
-    cameraCardsRefs.current.forEach((card, index) => {
-      gsap.from(card, {
-        scrollTrigger: {
-          trigger: card,
-          start: "top 85%"
-        },
-        opacity: 0,
-        y: 50,
-        duration: 0.6,
-        delay: index * 0.15, // Increasing delay for each card
-        ease: "power3.out"
-      });
-    });
-
-    // Staggered animation for guide sections
-    guideSectionsRefs.current.forEach((section, index) => {
-      gsap.from(section, {
-        scrollTrigger: {
-          trigger: section,
-          start: "top 85%"
-        },
-        opacity: 0,
-        x: index % 2 === 0 ? -40 : 40, // Alternate entry directions
-        duration: 0.7,
-        delay: index * 0.1,
-        ease: "power2.out"
-      });
-    });
-
-    // Animation for tips section
-    gsap.from(tipsRef.current, {
-      scrollTrigger: {
-        trigger: tipsRef.current,
-        start: "top 80%"
-      },
-      opacity: 0,
-      y: 30,
-      duration: 0.6
-    });
-
-    // Animation for categories section
-    gsap.from(categoriesRef.current, {
-      scrollTrigger: {
-        trigger: categoriesRef.current,
-        start: "top 80%"
-      },
-      opacity: 0,
-      y: 30,
-      duration: 0.6
-    });
-
-    // Animation for history section
-    gsap.from(historyRef.current, {
-      scrollTrigger: {
-        trigger: historyRef.current,
-        start: "top 80%"
-      },
-      opacity: 0,
-      y: 30,
-      duration: 0.6
-    });
-
-    // CTA section animation
-    gsap.from(ctaSectionRef.current, {
-      scrollTrigger: {
-        trigger: ctaSectionRef.current,
-        start: "top 80%"
-      },
-      opacity: 0,
-      y: 30,
-      duration: 0.8,
-      ease: "power2.out"
-    });
-
-    // Cleanup function
-    return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-    };
   }, []);
+
+  // Referans için gerçekten ihtiyaç duyduğumuz refs
+  const camerasWrapperRef = useRef<HTMLDivElement>(null);
+  const ctaSectionRef = useRef<HTMLDivElement>(null);
+
+  // State for card hover effects
+  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
 
   // Function to handle card hover animations
   const handleCardHover = (index: number | null) => {
@@ -429,18 +268,17 @@ export default function DSLRCameras() {
         <div 
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url(/images/cameras/categories/dslr.webp)` }}
-          ref={parallaxBgRef}
         ></div>
         
         {/* Hero Content */}
         <div className="container mx-auto px-4 relative z-20 text-center">
-          <h1 ref={heroTitleRef} className="text-4xl md:text-6xl font-bold text-white mb-6">DSLR Cameras</h1>
-          <p ref={heroSubtitleRef} className="text-xl md:text-2xl text-gray-200 mb-8 max-w-3xl mx-auto">
+          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">DSLR Cameras</h1>
+          <p className="text-xl md:text-2xl text-gray-200 mb-8 max-w-3xl mx-auto">
             Find the perfect DSLR camera for your photography needs with our comprehensive 2024 buying guide
           </p>
           
           {/* Hero Buttons */}
-          <div ref={heroButtonsRef} className="flex flex-wrap gap-4 justify-center">
+          <div className="flex flex-wrap gap-4 justify-center">
             <a href="#top-cameras" className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full font-medium transition-all flex items-center gap-2">
               <FaCamera /> Explore Top Picks
             </a>
@@ -454,8 +292,8 @@ export default function DSLRCameras() {
       {/* Introduction Section - Enhanced with more SEO content */}
       <section className="py-16 px-4 container mx-auto">
         <div className="max-w-4xl mx-auto">
-          <h2 ref={introTitleRef} className="text-3xl font-bold mb-6 text-gray-800 dark:text-white">DSLR Cameras: The Foundation of Professional Photography</h2>
-          <div ref={introTextRef} className="space-y-6">
+          <h2 className="text-3xl font-bold mb-6 text-gray-800 dark:text-white">DSLR Cameras: The Foundation of Professional Photography</h2>
+          <div className="space-y-6">
             <p className="text-lg text-gray-600 dark:text-gray-300">
               DSLR (Digital Single-Lens Reflex) cameras continue to be the primary choice for professional photographers with their interchangeable lenses, optical viewfinders, and advanced sensors. 
               These cameras offer superior image quality, fast performance, and a wide lens ecosystem, making them ideal choices for both professionals and beginners in photography.
@@ -474,90 +312,6 @@ export default function DSLRCameras() {
         </div>
       </section>
       
-      {/* Most Popular DSLR Cameras Section */}
-      <section id="popular-cameras" className="py-16 px-4 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
-        <div className="container mx-auto">
-          <h2 className="text-3xl font-bold mb-2 text-center text-gray-800 dark:text-white">Most Popular DSLR Cameras</h2>
-          <p className="text-lg text-center mb-12 text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            The best-selling DSLR cameras chosen by photographers worldwide, based on sales data and customer satisfaction
-          </p>
-
-          {/* Popular DSLR Camera Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {popularDslrCameras.map((camera, index) => (
-              <div 
-                key={camera.id} 
-                className="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg transition-all duration-500 transform hover:shadow-xl hover:-translate-y-2"
-              >
-                {/* Camera Image */}
-                <div className="h-64 overflow-hidden relative bg-gray-100 dark:bg-gray-700">
-                  <Image 
-                    src={camera.image} 
-                    alt={camera.name}
-                    fill
-                    quality={90}
-                    priority={index === 0}
-                    className="object-contain p-4 transition-transform duration-300 hover:scale-110"
-                    sizes="(max-width: 768px) 90vw, (max-width: 1200px) 45vw, 30vw"
-                  />
-                  
-                  {/* Rating badge overlay */}
-                  <div className="absolute top-2 right-2 bg-yellow-400 text-gray-900 py-1 px-3 rounded-full flex items-center gap-1 font-medium z-10">
-                    <FaStar /> {camera.rating}
-                  </div>
-                  
-                  {/* Category badge */}
-                  <div className="absolute top-2 left-2 bg-blue-500 text-white py-1 px-3 rounded-full text-sm font-medium z-10">
-                    {camera.category}
-                  </div>
-                  
-                  {/* Sales badge */}
-                  <div className="absolute bottom-2 left-2 bg-green-500 text-white py-1 px-3 rounded-full text-sm font-medium z-10 flex items-center gap-1">
-                    <FaShoppingCart /> {camera.salesCount} Sold
-                  </div>
-                </div>
-
-                {/* Camera Info */}
-                <div className="p-6">
-                  <h3 className="text-xl font-bold mb-3 text-gray-800 dark:text-white group">
-                    {camera.name}
-                    <span className="block h-0.5 bg-blue-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
-                  </h3>
-                  
-                  {/* Price */}
-                  <div className="text-xl font-bold text-blue-600 dark:text-blue-400 mb-4">
-                    {camera.price}
-                  </div>
-                  
-                  {/* Key Features */}
-                  <div className="mb-6">
-                    <h4 className="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-2">Key Features:</h4>
-                    <ul className="space-y-1">
-                      {camera.key_features.slice(0, 4).map((feature, idx) => (
-                        <li key={idx} className="flex items-start gap-2 text-sm text-gray-600 dark:text-gray-300">
-                          <FaCheckCircle className="text-green-500 mt-1 flex-shrink-0" />
-                          <span>{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  
-                  {/* Amazon Link */}
-                  <a 
-                    href={camera.amazon_link} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="w-full px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white rounded-lg flex items-center gap-2 justify-center transition-all duration-300"
-                  >
-                    <FaAmazon /> View on Amazon
-                  </a>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Top DSLR Cameras Section */}
       <section id="top-cameras" className="py-16 px-4 bg-white dark:bg-gray-800 rounded-t-[40px] shadow-lg">
         <div className="container mx-auto">
@@ -566,94 +320,46 @@ export default function DSLRCameras() {
             The best DSLR cameras for different needs and budgets, selected based on our expert reviews and user experiences
           </p>
 
-          {/* DSLR Camera Cards - Enhanced with hover animations */}
+          {/* DSLR Camera Cards - Yeni bileşen kullanarak */}
           <div ref={camerasWrapperRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {dslrCameras.map((camera, index) => (
-              <div 
-                key={camera.id} 
-                ref={el => {
-                  cameraCardsRefs.current[index] = el;
-                }}
-                className={`bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg transition-all duration-500 transform ${
-                  hoveredCard === index ? 'scale-[1.02] shadow-2xl' : 'hover:shadow-xl hover:-translate-y-2'
-                }`}
-                onMouseEnter={() => handleCardHover(index)}
-                onMouseLeave={() => handleCardHover(null)}
-              >
-                {/* Camera Image */}
-                <div className="h-72 md:h-80 lg:h-96 overflow-hidden relative bg-gray-100 dark:bg-gray-700">
-                  <Image 
-                    src={camera.image} 
-                    alt={camera.name}
-                    fill
-                    quality={100}
-                    priority={index === 0}
-                    className="object-contain p-4 transition-transform duration-300 hover:scale-110"
-                    sizes="(max-width: 768px) 90vw, (max-width: 1200px) 45vw, 30vw"
-                  />
-                  {/* Rating badge overlay */}
-                  <div className="absolute top-2 right-2 bg-yellow-400 text-gray-900 py-1 px-3 rounded-full flex items-center gap-1 font-medium z-10">
-                    <FaStar className={`${hoveredCard === index ? 'animate-pulse' : ''}`} /> {camera.rating}
-                  </div>
-                </div>
+              <CameraCard 
+                key={camera.id}
+                camera={camera}
+                index={index}
+                hoveredCard={hoveredCard}
+                handleCardHover={handleCardHover}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
 
-                {/* Camera Info */}
-                <div className="p-6">
-                  <h3 className="text-xl font-bold mb-2 text-gray-800 dark:text-white group">
-                    {camera.name}
-                    <span className={`block h-0.5 bg-blue-500 transform scale-x-0 transition-transform duration-300 ${
-                      hoveredCard === index ? 'scale-x-100' : ''
-                    }`}></span>
-                  </h3>
-                  <p className="text-gray-600 dark:text-gray-300 mb-4">{camera.description}</p>
-                  
-                  <div className="mb-4">
-                    <h4 className="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-2">Key Features:</h4>
-                    <ul className="space-y-2">
-                      {camera.key_features.map((feature, idx) => (
-                        <li key={idx} className={`flex items-start gap-2 text-sm text-gray-600 dark:text-gray-300 transition-transform duration-300 ${
-                          hoveredCard === index ? `transform translate-x-${idx}` : ''
-                        }`}>
-                          <FaCheckCircle className={`text-green-500 mt-1 flex-shrink-0 ${
-                            hoveredCard === index ? 'animate-bounce' : ''
-                          }`} />
-                          <span>{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+      {/* Most Popular DSLR Cameras Section */}
+      <section id="popular-cameras" className="py-16 px-4 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
+        <div className="container mx-auto">
+          <h2 className="text-3xl font-bold mb-2 text-center text-gray-800 dark:text-white">Most Popular DSLR Cameras</h2>
+          <p className="text-lg text-center mb-12 text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+            The best-selling DSLR cameras chosen by photographers worldwide, based on sales data and customer satisfaction
+          </p>
 
-                  {/* Detailed description that shows on hover */}
-                  <div className={`mb-4 overflow-hidden transition-all duration-300 ${
-                    hoveredCard === index ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'
-                  }`}>
-                    <p className="text-sm text-gray-600 dark:text-gray-300 italic">
-                      {camera.detailed_description}
-                    </p>
-                  </div>
-
-                  <div className="flex items-center justify-between">
-                    <div className="text-xl font-bold text-gray-800 dark:text-white">{camera.price}</div>
-                    <a 
-                      href={camera.amazon_link} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className={`px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg flex items-center gap-2 transition-all duration-300 ${
-                        hoveredCard === index ? 'bg-blue-600 shadow-lg' : ''
-                      }`}
-                    >
-                      <FaAmazon className={hoveredCard === index ? 'animate-bounce' : ''} /> View on Amazon
-                    </a>
-                  </div>
-                </div>
-              </div>
+          {/* Popular DSLR Camera Cards - Yeni bileşen kullanarak */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {popularDslrCameras.map((camera, index) => (
+              <CameraCard 
+                key={camera.id}
+                camera={camera}
+                index={index}
+                hoveredCard={hoveredCard}
+                handleCardHover={handleCardHover}
+              />
             ))}
           </div>
         </div>
       </section>
 
       {/* Photography Tips Section - New section for SEO */}
-      <section id="photography-tips" ref={tipsRef} className="py-16 px-4 bg-gray-100 dark:bg-gray-700">
+      <section id="photography-tips" className="py-16 px-4 bg-gray-100 dark:bg-gray-700">
         <div className="container mx-auto max-w-5xl">
           <h2 className="text-3xl font-bold mb-6 text-center text-gray-800 dark:text-white">Essential DSLR Photography Tips</h2>
           <p className="text-lg text-center mb-10 text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
@@ -679,7 +385,7 @@ export default function DSLRCameras() {
       </section>
 
       {/* DSLR Categories Section - New section for SEO */}
-      <section id="dslr-categories" ref={categoriesRef} className="py-16 px-4 bg-white dark:bg-gray-800">
+      <section id="dslr-categories" className="py-16 px-4 bg-white dark:bg-gray-800">
         <div className="container mx-auto max-w-5xl">
           <h2 className="text-3xl font-bold mb-6 text-center text-gray-800 dark:text-white">DSLR Camera Categories</h2>
           <p className="text-lg text-center mb-10 text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
@@ -711,7 +417,7 @@ export default function DSLRCameras() {
       </section>
 
       {/* History of DSLR Cameras Section - New section for SEO */}
-      <section id="dslr-history" ref={historyRef} className="py-16 px-4 bg-gray-50 dark:bg-gray-900">
+      <section id="dslr-history" className="py-16 px-4 bg-gray-50 dark:bg-gray-900">
         <div className="container mx-auto max-w-4xl">
           <div className="flex items-center gap-3 mb-6 justify-center">
             <MdOutlineHistory className="text-3xl text-blue-500 dark:text-blue-400" />
@@ -765,9 +471,6 @@ export default function DSLRCameras() {
             ].map((section, index) => (
               <div 
                 key={index}
-                ref={el => {
-                  guideSectionsRefs.current[index] = el;
-                }}
                 className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300"
               >
                 <div className="flex gap-4">
