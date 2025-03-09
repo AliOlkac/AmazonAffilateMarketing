@@ -10,9 +10,109 @@ import Image from "next/image";
 
 // Metadata for DSLR Cameras page - Metadata doesn't work in client components in Next.js, so we removed it
 // export const metadata = {
-//   title: "Best DSLR Cameras | 2024 Buying Guide",
-//   description: "The best DSLR cameras of 2024, features, price comparison, and professional reviews.",
+//   title: "Best DSLR Cameras | 2025 Buying Guide",
+//   description: "The best DSLR cameras of 2025, features, price comparison, and professional reviews.",
 // };
+
+
+// Most Popular DSLR Cameras Data
+const popularDslrCameras = [
+  {
+    id: "pop1",
+    name: "Canon EOS Rebel T7",
+    image: "/images/cameras/hero-bg.webp",
+    rating: 4.7,
+    salesCount: "50,000+",
+    price: "$479.00",
+    key_features: [
+      "24.1MP APS-C CMOS Sensor",
+      "DIGIC 4+ Image Processor",
+      "3.0\" 920k-Dot LCD Monitor",
+      "Full HD 1080/30p Video Recording",
+      "9-Point AF System",
+      "ISO 100-6400, Up to 3 fps Shooting",
+      "Built-in Wi-Fi and NFC"
+    ],
+    amazon_link: "https://www.amazon.com/Canon-Rebel-T7-18-55mm-II/dp/B07C2Z21X5"
+  },
+  {
+    id: "pop2",
+    name: "Canon EOS Rebel SL3 / 250D",
+    image: "/images/cameras/hero-bg.webp",
+    rating: 4.8,
+    salesCount: "45,000+",
+    price: "$699.00",
+    category: "Entry-Level DSLR",
+    key_features: [
+      "24.1MP APS-C CMOS Sensor",
+      "DIGIC 8 Image Processor",
+      "3.0\" 1.04m-Dot Vari-Angle Touchscreen",
+      "UHD 4K24p Video and 4K Time-Lapse Movie",
+      "9-Point AF System with Dual Pixel CMOS AF",
+      "ISO 100-25600, Up to 5 fps Shooting",
+      "Built-in Wi-Fi and Bluetooth"
+    ],
+    amazon_link: "https://www.amazon.com/canon-rebel-18-55mm-lens-white/dp/b07qhpt781"
+  },
+  {
+    id: "pop3",
+    name: "Nikon D7500 DX-Format",
+    image: "/images/cameras/hero-bg.webp",
+    rating: 4.6,
+    salesCount: "35,000+",
+    price: "$996.95",
+    category: "Enthusiast DSLR",
+    key_features: [
+      "20.9MP DX-Format CMOS Sensor",
+      "EXPEED 5 Image Processor",
+      "3.2\" 922k-Dot Tilting Touchscreen LCD",
+      "4K UHD Video Recording at 30 fps",
+      "51-Point AF System",
+      "ISO 100-51200, Up to 8 fps Shooting",
+      "AF-S DX NIKKOR 18-140mm f/3.5-5.6G ED VR Lens"
+    ],
+    amazon_link: "https://www.amazon.com/Nikon-20-9MP-Camera-18-140mm-3-5-5-6G/dp/B06Y5RTN1T"
+  },
+  {
+    id: "pop4",
+    name: "Canon EOS Rebel T100 / 4000D",
+    image: "/images/cameras/hero-bg.webp",
+    rating: 4.5,
+    salesCount: "32,000+",
+    price: "$447.05",
+    category: "Budget DSLR",
+    key_features: [
+      "18MP APS-C CMOS Sensor",
+      "DIGIC 4+ Image Processor",
+      "3.0\" 920k-Dot LCD Monitor",
+      "Full HD 1080p Video Recording at 30 fps",
+      "9-Point AF System",
+      "ISO 100-6400, Up to 3 fps Shooting",
+      "Built-in Wi-Fi"
+    ],
+    amazon_link: "https://www.amazon.com/Canon-18-55mm-3-5-5-6-Grip-Pod-Professional/dp/B0C7WJ9B5B"
+  },
+  {
+    id: "pop5",
+    name: "Canon EOS Rebel T7 Bundle",
+    image: "/images/cameras/hero-bg.webp",
+    rating: 4.6,
+    salesCount: "28,000+",
+    price: "$449.00",
+    category: "Value Bundle",
+    key_features: [
+      "24.1MP APS-C CMOS Sensor",
+      "DIGIC 4+ Image Processor",
+      "3.0\" 920k-Dot LCD Monitor",
+      "Full HD 1080/30p Video Recording",
+      "9-Point AF System",
+      "ISO 100-6400 (Expandable to 12800)",
+      "Includes 18-55mm Lens, Filters, and Accessories"
+    ],
+    amazon_link: "https://www.amazon.com/Canon-18-55mm-3-5-5-6-Filters-Professional/dp/B08BFHJX1J"
+  }
+];
+
 
 // Sample DSLR camera data
 const dslrCameras = [
@@ -114,94 +214,7 @@ const dslrCameras = [
     }
 ];
 
-// Most Popular DSLR Cameras Data
-const popularDslrCameras = [
-  {
-    id: "pop1",
-    name: "Nikon D850",
-    image: "/images/cameras/nikon-d850.webp",
-    rating: 4.9,
-    salesCount: "75,000+",
-    price: "$2,996.95",
-    key_features: [
-      "45.7MP FX-Format BSI CMOS Sensor",
-      "EXPEED 5 Image Processor",
-      "3.2\" 2.36m-Dot Tilting Touchscreen LCD",
-      "4K UHD Video Recording at 30 fps",
-      "153-Point AF System",
-      "ISO 64-25600"
-    ],
-    amazon_link: "https://www.amazon.com/Nikon-D850-FX-Format-Digital-Camera/dp/B07524LHMT"
-  },
-  {
-    id: "pop2",
-    name: "Canon EOS 5D Mark IV",
-    image: "/images/cameras/canon-5d-mark-iv.webp",
-    rating: 4.8,
-    salesCount: "65,000+",
-    price: "$2,699.00",
-    key_features: [
-      "30.4MP Full-Frame CMOS Sensor",
-      "DIGIC 6+ Image Processor",
-      "3.2\" 1.62m-Dot Touchscreen LCD",
-      "4K Video Recording at 30 fps",
-      "61-Point AF System",
-      "Dual Pixel CMOS AF"
-    ],
-    amazon_link: "https://www.amazon.com/Canon-Mark-Frame-Digital-Camera/dp/B01KURGS9E"
-  },
-  {
-    id: "pop3",
-    name: "Nikon D780",
-    image: "/images/cameras/nikon-d780.webp",
-    rating: 4.8,
-    salesCount: "45,000+",
-    price: "$2,296.95",
-    key_features: [
-      "24.5MP FX-Format BSI CMOS Sensor",
-      "EXPEED 6 Image Processor",
-      "3.2\" 2.36m-Dot Tilting Touchscreen",
-      "4K UHD Video at 30 fps",
-      "51-Point Phase-Detect AF System",
-      "273-Point On-Sensor PDAF System"
-    ],
-    amazon_link: "https://www.amazon.com/Nikon-D780-FX-Format-Digital-Camera/dp/B083VMMX8H"
-  },
-  {
-    id: "pop4",
-    name: "Canon EOS 90D",
-    image: "/images/cameras/canon-90d.webp",
-    rating: 4.7,
-    salesCount: "55,000+",
-    price: "$1,199.00",
-    key_features: [
-      "32.5MP APS-C CMOS Sensor",
-      "DIGIC 8 Image Processor",
-      "3\" 1.04m-Dot Vari-Angle Touchscreen",
-      "4K30p Video Recording",
-      "45-Point All Cross-Type AF System",
-      "10 fps Continuous Shooting"
-    ],
-    amazon_link: "https://www.amazon.com/Canon-Digital-Camera-Black-3616C002/dp/B07WFQXN2Z"
-  },
-  {
-    id: "pop5",
-    name: "Nikon D7500",
-    image: "/images/cameras/nikon-d7500.webp",
-    rating: 4.7,
-    salesCount: "40,000+",
-    price: "$996.95",
-    key_features: [
-      "20.9MP DX-Format CMOS Sensor",
-      "EXPEED 5 Image Processor",
-      "3.2\" 922k-Dot Tilting Touchscreen",
-      "4K UHD Video Recording",
-      "51-Point AF System",
-      "8 fps Continuous Shooting"
-    ],
-    amazon_link: "https://www.amazon.com/Nikon-D7500-DX-Format-Digital-Camera/dp/B06Y5ZZTMX"
-  }
-];
+
 
 // Photography tips for DSLR cameras
 const photographyTips = [
@@ -438,7 +451,7 @@ export default function DSLRCameras() {
         <div className="container mx-auto px-4 relative z-20 text-center">
           <h1 ref={heroTitleRef} className="text-4xl md:text-6xl font-bold text-white mb-6">DSLR Cameras</h1>
           <p ref={heroSubtitleRef} className="text-xl md:text-2xl text-gray-200 mb-8 max-w-3xl mx-auto">
-            Find the perfect DSLR camera for your photography needs with our comprehensive 2024 buying guide
+            Find the perfect DSLR camera for your photography needs with our comprehensive 2025 buying guide
           </p>
           
           {/* Hero Buttons */}
@@ -469,7 +482,7 @@ export default function DSLRCameras() {
               Despite the rising popularity of mirrorless cameras, DSLRs maintain several advantages: longer battery life, extensive lens selections built up over decades, better handling with larger grips, and often more affordable prices for comparable image quality. The optical viewfinder also eliminates the need to constantly power a digital display, saving battery and providing a distraction-free viewing experience.
             </p>
             <p className="text-lg text-gray-600 dark:text-gray-300">
-              On this page, you&apos;ll find the most preferred and best-performing DSLR cameras of 2024, 
+              On this page, you&apos;ll find the most preferred and best-performing DSLR cameras of 2025, 
               compare their features, and choose the model that best fits your budget and photography needs. Whether you&apos;re shooting landscapes, portraits, sports, or wildlife, there&apos;s a DSLR camera here that will help you capture stunning images.
             </p>
           </div>
@@ -507,6 +520,13 @@ export default function DSLRCameras() {
                   <div className="absolute top-2 right-2 bg-yellow-400 text-gray-900 py-1 px-3 rounded-full flex items-center gap-1 font-medium z-10">
                     <FaStar /> {camera.rating}
                   </div>
+                  
+                  {/* Category badge */}
+                  {camera.category && (
+                    <div className="absolute top-2 left-2 bg-blue-500 text-white py-1 px-3 rounded-full text-sm font-medium z-10">
+                      {camera.category}
+                    </div>
+                  )}
                   
                   {/* Sales badge */}
                   <div className="absolute bottom-2 left-2 bg-green-500 text-white py-1 px-3 rounded-full text-sm font-medium z-10 flex items-center gap-1">
@@ -558,7 +578,7 @@ export default function DSLRCameras() {
       {/* Top DSLR Cameras Section */}
       <section id="top-cameras" className="py-16 px-4 bg-white dark:bg-gray-800 rounded-t-[40px] shadow-lg">
         <div className="container mx-auto">
-          <h2 className="text-3xl font-bold mb-2 text-center text-gray-800 dark:text-white">Best DSLR Cameras of 2024</h2>
+          <h2 className="text-3xl font-bold mb-2 text-center text-gray-800 dark:text-white">Best DSLR Cameras of 2025</h2>
           <p className="text-lg text-center mb-12 text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
             The best DSLR cameras for different needs and budgets, selected based on our expert reviews and user experiences
           </p>
