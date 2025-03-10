@@ -11,11 +11,12 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import camerasData from "../../../public/cameras.json";
+import CameraCard from "../components/CameraCard";
 
 // JSON dosyasından featured camera verilerini alan fonksiyon
 const getFeaturedCameras = () => {
   // Her kategoriden en iyi kameraları alıyoruz
-  const featuredDSLR = camerasData.dslr.best2025.slice(0, 2).map((camera, index) => {
+  const featuredDSLR = camerasData.dslr.best2025.map((camera, index) => {
     const imageName = camera.name.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]+/g, '');
     const correctImageUrl = camera.imageUrl ? camera.imageUrl.replace('.jpg', '.png') : null;
     const fallbackImage = "/images/cameras/hero-bg.webp";
@@ -31,17 +32,18 @@ const getFeaturedCameras = () => {
       price: camera.price,
       key_features: camera.features,
       amazon_link: camera.link,
-      page_link: "/dslr-cameras"
+      page_link: "/dslr-cameras",
+      detailed_description: camera.whyGreat || `Perfect for ${camera.idealUser}. Professional ${camera.level} DSLR camera with exceptional image quality.`
     };
   });
   
-  const featuredMirrorless = camerasData.mirrorless.best2025.slice(0, 2).map((camera, index) => {
+  const featuredMirrorless = camerasData.mirrorless.best2025.map((camera, index) => {
     const imageName = camera.name.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]+/g, '');
     const correctImageUrl = camera.imageUrl ? camera.imageUrl.replace('.jpg', '.png') : null;
     const fallbackImage = "/images/cameras/hero-bg.webp";
     
     return {
-      id: index + 1 + 2, // DSLR kameralardan sonra devam eden ID değerleri
+      id: index + 1 + featuredDSLR.length, // DSLR kameralardan sonra devam eden ID değerleri
       name: camera.name,
       image: correctImageUrl || `/images/cameras/${imageName}.png` || fallbackImage,
       rating: 4.5,
@@ -51,17 +53,18 @@ const getFeaturedCameras = () => {
       price: camera.price,
       key_features: camera.features,
       amazon_link: camera.link,
-      page_link: "/mirrorless-cameras"
+      page_link: "/mirrorless-cameras",
+      detailed_description: camera.whyGreat || `Perfect for ${camera.idealUser}. Advanced ${camera.level} mirrorless camera with excellent features.`
     };
   });
   
-  const featuredAction = camerasData.action.best2025.slice(0, 2).map((camera, index) => {
+  const featuredAction = camerasData.action.best2025.map((camera, index) => {
     const imageName = camera.name.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]+/g, '');
     const correctImageUrl = camera.imageUrl ? camera.imageUrl.replace('.jpg', '.png') : null;
     const fallbackImage = "/images/cameras/hero-bg.webp";
     
     return {
-      id: index + 1 + 4, // Önceki kameralardan sonra devam eden ID değerleri
+      id: index + 1 + featuredDSLR.length + featuredMirrorless.length, // Önceki kameralardan sonra devam eden ID değerleri
       name: camera.name,
       image: correctImageUrl || `/images/cameras/${imageName}.png` || fallbackImage,
       rating: 4.5,
@@ -71,17 +74,18 @@ const getFeaturedCameras = () => {
       price: camera.price,
       key_features: camera.features,
       amazon_link: camera.link,
-      page_link: "/action-cameras"
+      page_link: "/action-cameras",
+      detailed_description: camera.whyGreat || `Perfect for ${camera.idealUser}. Durable ${camera.level} action camera for capturing adventures.`
     };
   });
   
-  const featuredVlog = camerasData.vlog.best2025.slice(0, 2).map((camera, index) => {
+  const featuredVlog = camerasData.vlog.best2025.map((camera, index) => {
     const imageName = camera.name.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]+/g, '');
     const correctImageUrl = camera.imageUrl ? camera.imageUrl.replace('.jpg', '.png') : null;
     const fallbackImage = "/images/cameras/hero-bg.webp";
     
     return {
-      id: index + 1 + 6, // Önceki kameralardan sonra devam eden ID değerleri
+      id: index + 1 + featuredDSLR.length + featuredMirrorless.length + featuredAction.length, // Önceki kameralardan sonra devam eden ID değerleri
       name: camera.name,
       image: correctImageUrl || `/images/cameras/${imageName}.png` || fallbackImage,
       rating: 4.5,
@@ -91,17 +95,18 @@ const getFeaturedCameras = () => {
       price: camera.price,
       key_features: camera.features,
       amazon_link: camera.link,
-      page_link: "/vlog-cameras"
+      page_link: "/vlog-cameras",
+      detailed_description: camera.whyGreat || camera.note || `Perfect for ${camera.idealUser}. Specialized ${camera.level} vlog camera for content creators.`
     };
   });
   
-  const featuredCompact = camerasData.compact.best2025.slice(0, 2).map((camera, index) => {
+  const featuredCompact = camerasData.compact.best2025.map((camera, index) => {
     const imageName = camera.name.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]+/g, '');
     const correctImageUrl = camera.imageUrl ? camera.imageUrl.replace('.jpg', '.png') : null;
     const fallbackImage = "/images/cameras/hero-bg.webp";
     
     return {
-      id: index + 1 + 8, // Önceki kameralardan sonra devam eden ID değerleri
+      id: index + 1 + featuredDSLR.length + featuredMirrorless.length + featuredAction.length + featuredVlog.length, // Önceki kameralardan sonra devam eden ID değerleri
       name: camera.name,
       image: correctImageUrl || `/images/cameras/${imageName}.png` || fallbackImage,
       rating: 4.5,
@@ -111,12 +116,119 @@ const getFeaturedCameras = () => {
       price: camera.price,
       key_features: camera.features,
       amazon_link: camera.link,
-      page_link: "/compact-cameras"
+      page_link: "/compact-cameras",
+      detailed_description: camera.whyGreat || `Perfect for ${camera.idealUser}. Portable ${camera.level} compact camera with excellent image quality.`
+    };
+  });
+  
+  // Daha fazla ürün için Amazon best seller listelerinden de kamera ekleyelim
+  const amazonDSLR = camerasData.dslr.amazonBestSellers.map((camera, index) => {
+    const imageName = camera.name.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]+/g, '');
+    const correctImageUrl = camera.imageUrl ? camera.imageUrl.replace('.jpg', '.png') : null;
+    const fallbackImage = "/images/cameras/hero-bg.webp";
+    
+    return {
+      id: index + 1 + featuredDSLR.length + featuredMirrorless.length + featuredAction.length + featuredVlog.length + featuredCompact.length,
+      name: camera.name,
+      image: correctImageUrl || `/images/cameras/${imageName}.png` || fallbackImage,
+      rating: 4.5,
+      category: "DSLR",
+      categoryColor: "blue",
+      description: `Best Selling ${camera.level} DSLR camera, perfect for ${camera.idealUser}`,
+      price: camera.price,
+      key_features: camera.features,
+      amazon_link: camera.link,
+      page_link: "/dslr-cameras",
+      detailed_description: `Popular ${camera.level} DSLR camera, ideal for ${camera.idealUser}. One of the best selling models in its category.`
+    };
+  });
+  
+  const amazonMirrorless = camerasData.mirrorless.amazonBestSellers.map((camera, index) => {
+    const imageName = camera.name.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]+/g, '');
+    const correctImageUrl = camera.imageUrl ? camera.imageUrl.replace('.jpg', '.png') : null;
+    const fallbackImage = "/images/cameras/hero-bg.webp";
+    
+    return {
+      id: index + 1 + featuredDSLR.length + featuredMirrorless.length + featuredAction.length + featuredVlog.length + featuredCompact.length + amazonDSLR.length,
+      name: camera.name,
+      image: correctImageUrl || `/images/cameras/${imageName}.png` || fallbackImage,
+      rating: 4.5,
+      category: "Mirrorless",
+      categoryColor: "purple",
+      description: `Popular ${camera.level} mirrorless camera, ideal for ${camera.idealUser}`,
+      price: camera.price,
+      key_features: camera.features,
+      amazon_link: camera.link,
+      page_link: "/mirrorless-cameras",
+      detailed_description: `Popular ${camera.level} mirrorless camera, ideal for ${camera.idealUser}. Highly rated by users for its performance and features.`
+    };
+  });
+  
+  const amazonAction = camerasData.action.amazonBestSellers.map((camera, index) => {
+    const imageName = camera.name.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]+/g, '');
+    const correctImageUrl = camera.imageUrl ? camera.imageUrl.replace('.jpg', '.png') : null;
+    const fallbackImage = "/images/cameras/hero-bg.webp";
+    
+    return {
+      id: index + 1 + featuredDSLR.length + featuredMirrorless.length + featuredAction.length + featuredVlog.length + featuredCompact.length + amazonDSLR.length + amazonMirrorless.length,
+      name: camera.name,
+      image: correctImageUrl || `/images/cameras/${imageName}.png` || fallbackImage,
+      rating: 4.5,
+      category: "Action",
+      categoryColor: "cyan",
+      description: `Popular ${camera.level} action camera, ideal for ${camera.idealUser}`,
+      price: camera.price,
+      key_features: camera.features,
+      amazon_link: camera.link,
+      page_link: "/action-cameras",
+      detailed_description: `Popular ${camera.level} action camera, ideal for ${camera.idealUser}. Designed for durability and high-quality video capture in extreme conditions.`
+    };
+  });
+  
+  const amazonVlog = camerasData.vlog.amazonBestSellers.map((camera, index) => {
+    const imageName = camera.name.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]+/g, '');
+    const correctImageUrl = camera.imageUrl ? camera.imageUrl.replace('.jpg', '.png') : null;
+    const fallbackImage = "/images/cameras/hero-bg.webp";
+    
+    return {
+      id: index + 1 + featuredDSLR.length + featuredMirrorless.length + featuredAction.length + featuredVlog.length + featuredCompact.length + amazonDSLR.length + amazonMirrorless.length + amazonAction.length,
+      name: camera.name,
+      image: correctImageUrl || `/images/cameras/${imageName}.png` || fallbackImage,
+      rating: 4.5,
+      category: "Vlog",
+      categoryColor: "green",
+      description: `Popular ${camera.level} vlog camera, ideal for ${camera.idealUser}`,
+      price: camera.price,
+      key_features: camera.features,
+      amazon_link: camera.link,
+      page_link: "/vlog-cameras",
+      detailed_description: `Popular ${camera.level} vlog camera, ideal for ${camera.idealUser}. Optimized for content creation with excellent audio and video features.`
+    };
+  });
+  
+  const amazonCompact = camerasData.compact.amazonBestSellers.map((camera, index) => {
+    const imageName = camera.name.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]+/g, '');
+    const correctImageUrl = camera.imageUrl ? camera.imageUrl.replace('.jpg', '.png') : null;
+    const fallbackImage = "/images/cameras/hero-bg.webp";
+    
+    return {
+      id: index + 1 + featuredDSLR.length + featuredMirrorless.length + featuredAction.length + featuredVlog.length + featuredCompact.length + amazonDSLR.length + amazonMirrorless.length + amazonAction.length + amazonVlog.length,
+      name: camera.name,
+      image: correctImageUrl || `/images/cameras/${imageName}.png` || fallbackImage,
+      rating: 4.5,
+      category: "Compact",
+      categoryColor: "pink",
+      description: `Popular ${camera.level} compact camera, ideal for ${camera.idealUser}`,
+      price: camera.price,
+      key_features: camera.features,
+      amazon_link: camera.link,
+      page_link: "/compact-cameras",
+      detailed_description: `Popular ${camera.level} compact camera, ideal for ${camera.idealUser}. Excellent choice for those seeking portability without sacrificing image quality.`
     };
   });
   
   // Tüm kategorilerden seçilen kameraları birleştir
-  return [...featuredDSLR, ...featuredMirrorless, ...featuredAction, ...featuredVlog, ...featuredCompact];
+  return [...featuredDSLR, ...featuredMirrorless, ...featuredAction, ...featuredVlog, ...featuredCompact, ...amazonDSLR, ...amazonMirrorless, ...amazonAction, ...amazonVlog, ...amazonCompact];
 };
 
 // Tüm kamera verilerinin bir araya getirilmiş hali
@@ -372,7 +484,7 @@ export default function Cameras() {
             <a href="#camera-categories" className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 px-8 py-4 rounded-full text-lg font-medium shadow-lg shadow-blue-500/20 transition duration-300 flex items-center gap-2">
               <FaCamera /> Explore Cameras
             </a>
-            <a href="#camera-tips" className="bg-white/10 hover:bg-white/20 border border-white/30 px-8 py-4 rounded-full text-lg font-medium transition duration-300 backdrop-blur-sm flex items-center gap-2">
+            <a href="/buying-guide" className="bg-white/10 hover:bg-white/20 border border-white/30 px-8 py-4 rounded-full text-lg font-medium transition duration-300 backdrop-blur-sm flex items-center gap-2">
               <FaInfoCircle /> Camera Buying Guide
             </a>
           </div>
@@ -397,98 +509,13 @@ export default function Cameras() {
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
           >
             {filteredCameras.map((camera, index) => (
-              <div
+              <CameraCard
                 key={camera.id}
-                className={`bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-xl transition-all duration-500 transform hover:-translate-y-2 border border-${camera.categoryColor}-200 dark:border-${camera.categoryColor}-800/50`}
-                ref={(el) => {
-                  if (el) cameraCardsRefs.current[index] = el;
-                }}
-                onMouseEnter={() => handleCardHover(index)}
-                onMouseLeave={() => handleCardHover(null)}
-              >
-                {/* Kamera Resmi */}
-                <div className="h-64 relative overflow-hidden bg-gray-100 dark:bg-gray-700">
-                  <Image 
-                    src={camera.image} 
-                    alt={camera.name}
-                    fill
-                    className={`object-cover transition-transform duration-500 ${hoveredCard === index ? "scale-110" : "scale-100"}`}
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                  />
-                  
-                  {/* Kategori badge */}
-                  <div className={`absolute top-2 left-2 bg-${camera.categoryColor}-500 text-white py-1 px-3 rounded-full text-sm font-medium z-10`}>
-                    {camera.category}
-                  </div>
-                  
-                  {/* Rating badge */}
-                  <div className="absolute top-2 right-2 bg-yellow-400 text-gray-900 py-1 px-3 rounded-full flex items-center gap-1 font-medium z-10">
-                    {/* 5 yıldız gösterimi - ilk 4 tam, sonuncu yarım dolu */}
-                    {[...Array(4)].map((_, i) => (
-                      <FaStar 
-                        key={i} 
-                        className={`${hoveredCard === index ? "animate-pulse" : ""}`}
-                      />
-                    ))}
-                    <FaStarHalfAlt className={`${hoveredCard === index ? "animate-pulse" : ""}`} />
-                  </div>
-                </div>
-                
-                {/* Kamera Bilgileri */}
-                <div className="p-6">
-                  <h3 className="text-xl font-bold mb-2 text-gray-800 dark:text-white group">
-                    {camera.name}
-                    <span className={`block h-0.5 bg-${camera.categoryColor}-500 transform transition-transform duration-300 ${
-                      hoveredCard === index ? "scale-x-100" : "scale-x-0"
-                    }`}></span>
-                  </h3>
-                  
-                  <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-2">
-                    {camera.description}
-                  </p>
-                  
-                  <div className="text-xl font-bold text-gray-800 dark:text-white mb-4">
-                    {camera.price}
-                  </div>
-                  
-                  {/* Özellikler */}
-                  <div className="mb-6">
-                    <h4 className="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-2">Key Features:</h4>
-                    <ul className="space-y-2">
-                      {camera.key_features.map((feature, idx) => (
-                        <li key={idx} className={`flex items-start gap-2 text-sm text-gray-600 dark:text-gray-300 transition-all duration-300 ${
-                          hoveredCard === index ? `transform translate-x-${idx + 1}` : ""
-                        }`}>
-                          <FaCheckCircle className={`text-${camera.categoryColor}-500 mt-1 flex-shrink-0 ${
-                            hoveredCard === index ? "animate-pulse" : ""
-                          }`} />
-                          <span>{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  
-                  {/* Butonlar */}
-                  <div className="flex gap-2">
-                    <a 
-                      href={camera.amazon_link} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className={`flex-1 px-4 py-2 bg-amber-500 hover:bg-amber-600 text-white rounded-lg flex items-center justify-center gap-2 transition-colors duration-300 ${
-                        hoveredCard === index ? "animate-pulse" : ""
-                      }`}
-                    >
-                      <FaAmazon /> View on Amazon
-                    </a>
-                    <Link 
-                      href={camera.page_link}
-                      className={`px-4 py-2 bg-${camera.categoryColor}-100 dark:bg-${camera.categoryColor}-900/30 text-${camera.categoryColor}-700 dark:text-${camera.categoryColor}-300 rounded-lg transition-colors duration-300 hover:bg-${camera.categoryColor}-200 dark:hover:bg-${camera.categoryColor}-800/50`}
-                    >
-                      More Info
-                    </Link>
-                  </div>
-                </div>
-              </div>
+                camera={camera}
+                index={index}
+                hoveredCard={hoveredCard}
+                handleCardHover={handleCardHover}
+              />
             ))}
           </div>
         </div>
