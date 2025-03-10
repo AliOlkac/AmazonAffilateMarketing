@@ -41,7 +41,7 @@
         "imageUrl": "/images/cameras/nikon-d7500.jpg"
       },
       {
-        "name": "Canon EOS 2000D/Rebel T7",
+        "name": "Canon EOS 2000D",
         "link": "https://www.amazon.com/Canon-18-55mm-75-300mm-Wideangle-Accessory/dp/B0BJXWBW7C/",
         "price": "$500-600",
         "level": "Entry-Level",
@@ -201,8 +201,8 @@
     ],
     "best2025": [
       {
-        "name": "Sony α1 II",
-        "price": "$6,500+",
+        "name": "Sony α1",
+        "price": "$5,500+",
         "level": "Professional",
         "features": [
           "50MP full-frame sensor",
@@ -210,7 +210,7 @@
           "30fps continuous shooting"
         ],
         "idealUser": "Studio photographers, sports photographers, professional video production",
-        "imageUrl": "/images/cameras/sony-a1-ii.jpg"
+        "imageUrl": "/images/cameras/sony-a1.jpg"
       },
       {
         "name": "Sony α7 IV",
@@ -437,6 +437,7 @@
         "idealUser": "YouTube vloggers, product reviewers, travel vloggers",
         "imageUrl": "/images/cameras/sony-zv-1.jpg"
       },
+        /* buda kaldım */
       {
         "name": "DJI Pocket 2",
         "link": "https://www.amazon.com/DJI-Pocket-Stabilizer-Pocket-Sized-ActiveTrack/dp/B08J7FL57P/",
