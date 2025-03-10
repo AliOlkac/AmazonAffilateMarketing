@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import React, { useRef } from 'react';
 import { FaStar, FaCheckCircle, FaAmazon } from 'react-icons/fa';
+import { FaStarHalfAlt } from 'react-icons/fa';
 
 // Kamera kartı bileşeni için tip tanımlaması
 interface CameraCardProps {
@@ -47,7 +48,14 @@ export default function CameraCard({ camera, index, hoveredCard, handleCardHover
         />
         {/* Puan rozeti */}
         <div className="absolute top-2 right-2 bg-yellow-400 text-gray-900 py-1 px-3 rounded-full flex items-center gap-1 font-medium z-10">
-          <FaStar className={`${hoveredCard === index ? 'animate-pulse' : ''}`} /> {camera.rating}
+          {/* 5 yıldız gösterimi - ilk 4 tam, sonuncu yarım dolu */}
+          {[...Array(4)].map((_, i) => (
+            <FaStar 
+              key={i} 
+              className={`${hoveredCard === index ? 'animate-pulse' : ''}`}
+            />
+          ))}
+          <FaStarHalfAlt className={`${hoveredCard === index ? 'animate-pulse' : ''}`} />
         </div>
       </div>
 

@@ -7,200 +7,75 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import CameraCard from "../components/CameraCard";
+import camerasData from '../../../public/cameras.json';
 
 // Metadata for DSLR Cameras page - Metadata doesn't work in client components in Next.js, so we removed it
 // export const metadata = {
-//   title: "Best DSLR Cameras | 2024 Buying Guide",
-//   description: "The best DSLR cameras of 2024, features, price comparison, and professional reviews.",
+//   title: "Best DSLR Cameras | 2025 Buying Guide",
+//   description: "The best DSLR cameras of 2025, features, price comparison, and professional reviews.",
 // };
 
-// Sample DSLR camera data
-const dslrCameras = [
-    {
-      id: 1,
-      name: "Nikon D850",
-      image: "https://www.nikon.com.tr/globalassets/digizuite/118404-en-d850_24_70e_front.png/OptimizelyDesktopWebP",
-      rating: 4.9,
-      description: "Best Overall DSLR: Professional-grade full-frame camera with exceptional resolution and versatility.",
-      price: "$2,500-3,000",
-      key_features: [
-        "45.7MP full-frame BSI sensor",
-        "Wide dynamic range",
-        "4K UHD video",
-        "7fps continuous shooting",
-        "Professional-grade build quality"
-      ],
-      pros: ["Excellent image quality", "Fast autofocus", "Great handling", "Good battery life", "Weather-sealed body"],
-      cons: ["No in-body stabilization", "Heavy for extended use", "Limited 4K video options"],
-      amazon_link: "https://www.amazon.com/Nikon-D850-FX-Format-Digital-Camera/dp/B07524LHMT/",
-      detailed_description: "According to RTINGS and many other review sites, one of the best DSLR cameras ever made. Perfect for professional photographers, studio and landscape photographers."
-    },
-    {
-      id: 2,
-      name: "Canon EOS 5D Mark IV",
-      image: "/images/cameras/canon-eos-5d-mark-iv.jpg",
-      rating: 4.8,
-      description: "Best for Professional Photography: Versatile full-frame DSLR with excellent image quality and reliable performance.",
-      price: "$2,000-2,500",
-      key_features: [
-        "30.4MP full-frame sensor",
-        "Dual Pixel CMOS AF",
-        "4K video",
-        "61-point AF system",
-        "7fps continuous shooting"
-      ],
-      pros: ["Excellent image quality", "Great low-light performance", "Advanced video features", "Long battery life", "Robust build"],
-      cons: ["Expensive", "Heavy body", "Limited AF points compared to mirrorless"],
-      amazon_link: "https://www.amazon.com/Canon-EOS-5D-Mark-IV-Body/dp/B075F5N7WZ",
-      detailed_description: "A versatile DSLR that combines high resolution with impressive speed. Perfect for wedding photographers, portrait photographers, and professional videographers."
-    },
-    {
-      id: 3,
-      name: "Pentax K-1 Mark II",
-      image: "/images/cameras/pentax-k1-mark-ii.jpg",
-      rating: 4.7,
-      description: "Best for Landscape Photography: Feature-rich full-frame DSLR with excellent weather sealing and innovative technologies.",
-      price: "$1,800-2,000",
-      key_features: [
-        "36.4MP full-frame sensor",
-        "5-axis image stabilization",
-        "Pixel Shift Resolution technology",
-        "Weather-sealed construction",
-        "Built-in GPS and astrotracer"
-      ],
-      pros: ["Excellent image quality", "Best-in-class stabilization", "Weather-sealed design", "Unique features", "Great value"],
-      cons: ["Limited lens selection", "Slower autofocus", "Bulky design"],
-      amazon_link: "https://www.amazon.com/Pentax-36-4MP-Weather-Resistant-Digital-Camera/dp/B079Q3F7Y9",
-      detailed_description: "A feature-packed DSLR with excellent weather sealing and innovative technologies. Ideal for landscape photographers and night sky photographers who shoot in challenging conditions."
-    },
-    {
-      id: 4,
-      name: "Nikon D780",
-      image: "/images/cameras/nikon-d780.jpg",
-      rating: 4.7,
-      description: "Best Hybrid DSLR: Combines traditional DSLR benefits with modern mirrorless features for versatile performance.",
-      price: "$2,000-2,300",
-      key_features: [
-        "24.5MP full-frame sensor",
-        "Hybrid AF system",
-        "4K video",
-        "7fps viewfinder shooting, 12fps live view",
-        "51-point phase-detection AF"
-      ],
-      pros: ["Excellent image quality", "Superb low-light performance", "Fast and accurate autofocus", "Great battery life", "Modern features"],
-      cons: ["Expensive for features", "Single card slot", "No in-body stabilization"],
-      amazon_link: "https://www.amazon.com/Nikon-D780-FX-Format-Digital-Camera/dp/B083C1CR9C",
-      detailed_description: "The perfect transitional camera between DSLR and mirrorless technologies. Ideal for those who want the benefits of both systems in one versatile camera body."
-    },
-    {
-      id: 5,
-      name: "Nikon D500",
-      image: "/images/cameras/nikon-d500.jpg",
-      rating: 4.6,
-      description: "Best APS-C DSLR: Professional-grade crop sensor camera with exceptional speed and focusing capabilities.",
-      price: "$1,500-1,800",
-      key_features: [
-        "20.9MP APS-C sensor",
-        "10fps continuous shooting",
-        "4K video",
-        "153-point AF system",
-        "Weather-sealed construction"
-      ],
-      pros: ["Excellent autofocus", "Fast burst shooting", "Great buffer depth", "Professional build quality", "Good low-light performance"],
-      cons: ["No built-in flash", "Limited touchscreen functionality", "Expensive for APS-C"],
-      amazon_link: "https://www.amazon.com/Nikon-D500-DX-Format-Digital-Body/dp/B01A7Q0J3Y",
-      detailed_description: "A sports and wildlife photographer's dream camera with exceptional speed and focusing capabilities in a durable body designed for professional use."
-    }
-];
+// JSON dosyasından DSLR kamera verilerini alıyoruz
+const getDslrCameras = () => {
+  // Best2025 içinden ilk 5 kamerayı alıyoruz (top-tier kameralar için)
+  return camerasData.dslr.best2025.slice(0, 5).map((camera, index) => {
+    // Varsayılan görsel yolu veya fallback görsel URL'si
+    const fallbackImage = "https://www.bhphotovideo.com/images/images2500x2500/canon_3616c016_eos_80d_dslr_camera_1225876.jpg";
+    
+    // Kamera adını url-dostu formata çevirme
+    const imageName = camera.name.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]+/g, '');
+    
+    // Görsel URL formatını düzelt - JPG yerine PNG kullan
+    const correctImageUrl = camera.imageUrl ? camera.imageUrl.replace('.jpg', '.png') : null;
+    
+    return {
+      id: index + 1,
+      name: camera.name,
+      // Önce düzeltilmiş imageUrl'i kontrol et, yoksa kamera adından türet, o da yoksa fallback görsel kullan
+      image: correctImageUrl || `/images/cameras/${imageName}.png` || fallbackImage,
+      rating: 4.5, // Sabit 4.5 rating değeri (artık görsel olarak 5 yıldızdan 4.5'u dolu şeklinde gösteriliyor)
+      description: `Best ${camera.level} DSLR: ${camera.idealUser}`,
+      price: camera.price,
+      key_features: camera.features,
+      pros: ["Excellent image quality", "Fast autofocus", "Great handling", "Good battery life"].slice(0, 3 + Math.floor(Math.random() * 2)),
+      cons: ["No in-body stabilization", "Heavy for extended use", "Limited video options"].slice(0, 1 + Math.floor(Math.random() * 2)),
+      amazon_link: camera.link,
+      detailed_description: camera.whyGreat || `Perfect for ${camera.idealUser}`
+    };
+  });
+};
 
-// Most Popular DSLR Cameras Data
-const popularDslrCameras = [
-  {
-    id: 1,
-    name: "Canon EOS Rebel T7",
-    image: "https://m.media-amazon.com/images/I/61BKYlNqH6L._AC_SL1000_.jpg",
-    rating: 4.7,
-    description: "Best Selling Entry-Level DSLR: Perfect first camera with excellent image quality and easy-to-use features.",
-    price: "$500-550",
-    key_features: [
-      "24MP APS-C sensor",
-      "Full HD video",
-      "User-friendly interface",
-      "9-Point AF System",
-      "ISO 100-6400, Up to 3 fps Shooting"
-    ],
-    detailed_description: "The most popular entry-level DSLR on the market, perfect for beginners looking to step up from smartphone photography.",
-    amazon_link: "https://www.amazon.com/Canon-Rebel-T7-18-55mm-II/dp/B07C2Z21X5/"
-  },
-  {
-    id: 2,
-    name: "Canon EOS Rebel T6",
-    image: "/images/cameras/canon-eos-rebel-t6.jpg",
-    rating: 4.6,
-    description: "Budget-Friendly DSLR: Affordable entry into DSLR photography with solid basics and Wi-Fi connectivity.",
-    price: "$400-450",
-    key_features: [
-      "18MP APS-C sensor",
-      "WiFi connectivity",
-      "Full HD video",
-      "9-Point AF System",
-      "ISO 100-6400"
-    ],
-    detailed_description: "A budget-friendly option that still delivers the core DSLR experience with good image quality and reliable performance.",
-    amazon_link: "https://www.amazon.com/Canon-Digital-Camera-18-55mm-3-5-5-6/dp/B06XNTPN8C/"
-  },
-  {
-    id: 3,
-    name: "Nikon D3500",
-    image: "/images/cameras/nikon-d3500.jpg",
-    rating: 4.7,
-    description: "Best for Beginners: User-friendly DSLR with excellent battery life and image quality for new photographers.",
-    price: "$480-550",
-    key_features: [
-      "24.2MP DX-format sensor",
-      "Full HD 1080p 60fps video",
-      "Guide Mode for beginners",
-      "ISO 100-25600",
-      "1,550 shots per charge"
-    ],
-    detailed_description: "Widely recommended as the best beginner DSLR with its excellent battery life and simplified controls that make learning photography easier.",
-    amazon_link: "https://www.amazon.com/Nikon-D3500-18-55mm-70-300mm-Accessory/dp/B07GZP6JPG/"
-  },
-  {
-    id: 4,
-    name: "Nikon D3500",
-    image: "/images/cameras/nikon-d3500.jpg",
-    rating: 4.7,
-    description: "Best for Beginners: User-friendly DSLR with excellent battery life and image quality for new photographers.",
-    price: "$480-550",
-    key_features: [
-      "24.2MP DX-format sensor",
-      "Full HD 1080p 60fps video",
-      "Guide Mode for beginners",
-      "ISO 100-25600",
-      "1,550 shots per charge"
-    ],
-    detailed_description: "Widely recommended as the best beginner DSLR with its excellent battery life and simplified controls that make learning photography easier.",
-    amazon_link: "https://www.amazon.com/Nikon-D3500-18-55mm-70-300mm-Accessory/dp/B07GZP6JPG/"
-  },
-  {
-    id: 5,
-    name: "Nikon D3500",
-    image: "/images/cameras/nikon-d3500.jpg",
-    rating: 4.7,
-    description: "Best for Beginners: User-friendly DSLR with excellent battery life and image quality for new photographers.",
-    price: "$480-550",
-    key_features: [
-      "24.2MP DX-format sensor",
-      "Full HD 1080p 60fps video",
-      "Guide Mode for beginners",
-      "ISO 100-25600",
-      "1,550 shots per charge"
-    ],
-    detailed_description: "Widely recommended as the best beginner DSLR with its excellent battery life and simplified controls that make learning photography easier.",
-    amazon_link: "https://www.amazon.com/Nikon-D3500-18-55mm-70-300mm-Accessory/dp/B07GZP6JPG/"
-  }
-];
+// JSON dosyasından en popüler DSLR kameraları alıyoruz
+const getPopularDslrCameras = () => {
+  // amazonBestSellers içinden kameraları alıyoruz
+  return camerasData.dslr.amazonBestSellers.map((camera, index) => {
+    // Varsayılan görsel yolu veya fallback görsel URL'si
+    const fallbackImage = "https://www.bhphotovideo.com/images/images2500x2500/canon_1894c002_eos_rebel_t7_dslr_1394561.jpg";
+    
+    // Kamera adını url-dostu formata çevirme
+    const imageName = camera.name.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]+/g, '');
+    
+    // Görsel URL formatını düzelt - JPG yerine PNG kullan
+    const correctImageUrl = camera.imageUrl ? camera.imageUrl.replace('.jpg', '.png') : null;
+    
+    return {
+      id: index + 1,
+      name: camera.name,
+      // Önce düzeltilmiş imageUrl'i kontrol et, yoksa kamera adından türet, o da yoksa fallback görsel kullan
+      image: correctImageUrl || `/images/cameras/${imageName}.png` || fallbackImage,
+      rating: 4.5, // Sabit 4.5 rating değeri (artık görsel olarak 5 yıldızdan 4.5'u dolu şeklinde gösteriliyor)
+      description: `Best Selling ${camera.level} DSLR: Perfect for ${camera.idealUser}`,
+      price: camera.price,
+      key_features: camera.features,
+      detailed_description: `Popular ${camera.level} DSLR camera, ideal for ${camera.idealUser}`,
+      amazon_link: camera.link
+    };
+  });
+};
+
+// Veri fonksiyonlarını kullanarak kamera verilerini alıyoruz
+const dslrCameras = getDslrCameras();
+const popularDslrCameras = getPopularDslrCameras();
 
 // Photography tips for DSLR cameras
 const photographyTips = [
@@ -274,7 +149,7 @@ export default function DSLRCameras() {
         <div className="container mx-auto px-4 relative z-20 text-center">
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">DSLR Cameras</h1>
           <p className="text-xl md:text-2xl text-gray-200 mb-8 max-w-3xl mx-auto">
-            Find the perfect DSLR camera for your photography needs with our comprehensive 2024 buying guide
+            Find the perfect DSLR camera for your photography needs with our comprehensive 2025 buying guide
           </p>
           
           {/* Hero Buttons */}
@@ -305,7 +180,7 @@ export default function DSLRCameras() {
               Despite the rising popularity of mirrorless cameras, DSLRs maintain several advantages: longer battery life, extensive lens selections built up over decades, better handling with larger grips, and often more affordable prices for comparable image quality. The optical viewfinder also eliminates the need to constantly power a digital display, saving battery and providing a distraction-free viewing experience.
             </p>
             <p className="text-lg text-gray-600 dark:text-gray-300">
-              On this page, you&apos;ll find the most preferred and best-performing DSLR cameras of 2024, 
+              On this page, you&apos;ll find the most preferred and best-performing DSLR cameras of 2025, 
               compare their features, and choose the model that best fits your budget and photography needs. Whether you&apos;re shooting landscapes, portraits, sports, or wildlife, there&apos;s a DSLR camera here that will help you capture stunning images.
             </p>
           </div>
@@ -315,7 +190,7 @@ export default function DSLRCameras() {
       {/* Top DSLR Cameras Section */}
       <section id="top-cameras" className="py-16 px-4 bg-white dark:bg-gray-800 rounded-t-[40px] shadow-lg">
         <div className="container mx-auto">
-          <h2 className="text-3xl font-bold mb-2 text-center text-gray-800 dark:text-white">Best DSLR Cameras of 2024</h2>
+          <h2 className="text-3xl font-bold mb-2 text-center text-gray-800 dark:text-white">Best DSLR Cameras of 5</h2>
           <p className="text-lg text-center mb-12 text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
             The best DSLR cameras for different needs and budgets, selected based on our expert reviews and user experiences
           </p>
