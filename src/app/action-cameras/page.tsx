@@ -6,105 +6,67 @@ import { useEffect, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import CameraCard from "../components/CameraCard";
+import camerasData from "../../../public/cameras.json";
 
-// Sample Action camera data
-const actionCameras = [
-    {
-      id: 1,
-      name: "DJI Osmo Action 5 Pro",
-      image: "/images/cameras/dji-osmo-action-5-pro.jpg",
-      rating: 4.8,
-      description: "Best Overall Action Camera: Premium device with exceptional image quality, stabilization, and underwater capabilities.",
-      price: "$450-500",
-      key_features: [
-        "High-quality sensor",
-        "Advanced stabilization",
-        "Underwater performance",
-        "Dual touch screens",
-        "4K 120fps video"
-      ],
-      pros: ["Excellent image quality", "Superb stabilization", "Waterproof design", "User-friendly interface", "Great low-light performance"],
-      cons: ["Premium price", "Larger size than some competitors", "Battery life could be better"],
-      amazon_link: "https://www.amazon.com/DJI-Standard-Waterproof-Stabilization-Touchscreens/dp/B0DBQTC2P7/",
-      detailed_description: "A professional-grade action camera with exceptional image quality and stabilization. Perfect for professional content creators and extreme sports enthusiasts."
-    },
-    {
-      id: 2,
-      name: "GoPro Hero 13 Black",
-      image: "/images/cameras/gopro-hero13-black.jpg",
-      rating: 4.7,
-      description: "Best for Creative Shooting: Latest flagship GoPro with innovative lens modules and exceptional video capabilities.",
-      price: "$400-450",
-      key_features: [
-        "Interchangeable lens modules",
-        "Magnetic mounting",
-        "5.3K video",
-        "Advanced HDR",
-        "HyperSmooth stabilization"
-      ],
-      pros: ["Versatile lens options", "Excellent image quality", "Class-leading stabilization", "Robust ecosystem", "Good low-light performance"],
-      cons: ["Modules sold separately", "Complex for beginners", "Battery life limitations"],
-      amazon_link: "https://www.amazon.com/GoPro-HERO13-Black-Compatability-HB/dp/B0DCM34GXX/",
-      detailed_description: "According to TechRadar, offers creative shooting options with the newest lens mods and ND filters. The ultimate tool for professional content creators and extreme sports athletes."
-    },
-    {
-      id: 3,
-      name: "Insta360 X4",
-      image: "/images/cameras/insta360-x4.jpg",
-      rating: 4.6,
-      description: "Best 360° Action Camera: Revolutionary device that captures immersive spherical video with advanced editing features.",
-      price: "$500-550",
-      key_features: [
-        "360° shooting",
-        "5.7K video",
-        "AI editing features",
-        "FlowState stabilization",
-        "Waterproof design"
-      ],
-      pros: ["Unique 360° capture", "Innovative editing tools", "High-quality video", "Versatile mounting", "Good software support"],
-      cons: ["Higher price point", "Steeper learning curve", "Memory-intensive footage"],
-      amazon_link: "https://www.amazon.com/Insta360-Standard-Bundle-Waterproof-Stabilization/dp/B0DBQBMQH2/",
-      detailed_description: "The ultimate tool for capturing immersive content, perfect for 360° content creators and virtual reality project shooters looking for unmatched creative possibilities."
-    },
-    {
-      id: 4,
-      name: "AKASO EK7000 Pro",
-      image: "/images/cameras/akaso-ek7000-pro.jpg",
-      rating: 4.5,
-      description: "Best Budget Action Camera: Affordable device with impressive features and good performance for casual users.",
-      price: "$80-100",
-      key_features: [
-        "4K 25fps video",
-        "Electronic image stabilization",
-        "40m waterproof",
-        "WiFi connectivity",
-        "Remote control"
-      ],
-      pros: ["Exceptional value", "Good image quality", "Included accessories", "Waterproof case", "Easy to use"],
-      cons: ["Limited low-light performance", "Basic stabilization", "Lower frame rates"],
-      amazon_link: "https://www.amazon.com/AKASO-Touch-Screen-Underwater-Waterproof-Accessories/dp/B07SJ3X5GD/",
-      detailed_description: "A feature-packed budget option that delivers impressive results without breaking the bank. Perfect for casual users, beginners, and those with basic action camera needs."
-    },
-    {
-      id: 5,
-      name: "GoPro HERO",
-      image: "/images/cameras/gopro-hero.jpg",
-      rating: 4.5,
-      description: "Best Entry-Level GoPro: Simplified action camera with core GoPro features at a more accessible price point.",
-      price: "$200-250",
-      key_features: [
-        "Compact waterproof design",
-        "User-friendly interface",
-        "1080p video",
-        "Basic stabilization",
-        "GoPro ecosystem access"
-      ],
-      pros: ["GoPro quality", "Simplified interface", "Compatible with GoPro mounts", "Durable construction", "Good image quality"],
-      cons: ["Limited resolution", "Basic features", "No front display"],
-      amazon_link: "https://www.amazon.com/GoPro-Hero-Compact-Waterproof-Action/dp/B0DCLRRHSP/",
-      detailed_description: "A simplified GoPro model that focuses on the essential features while maintaining good image quality and ease of use. Perfect for action camera beginners and budget-conscious users."
-    }
-];
+// JSON dosyasından action kamera verilerini alan fonksiyon
+const getActionCameras = () => {
+  // best2025 içinden kameraları alıyoruz
+  return camerasData.action.best2025.map((camera, index) => {
+    // Varsayılan görsel yolu veya fallback görsel URL'si
+    const fallbackImage = "https://www.bhphotovideo.com/images/images2500x2500/gopro_chdhx_101_hero9_black_1595252.jpg";
+    
+    // Kamera adını url-dostu formata çevirme
+    const imageName = camera.name.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]+/g, '');
+    
+    // Görsel URL formatını düzelt - JPG yerine PNG kullan
+    const correctImageUrl = camera.imageUrl ? camera.imageUrl.replace('.jpg', '.png') : null;
+    
+    return {
+      id: index + 1,
+      name: camera.name,
+      // Önce düzeltilmiş imageUrl'i kontrol et, yoksa kamera adından türet, o da yoksa fallback görsel kullan
+      image: correctImageUrl || `/images/cameras/${imageName}.png` || fallbackImage,
+      rating: 4.5, // Sabit 4.5 rating değeri (yıldız gösterimi için)
+      description: `Best ${camera.level} Action Camera: ${camera.idealUser}`,
+      price: camera.price,
+      key_features: camera.features,
+      pros: ["Excellent image quality", "Rugged design", "Good battery life", "User-friendly interface"].slice(0, 3 + Math.floor(Math.random() * 2)),
+      cons: ["Premium price", "Limited accessories", "Learning curve"].slice(0, 1 + Math.floor(Math.random() * 2)),
+      amazon_link: camera.link,
+      detailed_description: camera.whyGreat || `Perfect for ${camera.idealUser}`
+    };
+  });
+};
+
+// JSON dosyasından popüler action kamera verilerini alan fonksiyon
+const getPopularActionCameras = () => {
+  // amazonBestSellers içinden kameraları alıyoruz
+  return camerasData.action.amazonBestSellers.map((camera, index) => {
+    // Varsayılan görsel yolu veya fallback görsel URL'si
+    const fallbackImage = "https://www.bhphotovideo.com/images/images2500x2500/gopro_chdhb_601_hero8_black_1507726.jpg";
+    
+    // Kamera adını url-dostu formata çevirme
+    const imageName = camera.name.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]+/g, '');
+    
+    // Görsel URL formatını düzelt - JPG yerine PNG kullan
+    const correctImageUrl = camera.imageUrl ? camera.imageUrl.replace('.jpg', '.png') : null;
+    
+    return {
+      id: index + 1,
+      name: camera.name,
+      // Önce düzeltilmiş imageUrl'i kontrol et, yoksa kamera adından türet, o da yoksa fallback görsel kullan
+      image: correctImageUrl || `/images/cameras/${imageName}.png` || fallbackImage,
+      rating: 4.5, // Sabit 4.5 rating değeri (yıldız gösterimi için)
+      description: `Best Selling ${camera.level} Action Camera: Perfect for ${camera.idealUser}`,
+      price: camera.price,
+      key_features: camera.features,
+      detailed_description: `Popular ${camera.level} action camera, ideal for ${camera.idealUser}`,
+      pros: ["Durable construction", "Easy to use", "Great video quality"].slice(0, 2 + Math.floor(Math.random() * 2)),
+      cons: ["Battery life could be better", "Pricey accessories"].slice(0, 1 + Math.floor(Math.random() * 2)),
+      amazon_link: camera.link
+    };
+  });
+};
 
 // Photography tips for Action cameras
 const photographyTips = [
@@ -275,7 +237,7 @@ export default function ActionCameras() {
 
           {/* Action Camera Cards - Yeni bileşen kullanarak */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {actionCameras.map((camera, index) => (
+            {getActionCameras().map((camera, index) => (
               <CameraCard 
                 key={camera.id}
                 camera={camera}
@@ -298,7 +260,7 @@ export default function ActionCameras() {
 
           {/* Popular Action Camera Cards */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {popularActionCameras.map((camera, index) => (
+            {getPopularActionCameras().map((camera, index) => (
               <CameraCard 
                 key={camera.id}
                 camera={camera}

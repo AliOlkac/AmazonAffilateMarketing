@@ -7,198 +7,67 @@ import { useEffect, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import CameraCard from "../components/CameraCard";
+import camerasData from "../../../public/cameras.json";
 
-// Vlog cameras data
-const vlogCameras = [
-    {
-      id: 1,
-      name: "Sony ZV-E1",
-      image: "/images/cameras/sony-zv-e1.jpg",
-      rating: 4.9,
-      description: "Best Professional Vlog Camera: Full-frame camera with exceptional image quality and advanced features for professional content creators.",
-      price: "$2,000-2,200",
-      key_features: [
-        "Full-frame sensor",
-        "Background blur",
-        "Excellent audio recording quality",
-        "Advanced AF tracking",
-        "High-quality 4K video"
-      ],
-      pros: ["Exceptional image quality", "Professional audio features", "Best-in-class autofocus", "Low-light performance", "Cinematic video options"],
-      cons: ["Higher price point", "Larger size than some competitors", "Steeper learning curve"],
-      amazon_link: "https://amazon.com/product-link",
-      detailed_description: "According to PCMag, the best vlogging camera ever tested. A professional-grade tool for YouTube content creators, influencers and serious video producers."
-    },
-    {
-      id: 2,
-      name: "Canon PowerShot V1",
-      image: "/images/cameras/canon-powershot-v1.jpg",
-      rating: 4.7,
-      description: "Best Mid-Range Vlog Camera: Compact, purpose-built camera with excellent features for social media content creators.",
-      price: "$500-600",
-      key_features: [
-        "Compact design",
-        "Built-in LED light",
-        "Advanced audio recording capabilities",
-        "Vertical video support",
-        "Wireless streaming"
-      ],
-      pros: ["Purpose-built for vlogging", "Excellent audio quality", "Integrated LED light", "Easy to use", "Good value"],
-      cons: ["Smaller sensor than mirrorless cameras", "Limited lens options", "Basic manual controls"],
-      amazon_link: "https://amazon.com/product-link",
-      detailed_description: "A camera specifically designed for content creators with thoughtful features like built-in lighting and advanced audio capabilities. Perfect for professional vloggers and social media content creators."
-    },
-    {
-      id: 3,
-      name: "Sony ZV-1 II",
-      image: "/images/cameras/sony-zv-1-ii.jpg",
-      rating: 4.8,
-      description: "Best Compact Vlog Camera: Powerful point-and-shoot with creator-focused features in a pocket-sized package.",
-      price: "$750-800",
-      key_features: [
-        "Wide-angle lens",
-        "Product showcase mode",
-        "New 'Cinematic Vlog' setting",
-        "Real-time tracking and Eye AF",
-        "Directional 3-capsule mic"
-      ],
-      pros: ["Excellent autofocus", "Compact and portable", "Great in-camera audio", "Creator-focused features", "Good image quality"],
-      cons: ["Screen difficult to see in sunlight", "Limited battery life", "Fixed lens"],
-      amazon_link: "https://amazon.com/product-link",
-      detailed_description: "According to Wirecutter, the screen can be difficult to see in sunlight but it's easily controlled with Sony's phone app. A perfect blend of portability and performance for YouTube vloggers, product reviewers, and content creators."
-    },
-    {
-      id: 4,
-      name: "Panasonic LUMIX GH7",
-      image: "/images/cameras/panasonic-lumix-gh7.jpg",
-      rating: 4.8,
-      description: "Best for Advanced Video: Hybrid camera with professional-grade video features and excellent flexibility.",
-      price: "$2,000-2,200",
-      key_features: [
-        "Micro Four Thirds sensor",
-        "Professional video features",
-        "Advanced audio recording options",
-        "Extensive frame rate options",
-        "V-Log profile included"
-      ],
-      pros: ["Professional video capabilities", "Excellent stabilization", "Great ergonomics", "Rugged construction", "Extensive lens ecosystem"],
-      cons: ["Complex menu system", "Autofocus not best-in-class", "Bulkier than some vlog cameras"],
-      amazon_link: "https://amazon.com/product-link",
-      detailed_description: "According to RTINGS, the best camera tested for advanced video work and vlogs. The ultimate tool for professional videographers and YouTube production teams requiring maximum creative control."
-    },
-    {
-      id: 5,
-      name: "DJI Osmo Pocket 3",
-      image: "/images/cameras/dji-osmo-pocket-3.jpg",
-      rating: 4.6,
-      description: "Best Stabilized Vlog Camera: Innovative camera with built-in gimbal for smooth footage on the move.",
-      price: "$500-550",
-      key_features: [
-        "Advanced gimbal",
-        "Large sensor",
-        "Compact design",
-        "4K 120fps video",
-        "Tracking features"
-      ],
-      pros: ["Exceptional stabilization", "Pocketable size", "Good image quality", "Built-in gimbal", "AI tracking features"],
-      cons: ["Limited in low light", "No interchangeable lenses", "Audio not best-in-class"],
-      amazon_link: "https://www.amazon.com/DJI-Vlogging-Stabilization-Tracking-Photography/dp/B0CG19FGQ5/",
-      detailed_description: "The perfect tool for on-the-go content creators who need reliable stabilization in a compact package. Ideal for mobile vloggers and travel content creators who prioritize portability."
-    }
-];
+// JSON dosyasından vlog kamera verilerini alan fonksiyon
+const getVlogCameras = () => {
+  // best2025 içinden kameraları alıyoruz
+  return camerasData.vlog.best2025.map((camera, index) => {
+    // Varsayılan görsel yolu veya fallback görsel URL'si
+    const fallbackImage = "https://www.bhphotovideo.com/images/images2500x2500/sony_zv_e10_mirrorless_camera_1657226.jpg";
+    
+    // Kamera adını url-dostu formata çevirme
+    const imageName = camera.name.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]+/g, '');
+    
+    // Görsel URL formatını düzelt - JPG yerine PNG kullan
+    const correctImageUrl = camera.imageUrl ? camera.imageUrl.replace('.jpg', '.png') : null;
+    
+    return {
+      id: index + 1,
+      name: camera.name,
+      // Önce düzeltilmiş imageUrl'i kontrol et, yoksa kamera adından türet, o da yoksa fallback görsel kullan
+      image: correctImageUrl || `/images/cameras/${imageName}.png` || fallbackImage,
+      rating: 4.5, // Sabit 4.5 rating değeri (yıldız gösterimi için)
+      description: `Best ${camera.level} Vlog Camera: ${camera.idealUser}`,
+      price: camera.price,
+      key_features: camera.features,
+      pros: ["Excellent video quality", "Great audio recording", "Compact design", "User-friendly interface"].slice(0, 3 + Math.floor(Math.random() * 2)),
+      cons: ["Premium price", "Battery life limitations", "Learning curve"].slice(0, 1 + Math.floor(Math.random() * 2)),
+      amazon_link: camera.link,
+      detailed_description: camera.whyGreat || camera.note || `Perfect for ${camera.idealUser}`
+    };
+  });
+};
 
-// Popular Vlog Cameras Data
-const popularVlogCameras = [
-  {
-    id: 1,
-    name: "Sony ZV-E1",
-    image: "/images/cameras/sony-zv-e1.jpg",
-    rating: 4.9,
-    description: "Best Professional Vlog Camera: Full-frame camera with exceptional image quality and advanced features for professional content creators.",
-    price: "$2,000-2,200",
-    key_features: [
-      "Full-frame sensor",
-      "Background blur",
-      "Excellent audio recording quality",
-      "Advanced AF tracking",
-      "High-quality 4K video"
-    ],
-    detailed_description: "According to PCMag, the best vlogging camera ever tested. A professional-grade tool for YouTube content creators, influencers and serious video producers.",
-    amazon_link: "https://amazon.com/product-link"
-  },
-  {
-    id: 2,
-    name: "Canon PowerShot V1",
-    image: "/images/cameras/canon-powershot-v1.jpg",
-    rating: 4.7,
-    description: "Best Mid-Range Vlog Camera: Compact, purpose-built camera with excellent features for social media content creators.",
-    price: "$500-600",
-    key_features: [
-      "Compact design",
-      "Built-in LED light",
-      "Advanced audio recording capabilities",
-      "Vertical video support",
-      "Wireless streaming"
-    ],
-    detailed_description: "A camera specifically designed for content creators with thoughtful features like built-in lighting and advanced audio capabilities.",
-    amazon_link: "https://amazon.com/product-link"
-  },
-  {
-    id: 3,
-    name: "Sony ZV-1 II",
-    image: "/images/cameras/sony-zv-1-ii.jpg",
-    rating: 4.8,
-    description: "Best Compact Vlog Camera: Powerful point-and-shoot with creator-focused features in a pocket-sized package.",
-    price: "$750-800",
-    key_features: [
-      "Wide-angle lens",
-      "Product showcase mode",
-      "New 'Cinematic Vlog' setting",
-      "Real-time tracking and Eye AF",
-      "Directional 3-capsule mic"
-    ],
-    detailed_description: "According to Wirecutter, the screen can be difficult to see in sunlight but it's easily controlled with Sony's phone app.",
-    amazon_link: "https://amazon.com/product-link"
-  },
-  {
-    id: 4,
-    name: "Panasonic LUMIX GH7",
-    image: "/images/cameras/panasonic-lumix-gh7.jpg",
-    rating: 4.8,
-    description: "Best for Advanced Video: Hybrid camera with professional-grade video features and excellent flexibility.",
-    price: "$2,000-2,200",
-    key_features: [
-      "Micro Four Thirds sensor",
-      "Professional video features",
-      "Advanced audio recording options",
-      "Extensive frame rate options",
-      "V-Log profile included"
-    ],
-    pros: ["Professional video capabilities", "Excellent stabilization", "Great ergonomics", "Rugged construction", "Extensive lens ecosystem"],
-    cons: ["Complex menu system", "Autofocus not best-in-class", "Bulkier than some vlog cameras"],
-    amazon_link: "https://amazon.com/product-link",
-    detailed_description: "According to RTINGS, the best camera tested for advanced video work and vlogs. The ultimate tool for professional videographers and YouTube production teams requiring maximum creative control."
-  },
-  {
-    id: 5,
-    name: "DJI Osmo Pocket 3",
-    image: "/images/cameras/dji-osmo-pocket-3.jpg",
-    rating: 4.6,
-    description: "Best Stabilized Vlog Camera: Innovative camera with built-in gimbal for smooth footage on the move.",
-    price: "$500-550",
-    key_features: [
-      "Advanced gimbal",
-      "Large sensor",
-      "Compact design",
-      "4K 120fps video",
-      "Tracking features"
-    ],
-    pros: ["Exceptional stabilization", "Pocketable size", "Good image quality", "Built-in gimbal", "AI tracking features"],
-    cons: ["Limited in low light", "No interchangeable lenses", "Audio not best-in-class"],
-    amazon_link: "https://www.amazon.com/DJI-Vlogging-Stabilization-Tracking-Photography/dp/B0CG19FGQ5/",
-    detailed_description: "The perfect tool for on-the-go content creators who need reliable stabilization in a compact package. Ideal for mobile vloggers and travel content creators who prioritize portability."
-  }
-];
+// JSON dosyasından popüler vlog kamera verilerini alan fonksiyon
+const getPopularVlogCameras = () => {
+  // amazonBestSellers içinden kameraları alıyoruz
+  return camerasData.vlog.amazonBestSellers.map((camera, index) => {
+    // Varsayılan görsel yolu veya fallback görsel URL'si
+    const fallbackImage = "https://www.bhphotovideo.com/images/images2500x2500/sony_zv_1_digital_camera_1565280.jpg";
+    
+    // Kamera adını url-dostu formata çevirme
+    const imageName = camera.name.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]+/g, '');
+    
+    // Görsel URL formatını düzelt - JPG yerine PNG kullan
+    const correctImageUrl = camera.imageUrl ? camera.imageUrl.replace('.jpg', '.png') : null;
+    
+    return {
+      id: index + 1,
+      name: camera.name,
+      // Önce düzeltilmiş imageUrl'i kontrol et, yoksa kamera adından türet, o da yoksa fallback görsel kullan
+      image: correctImageUrl || `/images/cameras/${imageName}.png` || fallbackImage,
+      rating: 4.5, // Sabit 4.5 rating değeri (yıldız gösterimi için)
+      description: `Best Selling ${camera.level} Vlog Camera: Perfect for ${camera.idealUser}`,
+      price: camera.price,
+      key_features: camera.features,
+      detailed_description: `Popular ${camera.level} vlog camera, ideal for ${camera.idealUser}`,
+      pros: ["Good video quality", "Easy to use", "Good audio features"].slice(0, 2 + Math.floor(Math.random() * 2)),
+      cons: ["Battery life could be better", "Limited manual controls"].slice(0, 1 + Math.floor(Math.random() * 2)),
+      amazon_link: camera.link
+    };
+  });
+};
 
 // Photography tips for Vlog cameras
 const photographyTips = [
@@ -314,7 +183,7 @@ export default function VlogCameras() {
 
           {/* Vlog Camera Cards - Yeni bileşen kullanarak */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {vlogCameras.map((camera, index) => (
+            {getVlogCameras().map((camera, index) => (
               <CameraCard 
                 key={camera.id}
                 camera={camera}
@@ -337,7 +206,7 @@ export default function VlogCameras() {
 
           {/* Popular Vlog Camera Cards - Yeni bileşen kullanarak */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {popularVlogCameras && popularVlogCameras.map((camera, index) => (
+            {getPopularVlogCameras().map((camera, index) => (
               <CameraCard 
                 key={camera.id}
                 camera={camera}

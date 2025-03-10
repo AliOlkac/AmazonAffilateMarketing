@@ -699,14 +699,15 @@
         "imageUrl": "/images/cameras/ricoh-gr-iiix.jpg"
       },
       {
-        "name": "Leica D-Lux 8",
+        "name": "Ricoh GR IIIx",
         "link": "https://www.amazon.com/Leica-D-Lux-8-Digital-Camera/dp/B09GL1L694/",
-        "price": "$1,500-1,700",
+        "price": "$1,000-1,100",
         "level": "Advanced-Professional",
         "features": [
-          "17MP Four Thirds sensor",
-          "Leica lens quality",
-          "Premium build"
+          "GR with a 40mm angle of view",
+          "Ricoh GR IIIx lens quality",
+          "The ultimate snapshot camer"
+
         ],
         "idealUser": "Luxury camera seekers, those valuing Leica quality",
         "imageUrl": "/images/cameras/leica-d-lux-8.jpg"

@@ -7,160 +7,67 @@ import { useEffect, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import CameraCard from "../components/CameraCard";
+import camerasData from "../../../public/cameras.json";
 
-// Sample Compact camera data
-const compactCameras = [
-    {
-      id: 1,
-      name: "Sony RX100 VII",
-      image: "/images/cameras/hero-bg.webp",
-      rating: 4.8,
-      description: "Best Premium Compact: Advanced 1-inch sensor compact camera with incredible autofocus, 4K video, and high-speed shooting capabilities.",
-      price: "$1,299.99",
-      key_features: [
-        "20.1MP 1-inch sensor",
-        "24-200mm f/2.8-4.5 lens",
-        "4K 30p video",
-        "Real-time tracking AF",
-        "Pop-up EVF"
-      ],
-      pros: ["Excellent image quality", "Versatile zoom range", "Advanced AF system", "Compact size", "Great for both photos and videos"],
-      cons: ["High price", "Complex menu system", "Small buttons"],
-      amazon_link: "https://amazon.com/product-link",
-      detailed_description: "The Sony RX100 VII is the ultimate pocket camera, combining professional-level features and image quality in an incredibly compact body."
-    },
-    {
-      id: 2,
-      name: "Fujifilm X100V",
-      image: "/images/cameras/hero-bg.webp",
-      rating: 4.9,
-      description: "Best Fixed Lens Compact: Premium compact with APS-C sensor, hybrid viewfinder, and exceptional image quality in a stylish, weather-resistant body.",
-      price: "$1,399.00",
-      key_features: [
-        "26.1MP X-Trans CMOS 4",
-        "23mm f/2 lens",
-        "4K 30p video",
-        "Hybrid viewfinder",
-        "Weather resistant"
-      ],
-      pros: ["Outstanding image quality", "Classic design", "Great ergonomics", "Film simulations", "Weather sealed"],
-      cons: ["Fixed focal length", "Premium price", "Limited zoom capability"],
-      amazon_link: "https://amazon.com/product-link",
-      detailed_description: "The Fujifilm X100V combines classic design with modern technology, making it perfect for street photography and everyday carry."
-    },
-    {
-      id: 3,
-      name: "Ricoh GR III",
-      image: "/images/cameras/hero-bg.webp",
-      rating: 4.7,
-      description: "Best Pocket Camera: Ultra-compact camera with APS-C sensor, sharp 28mm equivalent lens, and excellent street photography capabilities.",
-      price: "$899.95",
-      key_features: [
-        "24.2MP APS-C sensor",
-        "40mm equivalent lens",
-        "3-axis stabilization",
-        "Touch screen focus",
-        "Snap focus feature"
-      ],
-      pros: ["Excellent image quality", "Ultra-compact size", "Fast operation", "Great ergonomics", "Perfect focal length"],
-      cons: ["No viewfinder", "Limited video features", "Average battery life"],
-      amazon_link: "https://amazon.com/product-link",
-      detailed_description: "The Ricoh GR IIIx is a street photographer&apos;s dream, offering APS-C image quality in an incredibly compact body with an ideal 40mm equivalent lens."
-    },
-    {
-      id: 4,
-      name: "Canon PowerShot G5 X Mark II",
-      image: "/images/cameras/hero-bg.webp",
-      rating: 4.6,
-      description: "Best All-Around Compact: Versatile compact camera with 1-inch sensor, pop-up EVF, and excellent zoom range for everyday photography.",
-      price: "$899.00",
-      key_features: [
-        "20.1MP 1-inch sensor",
-        "24-120mm f/1.8-2.8 lens",
-        "4K 30p video",
-        "Pop-up EVF",
-        "Tilting touchscreen"
-      ],
-      pros: ["Great image quality", "Fast lens", "Good ergonomics", "Pop-up viewfinder", "Versatile zoom range"],
-      cons: ["No weather sealing", "Limited buffer depth", "Average battery life"],
-      amazon_link: "https://amazon.com/product-link",
-      detailed_description: "The Canon PowerShot G5 X Mark II offers a perfect balance of features and portability for enthusiast photographers who want a capable compact camera."
-    },
-    {
-      id: 5,
-      name: "Panasonic LUMIX LX100 II",
-      image: "/images/cameras/hero-bg.webp",
-      rating: 4.7,
-      description: "Best for Manual Control: Premium compact with Four Thirds sensor, Leica lens, and extensive physical controls for enthusiast photographers.",
-      price: "$797.99",
-      key_features: [
-        "17MP Four Thirds sensor",
-        "24-75mm f/1.7-2.8 lens",
-        "4K 30p video",
-        "EVF",
-        "Dedicated exposure controls"
-      ],
-      pros: ["Excellent controls", "Fast lens", "Great image quality", "4K photo modes", "Compact size"],
-      cons: ["Fixed screen", "No weather sealing", "Older sensor design"],
-      amazon_link: "https://amazon.com/product-link",
-      detailed_description: "The Panasonic Lumix LX100 II is perfect for photographers who love manual controls, offering a traditional shooting experience in a modern compact camera."
-    }
-];
+// JSON dosyasından compact kamera verilerini alan fonksiyon
+const getCompactCameras = () => {
+  // best2025 içinden kameraları alıyoruz
+  return camerasData.compact.best2025.map((camera, index) => {
+    // Varsayılan görsel yolu veya fallback görsel URL'si
+    const fallbackImage = "https://www.bhphotovideo.com/images/images2500x2500/sony_dscrx100m7_sony_rx100_vii_digital_1483192.jpg";
+    
+    // Kamera adını url-dostu formata çevirme
+    const imageName = camera.name.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]+/g, '');
+    
+    // Görsel URL formatını düzelt - JPG yerine PNG kullan
+    const correctImageUrl = camera.imageUrl ? camera.imageUrl.replace('.jpg', '.png') : null;
+    
+    return {
+      id: index + 1,
+      name: camera.name,
+      // Önce düzeltilmiş imageUrl'i kontrol et, yoksa kamera adından türet, o da yoksa fallback görsel kullan
+      image: correctImageUrl || `/images/cameras/${imageName}.png` || fallbackImage,
+      rating: 4.5, // Sabit 4.5 rating değeri (yıldız gösterimi için)
+      description: `Best ${camera.level} Compact: ${camera.idealUser}`,
+      price: camera.price,
+      key_features: camera.features,
+      pros: ["Excellent image quality", "Compact size", "Good battery life", "User-friendly interface"].slice(0, 3 + Math.floor(Math.random() * 2)),
+      cons: ["Limited zoom range", "Higher price", "No viewfinder"].slice(0, 1 + Math.floor(Math.random() * 2)),
+      amazon_link: camera.link,
+      detailed_description: camera.whyGreat || `Perfect for ${camera.idealUser}`
+    };
+  });
+};
 
-// Popular Compact Cameras Data - CameraCard bileşenine uygun yapı
-const popularCompactCameras = [
-  {
-    id: 1,
-    name: "Sony RX100 VII",
-    image: "/images/cameras/sony-rx100-vii.jpg",
-    rating: 4.8,
-    description: "Premium compact camera with exceptional autofocus and professional image quality",
-    price: "$1,299.99",
-    key_features: [
-      "20.1MP 1\" Exmor RS CMOS Sensor",
-      "ZEISS® Vario-Sonnar T* 24-200mm Lens",
-      "357-point phase-detection AF",
-      "4K Video with S-Log3 & HLG",
-      "20fps shooting with no blackout"
-    ],
-    detailed_description: "According to DPReview, the ultimate pocket camera with professional-level shooting capabilities. Perfect for enthusiasts and professional photographers who need a backup or travel camera.",
-    amazon_link: "https://www.amazon.com/Sony-Cyber-shot-DSC-RX100-VII-Shooting/dp/B07VPQV7BY"
-  },
-  {
-    id: 2,
-    name: "Canon PowerShot G7 X Mark III",
-    image: "/images/cameras/canon-g7x-mark-iii.jpg",
-    rating: 4.6,
-    description: "Versatile compact camera ideal for vlogging and content creation",
-    price: "$749.99",
-    key_features: [
-      "20.1MP 1\" Stacked CMOS Sensor",
-      "4.2x Zoom Lens (24-100mm)",
-      "4K 30p Video Recording",
-      "YouTube Live Streaming",
-      "Tilting Touchscreen"
-    ],
-    detailed_description: "A top choice for vloggers and content creators with direct YouTube streaming capability and excellent video features in a pocket-sized package.",
-    amazon_link: "https://www.amazon.com/Canon-PowerShot-Digital-Camera-Streaming/dp/B07RJWB548"
-  },
-  {
-    id: 3,
-    name: "Fujifilm X100V",
-    image: "/images/cameras/fujifilm-x100v.jpg",
-    rating: 4.9,
-    description: "Premium fixed-lens compact camera with exceptional image quality and classic design",
-    price: "$1,399.99",
-    key_features: [
-      "26.1MP APS-C X-Trans CMOS 4 Sensor",
-      "23mm f/2 Fixed Lens",
-      "Advanced Hybrid Viewfinder",
-      "4K Video Recording",
-      "Film Simulation Modes"
-    ],
-    detailed_description: "The perfect street photography camera combining classic rangefinder design with modern imaging technology and Fujifilm's renowned color science.",
-    amazon_link: "https://www.amazon.com/Fujifilm-X100V-Digital-Camera-Silver/dp/B0839RBQSW"
-  }
-];
+// JSON dosyasından popüler compact kamera verilerini alan fonksiyon
+const getPopularCompactCameras = () => {
+  // amazonBestSellers içinden kameraları alıyoruz
+  return camerasData.compact.amazonBestSellers.map((camera, index) => {
+    // Varsayılan görsel yolu veya fallback görsel URL'si
+    const fallbackImage = "https://www.bhphotovideo.com/images/images2500x2500/canon_0109c001_powershot_g5_x_digital_1187018.jpg";
+    
+    // Kamera adını url-dostu formata çevirme
+    const imageName = camera.name.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]+/g, '');
+    
+    // Görsel URL formatını düzelt - JPG yerine PNG kullan
+    const correctImageUrl = camera.imageUrl ? camera.imageUrl.replace('.jpg', '.png') : null;
+    
+    return {
+      id: index + 1,
+      name: camera.name,
+      // Önce düzeltilmiş imageUrl'i kontrol et, yoksa kamera adından türet, o da yoksa fallback görsel kullan
+      image: correctImageUrl || `/images/cameras/${imageName}.png` || fallbackImage,
+      rating: 4.5, // Sabit 4.5 rating değeri (yıldız gösterimi için)
+      description: `Best Selling ${camera.level} Compact: Perfect for ${camera.idealUser}`,
+      price: camera.price,
+      key_features: camera.features,
+      detailed_description: `Popular ${camera.level} compact camera, ideal for ${camera.idealUser}`,
+      pros: ["Easy to use", "Portable size", "Good value"].slice(0, 2 + Math.floor(Math.random() * 2)),
+      cons: ["Limited features", "Basic zoom"].slice(0, 1 + Math.floor(Math.random() * 2)),
+      amazon_link: camera.link
+    };
+  });
+};
 
 // Photography tips for Compact cameras
 const photographyTips = [
@@ -276,7 +183,7 @@ export default function CompactCameras() {
 
           {/* Compact Camera Cards - Yeni bileşen kullanarak */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {compactCameras.map((camera, index) => (
+            {getCompactCameras().map((camera, index) => (
               <CameraCard 
                 key={camera.id}
                 camera={camera}
@@ -299,7 +206,7 @@ export default function CompactCameras() {
 
           {/* Popular Compact Camera Cards - Yeni bileşen kullanarak */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {popularCompactCameras.map((camera, index) => (
+            {getPopularCompactCameras().map((camera, index) => (
               <CameraCard 
                 key={camera.id}
                 camera={camera}
