@@ -4,204 +4,123 @@
 import Link from "next/link";
 import Image from "next/image";
 import { FaCamera, FaStar, FaCheckCircle, FaAmazon, FaShoppingCart, FaInfoCircle } from "react-icons/fa";
+import { FaStarHalfAlt } from "react-icons/fa";
 import { MdPhotoCamera, MdCameraAlt, MdVideocam } from "react-icons/md";
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+import camerasData from "../../../public/cameras.json";
+
+// JSON dosyasından featured camera verilerini alan fonksiyon
+const getFeaturedCameras = () => {
+  // Her kategoriden en iyi kameraları alıyoruz
+  const featuredDSLR = camerasData.dslr.best2025.slice(0, 2).map((camera, index) => {
+    const imageName = camera.name.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]+/g, '');
+    const correctImageUrl = camera.imageUrl ? camera.imageUrl.replace('.jpg', '.png') : null;
+    const fallbackImage = "/images/cameras/hero-bg.webp";
+    
+    return {
+      id: index + 1,
+      name: camera.name,
+      image: correctImageUrl || `/images/cameras/${imageName}.png` || fallbackImage,
+      rating: 4.5,
+      category: "DSLR",
+      categoryColor: "blue",
+      description: `Professional ${camera.level} DSLR camera, ideal for ${camera.idealUser}`,
+      price: camera.price,
+      key_features: camera.features,
+      amazon_link: camera.link,
+      page_link: "/dslr-cameras"
+    };
+  });
+  
+  const featuredMirrorless = camerasData.mirrorless.best2025.slice(0, 2).map((camera, index) => {
+    const imageName = camera.name.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]+/g, '');
+    const correctImageUrl = camera.imageUrl ? camera.imageUrl.replace('.jpg', '.png') : null;
+    const fallbackImage = "/images/cameras/hero-bg.webp";
+    
+    return {
+      id: index + 1 + 2, // DSLR kameralardan sonra devam eden ID değerleri
+      name: camera.name,
+      image: correctImageUrl || `/images/cameras/${imageName}.png` || fallbackImage,
+      rating: 4.5,
+      category: "Mirrorless",
+      categoryColor: "purple",
+      description: `Advanced ${camera.level} mirrorless camera, ideal for ${camera.idealUser}`,
+      price: camera.price,
+      key_features: camera.features,
+      amazon_link: camera.link,
+      page_link: "/mirrorless-cameras"
+    };
+  });
+  
+  const featuredAction = camerasData.action.best2025.slice(0, 2).map((camera, index) => {
+    const imageName = camera.name.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]+/g, '');
+    const correctImageUrl = camera.imageUrl ? camera.imageUrl.replace('.jpg', '.png') : null;
+    const fallbackImage = "/images/cameras/hero-bg.webp";
+    
+    return {
+      id: index + 1 + 4, // Önceki kameralardan sonra devam eden ID değerleri
+      name: camera.name,
+      image: correctImageUrl || `/images/cameras/${imageName}.png` || fallbackImage,
+      rating: 4.5,
+      category: "Action",
+      categoryColor: "cyan",
+      description: `Durable ${camera.level} action camera, perfect for ${camera.idealUser}`,
+      price: camera.price,
+      key_features: camera.features,
+      amazon_link: camera.link,
+      page_link: "/action-cameras"
+    };
+  });
+  
+  const featuredVlog = camerasData.vlog.best2025.slice(0, 2).map((camera, index) => {
+    const imageName = camera.name.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]+/g, '');
+    const correctImageUrl = camera.imageUrl ? camera.imageUrl.replace('.jpg', '.png') : null;
+    const fallbackImage = "/images/cameras/hero-bg.webp";
+    
+    return {
+      id: index + 1 + 6, // Önceki kameralardan sonra devam eden ID değerleri
+      name: camera.name,
+      image: correctImageUrl || `/images/cameras/${imageName}.png` || fallbackImage,
+      rating: 4.5,
+      category: "Vlog",
+      categoryColor: "green",
+      description: `Content creation focused ${camera.level} camera, ideal for ${camera.idealUser}`,
+      price: camera.price,
+      key_features: camera.features,
+      amazon_link: camera.link,
+      page_link: "/vlog-cameras"
+    };
+  });
+  
+  const featuredCompact = camerasData.compact.best2025.slice(0, 2).map((camera, index) => {
+    const imageName = camera.name.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]+/g, '');
+    const correctImageUrl = camera.imageUrl ? camera.imageUrl.replace('.jpg', '.png') : null;
+    const fallbackImage = "/images/cameras/hero-bg.webp";
+    
+    return {
+      id: index + 1 + 8, // Önceki kameralardan sonra devam eden ID değerleri
+      name: camera.name,
+      image: correctImageUrl || `/images/cameras/${imageName}.png` || fallbackImage,
+      rating: 4.5,
+      category: "Compact",
+      categoryColor: "pink",
+      description: `Portable ${camera.level} compact camera, perfect for ${camera.idealUser}`,
+      price: camera.price,
+      key_features: camera.features,
+      amazon_link: camera.link,
+      page_link: "/compact-cameras"
+    };
+  });
+  
+  // Tüm kategorilerden seçilen kameraları birleştir
+  return [...featuredDSLR, ...featuredMirrorless, ...featuredAction, ...featuredVlog, ...featuredCompact];
+};
 
 // Tüm kamera verilerinin bir araya getirilmiş hali
-const featuredCameras = [
-  // DSLR Kameralar
-  {
-    id: 1,
-    name: "Nikon D850",
-    image: "/images/cameras/hero-bg.webp",
-    rating: 4.9,
-    category: "DSLR",
-    categoryColor: "blue",
-    description: "Professional full-frame DSLR with 45.7MP resolution and exceptional low light performance",
-    price: "$2,996.95",
-    key_features: [
-      "45.7MP Full-Frame BSI CMOS Sensor",
-      "8K Time-lapse recording",
-      "ISO range 64-25,600",
-      "7fps continuous shooting"
-    ],
-    amazon_link: "https://www.amazon.com/Nikon-D850-FX-Format-Digital-Camera/dp/B07524LHMT",
-    page_link: "/dslr-cameras"
-  },
-  {
-    id: 2,
-    name: "Canon EOS 90D",
-    image: "/images/cameras/hero-bg.webp",
-    rating: 4.7,
-    category: "DSLR",
-    categoryColor: "blue",
-    description: "Versatile enthusiast DSLR with 32.5MP APS-C sensor and uncropped 4K video",
-    price: "$1,199.00",
-    key_features: [
-      "32.5MP APS-C CMOS Sensor",
-      "4K30p & HD120p video",
-      "45-point all cross-type AF",
-      "10fps continuous shooting"
-    ],
-    amazon_link: "https://www.amazon.com/Canon-Digital-Camera-Black-3616C002/dp/B07WFQYDD5",
-    page_link: "/dslr-cameras"
-  },
-  
-  // Mirrorless Kameralar
-  {
-    id: 3,
-    name: "Sony Alpha a7 III",
-    image: "/images/cameras/hero-bg.webp",
-    rating: 4.8,
-    category: "Mirrorless",
-    categoryColor: "purple",
-    description: "Powerful full-frame mirrorless with excellent dynamic range and 4K video capabilities",
-    price: "$1,998.00",
-    key_features: [
-      "24.2MP Full-Frame Exmor R Sensor",
-      "693-point AF system",
-      "5-axis stabilization",
-      "10fps silent shooting"
-    ],
-    amazon_link: "https://www.amazon.com/Sony-Full-Frame-Mirrorless-Interchangeable-Lens-ILCE7M3/dp/B07B43WPVK",
-    page_link: "/mirrorless-cameras"
-  },
-  {
-    id: 4,
-    name: "Fujifilm X-T4",
-    image: "/images/cameras/hero-bg.webp",
-    rating: 4.7,
-    category: "Mirrorless",
-    categoryColor: "purple",
-    description: "Premium APS-C mirrorless with in-body stabilization and beautiful film simulations",
-    price: "$1,699.00",
-    key_features: [
-      "26.1MP X-Trans CMOS 4 Sensor",
-      "5-axis IBIS (6.5 stops)",
-      "4K60p 10-bit video",
-      "15fps mechanical shutter"
-    ],
-    amazon_link: "https://www.amazon.com/Fujifilm-X-T4-Mirrorless-Camera-Body/dp/B0844K1CH5",
-    page_link: "/mirrorless-cameras"
-  },
-  
-  // Action Kameralar
-  {
-    id: 5,
-    name: "GoPro HERO11 Black",
-    image: "/images/cameras/hero-bg.webp",
-    rating: 4.8,
-    category: "Action",
-    categoryColor: "cyan",
-    description: "Ultimate action camera with 5.3K video, HyperSmooth 5.0 stabilization, and waterproof design",
-    price: "$399.99",
-    key_features: [
-      "27MP photos",
-      "5.3K60 video recording",
-      "HyperSmooth 5.0 stabilization",
-      "Waterproof to 33ft"
-    ],
-    amazon_link: "https://www.amazon.com/GoPro-HERO11-Black-Waterproof-Stabilization/dp/B0BD91XYQS",
-    page_link: "/action-cameras"
-  },
-  {
-    id: 6,
-    name: "DJI Osmo Action 4",
-    image: "/images/cameras/hero-bg.webp",
-    rating: 4.7,
-    category: "Action",
-    categoryColor: "cyan",
-    description: "Feature-rich action camera with excellent low-light performance and magnetic mounting",
-    price: "$379.00",
-    key_features: [
-      "1/1.3\" sensor with improved low-light",
-      "4K/120fps video & 10-bit D-Log M",
-      "155° super-wide FOV",
-      "Waterproof to 16m"
-    ],
-    amazon_link: "https://www.amazon.com/DJI-Action-Standard-Combo-Camera/dp/B0CHXV6KNS",
-    page_link: "/action-cameras"
-  },
-  
-  // Vlog Kameralar
-  {
-    id: 7,
-    name: "Sony ZV-1",
-    image: "/images/cameras/hero-bg.webp",
-    rating: 4.8,
-    category: "Vlog",
-    categoryColor: "green",
-    description: "Purpose-built vlogging camera with excellent autofocus and audio quality",
-    price: "$748.00",
-    key_features: [
-      "20.1MP 1\" Exmor RS Sensor",
-      "Real-time Eye AF & tracking",
-      "Background defocus button",
-      "Directional 3-capsule mic"
-    ],
-    amazon_link: "https://www.amazon.com/Sony-Content-Creators-Vlogging-Microphone/dp/B088XCGLCD",
-    page_link: "/vlog-cameras"
-  },
-  {
-    id: 8,
-    name: "Canon PowerShot G7 X Mark III",
-    image: "/images/cameras/hero-bg.webp", 
-    rating: 4.7,
-    category: "Vlog",
-    categoryColor: "green",
-    description: "Popular vlogging compact with YouTube live streaming capabilities",
-    price: "$749.00",
-    key_features: [
-      "20.1MP 1\" Stacked CMOS Sensor",
-      "4K30p video",
-      "YouTube live streaming",
-      "Vertical video support"
-    ],
-    amazon_link: "https://www.amazon.com/Canon-PowerShot-Digital-Camera-Streaming/dp/B07TKNCQZX",
-    page_link: "/vlog-cameras"
-  },
-  
-  // Kompakt Kameralar
-  {
-    id: 9,
-    name: "Sony RX100 VII",
-    image: "/images/cameras/hero-bg.webp",
-    rating: 4.8,
-    category: "Compact",
-    categoryColor: "pink",
-    description: "Premium compact camera with exceptional autofocus and professional image quality",
-    price: "$1,299.99",
-    key_features: [
-      "20.1MP 1\" Exmor RS CMOS Sensor",
-      "ZEISS® 24-200mm f/2.8-4.5 Lens",
-      "357-point phase-detection AF",
-      "4K Video with S-Log3 & HLG"
-    ],
-    amazon_link: "https://www.amazon.com/Sony-Cyber-shot-DSC-RX100-VII-Shooting/dp/B07VPQV7BY",
-    page_link: "/compact-cameras"
-  },
-  {
-    id: 10,
-    name: "Fujifilm X100V",
-    image: "/images/cameras/hero-bg.webp",
-    rating: 4.9,
-    category: "Compact",
-    categoryColor: "pink",
-    description: "Premium compact with APS-C sensor and unique hybrid viewfinder",
-    price: "$1,399.00",
-    key_features: [
-      "26.1MP APS-C X-Trans CMOS 4",
-      "23mm f/2 fixed lens",
-      "4K30p 8-bit video",
-      "Hybrid optical/EVF viewfinder"
-    ],
-    amazon_link: "https://www.amazon.com/Fujifilm-X100V-Digital-Camera-Silver/dp/B08485Z9D8",
-    page_link: "/compact-cameras"
-  }
-];
+const featuredCameras = getFeaturedCameras();
 
 // Kamera kategorileri ve linkleri
 const cameraCategories = [
@@ -504,7 +423,14 @@ export default function Cameras() {
                   
                   {/* Rating badge */}
                   <div className="absolute top-2 right-2 bg-yellow-400 text-gray-900 py-1 px-3 rounded-full flex items-center gap-1 font-medium z-10">
-                    <FaStar className={`${hoveredCard === index ? "animate-pulse" : ""}`} /> {camera.rating}
+                    {/* 5 yıldız gösterimi - ilk 4 tam, sonuncu yarım dolu */}
+                    {[...Array(4)].map((_, i) => (
+                      <FaStar 
+                        key={i} 
+                        className={`${hoveredCard === index ? "animate-pulse" : ""}`}
+                      />
+                    ))}
+                    <FaStarHalfAlt className={`${hoveredCard === index ? "animate-pulse" : ""}`} />
                   </div>
                 </div>
                 
