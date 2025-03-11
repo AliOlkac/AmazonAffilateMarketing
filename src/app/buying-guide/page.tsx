@@ -13,7 +13,7 @@ const cameraTypes = [
   {
     id: "dslr",
     name: "DSLR Cameras",
-    image: "/images/cameras/hero-bg.webp",
+    image: "/images/cameras/categories/dslr.webp",
     description: "DSLR (Digital Single-Lens Reflex) cameras are professional cameras that provide real-time viewing using an optical viewfinder and mirror mechanism.",
     pros: [
       "Superior image quality",
@@ -34,7 +34,7 @@ const cameraTypes = [
   {
     id: "mirrorless",
     name: "Mirrorless Cameras",
-    image: "/images/cameras/hero-bg.webp",
+    image: "/images/cameras/categories/mirrorless.webp",
     description: "Mirrorless cameras are modern cameras that offer similar image quality to DSLRs while being more compact and using an electronic viewfinder.",
     pros: [
       "Compact and lightweight body",
@@ -55,7 +55,7 @@ const cameraTypes = [
   {
     id: "compact",
     name: "Compact Cameras",
-    image: "/images/cameras/hero-bg.webp",
+    image: "/images/cameras/categories/compact.webp",
     description: "Compact cameras are pocket-sized cameras with fixed lenses and easy-to-use interfaces.",
     pros: [
       "Ultra-portable size",
@@ -76,7 +76,7 @@ const cameraTypes = [
   {
     id: "action",
     name: "Action Cameras",
-    image: "/images/cameras/hero-bg.webp",
+    image: "/images/cameras/categories/action.webp",
     description: "Action cameras are ultra-durable and compact video cameras designed for use in challenging conditions.",
     pros: [
       "Very durable construction",
@@ -97,7 +97,7 @@ const cameraTypes = [
   {
     id: "vlog",
     name: "Vlog Cameras",
-    image: "/images/cameras/hero-bg.webp",
+    image: "/images/cameras/categories/vlog.webp",
     description: "Vlog cameras are designed for content creators with advanced self-shooting features.",
     pros: [
       "Flip screen",
@@ -209,10 +209,10 @@ export default function BuyingGuide() {
       {/* Hero Section */}
       <section className="relative h-[60vh] md:h-[70vh] overflow-hidden flex items-center justify-center">
         {/* Background and Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-pink-700/30 to-indigo-700/80 z-10"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-pink-700/60 to-indigo-700/80 z-10"></div>
         <div 
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(/images/cameras/hero-bg.webp)` }}
+          style={{ backgroundImage: `url(/images/cameras/categories/buying-guide.webp)` }}
           ref={parallaxBgRef}
         ></div>
         

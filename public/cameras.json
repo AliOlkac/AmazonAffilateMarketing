@@ -3,7 +3,7 @@
     "amazonBestSellers": [
       {
         "name": "Canon EOS Rebel T7",
-        "link": "https://www.amazon.com/Canon-Rebel-T7-18-55mm-II/dp/B07C2Z21X5/",
+        "link": "https://amzn.to/41WZJE7",
         "price": "$449-549",
         "level": "Entry-Level",
         "features": [
@@ -17,7 +17,7 @@
       },
       {
         "name": "Canon EOS Rebel T6",
-        "link": "https://www.amazon.com/Canon-Digital-Camera-18-55mm-3-5-5-6/dp/B06XNTPN8C/",
+        "link": "https://amzn.to/3Dzyczh",
         "price": "$399-449",
         "level": "Entry-Level",
         "features": [
@@ -31,7 +31,7 @@
       },
       {
         "name": "Nikon D7500",
-        "link": "https://www.amazon.com/Nikon-20-9MP-Camera-18-140mm-3-5-5-6G/dp/B06Y5RTN1T/",
+        "link": "https://amzn.to/4hqh7Wg",
         "price": "$997-1,200",
         "level": "Mid-Advanced",
         "features": [
@@ -45,7 +45,7 @@
       },
       {
         "name": "Canon EOS 2000D",
-        "link": "https://www.amazon.com/Canon-18-55mm-75-300mm-Wideangle-Accessory/dp/B0BJXWBW7C/",
+        "link": "https://amzn.to/4kznZ6C",
         "price": "$479-549",
         "level": "Entry-Level",
         "features": [
@@ -59,7 +59,7 @@
       },
       {
         "name": "Nikon D850",
-        "link": "https://www.amazon.com/Nikon-D850-FX-Format-Digital-Camera/dp/B07524LHMT/",
+        "link": "https://amzn.to/3FnxZzM",
         "price": "$2,796-3,000",
         "level": "Professional",
         "features": [
@@ -75,7 +75,7 @@
     "best2025": [
       {
         "name": "Nikon D850",
-        "link": "https://www.amazon.com/Nikon-D850-FX-Format-Digital-Camera/dp/B07524LHMT/",
+        "link": "https://amzn.to/4hqi94A",
         "price": "$2,500-3,000",
         "level": "Professional",
         "features": [
@@ -89,7 +89,7 @@
       },
       {
         "name": "Canon EOS 5D Mark IV",
-        "link": "https://www.amazon.com/Canon-Mark-Frame-Digital-Camera/dp/B01KURGS9E/",
+        "link": "https://amzn.to/3R2326K",
         "price": "$2,000-2,500",
         "level": "Professional",
         "features": [
@@ -102,7 +102,7 @@
       },
       {
         "name": "Pentax K-1 Mark II",
-        "link": "https://www.amazon.com/Pentax-Mark-II-Weather-Resistant/dp/B079SFBQH4/",
+        "link": "https://amzn.to/3R2repy",
         "price": "$1,800-2,000",
         "level": "Advanced-Professional",
         "features": [
@@ -115,7 +115,7 @@
       },
       {
         "name": "Nikon D780",
-        "link": "https://www.amazon.com/Nikon-1618-D780-Body/dp/B083K41K2S/",
+        "link": "https://amzn.to/3R7an4V",
         "price": "$2,000-2,300",
         "level": "Advanced",
         "features": [
@@ -128,8 +128,8 @@
       },
       {
         "name": "Nikon D500",
-        "link": "hthttps://www.amazon.com/Nikon-D500-DX-Format-Digital-Body/dp/B01A7Q0J3Y/",
-        "price": "$1,500-1,800",
+        "link": "https://amzn.to/41JiB8k",
+        "price": "$2,600-2,700",
         "level": "Advanced",
         "features": [
           "20.9MP APS-C sensor",
@@ -145,7 +145,7 @@
     "amazonBestSellers": [
       {
         "name": "Canon EOS R50",
-        "link": "https://www.amazon.com/Canon-Mirrorless-RF-S18-45mm-Smartphone-Connection/dp/B0BTTV6CT1/",
+        "link": "https://amzn.to/3DB57DI",
         "price": "$800-900",
         "level": "Entry-Mid",
         "features": [
@@ -158,7 +158,7 @@
       },
       {
         "name": "Canon EOS R6 Mark II",
-        "link": "https://www.amazon.com/Canon-EOS-Mark-Mirrorless-Oversampling/dp/B0BL7ZVY78/",
+        "link": "https://amzn.to/4ikNFCm",
         "price": "$2,500-2,700",
         "level": "Professional",
         "features": [
@@ -171,8 +171,8 @@
       },
       {
         "name": "Sony Alpha ZV-E10",
-        "link": "https://www.amazon.com/Sony-Alpha-ZV-E10-Interchangeable-Mirrorless/dp/B09BBLH4SG/",
-        "price": "$569-700",
+        "link": "https://amzn.to/3FjueLD",
+        "price": "$799-900",
         "level": "Entry-Mid",
         "features": [
           "24.2MP APS-C Exmor CMOS sensor",
@@ -185,8 +185,8 @@
       },
       {
         "name": "Sony Alpha a6400",
-        "link": "https://www.amazon.com/Sony-Alpha-a6400-Mirrorless-Camera/dp/B07MV3P7M8/",
-        "price": "$898-1,298",
+        "link": "https://amzn.to/4ifjInk",
+        "price": "$800-1,000",
         "level": "Mid-Range",
         "features": [
           "24.2MP APS-C Exmor CMOS sensor",
@@ -199,8 +199,8 @@
       },
       {
         "name": "Sony Alpha a7 III",
-        "link": "https://www.amazon.com/Sony-Full-frame-Mirrorless-Interchangeable-Lens-ILCE7M3K/dp/B07B45D8WV/",
-        "price": "$1,289-1,998",
+        "link": "https://amzn.to/4bKwUhq",
+        "price": "$1,500-1,998",
         "level": "Advanced-Professional",
         "features": [
           "24.2MP Full-Frame Exmor R BSI CMOS sensor",
@@ -215,8 +215,8 @@
     "best2025": [
       {
         "name": "Sony α1",
-        "link": "https://www.amazon.com/Sony-Full-frame-Interchangeable-Mirrorless-Camera/dp/B08V226T8Q/",
-        "price": "$5,500+",
+        "link": "https://amzn.to/41Jj4Y8",
+        "price": "$4,800 - 5,500",
         "level": "Professional",
         "features": [
           "50MP full-frame sensor",
@@ -228,7 +228,7 @@
       },
       {
         "name": "Sony α7 IV",
-        "link": "https://www.amazon.com/Sony-Full-frame-Mirrorless-Interchangeable-Camera/dp/B09JZT6YK5/",
+        "link": "https://amzn.to/41VkvUG",
         "price": "$2,400-2,600",
         "level": "Advanced-Professional",
         "features": [
@@ -242,8 +242,8 @@
       },
       {
         "name": "Nikon Z7 II",
-        "link": "https://www.amazon.com/Nikon-Ultra-high-Resolution-Full-Frame-mirrorless/dp/B08L614R6K/",
-        "price": "$2,800-3,000",
+        "link": "https://amzn.to/3DyvVo2",
+        "price": "$1,800-2,200",
         "level": "Professional",
         "features": [
           "45.7MP full-frame sensor",
@@ -255,8 +255,8 @@
       },
       {
         "name": "Fujifilm X-T30 II",
-        "link": "https://www.amazon.com/Fujifilm-X-T30-II-Body-Black/dp/B09DTHG54V/",
-        "price": "$900-1,000",
+        "link": "https://amzn.to/3FlqQA6",
+        "price": "$850-1,000",
         "level": "Mid-Range",
         "features": [
           "26MP APS-C sensor",
@@ -268,7 +268,7 @@
       },
       {
         "name": "Olympus E-M10 Mark IV",
-        "link": "https://www.amazon.com/Olympus-M-Zuiko-Digital-14-42mm-F3-5-5-6/dp/B08D5Z7BK9/",
+        "link": "https://amzn.to/3FoROHa",
         "price": "$700-800",
         "level": "Entry-Mid",
         "features": [
@@ -286,7 +286,7 @@
     "amazonBestSellers": [
       {
         "name": "AKASO EK7000",
-        "link": "https://www.amazon.com/AKASO-EK7000-Sports-Waterproof-Camcorder/dp/B01HGM33HG/",
+        "link": "https://amzn.to/41JrkY2",
         "price": "$59-79",
         "level": "Entry-Level",
         "features": [
@@ -300,8 +300,8 @@
       },
       {
         "name": "DJI Osmo Action 4",
-        "link": "https://www.amazon.com/DJI-Essential-Waterproof-Performance-Long-Lasting/dp/B0DS2B3P2B/",
-        "price": "$399-429",
+        "link": "https://amzn.to/3XHYg20",
+        "price": "$250-400",
         "level": "Advanced",
         "features": [
           "1/1.3-inch sensor for superior low-light performance",
@@ -314,8 +314,8 @@
       },
       {
         "name": "GoPro HERO13 Black",
-        "link": "https://www.amazon.com/GoPro-HERO13-Black-Compatability-HB/dp/B0DCM34GXX/",
-        "price": "$399-449",
+        "link": "https://amzn.to/41TlgO5",
+        "price": "$300-400",
         "level": "Professional",
         "features": [
           "5.3K 60fps video",
@@ -328,7 +328,7 @@
       },
       {
         "name": "GoPro Hero12 Black",
-        "link": "https://www.amazon.com/GoPro-Hero12-Black-Commerce-Package/dp/B0DD5G9QGJ/",
+        "link": "https://amzn.to/4bFXwAc",
         "price": "$249-399",
         "level": "Advanced-Professional",
         "features": [
@@ -342,8 +342,8 @@
       },
       {
         "name": "DJI Osmo Action 5 Pro",
-        "link": "https://www.amazon.com/DJI-Standard-Waterproof-Stabilization-Touchscreens/dp/B0DBQTC2P7/",
-        "price": "$349-399",
+        "link": "https://amzn.to/3XLO0pt",
+        "price": "$300-399",
         "level": "Professional",
         "features": [
           "1/1.3-inch sensor for superior low-light performance",
@@ -358,7 +358,7 @@
     "best2025": [
       {
         "name": "DJI Osmo Action 5 Pro",
-        "link": "https://www.amazon.com/DJI-Standard-Waterproof-Stabilization-Touchscreens/dp/B0DBQTC2P7/",
+        "link": "https://amzn.to/3XLO0pt",
         "price": "$349-399",
         "level": "Professional",
         "features": [
@@ -372,8 +372,8 @@
       },
       {
         "name": "GoPro Hero 13 Black",
-        "link": "https://www.amazon.com/GoPro-HERO13-Black-Compatability-HB/dp/B0DCM34GXX/",
-        "price": "$399-449",
+        "link": "https://amzn.to/3DI9H2T",
+        "price": "$300-400",
         "level": "Professional",
         "features": [
           "5.3K 60fps video",
@@ -387,8 +387,8 @@
       },
       {
         "name": "Insta360 X4",
-        "link": "https://www.amazon.com/Insta360-Get-Set-Bundle-Waterproof-Stabilization/dp/B0CYQ2GN1X/",
-        "price": "$499-549",
+        "link": "https://amzn.to/4bHcSoa",
+        "price": "$499-600",
         "level": "Advanced-Professional",
         "features": [
           "8K 30fps / 5.7K 60fps 360° video recording",
@@ -401,8 +401,8 @@
       },
       {
         "name": "AKASO EK7000 Pro",
-        "link": "https://www.amazon.com/AKASO-Adjustable-Waterproof-Control-Accessories/dp/B07JR1XZ78/",
-        "price": "$80-100",
+        "link": "https://amzn.to/41VXr8d",
+        "price": "$60-100",
         "level": "Entry-Level",
         "features": [
           "4K 25fps video",
@@ -414,8 +414,8 @@
       },
       {
         "name": "GoPro HERO",
-        "link": "https://www.amazon.com/GoPro-Hero-Compact-Waterproof-Action/dp/B0DCLRRHSP/",
-        "price": "$200-250",
+        "link": "https://amzn.to/3DKBBvb",
+        "price": "$150-200",
         "level": "Entry-Mid",
         "features": [
           "Compact waterproof design",
@@ -431,8 +431,8 @@
     "amazonBestSellers": [
       {
         "name": "DJI Osmo Pocket 3",
-        "link": "https://www.amazon.com/DJI-Vlogging-Stabilization-Tracking-Photography/dp/B0CG19FGQ5/",
-        "price": "$519-579",
+        "link": "https://amzn.to/41FptUg",
+        "price": "$600-700",
         "level": "Advanced",
         "features": [
           "1-inch CMOS sensor",
@@ -445,7 +445,7 @@
       },
       {
         "name": "Canon PowerShot V10",
-        "link": "https://www.amazon.com/Canon-Wide-Angle-Face-Tracking-Microphone-Stabilization/dp/B0C5497S98/",
+        "link": "https://amzn.to/3XLOMCT",
         "price": "$349-429",
         "level": "Entry-Mid",
         "features": [
@@ -459,8 +459,8 @@
       },
       {
         "name": "Sony ZV-1",
-        "link": "https://www.amazon.com/Sony-Content-Creators-Vlogging-Microphone/dp/B08965JV8D/",
-        "price": "$648-749",
+        "link": "https://amzn.to/3DnzWvD",
+        "price": "$600-700",
         "level": "Mid-Advanced",
         "features": [
           "1.0-type Exmor RS CMOS sensor",
@@ -473,8 +473,8 @@
       },
       {
         "name": "DJI Pocket 2",
-        "link": "https://www.amazon.com/DJI-Pocket-Stabilizer-Pocket-Sized-ActiveTrack/dp/B08J7FL57P/",
-        "price": "$310-349",
+        "link": "https://amzn.to/43BkbvC",
+        "price": "$250-349",
         "level": "Mid-Range",
         "features": [
           "1/1.7-inch CMOS sensor",
@@ -487,8 +487,8 @@
       },
       {
         "name": "Sony FDR-AX43 UHD",
-        "link": "https://www.amazon.com/Sony-FDR-AX43-UHD-Handycam-Camcorder/dp/B084QBSQGW/",
-        "price": "$669-849",
+        "link": "https://amzn.to/4kK4JDt",
+        "price": "$600-700",
         "level": "Advanced",
         "features": [
           "1/2.5-inch Exmor R CMOS sensor",
@@ -503,7 +503,7 @@
     "best2025": [
       {
         "name": "Sony ZV-E1",
-        "link": "https://www.amazon.com/Sony-Full-Frame-Interchangeable-Mirrorless-Camera/dp/B0BZWNWCZ9/",
+        "link": "https://amzn.to/3XKjzQx",
         "price": "$2,000-2,200",
         "level": "Professional",
         "features": [
@@ -517,7 +517,7 @@
       },
       {
         "name": "Canon PowerShot V10",
-        "link": "https://www.amazon.com/Canon-Wide-Angle-Face-Tracking-Microphone-Stabilization/dp/B0C5497S98/",
+        "link": "https://amzn.to/4hnb0lH",
         "price": "$350-450",
         "level": "Mid-Advanced",
         "features": [
@@ -530,7 +530,7 @@
       },
       {
         "name": "Sony ZV-1 II",
-        "link": "https://www.amazon.com/Sony-Camera-Content-Creators-Vloggers/dp/B0C62F451G/",
+        "link": "https://amzn.to/4kztgLs",
         "price": "$750-800",
         "level": "Mid-Advanced",
         "features": [
@@ -544,8 +544,8 @@
       },
       {
         "name": "Panasonic LUMIX GH7",
-        "link": "https://www.amazon.com/Panasonic-Mirrorless-Post-Production-Compatible-DC-GH7BODY/dp/B0D613NW2M/",
-        "price": "$2,000-2,200",
+        "link": "https://amzn.to/4bN9Ezt",
+        "price": "$1,900-2,200",
         "level": "Professional",
         "features": [
           "Micro Four Thirds sensor",

@@ -8,14 +8,14 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import CameraCard from "./components/CameraCard";
 import camerasData from "../../public/cameras.json";
 
-// Kamera kategorileri için veri
+// Camera categories data
 const cameraCategories = [
   {
     id: "dslr",
     title: "DSLR Cameras",
     description: "Professional cameras with interchangeable lenses for the highest image quality",
     image: "/images/cameras/categories/dslr.webp",
-    color: "#00FFFF", // Neon mavi
+    color: "#00FFFF", // Neon blue
     link: "/dslr-cameras",
   },
   {
@@ -23,7 +23,7 @@ const cameraCategories = [
     title: "Mirrorless Cameras",
     description: "Compact professional cameras with advanced features and excellent image quality",
     image: "/images/cameras/categories/mirrorless.webp",
-    color: "#FF00FF", // Neon pembe
+    color: "#FF00FF", // Neon pink
     link: "/mirrorless-cameras",
   },
   {
@@ -31,7 +31,7 @@ const cameraCategories = [
     title: "Action Cameras",
     description: "Durable cameras for capturing your adventures in extreme conditions",
     image: "/images/cameras/categories/action.webp",
-    color: "#00FF00", // Neon yeşil
+    color: "#00FF00", // Neon green
     link: "/action-cameras",
   },
   {
@@ -39,7 +39,7 @@ const cameraCategories = [
     title: "Vlog Cameras",
     description: "Perfect cameras for content creators and vloggers with advanced video features",
     image: "/images/cameras/categories/vlog.webp",
-    color: "#FF5500", // Neon turuncu
+    color: "#FF5500", // Neon orange
     link: "/vlog-cameras",
   },
   {
@@ -47,25 +47,25 @@ const cameraCategories = [
     title: "Compact Cameras",
     description: "Portable, easy-to-use cameras for everyday photography",
     image: "/images/cameras/categories/compact.webp",
-    color: "#FFFF00", // Neon sarı
+    color: "#FFFF00", // Neon yellow
     link: "/compact-cameras",
   },
 ];
 
-// Anasayfada gösterilecek kameraları JSON dosyasından çeken fonksiyon
+// Function to get featured cameras for the homepage from JSON
 const getHomePageFeaturedCameras = () => {
-  // Her kategoriden en popüler 1 kamerayı seçiyoruz
+  // Select the most popular camera from each category
   const featuredDSLR = camerasData.dslr.best2025?.[0] || camerasData.dslr.amazonBestSellers[0];
   const featuredMirrorless = camerasData.mirrorless.best2025?.[0] || camerasData.mirrorless.amazonBestSellers[0];
   const featuredAction = camerasData.action.best2025?.[0] || camerasData.action.amazonBestSellers[0];
   const featuredVlog = camerasData.vlog.best2025?.[0] || camerasData.vlog.amazonBestSellers[0];
   const featuredCompact = camerasData.compact.best2025?.[0] || camerasData.compact.amazonBestSellers[0];
   
-  // En çok satan kameralardan 1'er tane seçiyoruz
+  // Select one top-selling camera from each category
   const topSellingDSLR = camerasData.dslr.amazonBestSellers[0];
   const topSellingMirrorless = camerasData.mirrorless.amazonBestSellers[0];
   
-  // Kamera verilerini CameraCard bileşenine uygun formata dönüştürüyoruz
+  // Convert camera data to the format used by the CameraCard component
   const formatCamera = (camera: {
     name: string; 
     imageUrl?: string; 
@@ -96,7 +96,7 @@ const getHomePageFeaturedCameras = () => {
     };
   };
   
-  // Tüm kategorileri birleştiriyoruz
+  // Combine all categories
   return [
     formatCamera(featuredDSLR, "DSLR", "blue", 0),
     formatCamera(featuredMirrorless, "Mirrorless", "purple", 1),
@@ -108,11 +108,11 @@ const getHomePageFeaturedCameras = () => {
   ];
 };
 
-// Anasayfada önerilen kameralar için veri (JSON'dan otomatik çekiliyor)
+// Featured cameras data for the homepage (automatically fetched from JSON)
 const featuredCameras = getHomePageFeaturedCameras();
 
 export default function Home() {
-  // GSAP animasyonları için referanslar
+  // GSAP animations for references
   const heroRef = useRef(null);
   const sliderRef = useRef<HTMLDivElement>(null);
   const slidesRef = useRef([]);
@@ -315,7 +315,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-gray-900 text-white overflow-hidden">
-      {/* Hero bölümü */}
+      {/* Hero section */}
       <section 
         ref={heroRef} 
         className="relative h-screen flex items-center justify-center overflow-hidden"
@@ -323,14 +323,14 @@ export default function Home() {
           background: "radial-gradient(circle at center, rgba(25,25,35,1) 0%, rgba(10,10,20,1) 100%)"
         }}
       >
-        {/* Arka plan parıltı efekti */}
+        {/* Background glow effect */}
         <div className="absolute inset-0 opacity-30">
           <div className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full bg-[#FF00FF] blur-[120px]"></div>
           <div className="absolute bottom-1/4 right-1/4 w-64 h-64 rounded-full bg-[#00FFFF] blur-[120px]"></div>
           <div className="absolute top-1/2 right-1/3 w-64 h-64 rounded-full bg-[#FFFF00] blur-[120px]"></div>
         </div>
         
-        {/* Neon renkli parçacıklar (sadece görsel efekt) */}
+        {/* Neon colored particles (visual effect only) */}
         <div className="absolute inset-0 overflow-hidden">
           {particles.map((particle) => (
             <div 
@@ -376,7 +376,7 @@ export default function Home() {
         </div>
       </section>
       
-      {/* Döngüsel slider bölümü */}
+      {/* Carousel slider section */}
       <section 
         ref={sliderRef} 
         className="py-24 relative"
@@ -384,7 +384,7 @@ export default function Home() {
           background: "linear-gradient(to bottom, rgba(10,10,20,1) 0%, rgba(25,25,35,1) 50%, rgba(15,15,25,1) 100%)"
         }}
       >
-        {/* Arka plan parıltı efekti */}
+        {/* Background glow effect */}
         <div className="absolute inset-0 opacity-30 overflow-hidden">
           <div className="absolute top-1/3 right-1/4 w-72 h-72 rounded-full bg-[#00FFFF] blur-[150px]"></div>
           <div className="absolute bottom-1/3 left-1/4 w-72 h-72 rounded-full bg-[#FF00FF] blur-[150px]"></div>
@@ -398,14 +398,14 @@ export default function Home() {
           </h2>
           
           <div className="slider-container relative overflow-hidden rounded-3xl shadow-[0_0_80px_rgba(255,0,255,0.2)] animate-fade-in">
-            {/* Ana slider */}
+            {/* Main slider */}
             <div 
               className="relative h-[450px] md:h-[600px] lg:h-[700px] overflow-hidden"
               style={{
                 background: "#0a0a0f"
               }}
             >
-              {/* Manuel ileri/geri navigasyon butonları */}
+              {/* Manual previous/next navigation buttons */}
               <button 
                 onClick={() => setCurrentSlide((prev) => (prev === 0 ? cameraCategories.length - 1 : prev - 1))}
                 className="absolute left-4 top-1/2 transform -translate-y-1/2 z-30 w-12 h-12 md:w-16 md:h-16 flex items-center justify-center rounded-full bg-black/30 backdrop-blur-md text-white hover:bg-black/50 transition-all duration-300"
@@ -426,7 +426,7 @@ export default function Home() {
                 </svg>
               </button>
                 
-              {/* Slaytlar */}
+              {/* Slides */}
             {cameraCategories.map((category, index) => (
               <div 
                 key={category.id}
@@ -434,14 +434,14 @@ export default function Home() {
                   index === currentSlide ? "opacity-100 z-10" : "opacity-0 z-0"
                 }`}
                 >
-                  {/* Arkaplan ve sınır efekti */}
+                  {/* Background and border effect */}
                   <div 
                     className="absolute inset-0 overflow-hidden bg-cover bg-center"
                     style={{
                       backgroundImage: `linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.6)), url(${category.image})`
                     }}
                   >
-                    {/* Neon sınır efekti */}
+                    {/* Neon border effect */}
                     <div 
                       className={`absolute inset-y-0 left-0 w-1 md:w-2`}
                       style={{ 
@@ -451,7 +451,7 @@ export default function Home() {
                     ></div>
                   </div>
                   
-                  {/* İçerik */}
+                  {/* Content */}
                   <div className="absolute bottom-0 left-0 p-8 md:p-16 w-full md:max-w-3xl bg-gradient-to-t from-black/80 via-black/50 to-transparent">
                     <h3 
                       className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4"
@@ -475,7 +475,7 @@ export default function Home() {
               </div>
             ))}
             
-              {/* Slider mini preview ve göstergeler */}
+              {/* Slider mini preview and indicators */}
               <div className="absolute bottom-6 right-6 z-30 hidden md:flex flex-col items-end gap-4">
                 <div className="flex gap-3">
                   {cameraCategories.map((category, index) => (
@@ -501,7 +501,7 @@ export default function Home() {
                   ))}
                 </div>
                 
-                {/* Mevcut/toplam slayt göstergesi */}
+                {/* Current/total slide indicator */}
                 <div className="text-white bg-black/30 backdrop-blur-md px-4 py-1 rounded-full">
                   <span className="font-semibold text-lg">{currentSlide + 1}</span>
                   <span className="mx-1 opacity-60">/</span>
@@ -510,7 +510,7 @@ export default function Home() {
               </div>
             </div>
             
-            {/* Mobil cihazlar için sayfa noktaları */}
+            {/* Page dots for mobile devices */}
             <div className="md:hidden absolute bottom-4 left-1/2 transform -translate-x-1/2 z-20 flex gap-3">
               {cameraCategories.map((_, index) => (
                 <button
@@ -527,9 +527,9 @@ export default function Home() {
         </div>
       </section>
       
-      {/* Öne Çıkan Kamera Modelleri */}
+      {/* Featured Camera Models */}
       <section ref={featuredRef} className="py-16 px-4 bg-gradient-to-b from-gray-900 to-gray-800 rounded-t-[40px] shadow-lg relative">
-        {/* Arka plan efektleri */}
+        {/* Background effects */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-1/4 right-1/4 w-80 h-80 rounded-full bg-blue-500/10 blur-[100px]"></div>
           <div className="absolute bottom-1/4 left-1/4 w-80 h-80 rounded-full bg-purple-500/10 blur-[100px]"></div>
@@ -546,7 +546,7 @@ export default function Home() {
             Discover our handpicked selection of top-rated cameras that deliver exceptional performance for every photography need
           </p>
           
-          {/* Kamera Kartları Grid Düzeni */}
+          {/* Camera Cards Grid Layout */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
             {featuredCameras.slice(0, 8).map((camera, index) => (
               <CameraCard
@@ -559,7 +559,7 @@ export default function Home() {
             ))}
           </div>
           
-          {/* Tüm kameraları görüntüle butonu */}
+          {/* View all cameras button */}
           <div className="text-center mt-12">
             <Link 
               href="/cameras"
@@ -574,19 +574,19 @@ export default function Home() {
         </div>
       </section>
       
-      {/* Kamera seçim rehberi */}
+      {/* Camera Selection Guide */}
       <section ref={guideRef} className="py-24 relative overflow-hidden">
-        {/* Arka plan */}
+        {/* Background */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#0f111a] via-[#131626] to-[#0f111a]"></div>
         
-        {/* Dekoratif elemanlar */}
+        {/* Decorative elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-0 left-0 w-full h-64 bg-gradient-to-b from-[#FF00FF]/10 to-transparent"></div>
           <div className="absolute bottom-0 right-0 w-full h-64 bg-gradient-to-t from-[#00FFFF]/10 to-transparent"></div>
           <div className="absolute top-1/4 right-[10%] w-72 h-72 rounded-full bg-[#FF00FF]/5 blur-[80px]"></div>
           <div className="absolute bottom-1/3 left-[5%] w-80 h-80 rounded-full bg-[#00FFFF]/5 blur-[100px]"></div>
           
-          {/* Dekoratif kamera siluetleri */}
+          {/* Decorative camera silhouettes */}
           <div className="absolute -right-20 top-20 w-80 h-80 opacity-5">
             <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
               <path d="M12 17.5C15.0376 17.5 17.5 15.0376 17.5 12C17.5 8.96243 15.0376 6.5 12 6.5C8.96243 6.5 6.5 8.96243 6.5 12C6.5 15.0376 8.96243 17.5 12 17.5Z" />
@@ -617,13 +617,13 @@ export default function Home() {
           </div>
           
           <div className="guide-content max-w-6xl mx-auto">
-            {/* Adımları içeren kartlar - modern düzen */}
+            {/* Step cards - modern layout */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {/* Adım 1 */}
+              {/* Step 1 */}
               <div 
                 className="relative overflow-hidden bg-gray-800/40 backdrop-blur-sm rounded-2xl p-8 border border-white/5 transition-all duration-500 hover:shadow-[0_0_30px_rgba(255,255,0,0.15)] hover:border-[#FFFF00]/20 group"
               >
-                {/* Arkaplan parlama efekti */}
+                {/* Background glow effect */}
                 <div className="absolute inset-0 bg-gradient-to-br from-[#FFFF00]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 
                 <div className="flex items-start gap-6 relative z-10">
@@ -657,11 +657,11 @@ export default function Home() {
                 </div>
               </div>
               
-              {/* Adım 2 */}
+              {/* Step 2 */}
               <div 
                 className="relative overflow-hidden bg-gray-800/40 backdrop-blur-sm rounded-2xl p-8 border border-white/5 transition-all duration-500 hover:shadow-[0_0_30px_rgba(255,0,255,0.15)] hover:border-[#FF00FF]/20 group"
               >
-                {/* Arkaplan parlama efekti */}
+                {/* Background glow effect */}
                 <div className="absolute inset-0 bg-gradient-to-br from-[#FF00FF]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 
                 <div className="flex items-start gap-6 relative z-10">
@@ -691,11 +691,11 @@ export default function Home() {
                 </div>
               </div>
               
-              {/* Adım 3 */}
+              {/* Step 3 */}
               <div 
                 className="relative overflow-hidden bg-gray-800/40 backdrop-blur-sm rounded-2xl p-8 border border-white/5 transition-all duration-500 hover:shadow-[0_0_30px_rgba(0,255,255,0.15)] hover:border-[#00FFFF]/20 group"
               >
-                {/* Arkaplan parlama efekti */}
+                {/* Background glow effect */}
                 <div className="absolute inset-0 bg-gradient-to-br from-[#00FFFF]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 
                 <div className="flex items-start gap-6 relative z-10">
@@ -743,11 +743,11 @@ export default function Home() {
                 </div>
               </div>
               
-              {/* Adım 4 */}
+              {/* Step 4 */}
               <div 
                 className="relative overflow-hidden bg-gray-800/40 backdrop-blur-sm rounded-2xl p-8 border border-white/5 transition-all duration-500 hover:shadow-[0_0_30px_rgba(0,255,0,0.15)] hover:border-[#00FF00]/20 group"
               >
-                {/* Arkaplan parlama efekti */}
+                {/* Background glow effect */}
                 <div className="absolute inset-0 bg-gradient-to-br from-[#00FF00]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 
                 <div className="flex items-start gap-6 relative z-10">
@@ -795,9 +795,9 @@ export default function Home() {
         </div>
       </section>
       
-      {/* CTA bölümü */}
+      {/* CTA section */}
       <section ref={ctaRef} className="py-20 bg-gray-800 relative overflow-hidden">
-        {/* Neon ışık efekti */}
+        {/* Neon light effect */}
         <div className="absolute inset-0 flex items-center justify-center overflow-hidden opacity-30">
           <div className="w-[800px] h-[800px] rounded-full bg-[#FF00FF] blur-[150px]"></div>
           <div className="absolute w-[600px] h-[600px] rounded-full bg-[#00FFFF] blur-[150px] -right-64"></div>
@@ -835,7 +835,7 @@ export default function Home() {
         </div>
       </section>
       
-      {/* Keyframe animasyonları */}
+      {/* Keyframe animations */}
       <style jsx global>{`
         @keyframes float {
           0% { transform: translateY(0) translateX(0); }
