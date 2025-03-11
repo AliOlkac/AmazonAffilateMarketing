@@ -84,14 +84,14 @@ export default function CameraCard({ camera, index, hoveredCard, handleCardHover
   return (
     <div 
       key={camera.id} 
-      className={`bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg transition-all duration-500 transform ${
+      className={`bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg transition-all duration-500 transform flex flex-col h-full ${
         hoveredCard === index ? 'scale-[1.02] shadow-2xl' : 'hover:shadow-xl hover:-translate-y-2'
       }`}
       onMouseEnter={() => handleCardHover(index)}
       onMouseLeave={() => handleCardHover(null)}
     >
       {/* Kamera Görseli */}
-      <div className="h-72 md:h-80 lg:h-96 overflow-hidden relative bg-gray-100 dark:bg-gray-700">
+      <div className="h-56 md:h-64 lg:h-72 overflow-hidden relative bg-gray-100 dark:bg-gray-700">
         <Image 
           src={camera.image} 
           alt={camera.name}
@@ -123,23 +123,23 @@ export default function CameraCard({ camera, index, hoveredCard, handleCardHover
       </div>
 
       {/* Kamera Bilgileri */}
-      <div className="p-6">
-        <h3 className="text-xl font-bold mb-2 text-gray-800 dark:text-white group">
+      <div className="p-5 flex flex-col flex-grow">
+        <h3 className="text-lg font-bold mb-2 text-gray-800 dark:text-white group">
           {camera.name}
           <span className={`block h-0.5 ${colorClasses.highlight} transform scale-x-0 transition-transform duration-300 ${
             hoveredCard === index ? 'scale-x-100' : ''
           }`}></span>
         </h3>
-        <p className="text-gray-600 dark:text-gray-300 mb-4">{camera.description}</p>
+        <p className="text-sm text-gray-600 dark:text-gray-300 mb-3">{camera.description}</p>
         
-        <div className="mb-4">
-          <h4 className="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-2">Key Features:</h4>
-          <ul className="space-y-2">
-            {camera.key_features.map((feature, idx) => (
-              <li key={idx} className={`flex items-start gap-2 text-sm text-gray-600 dark:text-gray-300 transition-transform duration-300 ${
+        <div className="mb-3 flex-grow">
+          <h4 className="text-xs font-semibold text-gray-500 dark:text-gray-400 mb-2">Key Features:</h4>
+          <ul className="space-y-1">
+            {camera.key_features.slice(0, 4).map((feature, idx) => (
+              <li key={idx} className={`flex items-start gap-2 text-xs text-gray-600 dark:text-gray-300 transition-transform duration-300 ${
                 hoveredCard === index ? `transform translate-x-${idx}` : ''
               }`}>
-                <FaCheckCircle className={`${colorClasses.icon} mt-1 flex-shrink-0 ${
+                <FaCheckCircle className={`${colorClasses.icon} mt-0.5 flex-shrink-0 ${
                   hoveredCard === index ? 'animate-bounce' : ''
                 }`} />
                 <span>{feature}</span>
@@ -149,35 +149,42 @@ export default function CameraCard({ camera, index, hoveredCard, handleCardHover
         </div>
 
         {/* Hover durumunda gösterilen detaylı açıklama */}
-        <div className={`mb-4 overflow-hidden transition-all duration-300 ${
-          hoveredCard === index ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'
+        <div className={`mb-3 overflow-hidden transition-all duration-300 ${
+          hoveredCard === index ? 'max-h-20 opacity-100' : 'max-h-0 opacity-0'
         }`}>
-          <p className="text-sm text-gray-600 dark:text-gray-300 italic">
+          <p className="text-xs text-gray-600 dark:text-gray-300 italic">
             {camera.detailed_description}
           </p>
         </div>
 
-        <div className="flex items-center justify-between">
-          <div className="text-xl font-bold text-gray-800 dark:text-white">{camera.price}</div>
-          <div className="flex gap-2">
+        {/* Fiyat ve butonlar - alt kısım */}
+        <div className="flex flex-col gap-2 mt-auto">
+          {/* Fiyat bilgisi */}
+          <div className="text-lg font-bold text-gray-800 dark:text-white">{camera.price}</div>
+          
+          {/* Butonlar */}
+          <div className="flex gap-2 justify-between">
             <a 
               href={camera.amazon_link} 
               target="_blank" 
               rel="noopener noreferrer"
-              className={`px-3 py-2 sm:px-4 text-sm lg:text-base ${colorClasses.badge} hover:opacity-90 text-white rounded-lg flex items-center gap-1 sm:gap-2 transition-all duration-300 ${
+              className={`flex-1 px-3 py-2 text-center text-sm ${colorClasses.badge} hover:opacity-90 text-white rounded-lg flex items-center justify-center gap-1 transition-all duration-300 ${
                 hoveredCard === index ? 'opacity-90 shadow-lg' : ''
               }`}
             >
-              <FaAmazon className={hoveredCard === index ? 'animate-bounce' : ''} /> <span className="hidden sm:inline">View on Amazon</span><span className="sm:hidden">Amazon</span>
+              <FaAmazon className={hoveredCard === index ? 'animate-bounce' : ''} /> 
+              <span className="hidden sm:inline">View on Amazon</span>
+              <span className="sm:hidden">Amazon</span>
             </a>
             
             {/* Daha fazla bilgi butonu - eğer page_link varsa göster */}
             {camera.page_link && (
               <Link 
                 href={camera.page_link}
-                className={`px-3 py-2 sm:px-4 text-sm lg:text-base border border-${colorClasses.badge.replace('bg-', '')} text-${colorClasses.icon} rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-300`}
+                className={`flex-1 px-3 py-2 text-center text-sm border border-${colorClasses.badge.replace('bg-', '')} text-${colorClasses.icon} rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-300`}
               >
-                <span className="hidden sm:inline">More Info</span><span className="sm:hidden">Info</span>
+                <span className="hidden sm:inline">More Info</span>
+                <span className="sm:hidden">Info</span>
               </Link>
             )}
           </div>

@@ -5,6 +5,8 @@ import Link from "next/link";
 import { FaArrowRight } from "react-icons/fa";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import CameraCard from "./components/CameraCard";
+import camerasData from "../../public/cameras.json";
 
 // Kamera kategorileri için veri
 const cameraCategories = [
@@ -50,48 +52,78 @@ const cameraCategories = [
   },
 ];
 
-// Öne çıkan kameralar için veri
-const featuredCameras = [
-  {
-    id: "sony-a7iv",
-    title: "Sony A7 IV",
-    category: "Mirrorless",
-    image: "/images/cameras/hero-bg.webp",
-    price: "$2,499",
-    rating: 4.9,
-    link: "/mirrorless-cameras",
-  },
-  {
-    id: "canon-r6",
-    title: "Canon EOS R6",
-    category: "Mirrorless",
-    image: "/images/cameras/hero-bg.webp",
-    price: "$2,299",
-    rating: 4.8,
-    link: "/mirrorless-cameras",
-  },
-  {
-    id: "gopro-hero11",
-    title: "GoPro Hero 11",
-    category: "Action",
-    image: "/images/cameras/hero-bg.webp",
-    price: "$399",
-    rating: 4.7,
-    link: "/action-cameras",
-  },
-];
+// Anasayfada gösterilecek kameraları JSON dosyasından çeken fonksiyon
+const getHomePageFeaturedCameras = () => {
+  // Her kategoriden en popüler 1 kamerayı seçiyoruz
+  const featuredDSLR = camerasData.dslr.best2025?.[0] || camerasData.dslr.amazonBestSellers[0];
+  const featuredMirrorless = camerasData.mirrorless.best2025?.[0] || camerasData.mirrorless.amazonBestSellers[0];
+  const featuredAction = camerasData.action.best2025?.[0] || camerasData.action.amazonBestSellers[0];
+  const featuredVlog = camerasData.vlog.best2025?.[0] || camerasData.vlog.amazonBestSellers[0];
+  const featuredCompact = camerasData.compact.best2025?.[0] || camerasData.compact.amazonBestSellers[0];
+  
+  // En çok satan kameralardan 1'er tane seçiyoruz
+  const topSellingDSLR = camerasData.dslr.amazonBestSellers[0];
+  const topSellingMirrorless = camerasData.mirrorless.amazonBestSellers[0];
+  
+  // Kamera verilerini CameraCard bileşenine uygun formata dönüştürüyoruz
+  const formatCamera = (camera: {
+    name: string; 
+    imageUrl?: string; 
+    level: string; 
+    idealUser: string; 
+    price: string; 
+    features: string[]; 
+    whyGreat?: string; 
+    link: string;
+  }, category: string, categoryColor: string, index: number, kameraId?: number) => {
+    const imageName = camera.name.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]+/g, '');
+    const correctImageUrl = camera.imageUrl ? camera.imageUrl.replace('.jpg', '.png') : null;
+    const fallbackImage = "/images/cameras/hero-bg.webp";
+    
+    return {
+      id: kameraId || index + 1,
+      name: camera.name,
+      image: correctImageUrl || `/images/cameras/${imageName}.png` || fallbackImage,
+      rating: 4.5,
+      category: category,
+      categoryColor: categoryColor,
+      description: `Best ${camera.level} ${category}: Perfect for ${camera.idealUser}`,
+      price: camera.price,
+      key_features: camera.features,
+      amazon_link: camera.link,
+      page_link: `/${category.toLowerCase()}-cameras`,
+      detailed_description: camera.whyGreat || `Perfect for ${camera.idealUser}. Advanced ${camera.level} ${category.toLowerCase()} camera with excellent features.`
+    };
+  };
+  
+  // Tüm kategorileri birleştiriyoruz
+  return [
+    formatCamera(featuredDSLR, "DSLR", "blue", 0),
+    formatCamera(featuredMirrorless, "Mirrorless", "purple", 1),
+    formatCamera(featuredAction, "Action", "cyan", 2),
+    formatCamera(featuredVlog, "Vlog", "green", 3),
+    formatCamera(featuredCompact, "Compact", "pink", 4),
+    formatCamera(topSellingDSLR, "DSLR", "blue", 5),
+    formatCamera(topSellingMirrorless, "Mirrorless", "purple", 6)
+  ];
+};
+
+// Anasayfada önerilen kameralar için veri (JSON'dan otomatik çekiliyor)
+const featuredCameras = getHomePageFeaturedCameras();
 
 export default function Home() {
   // GSAP animasyonları için referanslar
   const heroRef = useRef(null);
   const sliderRef = useRef<HTMLDivElement>(null);
-  const categoriesRef = useRef(null);
+  const slidesRef = useRef([]);
   const featuredRef = useRef(null);
   const guideRef = useRef(null);
   const ctaRef = useRef(null);
   
   // Slider için state
   const [currentSlide, setCurrentSlide] = React.useState(0);
+  // Hover edilen kart için state
+  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
   // Neon parçacıkları istemci tarafında render etmek için state
   const [particles, setParticles] = useState<Array<{
     id: number;
@@ -104,12 +136,15 @@ export default function Home() {
     opacity: number;
     animation: string;
   }>>([]);
-
-  // Explore butonuna tıklanıldığında slider bölümüne kaydır
+  
+  // Kart hover işleyicisi
+  const handleCardHover = (id: number | null) => {
+    setHoveredCard(id);
+  };
+  
+  // Slider bölümüne kaydırmak için fonksiyon
   const scrollToSlider = () => {
-    if (sliderRef.current) {
-      sliderRef.current.scrollIntoView({ behavior: 'smooth' });
-    }
+    sliderRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
   // Neon parçacıkları yalnızca istemci tarafında oluştur
@@ -204,7 +239,7 @@ export default function Home() {
               stagger: 0.2,
               duration: 0.8,
               scrollTrigger: {
-                trigger: categoriesRef.current,
+                trigger: slidesRef.current,
                 start: "top 70%",
                 toggleActions: "play none none none"
               }
@@ -493,8 +528,15 @@ export default function Home() {
       </section>
       
       {/* Öne Çıkan Kamera Modelleri */}
-      <section ref={categoriesRef} className="py-16 px-4 bg-gradient-to-b from-gray-900 to-gray-800 rounded-t-[40px] shadow-lg">
-        <div className="container mx-auto">
+      <section ref={featuredRef} className="py-16 px-4 bg-gradient-to-b from-gray-900 to-gray-800 rounded-t-[40px] shadow-lg relative">
+        {/* Arka plan efektleri */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-1/4 right-1/4 w-80 h-80 rounded-full bg-blue-500/10 blur-[100px]"></div>
+          <div className="absolute bottom-1/4 left-1/4 w-80 h-80 rounded-full bg-purple-500/10 blur-[100px]"></div>
+          <div className="absolute top-3/4 right-1/3 w-80 h-80 rounded-full bg-cyan-500/10 blur-[100px]"></div>
+        </div>
+
+        <div className="container mx-auto relative z-10">
           <h2 className="text-3xl md:text-4xl font-bold mb-2 text-center">
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFFF00] via-[#00FF00] to-[#00FFFF]">
               Featured Camera Models
@@ -504,112 +546,16 @@ export default function Home() {
             Discover our handpicked selection of top-rated cameras that deliver exceptional performance for every photography need
           </p>
           
-          {/* Kamera Kartları - DSLR sayfasındaki tasarıma göre yenilendi */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {featuredCameras.map((camera) => (
-              <div 
+          {/* Kamera Kartları Grid Düzeni */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
+            {featuredCameras.slice(0, 8).map((camera, index) => (
+              <CameraCard
                 key={camera.id}
-                className="bg-gray-800/60 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-500 border border-gray-700/50"
-              >
-                {/* Kamera Görseli */}
-                <div className="h-64 overflow-hidden relative bg-gray-900">
-                  {/* Rating badge overlay */}
-                  <div className="absolute top-3 right-3 bg-yellow-400 text-gray-900 py-1 px-3 rounded-full flex items-center gap-1 font-medium z-10">
-                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                    </svg>
-                    <span>{camera.rating}</span>
-                  </div>
-
-                  {/* Category badge */}
-                  <div className="absolute top-3 left-3 bg-black/50 backdrop-blur-sm text-white py-1 px-3 rounded-full text-sm font-medium z-10">
-                    {camera.category}
-                  </div>
-
-                  {/* Price badge */}
-                  <div className="absolute bottom-3 right-3 bg-black/50 backdrop-blur-sm text-white py-1 px-3 rounded-full text-sm font-bold z-10">
-                    {camera.price}
-                  </div>
-
-                  {/* Background image */}
-                  <div 
-                    className="w-full h-full bg-cover bg-center transition-transform duration-700 hover:scale-110 p-4 flex items-center justify-center"
-                    style={{ backgroundImage: `linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.6)), url(${camera.image})` }}
-                  >
-                    {/* Additional image - can be empty for now */}
-                  </div>
-                </div>
-
-                {/* Kamera Bilgileri */}
-                <div className="p-6">
-                  <h3 className="text-xl font-bold mb-3 text-white group flex items-center gap-2">
-                    {camera.title}
-                    <span className="block h-0.5 bg-blue-500 w-0 group-hover:w-full transition-all duration-300"></span>
-                  </h3>
-                  
-                  {/* Key Features */}
-                  <div className="mb-5">
-                    <h4 className="text-sm font-semibold text-gray-400 mb-3">Key Features:</h4>
-                    <ul className="space-y-2">
-                      {camera.category === 'Mirrorless' && (
-                        <>
-                          <li className="flex items-start gap-2 text-sm text-gray-300">
-                            <svg className="w-4 h-4 text-green-500 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                            </svg>
-                            <span>Full-frame 33MP sensor</span>
-                          </li>
-                          <li className="flex items-start gap-2 text-sm text-gray-300">
-                            <svg className="w-4 h-4 text-green-500 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                            </svg>
-                            <span>4K 60fps video recording</span>
-                          </li>
-                          <li className="flex items-start gap-2 text-sm text-gray-300">
-                            <svg className="w-4 h-4 text-green-500 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                            </svg>
-                            <span>Superior low-light performance</span>
-                          </li>
-                        </>
-                      )}
-                      {camera.category === 'Action' && (
-                        <>
-                          <li className="flex items-start gap-2 text-sm text-gray-300">
-                            <svg className="w-4 h-4 text-green-500 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                            </svg>
-                            <span>5.3K video resolution</span>
-                          </li>
-                          <li className="flex items-start gap-2 text-sm text-gray-300">
-                            <svg className="w-4 h-4 text-green-500 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                            </svg>
-                            <span>Waterproof to 10m</span>
-                          </li>
-                          <li className="flex items-start gap-2 text-sm text-gray-300">
-                            <svg className="w-4 h-4 text-green-500 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                            </svg>
-                            <span>Horizon lock stabilization</span>
-                          </li>
-                        </>
-                      )}
-                    </ul>
-                  </div>
-
-                  {/* CTA Button */}
-                  <Link 
-                    href={camera.link}
-                    className="w-full inline-flex items-center justify-center gap-2 py-3 px-4 bg-gradient-to-r from-blue-500 to-violet-600 hover:from-blue-600 hover:to-violet-700 text-white rounded-lg transition-all duration-300 hover:shadow-lg"
-                  >
-                    View Details 
-                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
-                    </svg>
-                  </Link>
-                </div>
-              </div>
+                camera={camera}
+                index={index}
+                hoveredCard={hoveredCard}
+                handleCardHover={handleCardHover}
+              />
             ))}
           </div>
           
@@ -617,7 +563,7 @@ export default function Home() {
           <div className="text-center mt-12">
             <Link 
               href="/cameras"
-              className="inline-flex items-center justify-center gap-2 py-3 px-8 bg-blue-500 hover:bg-blue-600 text-white rounded-full transition-all duration-300 shadow-lg hover:shadow-xl"
+              className="inline-flex items-center justify-center gap-2 py-3 px-8 bg-gradient-to-r from-blue-500 to-purple-500 hover:from-purple-500 hover:to-blue-500 text-white rounded-full transition-all duration-300 shadow-lg hover:shadow-[0_0_20px_rgba(129,140,248,0.6)] transform hover:scale-105"
             >
               View All Cameras 
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
