@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google';
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import FooterWrapper from "./components/FooterWrapper";
+import JsonLd from "./components/JsonLd";
 
 const inter = Inter({
   subsets: ['latin'],
@@ -47,6 +48,34 @@ export const metadata: Metadata = {
   },
 };
 
+// Web sitesi için JSON-LD yapılandırılmış veri
+const websiteJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'Best Camera Review',
+  url: 'https://bestcamerareview.com',
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: 'https://bestcamerareview.com/search?q={search_term_string}',
+    'query-input': 'required name=search_term_string'
+  },
+  description: 'Expert camera reviews, buying guides, and comparisons for DSLR, mirrorless, action, vlog, and compact cameras.',
+};
+
+// Organizasyon için JSON-LD yapılandırılmış veri
+const organizationJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Best Camera Review',
+  url: 'https://bestcamerareview.com',
+  logo: 'https://bestcamerareview.com/images/logo.png',
+  sameAs: [
+    'https://twitter.com/bestcamerareview',
+    'https://facebook.com/bestcamerareview',
+    'https://instagram.com/bestcamerareview'
+  ]
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -57,6 +86,8 @@ export default function RootLayout({
       <body
         className={`${inter.className} antialiased min-h-screen flex flex-col`}
       >
+        <JsonLd data={websiteJsonLd} />
+        <JsonLd data={organizationJsonLd} />
         <Navbar />
         <main className="flex-grow">{children}</main>
         <FooterWrapper />

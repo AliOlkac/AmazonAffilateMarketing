@@ -58,7 +58,7 @@ Bu yol haritası, Amazon affiliate programıyla gelir elde etmek amacıyla kamer
   
   - **Gruba Özel**:
     - **DSLR Kameralar:**
-      - "best dslr camera 2024"
+      - "best dslr camera 2025"
       - "entry level dslr camera"
       - "professional dslr cameras"
       - "canon vs nikon dslr comparison"
@@ -464,31 +464,33 @@ Bu yol haritası, projenin geliştirme, içerik, SEO, analiz ve uzun vadeli büy
    - [x] Grup sayfaları (Kategori sayfaları)
    - [x] Tum sayfalardaki Tum icerik: Gorseller,yazı icerikleri, ürün bilgileri, hepsi düzenlenecek
 
-- [ ] C2. SEO yapılandırmasını gerçekleştirme
+- [x] C2. Tasarım ve kullanıcı arayüzü geliştirme
+   - [x] Tailwind CSS entegrasyonu
+   - [x] Responsive tasarım oluşturma
+   - [x] UI bileşenlerini geliştirme (header, footer, navigation)
+   - [x] Ana sayfa tasarımı
+   - [x] Kategori sayfaları tasarımı
+   - [x] Ürün inceleme sayfaları tasarımı
+
+- [ ] C3. SEO yapılandırmasını gerçekleştirme
    - [ ] Meta etiketleri ve başlık yapılandırması
    - [ ] Site haritası ve robots.txt oluşturma
    - [ ] Schema markup ekleme
-- [ ] C3. Tasarım ve kullanıcı arayüzü geliştirme
-   - [ ] Tailwind CSS entegrasyonu
-   - [ ] Responsive tasarım oluşturma
-   - [ ] UI bileşenlerini geliştirme (header, footer, navigation)
-   - [ ] Ana sayfa tasarımı
-   - [ ] Kategori sayfaları tasarımı
-   - [ ] Ürün inceleme sayfaları tasarımı
+
 
 ### D. İçerik ve Affiliate Entegrasyonu
-- [ ] D1. Amazon Associates programına kaydolma
-- [ ] D2. Her kamera grubu için "Best X" lists oluşturma
-   - [ ] DSLR kameralar listesi
-   - [ ] Aynasız kameralar listesi
-   - [ ] Aksiyon kameraları listesi
-   - [ ] Vlog kameraları listesi
-- [ ] D3. Ürün inceleme sayfaları oluşturma
-- [ ] D4. Amazon affiliate linklerini entegre etme
-- [ ] D5. Görsel ve multimedya içerik ekleme
-   - [ ] Yüksek kaliteli ürün fotoğrafları ekleme
-   - [ ] Video içerik entegrasyonu
-   - [ ] İnfografikler ve karşılaştırma tabloları oluşturma
+- [x] D1. Amazon Associates programına kaydolma
+- [x] D2. Her kamera grubu için "Best X" lists oluşturma
+   - [x] DSLR kameralar listesi
+   - [x] Aynasız kameralar listesi
+   - [x] Aksiyon kameraları listesi
+   - [x] Vlog kameraları listesi
+- [x] D3. Ürün inceleme sayfaları oluşturma
+- [x] D4. Amazon affiliate linklerini entegre etme
+- [x] D5. Görsel ve multimedya içerik ekleme
+   - [x] Yüksek kaliteli ürün fotoğrafları ekleme
+   - [x] Video içerik entegrasyonu
+   - [x] İnfografikler ve karşılaştırma tabloları oluşturma
 
 ### E. SEO ve Trafik Stratejisi Uygulama
 - [ ] E1. On-Page SEO optimizasyonu

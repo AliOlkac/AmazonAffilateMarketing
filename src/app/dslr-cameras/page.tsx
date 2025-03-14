@@ -8,6 +8,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import CameraCard from "../components/CameraCard";
 import camerasData from '../../../public/cameras.json';
+import JsonLd from "../components/JsonLd";
 
 // Metadata for DSLR Cameras page - Metadata doesn't work in client components in Next.js, so we removed it
 // export const metadata = {
@@ -134,8 +135,51 @@ export default function DSLRCameras() {
     setHoveredCard(index);
   };
 
+  // DSLR kameralar sayfası için JSON-LD yapılandırılmış veri
+  const dslrPageJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: 'Best DSLR Cameras | 2025 Buying Guide',
+    description: 'The best DSLR cameras of 2025, features, price comparison, and professional reviews.',
+    url: 'https://bestcamerareview.com/dslr-cameras',
+    mainEntity: {
+      '@type': 'ItemList',
+      itemListElement: getDslrCameras().map((camera, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        item: {
+          '@type': 'Product',
+          name: camera.name,
+          description: camera.description,
+          image: camera.image,
+          offers: {
+            '@type': 'Offer',
+            price: camera.price.replace('$', ''),
+            priceCurrency: 'USD',
+            availability: 'https://schema.org/InStock',
+            url: camera.amazon_link
+          },
+          review: {
+            '@type': 'Review',
+            reviewRating: {
+              '@type': 'Rating',
+              ratingValue: camera.rating,
+              bestRating: '5'
+            },
+            author: {
+              '@type': 'Organization',
+              name: 'Best Camera Review'
+            }
+          }
+        }
+      }))
+    }
+  };
+
   return (
     <div className="bg-gray-50 dark:bg-gray-900 min-h-screen pb-16">
+      <JsonLd data={dslrPageJsonLd} />
+      
       {/* Hero Section with Parallax Effect */}
       <section className="relative h-[100vh] md:h-[100vh] overflow-hidden flex items-center justify-center">
         {/* Background Image with Overlay */}
@@ -190,7 +234,7 @@ export default function DSLRCameras() {
       {/* Top DSLR Cameras Section */}
       <section id="top-cameras" className="py-16 px-4 bg-white dark:bg-gray-800 rounded-t-[40px] shadow-lg">
         <div className="container mx-auto">
-          <h2 className="text-3xl font-bold mb-2 text-center text-gray-800 dark:text-white">Best DSLR Cameras of 5</h2>
+          <h2 className="text-3xl font-bold mb-2 text-center text-gray-800 dark:text-white">Best DSLR Cameras of 2025</h2>
           <p className="text-lg text-center mb-12 text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
             The best DSLR cameras for different needs and budgets, selected based on our expert reviews and user experiences
           </p>
