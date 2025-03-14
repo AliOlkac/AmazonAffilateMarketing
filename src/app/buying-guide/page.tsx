@@ -8,7 +8,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
 
-// Adım 1: Kamera Türlerini Anlama - İçerik Verileri
+// Step 1: Understanding Camera Types - Content Data
 const cameraTypes = [
   {
     id: "dslr",
@@ -312,12 +312,12 @@ export default function BuyingGuide() {
         </div>
       </section>
 
-      {/* Adım 2: Kamera Türleri Bölümü */}
+      {/* Step 2: Camera Types Section */}
       <section id="camera-types" className="py-16 px-4 bg-white dark:bg-gray-800">
         <div className="container mx-auto max-w-6xl">
-          <h2 className="text-3xl font-bold mb-8 text-gray-800 dark:text-white text-center">Kamera Türleri</h2>
+          <h2 className="text-3xl font-bold mb-8 text-gray-800 dark:text-white text-center">Camera Types</h2>
           <p className="text-lg text-center mb-12 text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            Farklı türdeki kameraların özelliklerini, avantaj ve dezavantajlarını anlayarak ihtiyaçlarınıza en uygun kamerayı seçin
+            Understand the features, advantages, and disadvantages of different camera types to choose the one that best suits your needs
           </p>
           
           <div className="space-y-16" ref={camerasWrapperRef}>
@@ -334,7 +334,7 @@ export default function BuyingGuide() {
                 <div className="md:w-1/3 relative aspect-video md:aspect-square overflow-hidden rounded-xl">
                   <Image 
                     src={camera.image}
-                    alt={`${camera.name} örneği`}
+                    alt={`${camera.name} example`}
                     fill
                     className="object-cover"
                   />
@@ -353,7 +353,7 @@ export default function BuyingGuide() {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                     <div>
                       <h4 className="text-lg font-semibold mb-3 text-gray-800 dark:text-white flex items-center gap-2">
-                        <FaCheckCircle className="text-green-500" /> Avantajlar
+                        <FaCheckCircle className="text-green-500" /> Advantages
                       </h4>
                       <ul className="space-y-2">
                         {camera.pros.map((pro, idx) => (
@@ -367,7 +367,7 @@ export default function BuyingGuide() {
                     
                     <div>
                       <h4 className="text-lg font-semibold mb-3 text-gray-800 dark:text-white flex items-center gap-2">
-                        <span className="text-red-500 font-bold">✕</span> Dezavantajlar
+                        <span className="text-red-500 font-bold">✕</span> Disadvantages
                       </h4>
                       <ul className="space-y-2">
                         {camera.cons.map((con, idx) => (
@@ -381,7 +381,7 @@ export default function BuyingGuide() {
                   </div>
                   
                   <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg mb-6">
-                    <h4 className="font-semibold text-blue-700 dark:text-blue-300 mb-2">İdeal Kullanım Alanları:</h4>
+                    <h4 className="font-semibold text-blue-700 dark:text-blue-300 mb-2">Ideal Use Cases:</h4>
                     <p className="text-gray-700 dark:text-gray-300">{camera.idealFor}</p>
                   </div>
                   
@@ -389,7 +389,7 @@ export default function BuyingGuide() {
                     href={camera.link}
                     className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-all"
                   >
-                    <FaCamera /> {camera.name}ı İncele
+                    <FaCamera /> Explore {camera.name}
                   </Link>
                 </div>
               </div>
@@ -398,54 +398,54 @@ export default function BuyingGuide() {
         </div>
       </section>
 
-      {/* Satın Alma Faktörleri Bölümü */}
+      {/* Buying Factors Section */}
       <section id="buying-factors" className="py-16 px-4 bg-gray-50 dark:bg-gray-900">
         <div className="container mx-auto max-w-5xl">
-          <h2 className="text-3xl font-bold mb-8 text-gray-800 dark:text-white text-center">Kamera Seçerken Dikkat Edilmesi Gereken Faktörler</h2>
+          <h2 className="text-3xl font-bold mb-8 text-gray-800 dark:text-white text-center">Important Factors to Consider When Choosing a Camera</h2>
           <p className="text-lg text-center mb-12 text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            Doğru kamera seçimi yaparken göz önünde bulundurmanız gereken önemli teknik özellikler ve faktörler
+            Key technical features and factors to keep in mind when making the right camera selection
           </p>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {[
               {
-                title: "Sensör Boyutu ve Çözünürlük",
-                content: "Sensör boyutu (Full-Frame, APS-C, Micro 4/3 vb.) görüntü kalitesini, alan derinliğini ve düşük ışık performansını etkiler. Çözünürlük (megapiksel) ise detay seviyesini belirler ancak daha yüksek her zaman daha iyi anlamına gelmez.",
+                title: "Sensor Size and Resolution",
+                content: "Sensor size (Full-Frame, APS-C, Micro 4/3, etc.) affects image quality, depth of field, and low-light performance. Resolution (megapixels) determines the level of detail, but higher doesn't always mean better.",
                 icon: <MdPhotoCamera className="text-2xl" />
               },
               {
-                title: "Lens Ekosistemi",
-                content: "Kamera gövdesi için mevcut lens çeşitliliği önemlidir. Farklı çekim türleri için geniş bir lens seçeneği olması fotoğrafçılık deneyiminizi geliştirir. İleriye dönük lens yatırımlarınızı da düşünün.",
+                title: "Lens Ecosystem",
+                content: "The variety of lenses available for your camera body is important. Having a wide range of lens options for different types of shooting enhances your photography experience. Also consider your future lens investments.",
                 icon: <MdCameraAlt className="text-2xl" />
               },
               {
-                title: "Otomatik Odaklama Performansı",
-                content: "Hızlı ve doğru otomatik odaklama sistemi, özellikle hareketli konuları çekerken kritik öneme sahiptir. Göz takibi, yüz tanıma ve konu takibi gibi özellikler de önemli avantajlar sağlar.",
+                title: "Autofocus Performance",
+                content: "Fast and accurate autofocus system is critically important, especially when shooting moving subjects. Features like eye tracking, face recognition, and subject tracking also provide significant advantages.",
                 icon: <MdSettings className="text-2xl" />
               },
               {
-                title: "Video Özellikleri",
-                content: "Video çekmeyi planlıyorsanız, kameranın sunduğu çözünürlük (4K, 1080p), kare hızı, codec ve bit hızı önemlidir. Ayrıca mikrofon girişi ve HDMI çıkışı gibi özellikler de video iş akışınızı kolaylaştırır.",
+                title: "Video Features",
+                content: "If you plan to shoot video, the resolution (4K, 1080p), frame rate, codec, and bit rate offered by the camera are important. Features like microphone input and HDMI output also facilitate your video workflow.",
                 icon: <MdVideocam className="text-2xl" />
               },
               {
-                title: "Görüntü Stabilizasyonu",
-                content: "Gövde içi (IBIS) veya lens içi stabilizasyon, düşük enstantanede çekim yaparken veya video çekerken titremeyi azaltarak daha net sonuçlar almanızı sağlar.",
+                title: "Image Stabilization",
+                content: "In-body (IBIS) or in-lens stabilization reduces shake when shooting at low shutter speeds or when recording video, resulting in sharper results.",
                 icon: <MdSettings className="text-2xl" />
               },
               {
-                title: "Pil Ömrü ve Ergonomi",
-                content: "Uzun çekim günleri için iyi bir pil ömrü önemlidir. Ayrıca kameranın tutuş ergonomisi, kontrollerin yerleşimi ve genel kullanım kolaylığı da uzun vadede çok önemli faktörlerdir.",
+                title: "Battery Life and Ergonomics",
+                content: "Good battery life is important for long shooting days. Also, the camera's grip ergonomics, control layout, and overall ease of use are very important factors in the long run.",
                 icon: <FaCheckCircle className="text-2xl" />
               },
               {
-                title: "Bağlantı Özellikleri",
-                content: "Wi-Fi, Bluetooth ve NFC gibi bağlantı özellikleri, fotoğrafların mobil cihazlara aktarılmasını ve uzaktan kumanda imkanı sağlar. Bu özellikler sosyal medya paylaşımları için önemlidir.",
+                title: "Connectivity Features",
+                content: "Connectivity features such as Wi-Fi, Bluetooth, and NFC enable transferring photos to mobile devices and remote control capabilities. These features are important for social media sharing.",
                 icon: <MdCompare className="text-2xl" />
               },
               {
-                title: "Bütçe ve Değer",
-                content: "En pahalı kamera her zaman sizin için en iyi seçenek olmayabilir. İhtiyaçlarınıza ve kullanım amacınıza en uygun özellikleri sunan, paranızın karşılığını veren bir kamera seçmek önemlidir.",
+                title: "Budget and Value",
+                content: "The most expensive camera may not always be the best option for you. It's important to choose a camera that offers the features most suitable for your needs and intended use, giving you value for your money.",
                 icon: <FaMoneyBillWave className="text-2xl" />
               }
             ].map((factor, index) => (

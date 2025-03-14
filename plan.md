@@ -462,7 +462,7 @@ Bu yol haritası, projenin geliştirme, içerik, SEO, analiz ve uzun vadeli büy
 - [x] C1. Temel sayfa yapısını oluşturma
    - [x] Ana sayfa (Homepage)
    - [x] Grup sayfaları (Kategori sayfaları)
-   - [] Tum sayfalardaki Tum icerik: Gorseller,yazı icerikleri, ürün bilgileri, hepsi düzenlenecek
+   - [x] Tum sayfalardaki Tum icerik: Gorseller,yazı icerikleri, ürün bilgileri, hepsi düzenlenecek
 
 - [ ] C2. SEO yapılandırmasını gerçekleştirme
    - [ ] Meta etiketleri ve başlık yapılandırması

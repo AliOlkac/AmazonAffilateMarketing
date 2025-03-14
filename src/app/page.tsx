@@ -120,11 +120,11 @@ export default function Home() {
   const guideRef = useRef(null);
   const ctaRef = useRef(null);
   
-  // Slider için state
+  // State for slider
   const [currentSlide, setCurrentSlide] = React.useState(0);
-  // Hover edilen kart için state
+  // State for hovered card
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
-  // Neon parçacıkları istemci tarafında render etmek için state
+  // State for rendering neon particles on client side
   const [particles, setParticles] = useState<Array<{
     id: number;
     width: string;
@@ -137,31 +137,31 @@ export default function Home() {
     animation: string;
   }>>([]);
   
-  // Kart hover işleyicisi
+  // Card hover handler
   const handleCardHover = (id: number | null) => {
     setHoveredCard(id);
   };
   
-  // Slider bölümüne kaydırmak için fonksiyon
+  // Function to scroll to slider section
   const scrollToSlider = () => {
     sliderRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  // Neon parçacıkları yalnızca istemci tarafında oluştur
+  // Create neon particles only on client side
   useEffect(() => {
-    // Parçacık sayısını 20'den 60'a çıkarıyoruz
+    // Increasing the number of particles from 20 to 60
     const newParticles = [...Array(60)].map((_, i) => {
-      // Her parçacık için rastgele kategori rengi seçiyoruz
+      // Select a random category color for each particle
       const randomCategoryIndex = Math.floor(Math.random() * cameraCategories.length);
       const particleColor = cameraCategories[randomCategoryIndex].color;
       
-      // Parçacığın büyüklüğü için daha geniş bir aralık kullanıyoruz (2-15px)
+      // Using a wider range for particle size (2-15px)
       const particleSize = Math.random() * 13 + 2;
       
-      // Bazı parçacıkları yuvarlak, bazılarını oval yapıyoruz
+      // Making some particles round, some oval
       const isRound = Math.random() > 0.3;
       
-      // Bazı parçacıkları ekranın altından başlatacağız
+      // Starting some particles from the bottom of the screen
       const startFromBottom = Math.random() > 0.7;
       const topPosition = startFromBottom ? `${100 + Math.random() * 20}%` : `${Math.random() * 100}%`;
       
@@ -173,8 +173,8 @@ export default function Home() {
         shadow: `0 0 ${Math.random() * 15 + 10}px ${particleColor}`,
       left: `${Math.random() * 100}%`,
         top: topPosition,
-        opacity: Math.random() * 0.6 + 0.2, // Daha geniş opaklık aralığı (0.2-0.8)
-        // Animasyon süresini 5-15 saniye aralığına düşürüyoruz (daha hızlı)
+        opacity: Math.random() * 0.6 + 0.2, // Wider opacity range (0.2-0.8)
+        // Reducing animation duration to 5-15 seconds (faster)
         animation: startFromBottom 
           ? `floatUp ${Math.random() * 10 + 15}s linear infinite` 
           : `float${Math.floor(Math.random() * 3) + 1} ${Math.random() * 10 + 5}s linear infinite`
@@ -184,18 +184,18 @@ export default function Home() {
     setParticles(newParticles);
   }, []);
 
-  // GSAP animasyonları
+  // GSAP animations
   useEffect(() => {
     if (typeof window !== "undefined") {
-      // ScrollTrigger plugin'ini kaydet
+      // Register ScrollTrigger plugin
       if (gsap.utils.toArray(".hero-title").length > 0) {
         try {
           gsap.registerPlugin(ScrollTrigger);
         
-          // Ana timeline'ı oluştur
+          // Create main timeline
           const tl = gsap.timeline();
         
-          // Hero animasyonu - Daha basit tutuyoruz
+          // Hero animation - Keeping it simpler
           tl.from(".hero-title", {
             y: 50,
             opacity: 0,
@@ -215,7 +215,7 @@ export default function Home() {
             ease: "power3.out"
           }, "-=0.6");
           
-          // Diğer bölümlerin animasyonları referanslar mevcutsa çalışır
+          // Other sections' animations if references exist
           const sliderContainer = document.querySelector(".slider-container");
           if (sliderContainer) {
             gsap.from(sliderContainer, {
@@ -230,7 +230,7 @@ export default function Home() {
             });
           }
           
-          // Kategoriler animasyonu
+          // Category cards animation
           const categoryCards = document.querySelectorAll(".category-card");
           if (categoryCards.length > 0) {
             gsap.from(categoryCards, {
@@ -246,7 +246,7 @@ export default function Home() {
             });
           }
           
-          // Öne çıkan kameralar animasyonu
+          // Featured cameras animation
           const featuredCameraCards = document.querySelectorAll(".featured-camera");
           if (featuredCameraCards.length > 0) {
             gsap.from(featuredCameraCards, {
@@ -262,7 +262,7 @@ export default function Home() {
             });
           }
           
-          // Rehber bölümü animasyonu
+          // Guide section animation
           const guideContent = document.querySelector(".guide-content");
           if (guideContent) {
             gsap.from(guideContent, {
@@ -277,7 +277,7 @@ export default function Home() {
             });
           }
           
-          // CTA bölümü animasyonu
+          // CTA section animation
           const ctaContent = document.querySelector(".cta-content");
           if (ctaContent) {
             gsap.from(ctaContent, {
@@ -293,19 +293,19 @@ export default function Home() {
           }
           
         } catch (error) {
-          console.error("GSAP animasyonu yüklenirken hata oluştu:", error);
+          console.error("GSAP animation load error:", error);
         }
       }
       
-      // Otomatik slider için interval
+      // Automatic slider interval
       const sliderInterval = setInterval(() => {
         setCurrentSlide((prev) => (prev + 1) % cameraCategories.length);
       }, 5000);
       
-      // Cleanup fonksiyonu
+      // Cleanup function
       return () => {
         clearInterval(sliderInterval);
-        // Her şeyi temizle
+        // Clean up everything
         if (typeof ScrollTrigger !== 'undefined') {
           ScrollTrigger.getAll().forEach(t => t.kill());
         }
