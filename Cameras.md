@@ -139,7 +139,7 @@ DJI Osmo Action 5 Pro
 
 **Sony ZV-1F**
 
-**4K Digital Camera for Photography Autofocus, 2024 Latest 48MP Vlogging Camera**
+**4K Digital Camera for Photography Autofocus, 2025 Latest 48MP Vlogging Camera**
 
 **Digital Camera for Photography, 4K Vlogging Camera**
 

@@ -10,5 +10,8 @@ export const metadata: Metadata = {
     description: "Your ultimate resource for camera reviews, comparisons, and expert buying advice",
     type: "website",
     url: "https://bestcamerareview.com/cameras",
+  },
+  alternates: {
+    canonical: "https://bestcamerareview.com/cameras",
   }
 }; 

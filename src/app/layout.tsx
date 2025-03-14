@@ -12,7 +12,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://bestcamerareview.com'),
-  title: "Best Camera Reviews - Expert Camera Buying Guide 2024",
+  title: "Best Camera Reviews - Expert Camera Buying Guide 2025",
   description: "Expert camera reviews, buying guides, and comparisons for DSLR, mirrorless, action, vlog, and compact cameras. Find the best cameras for your needs.",
   icons: {
     icon: [
@@ -42,9 +42,13 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Best Camera Reviews - Expert Camera Buying Guide 2024',
+    title: 'Best Camera Reviews - Expert Camera Buying Guide 2025',
     description: 'Expert camera reviews, buying guides, and comparisons for DSLR, mirrorless, action, vlog, and compact cameras.',
     images: ['/images/logo.png'],
+  },
+  // Ana sayfa için canonical URL
+  alternates: {
+    canonical: 'https://bestcamerareview.com',
   },
 };
 

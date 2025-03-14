@@ -176,7 +176,7 @@ export default function CompactCameras() {
       {/* Top Compact Cameras Section */}
       <section id="top-cameras" className="py-16 px-4 bg-white dark:bg-gray-800 rounded-t-[40px] shadow-lg">
         <div className="container mx-auto">
-          <h2 className="text-3xl font-bold mb-2 text-center text-gray-800 dark:text-white">Best Compact Cameras of 2024</h2>
+          <h2 className="text-3xl font-bold mb-2 text-center text-gray-800 dark:text-white">Best Compact Cameras of 2025</h2>
           <p className="text-lg text-center mb-12 text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
             The best compact cameras for different needs and budgets, selected based on our expert reviews and user experiences
           </p>

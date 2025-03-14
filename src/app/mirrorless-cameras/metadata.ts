@@ -10,5 +10,8 @@ export const metadata: Metadata = {
     description: "The ultimate guide to choosing the perfect mirrorless camera in 2025",
     type: "website",
     url: "https://bestcamerareview.com/mirrorless-cameras",
+  },
+  alternates: {
+    canonical: "https://bestcamerareview.com/mirrorless-cameras",
   }
 }; 

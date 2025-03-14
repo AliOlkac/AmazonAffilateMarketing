@@ -10,5 +10,8 @@ export const metadata: Metadata = {
     description: "The ultimate guide to choosing the perfect camera for vlogging and content creation in 2025",
     type: "website",
     url: "https://bestcamerareview.com/vlog-cameras",
+  },
+  alternates: {
+    canonical: "https://bestcamerareview.com/vlog-cameras",
   }
 }; 

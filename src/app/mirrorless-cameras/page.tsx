@@ -8,6 +8,9 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import CameraCard from "../components/CameraCard";
 import camerasData from "../../../public/cameras.json";
+import JsonLd from "../components/JsonLd";
+import Breadcrumb from "../components/Breadcrumb";
+import OptimizedBackgroundImage from "../components/OptimizedBackgroundImage";
 
 // JSON dosyasından mirrorless kamera verilerini alan fonksiyon
 const getMirrorlessCameras = () => {
@@ -116,6 +119,10 @@ export default function MirrorlessCameras() {
     gsap.registerPlugin(ScrollTrigger);
   }, []);
 
+  // Veri fonksiyonlarını kullanarak kamera verilerini alıyoruz
+  const mirrorlessCameras = getMirrorlessCameras();
+  const popularMirrorlessCameras = getPopularMirrorlessCameras();
+
   // State for card hover effects
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
 
@@ -124,35 +131,89 @@ export default function MirrorlessCameras() {
     setHoveredCard(index);
   };
 
+  // Mirrorless kameralar sayfası için JSON-LD yapılandırılmış veri
+  const mirrorlessPageJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: 'Best Mirrorless Cameras | 2025 Buying Guide',
+    description: 'Discover the top mirrorless cameras of 2025 with our comprehensive reviews, feature comparisons, and buying guide.',
+    url: 'https://bestcamerareview.com/mirrorless-cameras',
+    mainEntity: {
+      '@type': 'ItemList',
+      itemListElement: mirrorlessCameras.map((camera, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        item: {
+          '@type': 'Product',
+          name: camera.name,
+          description: camera.description,
+          image: camera.image,
+          offers: {
+            '@type': 'Offer',
+            price: camera.price.replace('$', ''),
+            priceCurrency: 'USD',
+            availability: 'https://schema.org/InStock',
+            url: camera.amazon_link
+          },
+          review: {
+            '@type': 'Review',
+            reviewRating: {
+              '@type': 'Rating',
+              ratingValue: camera.rating,
+              bestRating: '5'
+            },
+            author: {
+              '@type': 'Organization',
+              name: 'Best Camera Review'
+            }
+          }
+        }
+      }))
+    }
+  };
+
+  // Mirrorless kameralar sayfası için breadcrumb öğeleri
+  const breadcrumbItems = [
+    { name: 'Ana Sayfa', path: '/' },
+    { name: 'Mirrorless Kameralar', path: '/mirrorless-cameras', isCurrent: true }
+  ];
+
   return (
     <div className="bg-gray-50 dark:bg-gray-900 min-h-screen pb-16">
+      <JsonLd data={mirrorlessPageJsonLd} />
+      
       {/* Hero Section with Parallax Effect */}
-      <section className="relative h-[100vh] md:h-[100vh] overflow-hidden flex items-center justify-center">
-        {/* Background Image with Overlay - Mavi-indigo tonlu overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-purple-900/30 to-indigo-700/30 z-10"></div>
-        <div 
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(/images/cameras/categories/mirrorless.webp)` }}
-        ></div>
+      <section className="relative h-[100vh] overflow-hidden flex items-center justify-center">
+        <OptimizedBackgroundImage 
+          src="/images/cameras/categories/mirrorless.webp"
+          alt="Mirrorless cameras background"
+          priority={true}
+          overlayClassName="bg-gradient-to-r from-purple-900/30 to-blue-700/30"
+        />
         
         {/* Hero Content */}
         <div className="container mx-auto px-4 relative z-20 text-center">
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">Mirrorless Cameras</h1>
           <p className="text-xl md:text-2xl text-gray-200 mb-8 max-w-3xl mx-auto">
-            Discover the perfect balance of power and portability with our comprehensive mirrorless camera guide
+            Discover the perfect mirrorless camera for your photography with our expert 2025 buying guide
           </p>
           
-          {/* Hero Buttons - Mavi-indigo tonlarda butonlar */}
+          {/* Hero Buttons */}
           <div className="flex flex-wrap gap-4 justify-center">
-            <a href="#top-cameras" className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full font-medium transition-all flex items-center gap-2">
+            <a href="#top-cameras" className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-full font-medium transition-all flex items-center gap-2">
               <FaCamera /> Explore Top Picks
             </a>
-            <a href="#guide" className="bg-transparent border-2 border-indigo-400 text-indigo-400 px-6 py-3 rounded-full font-medium hover:bg-indigo-400/10 transition-all flex items-center gap-2">
+            <a href="#guide" className="bg-transparent border-2 border-white text-white px-6 py-3 rounded-full font-medium hover:bg-white/10 transition-all flex items-center gap-2">
               <FaInfoCircle /> Read Buying Guide
             </a>
           </div>
         </div>
       </section>
+
+      {/* Breadcrumb */}
+      <div className="container mx-auto px-4 mt-6">
+        <Breadcrumb items={breadcrumbItems} />
+      </div>
 
       {/* Introduction Section */}
       <section className="py-16 px-4 container mx-auto">
@@ -185,7 +246,7 @@ export default function MirrorlessCameras() {
 
           {/* Mirrorless Camera Cards - Yeni bileşen kullanarak */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {getMirrorlessCameras().map((camera, index) => (
+            {mirrorlessCameras.map((camera, index) => (
               <CameraCard 
                 key={camera.id}
                 camera={camera}
@@ -208,7 +269,7 @@ export default function MirrorlessCameras() {
 
           {/* Popular Mirrorless Camera Cards - Yeni bileşen kullanarak */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {getPopularMirrorlessCameras().map((camera, index) => (
+            {popularMirrorlessCameras.map((camera, index) => (
               <CameraCard 
                 key={camera.id}
                 camera={camera}

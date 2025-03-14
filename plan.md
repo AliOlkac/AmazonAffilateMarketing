@@ -47,7 +47,7 @@ Bu yol haritası, Amazon affiliate programıyla gelir elde etmek amacıyla kamer
   - **Genel**:
     - "best camera recommendations"
     - "camera reviews"
-    - "camera comparison 2024"
+    - "camera comparison 2025"
     - "quality camera prices"
     - "affordable cameras"
     - "professional camera recommendations"
@@ -67,7 +67,7 @@ Bu yol haritası, Amazon affiliate programıyla gelir elde etmek amacıyla kamer
       - "dslr for portrait photography"
     
     - **Aynasız Kameralar:**
-      - "best mirrorless camera 2024"
+      - "best mirrorless camera 2025"
       - "mirrorless vs dslr comparison"
       - "sony mirrorless camera models"
       - "affordable mirrorless camera"
@@ -76,7 +76,7 @@ Bu yol haritası, Amazon affiliate programıyla gelir elde etmek amacıyla kamer
       - "professional mirrorless camera recommendations"
     
     - **Aksiyon Kameraları:**
-      - "best action camera 2024"
+      - "best action camera 2025"
       - "gopro alternatives"
       - "underwater action camera"
       - "4k action camera"
@@ -85,7 +85,7 @@ Bu yol haritası, Amazon affiliate programıyla gelir elde etmek amacıyla kamer
       - "stabilized action camera"
     
     - **Vlog Kameraları:**
-      - "best vlogging camera 2024"
+      - "best vlogging camera 2025"
       - "camera recommendations for youtube"
       - "vlogging cameras with flip screen"
       - "cameras for influencers"
@@ -94,7 +94,7 @@ Bu yol haritası, Amazon affiliate programıyla gelir elde etmek amacıyla kamer
       - "affordable vlogging camera"
     
     - **Kompakt/Taşınabilir Kameralar:**
-      - "best compact camera 2024"
+      - "best compact camera 2025"
       - "portable camera for travel"
       - "pocket-sized camera"
       - "compact camera with zoom"
@@ -146,21 +146,21 @@ Bu yol haritası, Amazon affiliate programıyla gelir elde etmek amacıyla kamer
 - **Başlangıç İçerik Fikirleri (İlk 3 Ay)**:
 
   **DSLR Cameras:**
-  1. "7 Best DSLR Cameras of 2024: Price/Performance Comparison"
+  1. "7 Best DSLR Cameras of 2025: Price/Performance Comparison"
   2. "Best DSLR Cameras for Beginners (Under $600)"
   3. "Canon EOS 90D Review: Detailed Analysis and Sample Photos"
   4. "10 Important Factors to Consider When Buying a DSLR Camera"
   5. "Best DSLR Camera and Lens Combinations for Portrait Photography"
 
   **Mirrorless Cameras:**
-  1. "8 Best Mirrorless Cameras of 2024: Price/Performance Review"
+  1. "8 Best Mirrorless Cameras of 2025: Price/Performance Review"
   2. "Sony Alpha A7 IV Review: Detailed Test and Sample Images"
   3. "Mirrorless vs DSLR: Which is Better for You? Comprehensive Comparison"
   4. "Affordable Mirrorless Camera Recommendations (5 Budget-Friendly Models)"
   5. "Lens Selection for Mirrorless Cameras: Comprehensive Guide"
 
   **Action Cameras:**
-  1. "6 Best Action Cameras of 2024: Underwater and Extreme Conditions"
+  1. "6 Best Action Cameras of 2025: Underwater and Extreme Conditions"
   2. "GoPro Hero 12 Review: Differences from Previous Model and Usage Experience"
   3. "Alternatives to GoPro: 5 Price/Performance Focused Action Cameras"
   4. "Professional Video Shooting Techniques with Action Cameras"
@@ -174,7 +174,7 @@ Bu yol haritası, Amazon affiliate programıyla gelir elde etmek amacıyla kamer
   5. "Best Camera Setups for Solo YouTube Shooting"
 
   **Compact/Portable Cameras:**
-  1. "8 Best Compact Travel Cameras of 2024"
+  1. "8 Best Compact Travel Cameras of 2025"
   2. "Sony RX100 VII Review: Professional Performance in Pocket Size"
   3. "Best Lightweight Camera Recommendations for Vacation and Travel"
   4. "Smartphone vs Compact Camera: Which Takes Better Photos?"
@@ -414,7 +414,7 @@ Bu yol haritası, Amazon affiliate programıyla gelir elde etmek amacıyla kamer
 
 ### 7.1 İçerik Güncellemeleri ve Süreklilik
 - **Düzenli İçerik Yayınlama**: Belirli bir yayın takvimine uyarak düzenli olarak yeni içerikler yayınlayın (haftada en az 1-2 yeni içerik).
-- **Mevcut İçerik Güncelleme**: Eski içerikleri düzenli olarak güncelleyin (yeni ürünler, güncel bilgiler, 2024-2025 modelleri vb.).
+- **Mevcut İçerik Güncelleme**: Eski içerikleri düzenli olarak güncelleyin (yeni ürünler, güncel bilgiler, 2025 modelleri vb.).
 - **Trendlere ve Sezonlara Uygun İçerik**: Yıl boyunca değişen trendlere ve mevsimsel taleplere göre içerik planlaması yapın (örneğin, tatil sezonları, yeni ürün lansmanları).
 
 ### 7.2 E-posta Listesi Büyütme ve E-posta Pazarlama

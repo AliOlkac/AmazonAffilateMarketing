@@ -96,10 +96,13 @@ export default function CameraCard({ camera, index, hoveredCard, handleCardHover
           src={camera.image} 
           alt={camera.name}
           fill
-          quality={100}
+          quality={75}
+          loading={index < 3 ? "eager" : "lazy"}
+          placeholder="blur"
+          blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+ip1sAAAAASUVORK5CYII="
           priority={index === 0}
           className="object-contain p-4 transition-transform duration-300 hover:scale-110"
-          sizes="(max-width: 768px) 90vw, (max-width: 1200px) 45vw, 30vw"
+          sizes="(max-width: 640px) 90vw, (max-width: 768px) 45vw, (max-width: 1024px) 30vw, 25vw"
         />
         
         {/* Kategori rozeti - eğer kategori belirtilmişse göster */}

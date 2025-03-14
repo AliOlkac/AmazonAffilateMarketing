@@ -10,5 +10,8 @@ export const metadata: Metadata = {
     description: "The best DSLR camera options for professional quality photos in 2025",
     type: "website",
     url: "https://bestcamerareview.com/dslr-cameras",
+  },
+  alternates: {
+    canonical: "https://bestcamerareview.com/dslr-cameras",
   }
 }; 

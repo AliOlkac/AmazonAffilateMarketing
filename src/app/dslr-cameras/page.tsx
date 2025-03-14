@@ -9,6 +9,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import CameraCard from "../components/CameraCard";
 import camerasData from '../../../public/cameras.json';
 import JsonLd from "../components/JsonLd";
+import Breadcrumb from "../components/Breadcrumb";
+import OptimizedBackgroundImage from "../components/OptimizedBackgroundImage";
 
 // Metadata for DSLR Cameras page - Metadata doesn't work in client components in Next.js, so we removed it
 // export const metadata = {
@@ -176,18 +178,24 @@ export default function DSLRCameras() {
     }
   };
 
+  // DSLR kameralar sayfası için breadcrumb öğeleri
+  const breadcrumbItems = [
+    { name: 'Ana Sayfa', path: '/' },
+    { name: 'DSLR Kameralar', path: '/dslr-cameras', isCurrent: true }
+  ];
+
   return (
     <div className="bg-gray-50 dark:bg-gray-900 min-h-screen pb-16">
       <JsonLd data={dslrPageJsonLd} />
       
       {/* Hero Section with Parallax Effect */}
       <section className="relative h-[100vh] md:h-[100vh] overflow-hidden flex items-center justify-center">
-        {/* Background Image with Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-900/30 to-indigo-700/30 z-10"></div>
-        <div 
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(/images/cameras/categories/dslr.webp)` }}
-        ></div>
+        <OptimizedBackgroundImage 
+          src="/images/cameras/categories/dslr.webp"
+          alt="DSLR cameras background"
+          priority={true}
+          overlayClassName="bg-gradient-to-r from-blue-900/30 to-indigo-700/30"
+        />
         
         {/* Hero Content */}
         <div className="container mx-auto px-4 relative z-20 text-center">
@@ -207,6 +215,11 @@ export default function DSLRCameras() {
           </div>
         </div>
       </section>
+
+      {/* Breadcrumb */}
+      <div className="container mx-auto px-4 mt-6">
+        <Breadcrumb items={breadcrumbItems} />
+      </div>
 
       {/* Introduction Section - Enhanced with more SEO content */}
       <section className="py-16 px-4 container mx-auto">
