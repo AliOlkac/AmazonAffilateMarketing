@@ -1,29 +1,28 @@
 import Link from 'next/link';
 import { FaHome, FaChevronRight } from 'react-icons/fa';
-import JsonLd from './JsonLd';
 
-// BreadcrumbItem için geliştirilmiş tip tanımlaması
+// Type definition for BreadcrumbItem
 interface BreadcrumbItem {
   name: string;
   path: string;
   isCurrent?: boolean;
-  description?: string; // SEO için opsiyonel açıklama
-  image?: string; // SEO için opsiyonel görsel URL'si
+  description?: string; // Optional description for SEO
+  image?: string; // Optional image URL for SEO
 }
 
 interface BreadcrumbProps {
   items: BreadcrumbItem[];
   className?: string;
-  baseUrl?: string; // Opsiyonel temel URL (varsayılan: https://bestcamerareview.com)
+  baseUrl?: string; // Optional base URL (default: https://bestcamerareview.com)
 }
 
-// Breadcrumb bileşeni, kullanıcıların site içinde nerede olduklarını göstermeye yarar
+// Breadcrumb component helps users understand their location in the site
 export default function Breadcrumb({ 
   items, 
   className = '',
   baseUrl = 'https://bestcamerareview.com'
 }: BreadcrumbProps) {
-  // Breadcrumb için geliştirilmiş JSON-LD yapılandırılmış veri
+  // Enhanced JSON-LD structured data for breadcrumb
   const breadcrumbJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -41,7 +40,9 @@ export default function Breadcrumb({
 
   return (
     <>
-      <JsonLd data={breadcrumbJsonLd} />
+      <script type="application/ld+json">
+        {JSON.stringify(breadcrumbJsonLd)}
+      </script>
       <nav 
         aria-label="Breadcrumb" 
         className={`py-3 ${className}`}
@@ -61,26 +62,26 @@ export default function Breadcrumb({
               itemType="https://schema.org/ListItem"
             >
               {index === 0 ? (
-                // Ana sayfa öğesi için ev ikonu ekle
+                // Add home icon for homepage item
                 <Link 
                   href={item.path} 
                   className="flex items-center hover:text-blue-600 dark:hover:text-blue-400 transition-colors group"
                   itemProp="item"
-                  title={`Ana Sayfa: ${item.name}`}
+                  title={`Home: ${item.name}`}
                 >
                   <FaHome className="mr-1 group-hover:scale-110 transition-transform" />
                   <span itemProp="name">{item.name}</span>
                   <meta itemProp="position" content={`${index + 1}`} />
                 </Link>
               ) : (
-                // Diğer öğeler için
+                // For other items
                 <>
                   <FaChevronRight 
                     className="mx-2 text-gray-400" 
                     aria-hidden="true"
                   />
                   {item.isCurrent ? (
-                    // Mevcut sayfa için sadece metin göster
+                    // Show only text for current page
                     <span 
                       aria-current="page" 
                       className="font-medium text-blue-600 dark:text-blue-400"
@@ -90,12 +91,12 @@ export default function Breadcrumb({
                       <meta itemProp="position" content={`${index + 1}`} />
                     </span>
                   ) : (
-                    // Diğer sayfalar için bağlantı göster
+                    // Show link for other pages
                     <Link 
                       href={item.path} 
                       className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors group"
                       itemProp="item"
-                      title={item.description || `Sayfaya git: ${item.name}`}
+                      title={item.description || `Go to ${item.name}`}
                     >
                       <span itemProp="name" className="group-hover:underline">
                         {item.name}

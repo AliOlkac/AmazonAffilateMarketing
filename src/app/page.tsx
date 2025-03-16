@@ -136,7 +136,7 @@ export default function Home() {
     opacity: number;
     animation: string;
   }>>([]);
-  
+
   // Card hover handler
   const handleCardHover = (id: number | null) => {
     setHoveredCard(id);
