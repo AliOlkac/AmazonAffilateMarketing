@@ -8,6 +8,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import CameraCard from "../components/CameraCard";
 import camerasData from "../../../public/cameras.json";
+import RelatedContent from "../components/RelatedContent";
 
 // JSON dosyasından compact kamera verilerini alan fonksiyon
 const getCompactCameras = () => {
@@ -417,6 +418,16 @@ export default function CompactCameras() {
           </div>
         </div>
       </section>
+
+      {/* Travel Photography Section */}
+      <section id="travel-tips" className="py-16 px-4 bg-white dark:bg-gray-800">
+        {/* ... existing travel tips code ... */}
+      </section>
+
+      {/* Related Content Section */}
+      <RelatedContent 
+        currentPath="/compact-cameras"
+      />
     </div>
   );
 } 

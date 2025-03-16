@@ -8,6 +8,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import CameraCard from "../components/CameraCard";
 import camerasData from "../../../public/cameras.json";
+import RelatedContent from "../components/RelatedContent";
 
 // JSON dosyasından vlog kamera verilerini alan fonksiyon
 const getVlogCameras = () => {
@@ -376,6 +377,16 @@ export default function VlogCameras() {
           </div>
         </div>
       </section>
+
+      {/* Influencer Recommendations Section */}
+      <section id="testimonials" className="py-16 px-4 bg-white dark:bg-gray-800">
+        {/* ... existing testimonials code ... */}
+      </section>
+
+      {/* Related Content Section */}
+      <RelatedContent 
+        currentPath="/vlog-cameras"
+      />
     </div>
   );
 } 

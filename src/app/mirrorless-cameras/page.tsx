@@ -11,6 +11,7 @@ import camerasData from "../../../public/cameras.json";
 import JsonLd from "../components/JsonLd";
 import Breadcrumb from "../components/Breadcrumb";
 import OptimizedBackgroundImage from "../components/OptimizedBackgroundImage";
+import RelatedContent from "../components/RelatedContent";
 
 // JSON dosyasından mirrorless kamera verilerini alan fonksiyon
 const getMirrorlessCameras = () => {
@@ -439,6 +440,16 @@ export default function MirrorlessCameras() {
           </div>
         </div>
       </section>
+
+      {/* FAQ Section */}
+      <section id="faq" className="py-16 px-4 bg-white dark:bg-gray-800">
+        {/* ... existing FAQ code ... */}
+      </section>
+
+      {/* Related Content Section */}
+      <RelatedContent 
+        currentPath="/mirrorless-cameras"
+      />
     </div>
   );
 } 

@@ -7,6 +7,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import CameraCard from "../components/CameraCard";
 import camerasData from "../../../public/cameras.json";
+import RelatedContent from "../components/RelatedContent";
 
 // JSON dosyasından action kamera verilerini alan fonksiyon
 const getActionCameras = () => {
@@ -104,61 +105,6 @@ const cameraCategories = [
     title: "Underwater and Elements",
     description: "Specialized cameras designed for underwater photography and extreme weather conditions.",
     examples: "GoPro HERO11 Black, Insta360 X3, AKASO Brave 7 LE"
-  }
-];
-
-// Popular Action Cameras Data
-const popularActionCameras = [
-  {
-    id: 1,
-    name: "GoPro HERO12 Black",
-    image: "/images/cameras/gopro-hero12-black.jpg",
-    rating: 4.8,
-    description: "Best-Selling Action Camera: The market leader with proven reliability and excellent ecosystem support.",
-    price: "$350-400",
-    key_features: [
-      "5.3K video",
-      "27MP photos",
-      "HyperSmooth 6.0",
-      "10m waterproof",
-      "HDR video support"
-    ],
-    detailed_description: "The most popular action camera on the market, trusted by millions of adventurers for its reliability and ecosystem of mounts and accessories.",
-    amazon_link: "https://www.amazon.com/GoPro-Waterproof-Stabilization-Battery-Included/dp/B0CGXJ4N2R/"
-  },
-  {
-    id: 2,
-    name: "DJI Osmo Action 4",
-    image: "/images/cameras/dji-osmo-action-4.jpg",
-    rating: 4.7,
-    description: "Popular Alternative: DJI's powerful GoPro competitor with excellent stabilization and image quality.",
-    price: "$300-350",
-    key_features: [
-      "4K 120fps video",
-      "Rocksteady stabilization",
-      "10-bit D-Log M",
-      "16m waterproof",
-      "Dual displays"
-    ],
-    detailed_description: "A top seller among professionals seeking an alternative to GoPro with some unique features and excellent color science.",
-    amazon_link: "https://www.amazon.com/DJI-Osmo-Action-Camera-Adventure/dp/B0CBYSK5NH/"
-  },
-  {
-    id: 3,
-    name: "Insta360 ONE RS",
-    image: "/images/cameras/insta360-one-rs.jpg",
-    rating: 4.6,
-    description: "Best Modular Option: Popular modular system allowing for different lens configurations in one device.",
-    price: "$280-350",
-    key_features: [
-      "Interchangeable modules",
-      "5.7K 360° option",
-      "FlowState stabilization",
-      "5m waterproof",
-      "AI editing features"
-    ],
-    detailed_description: "A favorite among content creators who need versatility, with the ability to switch between standard, wide, and 360° modules.",
-    amazon_link: "https://www.amazon.com/Insta360-Mini-Extended-Battery-FlowState/dp/B09R21C3RP/"
   }
 ];
 
@@ -346,6 +292,16 @@ export default function ActionCameras() {
           </div>
         </div>
       </section>
+
+      {/* Reviews and User Feedback Section */}
+      <section id="reviews" className="py-16 px-4 bg-white dark:bg-gray-800">
+        {/* ... existing reviews code ... */}
+      </section>
+
+      {/* Related Content Section */}
+      <RelatedContent 
+        currentPath="/action-cameras"
+      />
     </div>
   );
 }

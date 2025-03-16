@@ -4,10 +4,18 @@ import "./globals.css";
 import Navbar from "./components/Navbar";
 import FooterWrapper from "./components/FooterWrapper";
 import JsonLd from "./components/JsonLd";
+import CriticalCSS from "./components/CriticalCSS";
+import MobileCompatibilityTester from "./components/MobileCompatibilityTester";
+import GoogleAnalytics from "./components/GoogleAnalytics";
+import AnalyticsPageTracker from "./components/AnalyticsPageTracker";
+import CookieConsent from "./components/CookieConsent";
 
+// Font optimizasyonu - display: swap seçeneği ile fontun yüklenmesi gecikse bile metin görünür
 const inter = Inter({
   subsets: ['latin'],
   display: 'swap',
+  preload: true,  // Kritik fontları önceden yükle
+  fallback: ['system-ui', 'Arial', 'sans-serif'], // Yedek font ailesi
 });
 
 export const metadata: Metadata = {
@@ -50,6 +58,20 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://bestcamerareview.com',
   },
+  // Tarayıcı önbelleğe alma direktifleri
+  other: {
+    'apple-mobile-web-app-capable': 'yes',
+    'apple-mobile-web-app-status-bar-style': 'black',
+    'format-detection': 'telephone=no',
+    'msapplication-TileColor': '#0F4C81',
+    'msapplication-config': '/browserconfig.xml',
+    'theme-color': '#0F4C81',
+  },
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 5,
+  },
 };
 
 // Web sitesi için JSON-LD yapılandırılmış veri
@@ -85,13 +107,46 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // Kritik olmayan CSS dosyaları
+  const nonCriticalStylesheets = [
+    // Burada kritik olmayan stil dosyalarını ekleyin
+    '/styles/animations.css',
+    '/styles/print.css'
+  ];
+
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth">
+      <head>
+        {/* DNS Prefetching - bağlanacağımız harici kaynaklar */}
+        <link rel="dns-prefetch" href="https://images-na.ssl-images-amazon.com" />
+        <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+        
+        {/* Preconnect - önemli kaynaklar için erken bağlantı */}
+        <link rel="preconnect" href="https://images-na.ssl-images-amazon.com" crossOrigin="anonymous" />
+        
+        {/* Preload - kritik kaynaklar */}
+        <link rel="preload" href="/images/logo.png" as="image" />
+      </head>
       <body
         className={`${inter.className} antialiased min-h-screen flex flex-col`}
       >
+        {/* Google Analytics */}
+        <GoogleAnalytics />
+        <AnalyticsPageTracker />
+        
+        {/* GDPR Çerez Onay Banner */}
+        <CookieConsent />
+        
+        {/* Yapılandırılmış veriler */}
         <JsonLd data={websiteJsonLd} />
         <JsonLd data={organizationJsonLd} />
+        
+        {/* Kritik CSS önbelleğe alma */}
+        <CriticalCSS stylesheets={nonCriticalStylesheets} />
+        
+        {/* Mobil uyumluluk test aracı - sadece geliştirme ortamında görünür */}
+        <MobileCompatibilityTester />
+        
         <Navbar />
         <main className="flex-grow">{children}</main>
         <FooterWrapper />

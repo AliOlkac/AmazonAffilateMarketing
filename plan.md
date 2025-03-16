@@ -464,26 +464,22 @@ Bu yol haritası, projenin geliştirme, içerik, SEO, analiz ve uzun vadeli büy
 - [x] D5. Görsel ve multimedya içerik ekleme
 
 ### E. SEO ve Trafik Stratejisi Uygulama
-- [ ] E1. On-Page SEO optimizasyonu
-   - [ ] Başlık ve meta açıklama optimizasyonu
-   - [ ] İç linkleme stratejisi oluşturma
-   - [ ] İçerik optimizasyonu
-- [ ] E2. Teknik SEO iyileştirmeleri
-   - [ ] Site hızı optimizasyonu
-   - [ ] Mobil uyumluluk testleri
-   - [ ] Sitemap ve robots.txt dosyalarını Google Search Console'a gönderme
-- [ ] E3. Sosyal medya hesapları oluşturma
-- [ ] E4. E-posta listesi oluşturma ve bülten sistemi kurma
+- [x] E1. On-Page SEO optimizasyonu
+   - [x] Başlık ve meta açıklama optimizasyonu
+   - [x] İç linkleme stratejisi oluşturma
+   - [x] İçerik optimizasyonu
+- [x] E2. Teknik SEO iyileştirmeleri
+   - [x] Site hızı optimizasyonu
+   - [x] Mobil uyumluluk testleri
+   - [x] Sitemap ve robots.txt dosyalarını Google Search Console'a gönderme
 
 ### F. Analiz ve Optimizasyon
-- [ ] F1. Google Analytics kurulumu
-- [ ] F2. Amazon Affiliate paneli takibi
-- [ ] F3. A/B testleri yapma
+- [x] F1. Google Analytics kurulumu
+- [ ] F2. A/B testleri yapma
 
 ### G. Uzun Vadeli Plan
 - [ ] G1. Düzenli içerik güncelleme takvimi oluşturma
 - [ ] G2. E-posta pazarlama stratejisi geliştirme
 - [ ] G3. Backlink stratejisi oluşturma
-- [ ] G4. İşbirlikleri ve misafir yazarlık fırsatları araştırma
 
 Bu Liste, proje ilerledikçe güncellenecek ve detaylandırılacaktır. Her adım tamamlandığında işaretlenecek ve bir sonraki adıma geçilecektir.

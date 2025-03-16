@@ -11,6 +11,7 @@ import camerasData from '../../../public/cameras.json';
 import JsonLd from "../components/JsonLd";
 import Breadcrumb from "../components/Breadcrumb";
 import OptimizedBackgroundImage from "../components/OptimizedBackgroundImage";
+import RelatedContent from "../components/RelatedContent";
 
 // Metadata for DSLR Cameras page - Metadata doesn't work in client components in Next.js, so we removed it
 // export const metadata = {
@@ -452,6 +453,11 @@ export default function DSLRCameras() {
           </div>
         </div>
       </section>
+
+      {/* Related Content Section */}
+      <RelatedContent 
+        currentPath="/dslr-cameras"
+      />
     </div>
   );
 }

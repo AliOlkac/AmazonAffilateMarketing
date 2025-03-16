@@ -12,11 +12,34 @@ const nextConfig = {
         hostname: 'bestcamerareview.com',
       }
     ],
-    formats: ['image/webp'],
+    formats: ['image/webp', 'image/avif'],
+    minimumCacheTTL: 60, // Resimlerin önbelleğe alınma süresi (60 saniye)
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048], // Responsive görsel boyutları
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384], // Görsel boyutları
   },
 
   // Enable React strict mode
   reactStrictMode: true,
+
+  // Performance optimizations
+  compiler: {
+    // Remove console.log in production
+    removeConsole: process.env.NODE_ENV === 'production',
+  },
+
+  // Caching and performance
+  onDemandEntries: {
+    // Sayfa önbelleğe alma süresi (dev modunda)
+    maxInactiveAge: 25 * 1000,
+    // Dev modunda aynı anda önbellekte tutulacak sayfa sayısı
+    pagesBufferLength: 2,
+  },
+
+  // Minimize CSS - SWC optimizasyonu
+  swcMinify: true,
+
+  // Statik optimizasyon
+  output: 'standalone',
 }
 
 module.exports = nextConfig 
