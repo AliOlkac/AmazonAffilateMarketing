@@ -1,26 +1,22 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
-  typescript: {
-    ignoreBuildErrors: true,
-  },
-  reactStrictMode: true,
+  // Image optimization settings
   images: {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'm.media-amazon.com',
-        pathname: '/images/**',
+        hostname: 'images-na.ssl-images-amazon.com',
       },
       {
         protocol: 'https',
-        hostname: 'www.nikon.com.tr',
-        pathname: '/**',
-      },
+        hostname: 'bestcamerareview.com',
+      }
     ],
-  }
+    formats: ['image/webp'],
+  },
+
+  // Enable React strict mode
+  reactStrictMode: true,
 }
 
 module.exports = nextConfig 
