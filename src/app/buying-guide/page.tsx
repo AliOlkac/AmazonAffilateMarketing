@@ -3,9 +3,7 @@
 import Link from "next/link";
 import { FaCamera, FaInfoCircle, FaCheckCircle, FaSearch, FaMoneyBillWave, FaQuestionCircle } from "react-icons/fa";
 import { MdCompare, MdPhotoCamera, MdCameraAlt, MdVideocam, MdSettings } from "react-icons/md";
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useRef } from "react";
 import Image from "next/image";
 
 // Step 1: Understanding Camera Types - Content Data
@@ -133,76 +131,6 @@ export default function BuyingGuide() {
   const faqRef = useRef(null);
   const tableRef = useRef(null);
   const parallaxBgRef = useRef(null);
-
-  useEffect(() => {
-    // ScrollTrigger plugin'ini GSAP ile kaydet
-    gsap.registerPlugin(ScrollTrigger);
-
-    // Sayfa yükleme animasyonları
-    const tl = gsap.timeline();
-
-    // Hero bölümü animasyonları
-    tl.from(heroTitleRef.current, {
-      opacity: 0,
-      y: 50,
-      duration: 0.8,
-      ease: "power3.out"
-    })
-    .from(heroSubtitleRef.current, {
-      opacity: 0,
-      y: 30,
-      duration: 0.6,
-      ease: "power3.out"
-    }, "-=0.4")
-    .from(heroButtonsRef.current, {
-      opacity: 0,
-      y: 20,
-      duration: 0.6,
-      ease: "power3.out"
-    }, "-=0.2");
-    
-    // Hero arka plan parallax efekti
-    if (parallaxBgRef.current) {
-      gsap.to(parallaxBgRef.current, {
-        scrollTrigger: {
-          trigger: parallaxBgRef.current,
-          start: "top top",
-          end: "bottom top",
-          scrub: true
-        },
-        y: 150,
-        scale: 1.1,
-        ease: "none"
-      });
-    }
-
-    // Giriş bölümü animasyonu
-    gsap.from(introTitleRef.current, {
-      scrollTrigger: {
-        trigger: introTitleRef.current,
-        start: "top 80%"
-      },
-      opacity: 0,
-      y: 30,
-      duration: 0.6
-    });
-
-    gsap.from(introTextRef.current, {
-      scrollTrigger: {
-        trigger: introTextRef.current,
-        start: "top 80%"
-      },
-      opacity: 0,
-      y: 30,
-      duration: 0.6,
-      delay: 0.2
-    });
-
-    // Temizleme fonksiyonu
-    return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-    };
-  }, []);
 
   return (
     <div className="bg-gray-50 dark:bg-gray-900 min-h-screen pb-16">

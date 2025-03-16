@@ -3,9 +3,7 @@
 import Link from "next/link";
 import { FaCamera, FaInfoCircle, FaShoppingCart, FaEye, FaSlidersH } from "react-icons/fa";
 import { MdPhotoCamera, MdCameraAlt, MdOutlineHistory, MdSettings } from "react-icons/md";
-import { useEffect, useState } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useState } from "react";
 import CameraCard from "../components/CameraCard";
 import camerasData from "../../../public/cameras.json";
 import RelatedContent from "../components/RelatedContent";
@@ -110,11 +108,6 @@ const cameraCategories = [
 ];
 
 export default function CompactCameras() {
-  // GSAP initialization
-  useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-  }, []);
-
   // State for card hover effects
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
 

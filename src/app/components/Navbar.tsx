@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { usePathname } from "next/navigation";
 
-// Daha basit, animasyonsuz navbar
+// Basit, CSS geçişleri kullanan navbar bileşeni (GSAP olmadan)
 export default function Navbar() {
   // State for mobile menu toggle
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -56,8 +56,11 @@ export default function Navbar() {
   return (
     <>
       <nav 
-        className={`fixed top-0 left-0 right-0 w-full z-[100] transition-all duration-300 backdrop-blur-md ${isScrolled ? 'bg-black/80' : 'bg-black/50'} py-3 block`}
-        style={{ boxShadow: isScrolled ? '0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2)' : 'none' }}
+        className="fixed top-0 left-0 right-0 w-full z-[100] transition-all duration-300 backdrop-blur-md py-3"
+        style={{
+          backgroundColor: isScrolled ? "rgba(0, 0, 0, 0.8)" : "rgba(0, 0, 0, 0.5)",
+          boxShadow: isScrolled ? "0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2)" : "none",
+        }}
       >
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center h-16">

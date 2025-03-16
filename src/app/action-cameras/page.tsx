@@ -1,10 +1,9 @@
 /* eslint-disable react/no-unescaped-entities */
 "use client";
 
+import React from 'react';
 import { FaCamera, FaInfoCircle } from "react-icons/fa";
-import { useEffect, useState } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useState } from "react";
 import CameraCard from "../components/CameraCard";
 import camerasData from "../../../public/cameras.json";
 import RelatedContent from "../components/RelatedContent";
@@ -109,11 +108,6 @@ const cameraCategories = [
 ];
 
 export default function ActionCameras() {
-  // GSAP initialization
-  useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-  }, []);
-
   // State for card hover effects
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
 

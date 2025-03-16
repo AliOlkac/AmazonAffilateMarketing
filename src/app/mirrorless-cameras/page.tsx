@@ -3,9 +3,7 @@
 import Link from "next/link";
 import { FaCamera, FaInfoCircle, FaShoppingCart } from "react-icons/fa";
 import { MdCompare, MdPhotoCamera, MdCameraAlt, MdSettings } from "react-icons/md";
-import { useEffect, useState } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useState } from "react";
 import CameraCard from "../components/CameraCard";
 import camerasData from "../../../public/cameras.json";
 import JsonLd from "../components/JsonLd";
@@ -115,11 +113,6 @@ const cameraCategories = [
 ];
 
 export default function MirrorlessCameras() {
-  // GSAP initialization
-  useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-  }, []);
-
   // Veri fonksiyonlarını kullanarak kamera verilerini alıyoruz
   const mirrorlessCameras = getMirrorlessCameras();
   const popularMirrorlessCameras = getPopularMirrorlessCameras();

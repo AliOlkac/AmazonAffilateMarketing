@@ -1,17 +1,14 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { FaCamera, FaStar, FaCheckCircle, FaAmazon, FaShoppingCart, FaInfoCircle } from "react-icons/fa";
+import { FaCamera, FaStar, FaCheckCircle, FaAmazon, FaShoppingCart, FaInfoCircle, FaChevronRight, FaShoppingBag } from "react-icons/fa";
 import { FaStarHalfAlt } from "react-icons/fa";
 import { MdPhotoCamera, MdCameraAlt, MdVideocam } from "react-icons/md";
-import { useEffect, useRef, useState } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ScrollToPlugin } from "gsap/ScrollToPlugin";
-import camerasData from "../../../public/cameras.json";
 import CameraCard from "../components/CameraCard";
+import camerasData from "../../../public/cameras.json";
 
 // JSON dosyasından featured camera verilerini alan fonksiyon
 const getFeaturedCameras = () => {
@@ -237,39 +234,44 @@ const featuredCameras = getFeaturedCameras();
 // Kamera kategorileri ve linkleri
 const cameraCategories = [
   {
-    name: "DSLR Cameras",
+    title: "DSLR Cameras",
     description: "Traditional cameras with optical viewfinders and exceptional battery life",
     icon: <MdCameraAlt className="text-blue-500 text-3xl" />,
     color: "blue",
-    link: "/dslr-cameras"
+    link: "/dslr-cameras",
+    image: "/images/cameras/categories/dslr.webp"
   },
   {
-    name: "Mirrorless Cameras",
+    title: "Mirrorless Cameras",
     description: "Modern, compact cameras with electronic viewfinders and excellent video capabilities",
     icon: <MdPhotoCamera className="text-purple-500 text-3xl" />,
     color: "purple",
-    link: "/mirrorless-cameras"
+    link: "/mirrorless-cameras",
+    image: "/images/cameras/categories/mirrorless.webp"
   },
   {
-    name: "Action Cameras",
+    title: "Action Cameras",
     description: "Rugged, waterproof cameras for capturing adventures and extreme sports",
     icon: <FaCamera className="text-cyan-500 text-3xl" />,
     color: "cyan",
-    link: "/action-cameras"
+    link: "/action-cameras",
+    image: "/images/cameras/categories/action.webp"
   },
   {
-    name: "Vlog Cameras",
+    title: "Vlog Cameras",
     description: "Content creation focused cameras with flip screens and superior audio features",
     icon: <MdVideocam className="text-green-500 text-3xl" />,
     color: "green",
-    link: "/vlog-cameras"
+    link: "/vlog-cameras",
+    image: "/images/cameras/categories/vlog.webp"
   },
   {
-    name: "Compact Cameras",
+    title: "Compact Cameras",
     description: "Pocket-sized cameras that balance portability with image quality",
     icon: <FaCamera className="text-pink-500 text-3xl" />,
     color: "pink",
-    link: "/compact-cameras"
+    link: "/compact-cameras",
+    image: "/images/cameras/categories/compact.webp"
   }
 ];
 
@@ -299,18 +301,6 @@ export default function Cameras() {
   const [activeFilter, setActiveFilter] = useState<string>("All"); // Aktif kategori filtresi
   const [hoveredCard, setHoveredCard] = useState<number | null>(null); // Hover yapılan kartın indeksi
   
-  // GSAP animasyonları için referanslar
-  const heroRef = useRef<HTMLDivElement>(null); // Hero bölümü için ref
-  const heroTextRef = useRef(null);
-  const heroButtonsRef = useRef(null);
-  const categoriesRef = useRef(null);
-  const categoryCardsRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const filteredCamerasRef = useRef<HTMLDivElement>(null);
-  const cameraCardsRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const featuredSectionRef = useRef(null);
-  const tipsRef = useRef(null);
-  const ctaSectionRef = useRef(null);
-  
   // Kategoriye göre filtrelenmiş kameralar
   const filteredCameras = activeFilter === "All" 
     ? featuredCameras 
@@ -320,149 +310,16 @@ export default function Cameras() {
   const handleCardHover = (index: number | null) => {
     setHoveredCard(index);
   };
-  
-  // GSAP ve ScrollTrigger setup
-  useEffect(() => {
-    // GSAP plugins
-    gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
-    
-    // Sayfa yüklendiğinde hero animasyonları
-    const heroTimeline = gsap.timeline();
-    
-    heroTimeline.fromTo(heroTextRef.current,
-      { opacity: 0, y: 50 },
-      { opacity: 1, y: 0, duration: 1, ease: "power3.out" }
-    ).fromTo(heroButtonsRef.current,
-      { opacity: 0, y: 30 },
-      { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" },
-      "-=0.4"
-    );
-    
-    // Kategori bölümü animasyonu
-    gsap.fromTo(categoriesRef.current,
-      { opacity: 0, y: 50 },
-      { 
-        opacity: 1, 
-        y: 0, 
-        duration: 0.7, 
-        scrollTrigger: {
-          trigger: categoriesRef.current,
-          start: "top 80%"
-        }
-      }
-    );
-    
-    // Kategori kartları animasyonu
-    categoryCardsRefs.current.forEach((card, index) => {
-      if (card) {
-        gsap.fromTo(card,
-          { opacity: 0, y: 50 },
-          { 
-            opacity: 1, 
-            y: 0, 
-            duration: 0.5, 
-            delay: index * 0.1,
-            scrollTrigger: {
-              trigger: card,
-              start: "top 85%"
-            }
-          }
-        );
-      }
-    });
-    
-    // Öne çıkan kameralar bölümü animasyonu
-    gsap.fromTo(featuredSectionRef.current,
-      { opacity: 0, y: 50 },
-      { 
-        opacity: 1, 
-        y: 0, 
-        duration: 0.7, 
-        scrollTrigger: {
-          trigger: featuredSectionRef.current,
-          start: "top 80%"
-        }
-      }
-    );
-    
-    // Kamera kartları animasyonu
-    cameraCardsRefs.current.forEach((card, index) => {
-      if (card) {
-        gsap.fromTo(card,
-          { opacity: 0, scale: 0.9 },
-          { 
-            opacity: 1, 
-            scale: 1, 
-            duration: 0.5, 
-            delay: index * 0.08,
-            ease: "back.out(1.2)",
-            scrollTrigger: {
-              trigger: card,
-              start: "top 90%"
-            }
-          }
-        );
-      }
-    });
-    
-    // İpuçları bölümü animasyonu
-    gsap.fromTo(tipsRef.current,
-      { opacity: 0, y: 30 },
-      { 
-        opacity: 1, 
-        y: 0, 
-        duration: 0.7, 
-        scrollTrigger: {
-          trigger: tipsRef.current,
-          start: "top 80%"
-        }
-      }
-    );
-    
-    // CTA bölümü animasyonu
-    gsap.fromTo(ctaSectionRef.current,
-      { opacity: 0 },
-      { 
-        opacity: 1, 
-        duration: 1, 
-        scrollTrigger: {
-          trigger: ctaSectionRef.current,
-          start: "top 80%"
-        }
-      }
-    );
-    
-    // Cleanup fonksiyonu
-    return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-    };
-  }, []);
-  
+
   // Filtreleme değiştiğinde animasyon
   useEffect(() => {
-    if (filteredCamerasRef.current) {
-      // Container'ın içindeki tüm kartları yeniden animate et
-      const children = filteredCamerasRef.current.children;
-      if (children && children.length) {
-        gsap.fromTo(children,
-          { opacity: 0, y: 20 },
-          { 
-            opacity: 1, 
-            y: 0, 
-            duration: 0.4,
-            stagger: 0.05,
-            ease: "power2.out"
-          }
-        );
-      }
-    }
+    // Filtreleme değiştiğinde yapılacak işlemler buraya eklenebilir
   }, [activeFilter]);
 
   return (
     <div className="bg-gray-50 dark:bg-gray-900 min-h-screen pb-16">
       {/* Hero Bölümü */}
       <section 
-        ref={heroRef}
         className="relative h-[100vh] flex items-center justify-center overflow-hidden bg-gray-900 text-white"
       >
         {/* Arkaplan Görüntüsü */}
@@ -472,7 +329,7 @@ export default function Cameras() {
         <div className="absolute inset-0 bg-gradient-to-r from-blue-900/70 via-purple-900/70 to-pink-900/70"></div>
         
         {/* Hero İçeriği */}
-        <div className="container mx-auto px-4 z-10 text-center" ref={heroTextRef}>
+        <div className="container mx-auto px-4 z-10 text-center">
           <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
             Find Your Perfect Camera
           </h1>
@@ -480,7 +337,7 @@ export default function Cameras() {
             Explore our curated selection of the best cameras for every photographer - from beginners to professionals
           </p>
           
-          <div ref={heroButtonsRef} className="flex flex-wrap gap-4 justify-center">
+          <div className="flex flex-wrap gap-4 justify-center">
             <a href="#camera-categories" className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 px-8 py-4 rounded-full text-lg font-medium shadow-lg shadow-blue-500/20 transition duration-300 flex items-center gap-2">
               <FaCamera /> Explore Cameras
             </a>
@@ -494,7 +351,7 @@ export default function Cameras() {
       
       {/* Öne Çıkan Kameralar Bölümü */}
       <section className="py-16 px-4 bg-gradient-to-b from-white to-gray-100 dark:from-gray-800 dark:to-gray-900">
-        <div className="container mx-auto" ref={featuredSectionRef}>
+        <div className="container mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-3 text-gray-800 dark:text-white">
             Featured Cameras
           </h2>
@@ -504,10 +361,7 @@ export default function Cameras() {
           
           
           {/* Kamera Kartları */}
-          <div 
-            ref={filteredCamerasRef}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
-          >
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {filteredCameras.map((camera, index) => (
               <CameraCard
                 key={camera.id}
@@ -523,7 +377,7 @@ export default function Cameras() {
       
       {/* Kamera Seçim İpuçları */}
       <section id="camera-tips" className="py-16 px-4 bg-white dark:bg-gray-800">
-        <div className="container mx-auto" ref={tipsRef}>
+        <div className="container mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-3 text-gray-800 dark:text-white">
             How to Choose the Right Camera
           </h2>
@@ -547,7 +401,7 @@ export default function Cameras() {
       </section>
       
       {/* CTA Bölümü */}
-      <section className="py-20 px-4 bg-gradient-to-br from-blue-900 to-purple-900 text-white relative overflow-hidden" ref={ctaSectionRef}>
+      <section className="py-20 px-4 bg-gradient-to-br from-blue-900 to-purple-900 text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-20">
           <div className="absolute top-0 left-0 w-64 h-64 bg-blue-500 rounded-full filter blur-3xl"></div>
           <div className="absolute bottom-0 right-0 w-80 h-80 bg-purple-500 rounded-full filter blur-3xl"></div>
@@ -572,6 +426,45 @@ export default function Cameras() {
           
           <div className="mt-12 text-gray-400 text-sm">
             <p>Our reviews are based on extensive testing and research. We may earn a commission through affiliate links at no extra cost to you.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="camera-categories" className="py-16 px-4 bg-gray-100 dark:bg-gray-800">
+        <div className="container mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-3 text-gray-800 dark:text-white">
+            Camera Categories
+          </h2>
+          <p className="text-lg text-center mb-10 text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+            Discover the right type of camera for your photography needs
+          </p>
+          
+          {/* Kamera Kategorileri Kartları */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            {cameraCategories.map((category, index) => (
+              <div
+                key={category.title}
+                className="bg-white dark:bg-gray-700 rounded-xl shadow-xl overflow-hidden transform hover:-translate-y-2 transition-all duration-300"
+              >
+                <div className="h-48 relative">
+                  <Image 
+                    src={category.image} 
+                    alt={category.title}
+                    fill
+                    className="object-cover" 
+                  />
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-bold mb-3 text-gray-800 dark:text-white flex items-center gap-2">
+                    {category.icon} {category.title}
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-300 mb-4">{category.description}</p>
+                  <Link href={category.link} className="inline-flex items-center text-blue-500 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 font-medium">
+                    Explore {category.title} <FaChevronRight className="ml-1 text-sm" />
+                  </Link>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>

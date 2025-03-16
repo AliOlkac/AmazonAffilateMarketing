@@ -1,11 +1,9 @@
-'use client';
+"use client";
 
 import Link from "next/link";
 import { FaCamera, FaInfoCircle, FaShoppingCart } from "react-icons/fa";
 import { MdCompare, MdPhotoCamera, MdCameraAlt, MdVideocam, MdSettings, MdOutlineHistory } from "react-icons/md";
-import { useEffect, useRef, useState } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useState } from "react";
 import CameraCard from "../components/CameraCard";
 import camerasData from '../../../public/cameras.json';
 import JsonLd from "../components/JsonLd";
@@ -121,15 +119,6 @@ const cameraCategories = [
 ];
 
 export default function DSLRCameras() {
-  // GSAP initialization
-  useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-  }, []);
-
-  // Referans için gerçekten ihtiyaç duyduğumuz refs
-  const camerasWrapperRef = useRef<HTMLDivElement>(null);
-  const ctaSectionRef = useRef<HTMLDivElement>(null);
-
   // State for card hover effects
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
 
@@ -254,7 +243,7 @@ export default function DSLRCameras() {
           </p>
 
           {/* DSLR Camera Cards - Yeni bileşen kullanarak */}
-          <div ref={camerasWrapperRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {dslrCameras.map((camera, index) => (
               <CameraCard 
                 key={camera.id}
@@ -424,7 +413,7 @@ export default function DSLRCameras() {
       </section>
       
       {/* Call to Action - Redesigned to be more modern */}
-      <section ref={ctaSectionRef} className="py-20 px-4 bg-gradient-to-br from-gray-900 to-black text-white relative overflow-hidden">
+      <section className="py-20 px-4 bg-gradient-to-br from-gray-900 to-black text-white relative overflow-hidden">
         {/* Abstract background shapes */}
         <div className="absolute inset-0 opacity-20">
           <div className="absolute top-0 left-0 w-64 h-64 bg-blue-500 rounded-full filter blur-3xl"></div>

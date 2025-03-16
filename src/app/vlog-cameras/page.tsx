@@ -1,11 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { FaCamera, FaInfoCircle, FaMicrophone } from "react-icons/fa";
-import { MdCompare, MdPhotoCamera, MdCameraAlt, MdVideocam, MdFlipCameraAndroid } from "react-icons/md";
-import { useEffect, useState } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { FaCamera, FaInfoCircle, FaShoppingCart } from "react-icons/fa";
+import { MdCompare, MdPhotoCamera, MdCameraAlt, MdVideocam, MdSettings } from "react-icons/md";
+import { useState } from "react";
 import CameraCard from "../components/CameraCard";
 import camerasData from "../../../public/cameras.json";
 import RelatedContent from "../components/RelatedContent";
@@ -110,11 +108,6 @@ const cameraCategories = [
 ];
 
 export default function VlogCameras() {
-  // GSAP initialization
-  useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-  }, []);
-
   // State for card hover effects
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
 
@@ -349,12 +342,12 @@ export default function VlogCameras() {
               {
                 title: "Audio Features",
                 content: "Great audio is essential for vlogging. Prioritize cameras with external microphone inputs, good quality built-in microphones, and ideally, headphone jacks for audio monitoring. Some vlogging cameras include special wind noise reduction features.",
-                icon: <FaMicrophone className="text-2xl" />
+                icon: <FaShoppingCart className="text-2xl" />
               },
               {
                 title: "Flip Screen & Monitoring",
                 content: "A fully articulating flip screen is crucial for vlogging to frame yourself properly. Cameras with flip screens that can face forward let you monitor your composition, exposure and focus while recording yourself.",
-                icon: <MdFlipCameraAndroid className="text-2xl" />
+                icon: <MdSettings className="text-2xl" />
               },
               {
                 title: "Autofocus Performance",

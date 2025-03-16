@@ -1,10 +1,9 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { FaArrowRight } from "react-icons/fa";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Image from "next/image";
+import { FaCamera, FaSearchPlus, FaShoppingBag, FaCheck, FaArrowRight } from "react-icons/fa";
+import { useState, useEffect, useRef } from "react";
 import CameraCard from "./components/CameraCard";
 import camerasData from "../../public/cameras.json";
 
@@ -112,16 +111,11 @@ const getHomePageFeaturedCameras = () => {
 const featuredCameras = getHomePageFeaturedCameras();
 
 export default function Home() {
-  // GSAP animations for references
-  const heroRef = useRef(null);
+  // Refs for scrolling
   const sliderRef = useRef<HTMLDivElement>(null);
-  const slidesRef = useRef([]);
-  const featuredRef = useRef(null);
-  const guideRef = useRef(null);
-  const ctaRef = useRef(null);
   
   // State for slider
-  const [currentSlide, setCurrentSlide] = React.useState(0);
+  const [currentSlide, setCurrentSlide] = useState(0);
   // State for hovered card
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
   // State for rendering neon particles on client side
@@ -184,140 +178,22 @@ export default function Home() {
     setParticles(newParticles);
   }, []);
 
-  // GSAP animations
+  // Automatic slider interval
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      // Register ScrollTrigger plugin
-      if (gsap.utils.toArray(".hero-title").length > 0) {
-        try {
-          gsap.registerPlugin(ScrollTrigger);
-        
-          // Create main timeline
-          const tl = gsap.timeline();
-        
-          // Hero animation - Keeping it simpler
-          tl.from(".hero-title", {
-            y: 50,
-            opacity: 0,
-            duration: 1,
-            ease: "power3.out"
-          })
-          .from(".hero-subtitle", {
-            y: 30,
-            opacity: 0,
-            duration: 0.8,
-            ease: "power3.out"
-          }, "-=0.6")
-          .from(".hero-cta", {
-            y: 20,
-            opacity: 0,
-            duration: 0.8,
-            ease: "power3.out"
-          }, "-=0.6");
-          
-          // Other sections' animations if references exist
-          const sliderContainer = document.querySelector(".slider-container");
-          if (sliderContainer) {
-            gsap.from(sliderContainer, {
-              opacity: 0,
-              y: 50,
-              duration: 1,
-              scrollTrigger: {
-                trigger: sliderRef.current,
-                start: "top 80%",
-                toggleActions: "play none none none"
-              }
-            });
-          }
-          
-          // Category cards animation
-          const categoryCards = document.querySelectorAll(".category-card");
-          if (categoryCards.length > 0) {
-            gsap.from(categoryCards, {
-              opacity: 0,
-              y: 50,
-              stagger: 0.2,
-              duration: 0.8,
-              scrollTrigger: {
-                trigger: slidesRef.current,
-                start: "top 70%",
-                toggleActions: "play none none none"
-              }
-            });
-          }
-          
-          // Featured cameras animation
-          const featuredCameraCards = document.querySelectorAll(".featured-camera");
-          if (featuredCameraCards.length > 0) {
-            gsap.from(featuredCameraCards, {
-              opacity: 0,
-              x: -50,
-              stagger: 0.2,
-              duration: 0.8,
-              scrollTrigger: {
-                trigger: featuredRef.current,
-                start: "top 70%",
-                toggleActions: "play none none none"
-              }
-            });
-          }
-          
-          // Guide section animation
-          const guideContent = document.querySelector(".guide-content");
-          if (guideContent) {
-            gsap.from(guideContent, {
-              opacity: 0,
-              y: 50,
-              duration: 0.8,
-              scrollTrigger: {
-                trigger: guideRef.current,
-                start: "top 70%",
-                toggleActions: "play none none none"
-              }
-            });
-          }
-          
-          // CTA section animation
-          const ctaContent = document.querySelector(".cta-content");
-          if (ctaContent) {
-            gsap.from(ctaContent, {
-              opacity: 0,
-              scale: 0.9,
-              duration: 0.8,
-              scrollTrigger: {
-                trigger: ctaRef.current,
-                start: "top 80%",
-                toggleActions: "play none none none"
-              }
-            });
-          }
-          
-        } catch (error) {
-          console.error("GSAP animation load error:", error);
-        }
-      }
-      
-      // Automatic slider interval
-      const sliderInterval = setInterval(() => {
-        setCurrentSlide((prev) => (prev + 1) % cameraCategories.length);
-      }, 5000);
-      
-      // Cleanup function
-      return () => {
-        clearInterval(sliderInterval);
-        // Clean up everything
-        if (typeof ScrollTrigger !== 'undefined') {
-          ScrollTrigger.getAll().forEach(t => t.kill());
-        }
-      };
-    }
+    const sliderInterval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % cameraCategories.length);
+    }, 5000);
+    
+    // Cleanup function
+    return () => {
+      clearInterval(sliderInterval);
+    };
   }, []);
 
   return (
     <div className="min-h-screen bg-gray-900 text-white overflow-hidden">
       {/* Hero section */}
       <section 
-        ref={heroRef} 
         className="relative h-screen flex items-center justify-center overflow-hidden"
         style={{
           background: "radial-gradient(circle at center, rgba(25,25,35,1) 0%, rgba(10,10,20,1) 100%)"
@@ -378,7 +254,6 @@ export default function Home() {
       
       {/* Carousel slider section */}
       <section 
-        ref={sliderRef} 
         className="py-24 relative"
         style={{
           background: "linear-gradient(to bottom, rgba(10,10,20,1) 0%, rgba(25,25,35,1) 50%, rgba(15,15,25,1) 100%)"
@@ -397,7 +272,7 @@ export default function Home() {
             </span>
           </h2>
           
-          <div className="slider-container relative overflow-hidden rounded-3xl shadow-[0_0_80px_rgba(255,0,255,0.2)] animate-fade-in">
+          <div ref={sliderRef} className="slider-container relative overflow-hidden rounded-3xl shadow-[0_0_80px_rgba(255,0,255,0.2)] animate-fade-in">
             {/* Main slider */}
             <div 
               className="relative h-[450px] md:h-[600px] lg:h-[700px] overflow-hidden"
@@ -528,7 +403,7 @@ export default function Home() {
       </section>
       
       {/* Featured Camera Models */}
-      <section ref={featuredRef} className="py-16 px-4 bg-gradient-to-b from-gray-900 to-gray-800 rounded-t-[40px] shadow-lg relative">
+      <section className="py-16 px-4 bg-gradient-to-b from-gray-900 to-gray-800 rounded-t-[40px] shadow-lg relative">
         {/* Background effects */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-1/4 right-1/4 w-80 h-80 rounded-full bg-blue-500/10 blur-[100px]"></div>
@@ -575,7 +450,7 @@ export default function Home() {
       </section>
       
       {/* Camera Selection Guide */}
-      <section ref={guideRef} className="py-24 relative overflow-hidden">
+      <section className="py-24 relative overflow-hidden">
         {/* Background */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#0f111a] via-[#131626] to-[#0f111a]"></div>
         
@@ -796,7 +671,7 @@ export default function Home() {
       </section>
       
       {/* CTA section */}
-      <section ref={ctaRef} className="py-20 bg-gray-800 relative overflow-hidden">
+      <section className="py-20 bg-gray-800 relative overflow-hidden">
         {/* Neon light effect */}
         <div className="absolute inset-0 flex items-center justify-center overflow-hidden opacity-30">
           <div className="w-[800px] h-[800px] rounded-full bg-[#FF00FF] blur-[150px]"></div>
