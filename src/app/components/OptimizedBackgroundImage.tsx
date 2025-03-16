@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import { CSSProperties } from 'react';
 
 interface OptimizedBackgroundImageProps {
   src: string;

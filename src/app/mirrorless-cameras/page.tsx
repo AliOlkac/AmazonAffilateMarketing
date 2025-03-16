@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { FaCamera, FaInfoCircle, FaShoppingCart } from "react-icons/fa";
-import { MdCompare, MdPhotoCamera, MdCameraAlt, MdVideocam, MdSettings } from "react-icons/md";
+import { MdCompare, MdPhotoCamera, MdCameraAlt, MdSettings } from "react-icons/md";
 import { useEffect, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";

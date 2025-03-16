@@ -20,7 +20,7 @@ interface EventProps {
   category: string;
   label?: string;
   value?: number;
-  [key: string]: any; // Diğer özel parametreler
+  [key: string]: string | number | boolean | undefined; // Diğer özel parametreler
 }
 
 export const event = ({ action, category, label, value, ...otherProps }: EventProps) => {

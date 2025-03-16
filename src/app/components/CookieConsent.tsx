@@ -33,7 +33,7 @@ export default function CookieConsent() {
         
         // Google Analytics için consent durumunu güncelle
         updateConsent(settings);
-      } catch (e) {
+      } catch {
         // JSON ayrıştırma hatası durumunda (localStorage verisi geçersizse)
         localStorage.removeItem('cookie-consent');
         setShowConsent(true);

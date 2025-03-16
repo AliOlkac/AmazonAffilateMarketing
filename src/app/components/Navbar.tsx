@@ -155,11 +155,10 @@ export default function Navbar() {
     <>
       <nav 
         ref={navbarRef}
-        className={`fixed top-0 w-full z-50 transition-all duration-300 backdrop-blur-md bg-black
-        ${isScrolled ? "py-2 bg-black/10 shadow-lg shadow-black/30" : "py-4 bg-black/10"}`}
+        className="fixed top-0 left-0 right-0 w-full z-50 transition-all duration-300 backdrop-blur-md bg-black/10"
       >
         <div className="container mx-auto px-4">
-          <div className="flex justify-between items-center">
+          <div className="flex justify-between items-center h-16">
             {/* Logo */}
             <Link href="/" className="flex items-center space-x-2 group" ref={logoRef}>
               <div className="relative w-10 h-10 overflow-hidden transition-transform duration-300 group-hover:scale-110">

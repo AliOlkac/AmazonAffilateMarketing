@@ -27,8 +27,6 @@ const nextConfig: NextConfig = {
         pathname: '/images/**',
       },
     ],
-    // Görsel kalitesi - 75 değeri, iyi bir performans/kalite dengeleme sağlar
-    quality: 75,
     // Varsayılan biçim olarak WebP kullanımını etkinleştirir (daha verimli)
     formats: ['image/webp'],
   },

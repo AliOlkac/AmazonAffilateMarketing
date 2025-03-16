@@ -4,34 +4,34 @@ import { useEffect } from 'react';
 import Script from 'next/script';
 
 // Google Analytics ölçüm kimliği
-const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_ID || 'G-XXXXXXXXXX'; // Gerçek ID'nizi buraya ekleyin
+export const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_ID || 'G-XXXXXXXXXX'; // Gerçek ID'nizi buraya ekleyin
 
+// Google Analytics izleme kodunu sayfaya ekleyen bileşen
+// Kullanıcı çerez onayını verdikten sonra aktifleşir
 export default function GoogleAnalytics() {
   useEffect(() => {
-    // Eğer geliştirme modundaysa veya kimlik varsayılan değerse Analytics'i yükleme
-    if (process.env.NODE_ENV === 'development' || GA_MEASUREMENT_ID === 'G-XXXXXXXXXX') {
-      console.log('Google Analytics geliştirme modunda yüklenmedi veya ölçüm kimliği ayarlanmadı.');
-      return;
-    }
-    
-    // Google Analytics tarafından veri toplamaya izin verilen cookieler
-    // Bu örnek, GDPR uyumluluğu için cookie kabul sürecini beklemeden
-    // minimal düzeyde çalışmayı gösterir
-    window.gtag('consent', 'default', {
-      'analytics_storage': 'denied', // Analitik depolama başlangıçta reddedildi
-      'ad_storage': 'denied', // Reklam depolama başlangıçta reddedildi
-      'wait_for_update': 500 // 500ms içinde güncelleme bekle
-    });
+    // Sayfa görüntülemelerini izlemek için pageview olayını tetikle
+    const handleRouteChange = (url: string) => {
+      if (window.gtag) {
+        window.gtag('config', GA_MEASUREMENT_ID, {
+          page_path: url,
+          cookie_flags: 'SameSite=None;Secure'
+        });
+      }
+    };
+
+    // Next.js App Router ile route değişimlerini dinle
+    // (burada geçici bir çözüm, tam Router olayları App Router'da henüz resmi olarak desteklenmiyor)
+    const handleUrlChange = () => {
+      handleRouteChange(window.location.pathname + window.location.search);
+    };
+
+    // MutationObserver kullanarak DOM değişikliklerini dinle
+    const observer = new MutationObserver(handleUrlChange);
+    observer.observe(document.body, { childList: true, subtree: true });
+
+    return () => observer.disconnect();
   }, []);
-  
-  // Kullanıcı gizlilik tercihlerini güncelledikten sonra çağrılacak fonksiyon
-  // (kullanıcı cookie kabul formu ile etkileşime girdiğinde)
-  const updateConsent = (consent: { analytics: boolean, ads: boolean }) => {
-    window.gtag('consent', 'update', {
-      'analytics_storage': consent.analytics ? 'granted' : 'denied',
-      'ad_storage': consent.ads ? 'granted' : 'denied'
-    });
-  };
   
   // Bu bileşeni kullanmak ve consent'i güncellemek için:
   // 1. Bu bileşeni layout.tsx içinde import edin
@@ -65,7 +65,6 @@ export default function GoogleAnalytics() {
 }
 
 // Dışa aktarılan fonksiyonlar
-export { GA_MEASUREMENT_ID };
 export const updateConsent = (consent: { analytics: boolean, ads: boolean }) => {
   if (typeof window !== 'undefined' && window.gtag) {
     window.gtag('consent', 'update', {

@@ -4,10 +4,10 @@ interface Window {
     command: string,
     action: string | Date,
     config?: {
-      [key: string]: any;
+      [key: string]: string | number | boolean | null | undefined;
     }
   ) => void;
-  dataLayer: any[];
+  dataLayer: Array<Record<string, unknown>>;
 }
 
 // Event tracking için tip tanımı
@@ -16,5 +16,5 @@ interface GTagEvent {
   category: string;
   label: string;
   value?: number;
-  [key: string]: any;
+  [key: string]: string | number | boolean | undefined;
 } 

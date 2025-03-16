@@ -57,7 +57,7 @@ export const deferNonCriticalTasks = (tasks: Array<() => void>, timeout = 1000) 
   if (typeof window !== 'undefined') {
     // Tarayıcı boşta olduğunda veya belirtilen süre sonra
     if ('requestIdleCallback' in window) {
-      (window as any).requestIdleCallback(() => {
+      window.requestIdleCallback(() => {
         tasks.forEach(task => task());
       });
     } else {

@@ -41,13 +41,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const lastMonth = new Date(currentDate);
   lastMonth.setMonth(currentDate.getMonth() - 1);
   
-  let sitemapEntries = [];
+  const sitemapEntries: MetadataRoute.Sitemap = [];
   
   // Ana sayfa - En yüksek önceliğe sahip
   sitemapEntries.push({
     url: baseUrl,
     lastModified: currentDate,
-    changeFrequency: 'daily',
+    changeFrequency: 'daily' as const,
     priority: 1.0,
   });
   
@@ -56,7 +56,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     sitemapEntries.push({
       url: `${baseUrl}/${category.path}`,
       lastModified: currentDate,
-      changeFrequency: 'weekly',
+      changeFrequency: 'weekly' as const,
       priority: category.priority,
     });
     
@@ -70,7 +70,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         sitemapEntries.push({
           url: `${baseUrl}/${category.path}/${brand.name}`,
           lastModified: lastMonth,
-          changeFrequency: 'monthly',
+          changeFrequency: 'monthly' as const,
           priority: brand.priority,
         });
       }
@@ -84,7 +84,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: page.path.includes('policy') || page.path.includes('terms') ? 
         new Date(currentDate.getFullYear(), 0, 1) : // Politika sayfaları yılda bir güncellenir
         currentDate,
-      changeFrequency: page.path.includes('blog') ? 'weekly' : 'monthly',
+      changeFrequency: page.path.includes('blog') ? 'weekly' as const : 'monthly' as const,
       priority: page.priority,
     });
   });
@@ -103,7 +103,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     sitemapEntries.push({
       url: `${baseUrl}/${product.path}`,
       lastModified: currentDate,
-      changeFrequency: 'monthly',
+      changeFrequency: 'monthly' as const,
       priority: product.priority,
     });
   });
