@@ -576,7 +576,7 @@
     "amazonBestSellers": [
       {
         "name": "Panasonic LUMIX FZ80D",
-        "link": "https://www.amazon.com/Panasonic-Compact-20-1200mm-Recording-Stabilizer/dp/B0D8239188/",
+        "link": "https://amzn.to/4buVUcB",
         "price": "$399-479",
         "level": "Entry-Mid",
         "features": [
@@ -590,7 +590,7 @@
       },
       {
         "name": "Panasonic LUMIX ZS100",
-        "link": "https://www.amazon.com/PANASONIC-Megapixels-VARIO-ELMARIT-Stabilization-DMC-ZS100K/dp/B010NU5AX8/",
+        "link": "https://amzn.to/4hHRTmy",
         "price": "$599-699",
         "level": "Mid-Range",
         "features": [
@@ -604,7 +604,7 @@
       },
       {
         "name": "KODAK PIXPRO FZ45-BK",
-        "link": "https://www.amazon.com/KODAK-Friendly-FZ45-BK-Digital-Optical/dp/B0B8PDHRWY/",
+        "link": "https://amzn.to/4i7FfhN",
         "price": "$90-100",
         "level": "Entry-Level",
         "features": [
@@ -617,8 +617,8 @@
       },
       {
         "name": "4K Digital Camera for Photography",
-        "link": "https://www.amazon.com/4K-Digital-Camera-Photography-Anti-Shake/dp/B0DHRQRLYW/",
-        "price": "$70-100",
+        "link": "https://amzn.to/3Fw5u2R",
+        "price": "$50-100",
         "level": "Entry-Level",
         "features": [
           "48MP sensor",
@@ -630,8 +630,8 @@
       },
       {
         "name": "Digital Camera FHD 1080P",
-        "link": "https://www.amazon.com/Digital-Vlogging-Students-Seniors-Pink/dp/B0BTCZ2RR9/",
-        "price": "$80-100",
+        "link": "https://amzn.to/4iUDJ2m",
+        "price": "$35-60",
         "level": "Entry-Level",
         "features": [
           "1080p video",
@@ -645,7 +645,7 @@
     "best2025": [
       {
         "name": "Fujifilm X100VI",
-        "link": "https://www.amazon.com/Fujifilm-X100VI-Digital-Camera-Black/dp/B0CW1KVSVF/",
+        "link": "https://amzn.to/4kvA2Sw",
         "price": "$2,000-2,200",
         "level": "Advanced-Professional",
         "features": [
@@ -659,7 +659,7 @@
       },
       {
         "name": "Sony RX100 VII",
-        "link": "https://www.amazon.com/Sony-Premium-Compact-1-0-type-DSCRX100M7/dp/B07VPQV7BY/",
+        "link": "https://amzn.to/3FvtALr",
         "price": "$1,200-1,300",
         "level": "Advanced",
         "features": [
@@ -673,8 +673,8 @@
       },
       {
         "name": "Canon PowerShot G7 X Mark II",
-        "link": "https://www.amazon.com/Canon-PowerShot-G7-Mark-1066C002/dp/B01BYERRUG/",
-        "price": "$850-900",
+        "link": "https://amzn.to/3Fw5HDb",
+        "price": "$1400-1600",
         "level": "Mid-Advanced",
         "features": [
           "20.1MP 1\" sensor",
@@ -687,7 +687,7 @@
       },
       {
         "name": "Ricoh GR IIIx",
-        "link": "https://amzn.to/3DupPFa",
+        "link": "https://amzn.to/42aQlNm",
         "price": "$1,000-1,100",
         "level": "Advanced",
         "features": [
@@ -700,7 +700,7 @@
       },
       {
         "name": "Leica D-Lux 8",
-        "link": "https://www.amazon.com/Leica-D-Lux-Digital-Camera-19191/dp/B0DGWHH21F/",
+        "link": "https://amzn.to/4iVmQ7F",
         "price": "$1,500-1,700",
         "level": "Advanced-Professional",
         "features": [
