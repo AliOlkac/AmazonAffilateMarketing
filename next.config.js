@@ -35,9 +35,6 @@ const nextConfig = {
     pagesBufferLength: 2,
   },
 
-  // Minimize CSS - SWC optimizasyonu
-  swcMinify: true,
-
   // Statik optimizasyon
   output: 'standalone',
 }

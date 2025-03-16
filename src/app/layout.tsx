@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from 'next/font/google';
 import "./globals.css";
 import Navbar from "./components/Navbar";
@@ -17,6 +17,12 @@ const inter = Inter({
   preload: true,  // Kritik fontları önceden yükle
   fallback: ['system-ui', 'Arial', 'sans-serif'], // Yedek font ailesi
 });
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://bestcamerareview.com'),
@@ -67,11 +73,6 @@ export const metadata: Metadata = {
     'msapplication-config': '/browserconfig.xml',
     'theme-color': '#0F4C81',
   },
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 5,
-  },
 };
 
 // Web sitesi için JSON-LD yapılandırılmış veri
@@ -108,10 +109,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   // Kritik olmayan CSS dosyaları
-  const nonCriticalStylesheets = [
-    // Burada kritik olmayan stil dosyalarını ekleyin
-    '/styles/animations.css',
-    '/styles/print.css'
+  const nonCriticalStylesheets: string[] = [
+    // Bu dosyalar bulunamadığı için kaldırıldı
   ];
 
   return (

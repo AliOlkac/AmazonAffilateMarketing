@@ -36,6 +36,7 @@ export default function Navbar() {
     { name: "Action Cameras", path: "/action-cameras" },
     { name: "Vlog Cameras", path: "/vlog-cameras" },
     { name: "Compact Cameras", path: "/compact-cameras" },
+    { name: "Buying Guide", path: "/buying-guide" },
   ];
 
   // Handle scroll effect - only in client side
