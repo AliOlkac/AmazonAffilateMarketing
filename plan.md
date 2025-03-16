@@ -438,59 +438,30 @@ Bu yol haritası, projenin geliştirme, içerik, SEO, analiz ve uzun vadeli büy
 ## TO-DO LIST: Kamera Nişinde Amazon Affiliate Web Sitesi
 
 ### A. Planlama Aşaması
-- [x] A1. Niş ve kamera gruplarını kesinleştirme (DSLR, Aynasız, Aksiyon, Vlog, Kompakt/Taşınabilir)
+- [x] A1. Niş ve kamera gruplarını kesinleştirme
 - [x] A2. Hedef kitleyi detaylandırma
-- [x] A3. Anahtar kelime araştırması yapma (İngilizce - ABD pazarı için)
-   - [x] Genel anahtar kelimeleri belirleme
-   - [x] Gruba özel anahtar kelimeleri belirleme
-   - [x] Uzun kuyruklu anahtar kelimeleri belirleme
-- [x] A4. İçerik planı oluşturma (İngilizce - ABD pazarı için)
-   - [x] Temel içerik türlerini belirleme
-   - [x] Başlangıç içerik fikirlerini belirleme
-   - [x] İçerik takvimi oluşturma
+- [x] A3. Anahtar kelime araştırması yapma
+- [x] A4. İçerik planı oluşturma
 
 ### B. Teknik Kurulum
 - [x] B1. Domain satın alma
 - [x] B2. Vercel hesabı oluşturma
 - [x] B3. Next.js projesi başlatma
-   - [x] Proje klasörü oluşturma
-   - [x] Next.js uygulamasını kurma
-   - [x] Geliştirme sunucusunu başlatma ve test etme
-   - [x] Git versiyon kontrolü kurma
 
 ### C. Web Sitesi Geliştirme
 - [x] C1. Temel sayfa yapısını oluşturma
-   - [x] Ana sayfa (Homepage)
-   - [x] Grup sayfaları (Kategori sayfaları)
-   - [x] Tum sayfalardaki Tum icerik: Gorseller,yazı icerikleri, ürün bilgileri, hepsi düzenlenecek
-
 - [x] C2. Tasarım ve kullanıcı arayüzü geliştirme
-   - [x] Tailwind CSS entegrasyonu
-   - [x] Responsive tasarım oluşturma
-   - [x] UI bileşenlerini geliştirme (header, footer, navigation)
-   - [x] Ana sayfa tasarımı
-   - [x] Kategori sayfaları tasarımı
-   - [x] Ürün inceleme sayfaları tasarımı
-
-- [ ] C3. SEO yapılandırmasını gerçekleştirme
-   - [ ] Meta etiketleri ve başlık yapılandırması
-   - [ ] Site haritası ve robots.txt oluşturma
-   - [ ] Schema markup ekleme
-
+- [x] C3. SEO yapılandırmasını gerçekleştirme
+   - [x] Meta etiketleri ve başlık yapılandırması (SEO.tsx bileşeni)
+   - [x] Site haritası ve robots.txt oluşturma
+   - [x] Schema markup ekleme
 
 ### D. İçerik ve Affiliate Entegrasyonu
 - [x] D1. Amazon Associates programına kaydolma
 - [x] D2. Her kamera grubu için "Best X" lists oluşturma
-   - [x] DSLR kameralar listesi
-   - [x] Aynasız kameralar listesi
-   - [x] Aksiyon kameraları listesi
-   - [x] Vlog kameraları listesi
 - [x] D3. Ürün inceleme sayfaları oluşturma
 - [x] D4. Amazon affiliate linklerini entegre etme
 - [x] D5. Görsel ve multimedya içerik ekleme
-   - [x] Yüksek kaliteli ürün fotoğrafları ekleme
-   - [x] Video içerik entegrasyonu
-   - [x] İnfografikler ve karşılaştırma tabloları oluşturma
 
 ### E. SEO ve Trafik Stratejisi Uygulama
 - [ ] E1. On-Page SEO optimizasyonu
@@ -502,23 +473,12 @@ Bu yol haritası, projenin geliştirme, içerik, SEO, analiz ve uzun vadeli büy
    - [ ] Mobil uyumluluk testleri
    - [ ] Sitemap ve robots.txt dosyalarını Google Search Console'a gönderme
 - [ ] E3. Sosyal medya hesapları oluşturma
-   - [ ] Pinterest hesabı açma ve içerik stratejisi
-   - [ ] Instagram hesabı açma ve içerik stratejisi
-   - [ ] YouTube kanalı oluşturma (opsiyonel)
 - [ ] E4. E-posta listesi oluşturma ve bülten sistemi kurma
 
 ### F. Analiz ve Optimizasyon
 - [ ] F1. Google Analytics kurulumu
-   - [ ] Vercel projesi ile entegrasyon
-   - [ ] Temel metrikleri izleme
-   - [ ] Hedef dönüşüm takibi
 - [ ] F2. Amazon Affiliate paneli takibi
-   - [ ] Kazanç takibi
-   - [ ] Tıklama ve dönüşüm oranları analizi
 - [ ] F3. A/B testleri yapma
-   - [ ] CTA butonları için test
-   - [ ] Sayfa düzeni için test
-   - [ ] Başlık ve meta açıklamaları için test
 
 ### G. Uzun Vadeli Plan
 - [ ] G1. Düzenli içerik güncelleme takvimi oluşturma
