@@ -181,14 +181,14 @@ export default function Home() {
 
   // Automatic slider interval
   useEffect(() => {
-    const sliderInterval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % cameraCategories.length);
-    }, 5000);
-    
+      const sliderInterval = setInterval(() => {
+        setCurrentSlide((prev) => (prev + 1) % cameraCategories.length);
+      }, 5000);
+      
     // Cleanup function
-    return () => {
-      clearInterval(sliderInterval);
-    };
+      return () => {
+        clearInterval(sliderInterval);
+      };
   }, []);
 
   return (

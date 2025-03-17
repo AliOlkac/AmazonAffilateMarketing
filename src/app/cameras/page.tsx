@@ -310,7 +310,7 @@ export default function Cameras() {
   const handleCardHover = (index: number | null) => {
     setHoveredCard(index);
   };
-
+  
   // Filtreleme değiştiğinde animasyon
   useEffect(() => {
     // Filtreleme değiştiğinde yapılacak işlemler buraya eklenebilir

@@ -2,14 +2,15 @@
 User-agent: *
 Allow: /
 
+# Essential disallow rules
+Disallow: /api/
+Disallow: /_next/
+Disallow: /private/
+Disallow: /admin/
+Disallow: /*.json$
+
 # Sitemap location
 Sitemap: https://bestcamerareview.com/sitemap.xml
 
-# Disallow admin and private paths
-Disallow: /admin/
-Disallow: /private/
-Disallow: /_next/
-Disallow: /api/
-
-# Crawl-delay for all bots (5 saniye olarak optimize edildi)
-Crawl-delay: 5 
+# Host
+Host: https://bestcamerareview.com 
