@@ -81,6 +81,12 @@ export default function CameraCard({ camera, index, hoveredCard, handleCardHover
   // Kategori renklerini al
   const colorClasses = getCategoryColorClasses(camera.categoryColor);
   
+  // Amazon bağlantı metni için kamera adını dahil et
+  const amazonLinkText = `Buy ${camera.name} on Amazon`;
+  
+  // Detaylı bilgi sayfası için açıklayıcı metin
+  const detailsLinkText = `See ${camera.name} detailed review`;
+  
   return (
     <div 
       key={camera.id} 
@@ -174,9 +180,11 @@ export default function CameraCard({ camera, index, hoveredCard, handleCardHover
               className={`flex-1 px-3 py-2 text-center text-sm ${colorClasses.badge} hover:opacity-90 text-white rounded-lg flex items-center justify-center gap-1 transition-all duration-300 ${
                 hoveredCard === index ? 'opacity-90 shadow-lg' : ''
               }`}
+              aria-label={amazonLinkText}
+              title={amazonLinkText}
             >
               <FaAmazon className={hoveredCard === index ? 'animate-bounce' : ''} /> 
-              <span className="hidden sm:inline">View on Amazon</span>
+              <span className="hidden sm:inline">{amazonLinkText}</span>
               <span className="sm:hidden">Amazon</span>
             </a>
             
@@ -185,9 +193,11 @@ export default function CameraCard({ camera, index, hoveredCard, handleCardHover
               <Link 
                 href={camera.page_link}
                 className={`flex-1 px-3 py-2 text-center text-sm border border-${colorClasses.badge.replace('bg-', '')} text-${colorClasses.icon} rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-300`}
+                aria-label={detailsLinkText}
+                title={detailsLinkText}
               >
-                <span className="hidden sm:inline">More Info</span>
-                <span className="sm:hidden">Info</span>
+                <span className="hidden sm:inline">{detailsLinkText}</span>
+                <span className="sm:hidden">{camera.name} Review</span>
               </Link>
             )}
           </div>
