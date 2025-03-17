@@ -27,9 +27,6 @@ const nextConfig = {
     removeConsole: process.env.NODE_ENV === 'production',
   },
 
-  // Generate sitemap during build
-  generateSitemap: true,
-
   // Caching and performance
   onDemandEntries: {
     // Sayfa önbelleğe alma süresi (dev modunda)
@@ -42,4 +39,4 @@ const nextConfig = {
   output: 'standalone',
 }
 
-module.exports = nextConfig 
+export default nextConfig; 

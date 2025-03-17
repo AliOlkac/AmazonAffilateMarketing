@@ -2,13 +2,15 @@
   "name": "bestcamerareview",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build",
-    "start": "next start",
+    "build": "npm run generate-sitemap && next build",
+    "start": "node .next/standalone/server.js",
     "lint": "next lint",
     "test": "jest",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "generate-sitemap": "node scripts/generate-sitemap.js"
   },
   "dependencies": {
     "daisyui": "^5.0.0",
