@@ -21,21 +21,25 @@ const cameraBrands = [
   { name: 'dji', priority: 0.7 },
 ];
 
-// Altsayfalar - yardımcı ve bilgilendirici içerikler
-const subPages = [
+// Mevcut sayfalar
+const existingPages = [
   { path: 'cameras', priority: 0.8 },
   { path: 'buying-guide', priority: 0.9 },
-  { path: 'comparison', priority: 0.7 },
-  { path: 'accessories', priority: 0.6 },
-  { path: 'blog', priority: 0.7 },
-  { path: 'about', priority: 0.5 },
-  { path: 'contact', priority: 0.5 },
-  { path: 'privacy-policy', priority: 0.3 },
-  { path: 'terms-of-service', priority: 0.3 },
 ];
 
+// URL'lerin geçerli olduğunu kontrol eden yardımcı fonksiyon
+function isValidUrl(url: string): boolean {
+  try {
+    new URL(url);
+    return true;
+  } catch {
+    console.error(`Geçersiz URL: ${url}`);
+    return false;
+  }
+}
+
 // sitemap.ts dosyası arama motorlarına sitenizin yapısını ve önemli sayfalarını bildirir
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://bestcamerareview.com';
   const currentDate = new Date();
   const lastMonth = new Date(currentDate);
@@ -43,70 +47,71 @@ export default function sitemap(): MetadataRoute.Sitemap {
   
   const sitemapEntries: MetadataRoute.Sitemap = [];
   
-  // Ana sayfa - En yüksek önceliğe sahip
-  sitemapEntries.push({
-    url: baseUrl,
-    lastModified: currentDate,
-    changeFrequency: 'daily' as const,
-    priority: 1.0,
-  });
-  
-  // Kamera kategorileri
-  cameraCategories.forEach(category => {
+  try {
+    // Ana sayfa - En yüksek önceliğe sahip
     sitemapEntries.push({
-      url: `${baseUrl}/${category.path}`,
+      url: baseUrl,
       lastModified: currentDate,
-      changeFrequency: 'weekly' as const,
-      priority: category.priority,
+      changeFrequency: 'daily',
+      priority: 1.0,
     });
     
-    // Her kategori için marka sayfaları
-    cameraBrands.forEach(brand => {
-      // Eğer marka ilgili kategori ile uyumluysa (örn. GoPro sadece action-cameras ile ilişkili)
-      if (
-        !(category.path === 'action-cameras' && !['gopro', 'dji', 'insta360'].includes(brand.name)) &&
-        !(category.path === 'vlog-cameras' && ['olympus'].includes(brand.name))
-      ) {
+    // Kamera kategorileri
+    for (const category of cameraCategories) {
+      const categoryUrl = `${baseUrl}/${category.path}`;
+      if (isValidUrl(categoryUrl)) {
         sitemapEntries.push({
-          url: `${baseUrl}/${category.path}/${brand.name}`,
-          lastModified: lastMonth,
-          changeFrequency: 'monthly' as const,
-          priority: brand.priority,
+          url: categoryUrl,
+          lastModified: currentDate,
+          changeFrequency: 'weekly',
+          priority: category.priority,
+        });
+        
+        // Her kategori için marka sayfaları
+        for (const brand of cameraBrands) {
+          // Eğer marka ilgili kategori ile uyumluysa
+          if (
+            !(category.path === 'action-cameras' && !['gopro', 'dji', 'insta360'].includes(brand.name)) &&
+            !(category.path === 'vlog-cameras' && ['olympus'].includes(brand.name))
+          ) {
+            const brandUrl = `${categoryUrl}/${brand.name}`;
+            if (isValidUrl(brandUrl)) {
+              sitemapEntries.push({
+                url: brandUrl,
+                lastModified: lastMonth,
+                changeFrequency: 'monthly',
+                priority: brand.priority,
+              });
+            }
+          }
+        }
+      }
+    }
+    
+    // Mevcut sayfalar
+    for (const page of existingPages) {
+      const pageUrl = `${baseUrl}/${page.path}`;
+      if (isValidUrl(pageUrl)) {
+        sitemapEntries.push({
+          url: pageUrl,
+          lastModified: currentDate,
+          changeFrequency: 'weekly',
+          priority: page.priority,
         });
       }
-    });
-  });
-  
-  // Alt sayfalar
-  subPages.forEach(page => {
-    sitemapEntries.push({
-      url: `${baseUrl}/${page.path}`,
-      lastModified: page.path.includes('policy') || page.path.includes('terms') ? 
-        new Date(currentDate.getFullYear(), 0, 1) : // Politika sayfaları yılda bir güncellenir
-        currentDate,
-      changeFrequency: page.path.includes('blog') ? 'weekly' as const : 'monthly' as const,
-      priority: page.priority,
-    });
-  });
-  
-  // Popüler ürün sayfaları 
-  // Not: Gerçek uygulamada bunlar veritabanından veya JSON dosyasından çekilebilir
-  const popularProducts = [
-    { path: 'dslr-cameras/canon-eos-90d', priority: 0.7 },
-    { path: 'mirrorless-cameras/sony-a7-iv', priority: 0.7 },
-    { path: 'action-cameras/gopro-hero11-black', priority: 0.7 },
-    { path: 'vlog-cameras/sony-zv-1-ii', priority: 0.7 },
-    { path: 'compact-cameras/sony-rx100-vii', priority: 0.7 },
-  ];
-  
-  popularProducts.forEach(product => {
-    sitemapEntries.push({
-      url: `${baseUrl}/${product.path}`,
+    }
+    
+    console.log(`Sitemap başarıyla oluşturuldu. Toplam URL sayısı: ${sitemapEntries.length}`);
+    return sitemapEntries;
+    
+  } catch (error) {
+    console.error('Sitemap oluşturulurken hata oluştu:', error);
+    // Hata durumunda en azından ana sayfayı içeren minimal bir sitemap döndür
+    return [{
+      url: baseUrl,
       lastModified: currentDate,
-      changeFrequency: 'monthly' as const,
-      priority: product.priority,
-    });
-  });
-  
-  return sitemapEntries;
-} 
+      changeFrequency: 'daily',
+      priority: 1.0,
+    }];
+  }
+}

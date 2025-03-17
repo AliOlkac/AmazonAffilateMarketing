@@ -35,7 +35,7 @@ async function generateSitemap() {
         ${pages.map(addPage).join('\n')}
     </urlset>`;
 
-  fs.writeFileSync('public/sitemap.xml', sitemap);
+  fs.writeFileSync('public/', sitemap);
   console.log('Sitemap generated successfully!');
 }
 

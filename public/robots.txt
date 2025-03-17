@@ -11,5 +11,5 @@ Disallow: /private/
 Disallow: /_next/
 Disallow: /api/
 
-# Crawl-delay for all bots
-Crawl-delay: 10 
+# Crawl-delay for all bots (5 saniye olarak optimize edildi)
+Crawl-delay: 5 
