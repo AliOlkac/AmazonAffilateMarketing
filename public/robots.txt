@@ -1,16 +1,59 @@
-# Allow all crawlers
-User-agent: *
+# Tüm tarayıcı botlarına izin ver
+User-Agent: *
 Allow: /
 
-# Essential disallow rules
-Disallow: /api/
-Disallow: /_next/
+# Özel klasörlere erişimi engelle
 Disallow: /private/
 Disallow: /admin/
+Disallow: /api/
+Disallow: /_next/
+Disallow: /server-sitemap/
 Disallow: /*.json$
+Disallow: /*.pdf$
+Disallow: /search
+Disallow: /login
+Disallow: /register
+Disallow: /checkout
+Disallow: /cart
+Disallow: /draft/
+Disallow: /tmp/
 
-# Sitemap location
-Sitemap: https://bestcamerareview.com/sitemap.xml
+# Google için özel kurallar
+User-Agent: Googlebot
+Allow: /
+Disallow: /private/
+Disallow: /admin/
 
-# Host
-Host: https://bestcamerareview.com 
+# Bing için özel kurallar
+User-Agent: Bingbot
+Allow: /
+Disallow: /private/
+Disallow: /admin/
+
+# Yahoo için özel kurallar
+User-Agent: Slurp
+Allow: /
+Disallow: /private/
+Disallow: /admin/
+
+# DuckDuckGo için özel kurallar
+User-Agent: DuckDuckBot
+Allow: /
+Disallow: /private/
+Disallow: /admin/
+
+# Baidu için özel kurallar
+User-Agent: Baiduspider
+Allow: /
+Disallow: /private/
+Disallow: /admin/
+
+# Yandex için özel kurallar
+User-Agent: YandexBot
+Allow: /
+Disallow: /private/
+Disallow: /admin/
+
+# XML dosyalarını engelleme - sitemap.xml hariç
+# Sitemap dosyaları
+Sitemap: https://bestcamerareview.com/sitemap.xml 
