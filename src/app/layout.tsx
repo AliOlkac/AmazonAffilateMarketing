@@ -125,6 +125,7 @@ export default function RootLayout({
         
         {/* Preload - kritik kaynaklar */}
         <link rel="preload" href="/images/logo.png" as="image" />
+        <link rel="canonical" href="https://bestcamerareview.com/current-path" />
       </head>
       <body
         className={`${inter.className} antialiased min-h-screen flex flex-col`}
