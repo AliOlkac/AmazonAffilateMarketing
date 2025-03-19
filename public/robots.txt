@@ -54,6 +54,5 @@ Allow: /
 Disallow: /private/
 Disallow: /admin/
 
-# XML dosyalarını engelleme - sitemap.xml hariç
 # Sitemap dosyaları
 Sitemap: https://bestcamerareview.com/sitemap.xml 
