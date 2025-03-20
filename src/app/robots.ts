@@ -77,13 +77,7 @@ export default function robots(): MetadataRoute.Robots {
         ],
       },
     ],
-    // Sitemap URL'lerini ekleyin
-    sitemap: [
-      `${baseUrl}/sitemap.xml`,           // Ana site haritası
-      `${baseUrl}/cameras-sitemap.xml`,   // Kameralar için site haritası
-      `${baseUrl}/brands-sitemap.xml`,    // Markalar için site haritası
-      `${baseUrl}/blog-sitemap.xml`,      // Blog gönderileri için site haritası
-    ],
-    host: baseUrl, // Web sitesinin ana URL'i
+    // Sitemap URL'ini ekleyin - Sadece var olan sitemap dosyasını belirtiyoruz
+    sitemap: `${baseUrl}/sitemap.xml`,
   };
 } 

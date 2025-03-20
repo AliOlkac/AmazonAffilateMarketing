@@ -9,6 +9,7 @@ Disallow: /api/
 Disallow: /_next/
 Disallow: /server-sitemap/
 Disallow: /*.json$
+Disallow: /*.xml$
 Disallow: /*.pdf$
 Disallow: /search
 Disallow: /login
@@ -54,5 +55,5 @@ Allow: /
 Disallow: /private/
 Disallow: /admin/
 
-# Sitemap dosyaları
+# Sitemap dosyası
 Sitemap: https://bestcamerareview.com/sitemap.xml 
