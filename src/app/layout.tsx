@@ -6,9 +6,6 @@ import FooterWrapper from "./components/FooterWrapper";
 import JsonLd from "./components/JsonLd";
 import CriticalCSS from "./components/CriticalCSS";
 import MobileCompatibilityTester from "./components/MobileCompatibilityTester";
-import GoogleAnalytics from "./components/GoogleAnalytics";
-import AnalyticsPageTracker from "./components/AnalyticsPageTracker";
-import CookieConsent from "./components/CookieConsent";
 
 // Font optimizasyonu - display: swap seçeneği ile fontun yüklenmesi gecikse bile metin görünür
 const inter = Inter({
@@ -118,7 +115,6 @@ export default function RootLayout({
       <head>
         {/* DNS Prefetching - bağlanacağımız harici kaynaklar */}
         <link rel="dns-prefetch" href="https://images-na.ssl-images-amazon.com" />
-        <link rel="dns-prefetch" href="https://www.google-analytics.com" />
         
         {/* Preconnect - önemli kaynaklar için erken bağlantı */}
         <link rel="preconnect" href="https://images-na.ssl-images-amazon.com" crossOrigin="anonymous" />
@@ -130,12 +126,7 @@ export default function RootLayout({
       <body
         className={`${inter.className} antialiased min-h-screen flex flex-col`}
       >
-        {/* Google Analytics */}
-        <GoogleAnalytics />
-        <AnalyticsPageTracker />
-        
-        {/* GDPR Çerez Onay Banner */}
-        <CookieConsent />
+        {/* Analytics ve çerez ilgili tüm bileşenler kaldırıldı */}
         
         {/* Yapılandırılmış veriler */}
         <JsonLd data={websiteJsonLd} />
